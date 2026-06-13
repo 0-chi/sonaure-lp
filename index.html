@@ -118,7 +118,7 @@
   <a href="#about" onclick="toggleMenu()">Sonaureについて</a>
   <a href="#login" onclick="toggleMenu()">ログイン</a>
   <a href="#services" onclick="toggleMenu()">サービスメニュー</a>
-  <a href="mailto:ououou1636@gmail.com?subject=【Sonaure】お問い合わせ">サポート（メール問い合わせ）</a>
+  <a href="mailto:phrasekakumei@gmail.com?subject=【Sonaure】お問い合わせ">サポート（メール問い合わせ）</a>
   <a href="javascript:void(0)" onclick="toggleMenu(); openTerms();">利用規約</a>
 </nav>
 
@@ -141,7 +141,7 @@
     <div class="pitch-card">
       <p>ランドマークになる建物は知っていても、<strong>学校区・病院・銀行・スーパー</strong>……周辺環境の全部を把握しきるのは難しいものです。</p>
       <ul class="pain-list">
-        <li>調べ始めると5〜10分。メモを取っていたら15分かかる</li>
+        <li>調べ始めると5分。メモを取っていたら10分かかる（面倒だからやらないことが多い）</li>
         <li>来店のお客様がいるときは、すぐ案内に出ないといけない。時間的な余裕がない</li>
         <li>ChatGPTに聞いても情報がバラバラに出てきて、本当に合っているか分からない</li>
       </ul>
@@ -220,14 +220,12 @@
       </div>
       <div class="auth-card" id="register">
         <h3>新規登録（初月無料）</h3>
-        <form onsubmit="alert('現在準備中です。事前登録ありがとうございます！'); return false;">
-          <label>メールアドレス</label>
-          <input type="email" placeholder="example@mail.com" required>
-          <label>パスワード（8文字以上）</label>
-          <input type="password" placeholder="••••••••" required>
-          <button type="submit">無料で始める</button>
-        </form>
-        <div class="auth-note">登録後、クレジットカードを設定すると2か月目以降も継続できます（月額400円）</div>
+        <p style="font-size:13px; color:var(--muted); margin-bottom:8px;">
+          下のボタンから、クレジットカードを登録して始めます。<strong>最初の1か月は無料</strong>、
+          2か月目から月額400円（税込）が自動で課金されます。解約はいつでも可能です。
+        </p>
+        <button onclick="startRegister()">無料で始める（カード登録へ）</button>
+        <div class="auth-note">カード情報は決済代行サービス（Stripe）が安全に管理し、当方は保持しません。</div>
       </div>
     </div>
   </div>
@@ -245,6 +243,9 @@
       <ol>
         <li>本サービスのレポートは参考情報であり、宅地建物取引業法に基づく重要事項説明書・不動産鑑定評価書ではありません。</li>
         <li>判定は地点ベースの機械処理であり、境界付近等で実際と異なる場合があります。最終確認は必ず行政窓口・現地にて行ってください。</li>
+        <li>周辺環境（施設・学校区・店舗等）の情報は、開店・閉店・統廃合などにより最新の状況と異なる場合があります。</li>
+        <li>住所・地番から位置を特定する処理の性質上、位置情報に誤差や不具合が生じ、実際の物件とは異なる地点の結果が表示される可能性があります。表示された地点が正しいか必ずご確認ください。</li>
+        <li>購入諸費用・査定額などの金額は、あくまで概算です。物件・契約条件・金融機関・市場状況により実際の金額は変動することを大前提としてご利用ください。</li>
         <li>本サービスの利用により生じた損害について、当方は故意または重過失による場合を除き責任を負いません。</li>
       </ol>
       <h3>第3条（料金・支払い）</h3>
@@ -259,7 +260,7 @@
       </ol>
       <div class="cancel-area">
         <p style="font-size:13px; margin-bottom:10px;">解約をご希望の方はこちらから</p>
-        <a class="cancel-btn" href="mailto:ououou1636@gmail.com?subject=【Sonaure】解約希望&body=ご登録のメールアドレスをご記入ください：">解約手続きへ</a>
+        <a class="cancel-btn" href="mailto:phrasekakumei@gmail.com?subject=【Sonaure】解約希望&body=ご登録のメールアドレスをご記入ください：">解約手続きへ</a>
       </div>
     </div>
   </div>
@@ -268,10 +269,23 @@
 <footer>
   <p>Sonaure 〜備えあれば憂いなし、お客様に＋αの感動を〜<br>
   出典：国土交通省「不動産情報ライブラリ」「国土数値情報」／国土地理院／© OpenStreetMap contributors<br>
-  サポート：ououou1636@gmail.com ｜ © 2026 Sonaure</p>
+  サポート：phrasekakumei@gmail.com ｜ © 2026 Sonaure</p>
 </footer>
 
 <script>
+// ===== 決済設定 =====
+// Stripeの「お支払いリンク（Payment Link）」のURLをここに貼るだけで、登録ボタンが有効になります。
+// 例: const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/xxxxxxxxxxxx";
+const STRIPE_CHECKOUT_URL = "";
+
+function startRegister() {
+  if (STRIPE_CHECKOUT_URL) {
+    location.href = STRIPE_CHECKOUT_URL;
+  } else {
+    alert("ただいま決済の準備中です。正式リリースまでもう少々お待ちください！");
+  }
+}
+
 function toggleMenu() {
   document.getElementById("drawer").classList.toggle("open");
   document.getElementById("overlay").classList.toggle("show");
