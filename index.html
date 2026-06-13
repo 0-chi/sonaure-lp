@@ -92,12 +92,17 @@
   .cancel-area { margin-top: 24px; padding: 20px; background: #f7fafc; border-radius: 10px; text-align: center; }
   .cancel-btn { display: inline-block; border: 1px solid #c53030; color: #c53030; background: #fff; border-radius: 999px; padding: 9px 32px; font-size: 13.5px; text-decoration: none; }
 
-  /* ===== 利用規約モーダル ===== */
-  #terms-modal { display: none; position: fixed; inset: 0; background: rgba(15,30,60,.5); z-index: 300; padding: 30px 16px; overflow-y: auto; }
-  #terms-modal.show { display: block; }
+  /* ===== モーダル（利用規約・メッセージ共通）===== */
+  #terms-modal, #message-modal { display: none; position: fixed; inset: 0; background: rgba(15,30,60,.5); z-index: 300; padding: 30px 16px; overflow-y: auto; }
+  #terms-modal.show, #message-modal.show { display: block; }
   .modal-card { position: relative; max-width: 780px; margin: 20px auto; background: #fff; border-radius: 16px; padding: 36px 28px 28px; box-shadow: 0 20px 60px rgba(15,30,60,.35); }
   .modal-card h2 { margin-bottom: 18px; }
   .modal-close { position: absolute; top: 12px; right: 14px; border: none; background: none; font-size: 22px; color: var(--muted); cursor: pointer; }
+
+  /* メッセージ本文 */
+  .message-box { font-size: 15px; line-height: 2; color: var(--ink); }
+  .message-box p { margin-bottom: 18px; }
+  .message-box .sign { text-align: right; color: var(--blue-d); font-weight: bold; margin-top: 24px; }
 
   footer { background: var(--blue-d); color: #cfe2f8; font-size: 12px; text-align: center; padding: 26px 16px; }
 </style>
@@ -116,6 +121,7 @@
 <nav id="drawer">
   <button class="close" onclick="toggleMenu()">✕</button>
   <a href="#about" onclick="toggleMenu()">Sonaureについて</a>
+  <a href="javascript:void(0)" onclick="toggleMenu(); openMessage();">メッセージ</a>
   <a href="#login" onclick="toggleMenu()">ログイン</a>
   <a href="#services" onclick="toggleMenu()">サービスメニュー</a>
   <a href="mailto:phrasekakumei@gmail.com?subject=【Sonaure】お問い合わせ">サポート（メール問い合わせ）</a>
@@ -231,6 +237,22 @@
   </div>
 </section>
 
+<!-- ===== メッセージ（メニューから開くモーダル）===== -->
+<div id="message-modal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeMessage()">✕</button>
+    <h2>メッセージ</h2>
+    <div class="message-box">
+      <p>Sonaureは不動産営業の皆様が信頼され、選ばれる人になってもらいたい。こんな想いで始めたサービスです。</p>
+      <p>「ちゃんと事前準備をする」「即レス即対応をする」<br>
+      お客様が営業に信頼感を抱く理由は、本当に些細な事です。</p>
+      <p>情報社会である現代、会社の名前ではなく一人一人の営業マンが選ばれる時代です。</p>
+      <p>Sonaureを使って、是非お客様に<strong>＋αの感動</strong>を与えてあげてください。</p>
+      <p class="sign">Sonaure 一同</p>
+    </div>
+  </div>
+</div>
+
 <!-- ===== 利用規約（メニューから開くモーダル）===== -->
 <div id="terms-modal">
   <div class="modal-card">
@@ -296,9 +318,18 @@ function openTerms() {
 function closeTerms() {
   document.getElementById("terms-modal").classList.remove("show");
 }
+function openMessage() {
+  document.getElementById("message-modal").classList.add("show");
+}
+function closeMessage() {
+  document.getElementById("message-modal").classList.remove("show");
+}
 // モーダルの背景クリックでも閉じる
 document.getElementById("terms-modal").addEventListener("click", function (e) {
   if (e.target === this) closeTerms();
+});
+document.getElementById("message-modal").addEventListener("click", function (e) {
+  if (e.target === this) closeMessage();
 });
 </script>
 </body>
