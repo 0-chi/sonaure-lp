@@ -67,6 +67,13 @@
   .formats { text-align: center; margin-top: 22px; font-size: 13px; color: var(--muted); }
 
   /* ===== 料金 ===== */
+  .value-calc { max-width: 480px; margin: 0 auto 26px; background: linear-gradient(135deg,#f4f9ff,#eaf3ff); border: 1px solid var(--line); border-radius: 16px; padding: 28px 30px; text-align: center; }
+  .vc-q { font-size: 19px; font-weight: bold; color: var(--blue-d); margin-bottom: 14px; }
+  .vc-formula { font-size: 14px; color: var(--ink); line-height: 2; }
+  .vc-formula sup { color: var(--muted); font-size: 10px; }
+  .vc-result { font-size: 16px; color: var(--ink); margin-top: 14px; }
+  .vc-result strong { font-size: 26px; color: var(--blue); margin: 0 2px; }
+  .vc-notes { font-size: 11px; color: var(--muted); margin-top: 18px; text-align: left; line-height: 1.8; border-top: 1px solid var(--line); padding-top: 14px; }
   .price-card { max-width: 430px; margin: 0 auto; background: #fff; border: 2px solid var(--blue); border-radius: 18px; padding: 38px 30px; text-align: center; box-shadow: 0 12px 32px rgba(26,77,143,.12); }
   .price-big { font-size: 54px; font-weight: bold; background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.2; }
   .price-big small { font-size: 18px; }
@@ -157,7 +164,7 @@
     <div class="pitch-card">
       <p>ランドマークになる建物は知っていても、<strong>学校・病院・銀行・スーパー</strong>……周辺環境の全部を把握しきるのは難しいものです。</p>
       <ul class="pain-list">
-        <li>調べ始めると5分。メモを取っていたら10分かかるし面倒だからやらない</li>
+        <li>調べ始めると5分〜10分。レポートにまとめるとなると15分〜20分かかるし面倒だからやらない</li>
         <li>大体把握してるから調べなくていいや、と省略する</li>
         <li>来店のお客様がいるときは、すぐ案内に出ないといけない。時間的な余裕がない</li>
         <li>ChatGPTに聞いても情報がバラバラに出てきて、本当に合っているか分からない</li>
@@ -204,11 +211,21 @@
 <section id="price">
   <div class="wrap">
     <h2>料金</h2>
+    <div class="value-calc">
+      <p class="vc-q">「あなたの15分はいくらですか？」</p>
+      <p class="vc-formula">年収450万<sup>(※1)</sup><br>
+      ＝ 月給37.5万 ÷ 22営業日<sup>(※2)</sup> ÷ 10時間<sup>(※3)</sup><br>
+      ＝ 時給 約1,704円</p>
+      <p class="vc-result">15分に換算すると <strong>426円</strong> です。</p>
+      <p class="vc-notes">※1 管理を除く不動産営業の平均年収で換算<br>
+      ※2 年間休日105日で換算<br>
+      ※3 平均残業2時間/日で換算</p>
+    </div>
     <p class="lead">続けやすさを最優先にしました</p>
     <div class="price-card">
       <div class="free-badge">14日間無料：サービス体験期間</div>
       <div class="price-big">月額 400<small>円（税込）</small></div>
-      <div class="coffee">月に1杯、カフェのコーヒーを我慢するだけで——<br><strong>10分かかっていた調査が、30秒に。</strong></div>
+      <div class="coffee">月に1杯、カフェのコーヒーを我慢するだけで——<br><strong>15分かかっていたレポートが、30秒に。</strong></div>
       <ul>
         <li>3種類の調査レポートが使い放題</li>
         <li>HTML / PDF / Excel 出力対応</li>
