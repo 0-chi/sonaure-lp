@@ -60,7 +60,9 @@
   /* ===== サービスメニュー ===== */
   .services { background: linear-gradient(180deg, #fff 0%, #eef5ff 100%); }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-  .card { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 14px; padding: 26px 20px; box-shadow: 0 4px 16px rgba(26,77,143,.07); }
+  .card { display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 14px; padding: 26px 20px; box-shadow: 0 4px 16px rgba(26,77,143,.07); transition: transform .15s, box-shadow .15s; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(26,77,143,.16); }
+  .card-more { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: bold; color: var(--blue); }
   .card .num { display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-weight: bold; margin-bottom: 10px; }
   .card h3 { font-size: 16px; color: var(--blue-d); margin-bottom: 8px; }
   .card p { font-size: 13.5px; color: var(--muted); }
@@ -163,27 +165,30 @@
 <section class="pitch" id="about">
   <div class="wrap">
     <h2>頭に入ってると思って、意外と抜けている。</h2>
-    <p class="lead">物件の周辺環境調査、こんな経験ありませんか？</p>
+    <p class="lead">物件の案内をする時、周辺環境を調べると思いますがこんな経験ありませんか？</p>
     <div class="pitch-card">
       <p>ランドマークになる建物は知っていても、<strong>学校・病院・銀行・スーパー</strong>……周辺環境の全部を把握しきるのは難しいものです。</p>
       <ul class="pain-list">
-        <li>調べ始めると5分〜10分。レポートにまとめるとなると15分〜20分かかるし面倒だからやらない</li>
+        <li>調べ始めると5分〜10分、レポートにまとめるとなると15分前後かかるし面倒だからやらない</li>
         <li>大体把握してるから調べなくていいや、と省略する</li>
         <li>来店のお客様がいるときは、すぐ案内に出ないといけない。時間的な余裕がない</li>
         <li>ChatGPTに聞いても情報がバラバラに出てきて、本当に合っているか分からない</li>
       </ul>
       <div class="answer">そんなとき、Sonaureが<span class="ten">30秒</span>で解決します。</div>
       <div class="pitch-conclusion">
-        <p>Sonaureは<strong>営業の信頼感を増すツール</strong>です。</p>
+        <p>Sonaureは<strong>「あえてしなくていいこと」を「あえてすること」で</strong><br>
+        営業の信頼感を増すツールです。</p>
         <p>怠惰な営業はやらないですが、<br>
         丁寧なトップセールスは必ず下調べをしています。</p>
-        <p>「大体分かってるから」「面倒だから」と<strong>下調べをしない営業</strong>と、<br>
+        <p>「大体分かってるから」「面倒だから」と<br>
+        <strong>下調べをしてこない営業</strong>と、<br>
         <strong>ちゃんと下調べをしてくる営業</strong>。<br>
         あなたならどちらを選びますか？</p>
       </div>
       <div class="trust-box">
-        さらに言うと——<strong>この調査結果をプリントアウトすれば、そのままお客様に渡せる仕様にもなっています。</strong><br>
-        「こんなに丁寧に用意してくれた」。これが<strong>＋αの信頼</strong>につながります。
+        <strong>この調査結果をプリントアウトすれば、そのままお客様に渡せる仕様にもなっています。</strong><br>
+        Sonaureを持つだけで周辺の説明ができますし、最後にお客様にお渡しすれば<br>
+        「こんなに丁寧に用意してくれた」と、<strong>＋αの信頼</strong>につながります。
       </div>
     </div>
   </div>
@@ -193,22 +198,27 @@
 <section class="services" id="services">
   <div class="wrap">
     <h2>サービスメニュー</h2>
-    <p class="lead">住所を入れるだけで、3種類の調査レポートを自動作成</p>
+    <p class="lead">住所を入れるだけで、3種類の調査レポートを自動作成。<br>
+    ①周辺環境調査書だけでなく、②購入諸費用計算・③重説必要項目調査書も時間短縮のために用意しました。</p>
     <div class="cards">
-      <div class="card"><div class="num">1</div>
+      <a class="card" href="detail-env.html"><div class="num">1</div>
         <h3>周辺環境調査書</h3>
         <p>最寄り駅・学校・保育園・スーパー・銀行・病院・コンビニ・公園・大型商業施設・コインパーキングを徒歩分数つきで1枚に。</p>
-      </div>
-      <div class="card"><div class="num">2</div>
+        <span class="card-more">詳しく見る →</span>
+      </a>
+      <a class="card" href="detail-costs.html"><div class="num">2</div>
         <h3>購入諸費用計算</h3>
         <p>物件価格を入れるだけで、仲介手数料・登記・ローン費用・保険・清算金まで概算書を自動作成。</p>
-      </div>
-      <div class="card"><div class="num">3</div>
+        <span class="card-more">詳しく見る →</span>
+      </a>
+      <a class="card" href="detail-juusetsu.html"><div class="num">3</div>
         <h3>重説必要項目調査書</h3>
         <p>区域区分・用途地域・建ぺい率/容積率・防火指定・災害リスク4種。境界またがりは「要確認」として自動検出。</p>
-      </div>
+        <span class="card-more">詳しく見る →</span>
+      </a>
     </div>
-    <div class="formats">レポートはすべて <strong>HTML / PDF / Excel</strong> でダウンロードできます（出典：国土交通省 不動産情報ライブラリ等の公的データ）</div>
+    <div class="formats">レポートはすべて <strong>HTML / PDF / Excel</strong> でダウンロードできます（出典：国土交通省 不動産情報ライブラリ等の公的データ）。<br>
+    不要な項目はエクセルで編集すれば、お客様ごとにアレンジ可能♪</div>
   </div>
 </section>
 

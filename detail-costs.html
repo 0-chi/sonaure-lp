@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>購入諸費用計算｜Sonaure</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap');
+  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Noto Sans JP","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);line-height:1.9;background:linear-gradient(180deg,#fff,#f3f8ff);}
+  .wrap{max-width:840px;margin:0 auto;padding:0 20px;}
+  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
+  .bar{display:flex;align-items:center;height:56px;}
+  .back{font-size:14px;color:var(--blue);text-decoration:none;font-weight:bold;}
+  .hero{background:linear-gradient(135deg,#eaf3ff,#d7e9ff 60%,#c8e0ff);border-radius:18px;border:1px solid var(--line);padding:34px 24px;text-align:center;margin:24px 0;}
+  .hero .num{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;font-weight:bold;font-size:18px;margin-bottom:12px;}
+  .hero h1{font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;font-size:28px;color:var(--blue-d);letter-spacing:.04em;}
+  .hero p{color:var(--blue-d);font-size:14px;margin-top:8px;}
+  section{padding:10px 0 24px;}
+  h2{font-size:20px;color:var(--blue-d);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));}
+  .lead{font-size:15px;margin-bottom:16px;}
+  ul.feat{list-style:none;background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:14px;padding:18px 22px;}
+  ul.feat li{padding:5px 0 5px 26px;position:relative;font-size:14.5px;}
+  ul.feat li::before{content:"✓";position:absolute;left:4px;color:var(--blue);font-weight:bold;}
+  .preview{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 28px rgba(26,77,143,.10);padding:22px 22px 16px;overflow-x:auto;}
+  .pv-title{font-size:18px;font-weight:bold;border-bottom:3px solid var(--blue);padding-bottom:6px;}
+  .pv-title span{color:var(--blue);font-size:12px;margin-left:8px;}
+  .pv-note{color:var(--muted);font-size:10px;margin-left:8px;}
+  .pv-meta{font-size:11px;color:var(--muted);margin:6px 0 14px;}
+  .preview h3{font-size:14px;background:#ebf4ff;padding:6px 10px;border-left:4px solid var(--blue);color:var(--blue-d);margin:14px 0 8px;}
+  .preview h3:first-of-type{margin-top:0;}
+  table{width:100%;border-collapse:collapse;font-size:12px;}
+  th,td{border:1px solid #cbd5e0;padding:5px 8px;text-align:left;}
+  th{background:#f7fafc;color:var(--blue-d);}
+  .item{font-weight:bold;white-space:nowrap;}
+  .num-c{text-align:right;white-space:nowrap;}
+  .kpis{display:flex;gap:8px;flex-wrap:wrap;}
+  .kpi{flex:1;min-width:130px;border:1px solid #cbd5e0;border-radius:6px;padding:10px;text-align:center;}
+  .kpi .l{font-size:11px;color:var(--muted);}
+  .kpi .v{font-size:16px;font-weight:bold;color:var(--blue-d);margin-top:4px;}
+  .pv-brand{text-align:right;color:var(--blue);font-weight:bold;font-size:14px;margin-top:14px;}
+  .cap{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
+  .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto;max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
+  footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:20px;}
+</style>
+</head>
+<body>
+<header><div class="wrap bar"><a class="back" href="index.html">← Sonaure トップへ</a></div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="num">2</div>
+    <h1>購入諸費用計算</h1>
+    <p>物件価格を入れるだけ。仲介手数料から登記・ローン費用まで概算書を自動作成。</p>
+  </div>
+
+  <section>
+    <h2>こんな費用をまとめて概算します</h2>
+    <p class="lead">「結局、諸費用はいくら？」をお客様に聞かれたとき、その場でサッと出せます。価格（と借入額）を入れるだけ、住所入力は不要です。</p>
+    <ul class="feat">
+      <li>仲介手数料（速算式・消費税込み）</li>
+      <li>売買契約書／ローン契約の印紙税</li>
+      <li>登録免許税・司法書士報酬（登記費用）</li>
+      <li>融資事務手数料・抵当権設定費用</li>
+      <li>火災保険料・固定資産税の清算金</li>
+      <li>合計額と、物件価格に対する割合を自動表示</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>出力イメージ</h2>
+    <div class="preview">
+      <div class="pv-title">購入費用の概算<span>Sonaure</span><span class="pv-note">※あくまで概算になるため変動いたします</span></div>
+      <div class="pv-meta">対象：物件価格 3,000 万円／借入額 3,000 万円</div>
+      <h3>諸費用の概算明細</h3>
+      <table>
+        <thead><tr><th>項目</th><th class="num-c">概算額</th><th>計算根拠・備考</th></tr></thead>
+        <tbody>
+          <tr><td class="item">仲介手数料</td><td class="num-c">約 105.6 万円</td><td>（価格×3%＋6万円）×消費税10%</td></tr>
+          <tr><td class="item">売買契約書の印紙税</td><td class="num-c">約 1.0 万円</td><td>軽減税率適用後</td></tr>
+          <tr><td class="item">登録免許税（移転・目安）</td><td class="num-c">約 31.5 万円</td><td>評価額を価格の70%と仮定</td></tr>
+          <tr><td class="item">司法書士報酬</td><td class="num-c">約 10.0 万円</td><td>一般的な相場の目安</td></tr>
+          <tr><td class="item">融資事務手数料</td><td class="num-c">約 66.0 万円</td><td>借入額×2.2%（定率型）</td></tr>
+          <tr><td class="item">火災保険料</td><td class="num-c">約 20.0 万円</td><td>5年一括の目安</td></tr>
+        </tbody>
+      </table>
+      <h3>合計</h3>
+      <div class="kpis">
+        <div class="kpi"><div class="l">諸費用合計（概算）</div><div class="v">約 249 万円</div></div>
+        <div class="kpi"><div class="l">物件価格に対する割合</div><div class="v">約 8.3%</div></div>
+      </div>
+      <div class="pv-brand">Sonaure</div>
+    </div>
+    <p class="cap">※ 実際のレポートはHTML / PDF / Excelの3形式でダウンロードできます（上記は表示イメージ）。</p>
+  </section>
+
+  <a class="cta" href="index.html#register">14日間無料で使ってみる</a>
+</div>
+
+<footer>Sonaure 〜備えあれば憂いなし、お客様に＋αの感動を〜<br>© 2026 Sonaure</footer>
+</body>
+</html>
