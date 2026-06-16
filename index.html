@@ -70,7 +70,8 @@
 
   /* ===== 料金 ===== */
   .value-calc { max-width: 480px; margin: 0 auto 26px; background: linear-gradient(135deg,#f4f9ff,#eaf3ff); border: 1px solid var(--line); border-radius: 16px; padding: 28px 30px; text-align: center; }
-  .vc-q { font-size: 19px; font-weight: bold; color: var(--blue-d); margin-bottom: 14px; }
+  .vc-q { font-size: 19px; font-weight: bold; color: var(--blue-d); margin-bottom: 10px; }
+  .vc-eg { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
   .vc-formula { font-size: 14px; color: var(--ink); line-height: 2; }
   .vc-formula sup { color: var(--muted); font-size: 10px; }
   .vc-result { font-size: 16px; color: var(--ink); margin-top: 14px; }
@@ -84,6 +85,7 @@
   .price-big small { font-size: 18px; }
   .free-badge { display: inline-block; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-size: 13px; font-weight: bold; border-radius: 999px; padding: 5px 18px; margin-bottom: 12px; }
   .coffee { margin-top: 16px; font-size: 14px; color: var(--ink); background: #f4f9ff; border-radius: 10px; padding: 14px; }
+  .coffee u { font-weight: bold; color: var(--blue-d); text-decoration-color: var(--blue); text-underline-offset: 3px; }
   .price-card ul { list-style: none; text-align: left; margin: 18px auto 0; font-size: 13.5px; max-width: 300px; }
   .price-card li::before { content: "✓ "; color: var(--blue); font-weight: bold; }
 
@@ -222,23 +224,25 @@
   <div class="wrap">
     <h2>料金</h2>
     <div class="value-calc">
-      <p class="vc-q">「あなたの15分、いくら以上にしたいですか？」</p>
+      <p class="vc-q">「あなたの15分はいくらの価値がありますか？」</p>
+      <p class="vc-eg">〜例1〜</p>
       <p class="vc-formula">年収400万<sup>(※1)</sup><br>
-      ＝ 月給33.3万 ÷ 22営業日<sup>(※2)</sup> ÷ 9.5時間<sup>(※3)</sup><br>
-      ＝ 時給 約1,594円</p>
-      <p class="vc-result">15分に換算すると <strong>398.5円</strong> です。</p>
+      ＝ 月給33.3万 ÷ 22営業日<sup>(※2)</sup> ÷ 8時間<sup>(※3)</sup><br>
+      ＝ 時給 約1,893円</p>
+      <p class="vc-result">15分に換算すると <strong>473円</strong> です。</p>
       <p class="vc-sub">あなたの年収が高ければ高いほど、15分の価値は上がります。</p>
       <p class="vc-notes">※1 不動産営業年収のボリュームゾーンで換算<br>
       ※2 年間休日105日で換算<br>
-      ※3 基本勤務8時間＋平均残業1.5時間/日で換算</p>
+      ※3 実働時間8時間で換算</p>
     </div>
     <div class="price-card">
       <div class="free-badge">14日間無料：サービス体験期間</div>
-      <div class="price-big">月額 390<small>円（税込）</small></div>
+      <div class="price-big">月額 460<small>円（税込）</small></div>
       <div class="coffee">月に1回以上使うだけで——<br>
-      カフェのコーヒーを1杯我慢するだけで——<br>
+      十分に元が取れる、続けやすさを最優先に——<br>
       <strong>あなたの貴重な15分を、30秒に圧縮。</strong><br>
-      十分に元が取れる、続けやすさを最優先に。</div>
+      <u>登録メールアドレスを共有できれば法人様でのご利用も可能</u>です。<br>
+      営業の人数が<u>多ければ多いほど非常にお得</u>になります。</div>
       <ul>
         <li>3種類の調査レポートが使い放題</li>
         <li>HTML / PDF / Excel 出力対応</li>
@@ -270,7 +274,7 @@
         <h3>新規登録（14日間無料）</h3>
         <p style="font-size:13px; color:var(--muted); margin-bottom:8px;">
           下のボタンから、クレジットカードを登録して始めます。<strong>最初の14日間は無料</strong>、
-          15日目から月額390円（税込）が自動で課金されます。解約はいつでも可能です。
+          15日目から月額460円（税込）が自動で課金されます。解約はいつでも可能です。
         </p>
         <button onclick="startRegister()">無料で始める（カード登録へ）</button>
         <div class="auth-note">カード情報は決済代行サービス（Stripe）が安全に管理し、当方は保持しません。</div>
@@ -292,15 +296,12 @@
       こんな想いで始めたサービスです。</p>
       <p>「ちゃんと事前準備をする」「即レス即対応をする」<br>
       お客様が営業に信頼感を抱く理由は、本当に些細な事です。</p>
-      <p>怠惰な営業はやらないですが、<br>
-      丁寧なトップセールスは必ず下調べをしています。</p>
-      <p>「大体分かってるから」「面倒だから」と<br>
-      <strong>下調べをしてこない営業</strong>と、<br>
-      <strong>ちゃんと下調べをしてくる営業</strong>。<br>
-      あなたならどちらを選びますか？</p>
       <p>情報社会である現代、会社の名前ではなく<br>
       <strong>一人一人の営業マンが選ばれる時代</strong>です。</p>
-      <p>Sonaureを使って、是非お客様に<strong>＋αの感動</strong>を与えてあげてください。</p>
+      <p>個人で利用する皆様、是非Sonaureを使って<br>
+      お客様に<strong>＋αの感動</strong>を与えてあげてください。</p>
+      <p>法人で利用する皆様、是非Sonaureを使って<br>
+      <strong>「全員がお客様に選ばれる」会社</strong>になっていただけたら幸いです。</p>
       <p class="sign">Sonaure 一同</p>
     </div>
   </div>
@@ -325,7 +326,7 @@
       </ol>
       <h3>第3条（料金・支払い）</h3>
       <ol>
-        <li>料金は月額390円（税込）、決済はクレジットカードによります。</li>
+        <li>料金は月額460円（税込）、決済はクレジットカードによります。</li>
         <li>登録から14日間は無料体験期間です。無料期間中に解約した場合、料金は発生しません。</li>
       </ol>
       <h3>第4条（解約）</h3>
