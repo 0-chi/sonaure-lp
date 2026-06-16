@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>利用規約｜Sonaure</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap');
+  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Noto Sans JP","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);line-height:1.95;background:linear-gradient(180deg,#fff,#f3f8ff);}
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px 50px;}
+  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
+  .bar{display:flex;align-items:center;height:56px;}
+  .back{font-size:14px;color:var(--blue);text-decoration:none;font-weight:bold;}
+  h1{font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;font-size:26px;color:var(--blue-d);margin:28px 0 6px;letter-spacing:.03em;}
+  .updated{font-size:12px;color:var(--muted);margin-bottom:24px;}
+  .intro{font-size:14px;margin-bottom:20px;}
+  h2{font-size:16px;color:var(--blue-d);margin:24px 0 8px;}
+  p,li{font-size:14px;}
+  ol.lvl{margin:6px 0 6px 0;padding-left:22px;}
+  ol.lvl li{margin-bottom:5px;}
+  .cancel{background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:22px 0;text-align:center;}
+  .cancel-btn{display:inline-block;border:1px solid #c53030;color:#c53030;background:#fff;border-radius:999px;padding:9px 30px;font-size:13.5px;text-decoration:none;margin-top:8px;}
+  footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;}
+</style>
+</head>
+<body>
+<header><div class="wrap bar"><a class="back" href="index.html">← Sonaure トップへ</a></div></header>
+<div class="wrap">
+  <h1>利用規約</h1>
+  <p class="updated">最終更新日：2026年6月16日</p>
+  <p class="intro">本利用規約（以下「本規約」）は、Sonaure（以下「本サービス」）の提供条件および本サービスの利用に関する運営者と利用者との間の権利義務関係を定めるものです。利用者は、本サービスを利用することにより本規約に同意したものとみなされます。</p>
+
+  <h2>第1条（サービス内容）</h2>
+  <ol class="lvl">
+    <li>本サービスは、公的機関等が公開するデータをもとに、不動産に関する調査レポート（周辺環境調査書・購入諸費用計算・重説必要項目調査書等）を自動生成するサービスです。</li>
+    <li>本サービスは、不動産取引や重要事項説明そのものを代行するものではありません。</li>
+  </ol>
+
+  <h2>第2条（情報の性質・非保証）</h2>
+  <ol class="lvl">
+    <li>本サービスが提供するレポートは参考情報であり、宅地建物取引業法に基づく重要事項説明書、または不動産鑑定評価書ではありません。</li>
+    <li>判定は地点ベースの機械的処理によるものであり、境界付近等で実際と異なる場合があります。</li>
+    <li>周辺環境（施設・店舗等）の情報は、開店・閉店・統廃合などにより最新の状況と異なる場合があります。</li>
+    <li>住所から位置を特定する処理の性質上、位置情報に誤差や不具合が生じ、実際とは異なる地点の結果が表示される可能性があります。</li>
+    <li>購入諸費用・査定額等の金額は概算であり、物件・契約条件・金融機関・市場状況により実際の金額は変動します。</li>
+    <li>レポートの内容に基づく最終的な確認・判断・説明の責任は、利用者（宅地建物取引業者等）が負うものとします。重要な事項は必ず行政窓口・現地等でご確認ください。</li>
+  </ol>
+
+  <h2>第3条（料金・支払い）</h2>
+  <ol class="lvl">
+    <li>料金は、個人プラン 月額460円（税込）、法人プラン 月額980円（税込）とします（価格はサービス内の表示に準じます）。</li>
+    <li>登録から14日間は無料体験期間とし、無料期間中に解約した場合、料金は発生しません。</li>
+    <li>料金のお支払いはクレジットカード決済（決済代行：Stripe）によります。</li>
+  </ol>
+
+  <h2>第4条（法人プランの利用）</h2>
+  <ol class="lvl">
+    <li>法人プランは、1つの契約アカウントを契約した法人（または事業者）の内部で共有してご利用いただけます。</li>
+    <li>契約者は、自社に発行されたログイン用の合言葉等の管理責任を負い、第三者に漏洩しないよう適切に管理するものとします。</li>
+    <li>契約者は、退職者・契約終了者等が引き続き本サービスを利用できないよう、必要に応じて運営者に合言葉の更新を依頼するものとします。</li>
+    <li>契約アカウントを、契約した法人・事業者の外部の第三者に利用させること（再販・再提供・共有を含む）を禁止します。</li>
+  </ol>
+
+  <h2>第5条（禁止事項）</h2>
+  <p>利用者は、本サービスの利用にあたり、以下の行為を行ってはなりません。</p>
+  <ol class="lvl">
+    <li>本サービスまたはそのレポートを、契約範囲を超えて第三者に再販・再提供・共有する行為</li>
+    <li>法令または公序良俗に違反する行為</li>
+    <li>本サービスの運営を妨害する行為、不正アクセス、過度な負荷をかける行為</li>
+    <li>本サービスの内容を複製・改変して、本サービスと競合するサービスに利用する行為</li>
+    <li>その他、運営者が不適切と判断する行為</li>
+  </ol>
+
+  <h2>第6条（利用停止・解除）</h2>
+  <ol class="lvl">
+    <li>利用者が本規約に違反した場合、運営者は事前の通知なく、当該利用者の利用を停止し、または契約を解除することができます。</li>
+    <li>この場合において、運営者は利用者に生じた損害について一切の責任を負いません。</li>
+  </ol>
+
+  <h2>第7条（解約）</h2>
+  <ol class="lvl">
+    <li>利用者はいつでも解約できます。解約後も、当月末日まではご利用いただけます（日割り返金はありません）。</li>
+    <li>本サービスはデジタルコンテンツ・継続課金サービスのため、決済後の返金は承っておりません。</li>
+  </ol>
+
+  <h2>第8条（免責）</h2>
+  <ol class="lvl">
+    <li>運営者は、本サービスの内容の正確性・完全性・有用性について保証しません。</li>
+    <li>本サービスの利用または利用できなかったことにより利用者に生じた損害について、運営者は、当方の故意または重過失による場合を除き、責任を負いません。</li>
+    <li>外部API・外部サービスの仕様変更・停止等により本サービスの一部または全部が利用できなくなる場合があります。</li>
+  </ol>
+
+  <h2>第9条（反社会的勢力の排除）</h2>
+  <p>利用者は、自らが暴力団その他の反社会的勢力に該当しないことを表明・確約します。これに反することが判明した場合、運営者は何らの催告なく契約を解除できます。</p>
+
+  <h2>第10条（規約の変更）</h2>
+  <p>運営者は、必要と判断した場合、利用者への事前の通知のうえ本規約を変更できます。変更後に本サービスを利用した場合、利用者は変更後の規約に同意したものとみなされます。</p>
+
+  <h2>第11条（準拠法・管轄）</h2>
+  <p>本規約は日本法に準拠します。本サービスに関して紛争が生じた場合、運営者の所在地を管轄する裁判所を第一審の専属的合意管轄裁判所とします。</p>
+
+  <div class="cancel">
+    <p style="font-size:13.5px;">解約をご希望の方はこちらから</p>
+    <a class="cancel-btn" href="mailto:phrasekakumei@gmail.com?subject=【Sonaure】解約希望&body=ご登録のメールアドレスをご記入ください：">解約手続きへ</a>
+  </div>
+</div>
+<footer>Sonaure 〜備えあれば憂いなし、お客様に＋αの感動を〜<br>© 2026 Sonaure</footer>
+</body>
+</html>
