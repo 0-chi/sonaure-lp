@@ -270,28 +270,24 @@
 <!-- ===== ログイン・新規登録 ===== -->
 <section class="auth" id="login">
   <div class="wrap">
-    <h2>ログイン / 新規登録</h2>
+    <h2>ログイン / 新規導入のご相談</h2>
     <p class="lead">アカウントひとつで、すべての調査メニューが使えます</p>
     <div class="auth-grid">
       <div class="auth-card">
         <h3>ログイン</h3>
-        <form onsubmit="location.href='https://sonaure-plsalfa.streamlit.app'; return false;">
-          <label>メールアドレス</label>
-          <input type="email" placeholder="example@mail.com" required>
-          <label>パスワード</label>
-          <input type="password" placeholder="••••••••" required>
-          <button type="submit">ログイン</button>
-        </form>
-        <div class="auth-note">※現在は体験版のため、そのままアプリ画面へご案内します</div>
+        <p style="font-size:13px; color:var(--muted); margin-bottom:14px;">
+          ご登録済みの方は、下のボタンからログイン画面へお進みください。メールアドレスとパスワードでログインできます。
+        </p>
+        <button onclick="location.href='https://sonaure-plsalfa.streamlit.app'">ログイン画面へ</button>
       </div>
       <div class="auth-card" id="register">
-        <h3>新規登録（14日間無料）</h3>
+        <h3>新規導入のご相談</h3>
         <p style="font-size:13px; color:var(--muted); margin-bottom:8px;">
-          下のボタンから、クレジットカードを登録して始めます。<strong>最初の14日間は無料</strong>、
-          15日目から月額460円（税込）が自動で課金されます。解約はいつでも可能です。
+          現在は<strong>招待制</strong>でご提供しています。導入をご検討の不動産会社さまは、
+          下のボタンからお気軽にご相談ください。担当よりアカウント発行のご案内をいたします。
         </p>
-        <button onclick="startRegister()">無料で始める（カード登録へ）</button>
-        <div class="auth-note">カード情報は決済代行サービス（Stripe）が安全に管理し、当方は保持しません。</div>
+        <button onclick="location.href='mailto:phrasekakumei@gmail.com?subject=【Sonaure】導入のご相談&body=会社名・お名前・ご連絡先をご記入ください：'">導入を相談する</button>
+        <div class="auth-note">※自動課金プラン（14日間無料・月額460円〜）は準備中です。開始時に改めてご案内します。</div>
       </div>
     </div>
   </div>
