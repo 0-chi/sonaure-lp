@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>購入諸費用計算｜Sonaure</title>
-<meta name="description" content="物件価格を入れるだけで、仲介手数料・登記費用・ローン費用・火災保険・清算金までの購入諸費用概算書を自動作成。お客様にそのまま渡せるPDF/Excelで出力できます。">
-<link rel="canonical" href="https://sonae-are.com/detail-costs.html">
-<meta property="og:title" content="購入諸費用計算｜Sonaure">
-<meta property="og:description" content="物件価格を入れるだけで、仲介手数料・登記費用・ローン費用・火災保険・清算金までの購入諸費用概算書を自動作成。お客様にそのまま渡せるPDF/Excelで出力できます。">
+<title>賃貸初期費用計算｜Sonaure</title>
+<meta name="description" content="家賃を入れるだけで、敷金・礼金・仲介手数料・保証料・日割り家賃・前家賃までの契約時総額の概算書を自動作成。お客様への概算提示がその場で完了します。">
+<link rel="canonical" href="https://sonae-are.com/detail-rental.html">
+<meta property="og:title" content="賃貸初期費用計算｜Sonaure">
+<meta property="og:description" content="家賃を入れるだけで、敷金・礼金・仲介手数料・保証料・日割り家賃・前家賃までの契約時総額の概算書を自動作成。お客様への概算提示がその場で完了します。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://sonae-are.com/detail-costs.html">
+<meta property="og:url" content="https://sonae-are.com/detail-rental.html">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap');
   :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
@@ -23,6 +23,7 @@
   .hero .num{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;font-weight:bold;font-size:18px;margin-bottom:12px;}
   .hero h1{font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;font-size:28px;color:var(--blue-d);letter-spacing:.04em;}
   .hero p{color:var(--blue-d);font-size:14px;margin-top:8px;}
+  .new-badge{display:inline-block;background:linear-gradient(135deg,#e53e3e,#f56565);color:#fff;font-size:11px;font-weight:bold;border-radius:999px;padding:2px 12px;margin-bottom:10px;letter-spacing:.08em;}
   section{padding:10px 0 24px;}
   h2{font-size:20px;color:var(--blue-d);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
   h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));}
@@ -57,45 +58,48 @@
 
 <div class="wrap">
   <div class="hero">
-    <div class="num">2</div>
-    <h1>購入諸費用計算</h1>
-    <p>物件価格を入れるだけ。仲介手数料から登記・ローン費用まで概算書を自動作成。</p>
+    <div class="new-badge">NEW</div><br>
+    <div class="num">4</div>
+    <h1>賃貸初期費用計算</h1>
+    <p>家賃を入れるだけ。敷金・礼金から日割り家賃まで、契約時の初期費用を概算書に。</p>
   </div>
 
   <section>
     <h2>こんな費用をまとめて概算します</h2>
-    <p class="lead">「結局、諸費用はいくら？」をお客様に聞かれたとき、その場でサッと出せます。価格（と借入額）を入れるだけ、住所入力は不要です。</p>
+    <p class="lead">「初期費用って結局いくらかかりますか？」——賃貸のお客様に必ず聞かれるこの質問に、その場でサッと1枚出せます。家賃と契約条件を入れるだけ、住所入力は不要です。</p>
     <ul class="feat">
-      <li>仲介手数料（速算式・消費税込み）</li>
-      <li>売買契約書／ローン契約の印紙税</li>
-      <li>登録免許税・司法書士報酬（登記費用）</li>
-      <li>融資事務手数料・抵当権設定費用</li>
-      <li>火災保険料・固定資産税の清算金</li>
-      <li>合計額と、物件価格に対する割合を自動表示</li>
+      <li>敷金・礼金（月数は物件に合わせて調整可能）</li>
+      <li>仲介手数料（1ヶ月＋税／0.5ヶ月＋税／なし から選択）</li>
+      <li>保証会社の初回保証料（総賃料の30〜100%で設定）</li>
+      <li>火災保険料（2年）・鍵交換費用</li>
+      <li>入居日を入れると日割り家賃・管理費を自動計算</li>
+      <li>翌月分の前家賃までまとめて、合計と「家賃の何ヶ月分か」を自動表示</li>
     </ul>
   </section>
 
   <section>
     <h2>出力イメージ</h2>
     <div class="preview">
-      <div class="pv-title">購入費用の概算<span>Sonaure</span><span class="pv-note">※あくまで概算になるため変動いたします</span></div>
-      <div class="pv-meta">対象：物件価格 3,000 万円／借入額 3,000 万円</div>
-      <h3>諸費用の概算明細</h3>
+      <div class="pv-title">賃貸初期費用の概算<span>Sonaure</span><span class="pv-note">※あくまで概算になるため変動いたします</span></div>
+      <div class="pv-meta">対象：家賃 8 万円／管理費 0.5 万円</div>
+      <h3>初期費用の概算明細</h3>
       <table>
-        <thead><tr><th>項目</th><th class="num-c">概算額</th><th>計算根拠・備考</th></tr></thead>
+        <thead><tr><th>項目</th><th class="num-c">金額</th><th>計算根拠・備考</th></tr></thead>
         <tbody>
-          <tr><td class="item">仲介手数料</td><td class="num-c">約 105.6 万円</td><td>（価格×3%＋6万円）×消費税10%</td></tr>
-          <tr><td class="item">売買契約書の印紙税</td><td class="num-c">約 1.0 万円</td><td>軽減税率適用後</td></tr>
-          <tr><td class="item">登録免許税（移転・目安）</td><td class="num-c">約 31.5 万円</td><td>評価額を価格の70%と仮定</td></tr>
-          <tr><td class="item">司法書士報酬</td><td class="num-c">約 10.0 万円</td><td>一般的な相場の目安</td></tr>
-          <tr><td class="item">融資事務手数料</td><td class="num-c">約 66.0 万円</td><td>借入額×2.2%（定率型）</td></tr>
-          <tr><td class="item">火災保険料</td><td class="num-c">約 20.0 万円</td><td>5年一括の目安</td></tr>
+          <tr><td class="item">敷金</td><td class="num-c">80,000円</td><td>家賃1ヶ月分（退去時精算の預け金）</td></tr>
+          <tr><td class="item">礼金</td><td class="num-c">80,000円</td><td>家賃1ヶ月分</td></tr>
+          <tr><td class="item">仲介手数料</td><td class="num-c">88,000円</td><td>家賃1ヶ月分＋消費税10%</td></tr>
+          <tr><td class="item">保証会社 初回保証料</td><td class="num-c">42,500円</td><td>総賃料（家賃＋管理費）の50%</td></tr>
+          <tr><td class="item">火災保険料（2年）</td><td class="num-c">20,000円</td><td>借家人賠償責任保険付き・目安</td></tr>
+          <tr><td class="item">鍵交換費用</td><td class="num-c">16,500円</td><td>シリンダー交換・目安（税込）</td></tr>
+          <tr><td class="item">日割り家賃・管理費</td><td class="num-c">32,903円</td><td>7月20日入居：12日分（31日の月）</td></tr>
+          <tr><td class="item">前家賃（翌月分）</td><td class="num-c">85,000円</td><td>家賃＋管理費の1ヶ月分</td></tr>
         </tbody>
       </table>
       <h3>合計</h3>
       <div class="kpis">
-        <div class="kpi"><div class="l">諸費用合計（概算）</div><div class="v">約 249 万円</div></div>
-        <div class="kpi"><div class="l">物件価格に対する割合</div><div class="v">約 8.3%</div></div>
+        <div class="kpi"><div class="l">初期費用合計（概算）</div><div class="v">約 444,903 円</div></div>
+        <div class="kpi"><div class="l">家賃の何ヶ月分か</div><div class="v">約 5.6 ヶ月分</div></div>
       </div>
       <div class="pv-brand">Sonaure</div>
     </div>

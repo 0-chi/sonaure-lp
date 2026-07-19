@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>購入諸費用計算｜Sonaure</title>
-<meta name="description" content="物件価格を入れるだけで、仲介手数料・登記費用・ローン費用・火災保険・清算金までの購入諸費用概算書を自動作成。お客様にそのまま渡せるPDF/Excelで出力できます。">
-<link rel="canonical" href="https://sonae-are.com/detail-costs.html">
-<meta property="og:title" content="購入諸費用計算｜Sonaure">
-<meta property="og:description" content="物件価格を入れるだけで、仲介手数料・登記費用・ローン費用・火災保険・清算金までの購入諸費用概算書を自動作成。お客様にそのまま渡せるPDF/Excelで出力できます。">
+<title>家賃→購入シミュレーション｜Sonaure</title>
+<meta name="description" content="今の家賃から「購入できる物件価格」を逆算。金利・返済期間・頭金を調整しながら、賃貸継続と購入の比較をお客様に提示できます。">
+<link rel="canonical" href="https://sonae-are.com/detail-rentbuy.html">
+<meta property="og:title" content="家賃→購入シミュレーション｜Sonaure">
+<meta property="og:description" content="今の家賃から「購入できる物件価格」を逆算。金利・返済期間・頭金を調整しながら、賃貸継続と購入の比較をお客様に提示できます。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://sonae-are.com/detail-costs.html">
+<meta property="og:url" content="https://sonae-are.com/detail-rentbuy.html">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap');
   :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
@@ -23,6 +23,7 @@
   .hero .num{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;font-weight:bold;font-size:18px;margin-bottom:12px;}
   .hero h1{font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;font-size:28px;color:var(--blue-d);letter-spacing:.04em;}
   .hero p{color:var(--blue-d);font-size:14px;margin-top:8px;}
+  .new-badge{display:inline-block;background:linear-gradient(135deg,#e53e3e,#f56565);color:#fff;font-size:11px;font-weight:bold;border-radius:999px;padding:2px 12px;margin-bottom:10px;letter-spacing:.08em;}
   section{padding:10px 0 24px;}
   h2{font-size:20px;color:var(--blue-d);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
   h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));}
@@ -57,49 +58,47 @@
 
 <div class="wrap">
   <div class="hero">
-    <div class="num">2</div>
-    <h1>購入諸費用計算</h1>
-    <p>物件価格を入れるだけ。仲介手数料から登記・ローン費用まで概算書を自動作成。</p>
+    <div class="new-badge">NEW</div><br>
+    <div class="num">5</div>
+    <h1>家賃→購入シミュレーション</h1>
+    <p>今の家賃から「買える物件価格」を逆算。賃貸のお客様への購入のご提案資料に。</p>
   </div>
 
   <section>
-    <h2>こんな費用をまとめて概算します</h2>
-    <p class="lead">「結局、諸費用はいくら？」をお客様に聞かれたとき、その場でサッと出せます。価格（と借入額）を入れるだけ、住所入力は不要です。</p>
+    <h2>こんな場面で活躍します</h2>
+    <p class="lead">「このまま家賃を払い続けるのと、買うのと、どっちがいいんでしょう？」——賃貸のお客様のこの一言は、購入のご提案のチャンスです。月々の支払額を入れるだけで、比較資料が1枚できあがります。</p>
     <ul class="feat">
-      <li>仲介手数料（速算式・消費税込み）</li>
-      <li>売買契約書／ローン契約の印紙税</li>
-      <li>登録免許税・司法書士報酬（登記費用）</li>
-      <li>融資事務手数料・抵当権設定費用</li>
-      <li>火災保険料・固定資産税の清算金</li>
-      <li>合計額と、物件価格に対する割合を自動表示</li>
+      <li>今の家賃と同じ月々の支払いで「いくら借りられるか」を逆算</li>
+      <li>頭金を足した「物件価格の目安」を自動表示</li>
+      <li>金利・返済期間は自由に調整（元利均等・ボーナス払いなし）</li>
+      <li>総返済額と利息の内訳も明示</li>
+      <li>「家賃を払い続けた場合の累計」との比較表つき</li>
+      <li>賃貸のお客様を、無理なく売買のご相談へつなげる1枚に</li>
     </ul>
   </section>
 
   <section>
     <h2>出力イメージ</h2>
     <div class="preview">
-      <div class="pv-title">購入費用の概算<span>Sonaure</span><span class="pv-note">※あくまで概算になるため変動いたします</span></div>
-      <div class="pv-meta">対象：物件価格 3,000 万円／借入額 3,000 万円</div>
-      <h3>諸費用の概算明細</h3>
+      <div class="pv-title">家賃から考える住宅購入の目安<span>Sonaure</span><span class="pv-note">※あくまで概算になるため変動いたします</span></div>
+      <div class="pv-meta">対象：月々 8 万円／金利 1.5%／35年</div>
+      <h3>結果</h3>
+      <div class="kpis">
+        <div class="kpi"><div class="l">借入可能額（概算）</div><div class="v">約 2,613 万円</div></div>
+        <div class="kpi"><div class="l">物件価格の目安</div><div class="v">約 2,613 万円</div></div>
+      </div>
+      <h3>家賃を払い続けた場合との比較</h3>
       <table>
-        <thead><tr><th>項目</th><th class="num-c">概算額</th><th>計算根拠・備考</th></tr></thead>
+        <thead><tr><th>期間</th><th class="num-c">家賃を払い続けた場合の累計</th><th>備考</th></tr></thead>
         <tbody>
-          <tr><td class="item">仲介手数料</td><td class="num-c">約 105.6 万円</td><td>（価格×3%＋6万円）×消費税10%</td></tr>
-          <tr><td class="item">売買契約書の印紙税</td><td class="num-c">約 1.0 万円</td><td>軽減税率適用後</td></tr>
-          <tr><td class="item">登録免許税（移転・目安）</td><td class="num-c">約 31.5 万円</td><td>評価額を価格の70%と仮定</td></tr>
-          <tr><td class="item">司法書士報酬</td><td class="num-c">約 10.0 万円</td><td>一般的な相場の目安</td></tr>
-          <tr><td class="item">融資事務手数料</td><td class="num-c">約 66.0 万円</td><td>借入額×2.2%（定率型）</td></tr>
-          <tr><td class="item">火災保険料</td><td class="num-c">約 20.0 万円</td><td>5年一括の目安</td></tr>
+          <tr><td class="item">10年</td><td class="num-c">約 960 万円</td><td>資産は残りません</td></tr>
+          <tr><td class="item">20年</td><td class="num-c">約 1,920 万円</td><td>資産は残りません</td></tr>
+          <tr><td class="item">35年</td><td class="num-c">約 3,360 万円</td><td>購入なら完済し、物件が資産として残ります</td></tr>
         </tbody>
       </table>
-      <h3>合計</h3>
-      <div class="kpis">
-        <div class="kpi"><div class="l">諸費用合計（概算）</div><div class="v">約 249 万円</div></div>
-        <div class="kpi"><div class="l">物件価格に対する割合</div><div class="v">約 8.3%</div></div>
-      </div>
       <div class="pv-brand">Sonaure</div>
     </div>
-    <p class="cap">※ 実際のレポートはHTML / PDF / Excelの3形式でダウンロードできます（上記は表示イメージ）。</p>
+    <p class="cap">※ 実際のレポートには前提条件・総返済額・注意事項も記載。HTML / PDF / Excelの3形式でダウンロードできます（上記は表示イメージ）。</p>
   </section>
 
   <a class="cta" href="index.html#register">14日間無料で使ってみる</a>

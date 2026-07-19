@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sonaure（ソナウレ）｜備えあれば憂いなし、お客様に＋αの感動を</title>
+<meta name="description" content="不動産営業のための調査レポート自動作成ツール。住所や価格を入れるだけで、周辺環境調査書・購入諸費用・売却収支・賃貸初期費用・重説必要項目を30秒でレポートに。月額460円・14日間無料。">
+<link rel="canonical" href="https://sonae-are.com/">
+<meta property="og:title" content="Sonaure（ソナウレ）｜不動産営業のための調査レポート自動作成ツール">
+<meta property="og:description" content="住所や価格を入れるだけで、お客様にそのまま渡せる調査レポートを30秒で自動作成。月額460円・14日間無料。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sonae-are.com/">
 <style>
   :root {
     --blue-d: #1a4d8f;
@@ -64,6 +70,7 @@
   .card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(26,77,143,.16); }
   .card-more { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: bold; color: var(--blue); }
   .card .num { display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-weight: bold; margin-bottom: 10px; }
+  .new-badge { display: inline-block; background: linear-gradient(135deg, #e53e3e, #f56565); color: #fff; font-size: 10.5px; font-weight: bold; border-radius: 999px; padding: 1px 10px; margin-left: 8px; vertical-align: middle; letter-spacing: .08em; }
   .card h3 { font-size: 16px; color: var(--blue-d); margin-bottom: 8px; }
   .card p { font-size: 13.5px; color: var(--muted); }
   .formats { text-align: center; margin-top: 22px; font-size: 13px; color: var(--muted); }
@@ -152,6 +159,7 @@
   <a href="javascript:void(0)" onclick="toggleMenu(); openMessage();">メッセージ</a>
   <a href="#login" onclick="toggleMenu()">ログイン</a>
   <a href="#services" onclick="toggleMenu()">サービスメニュー</a>
+  <a href="tools/index.html">無料計算ツール</a>
   <a href="mailto:phrasekakumei@gmail.com?subject=【Sonaure】お問い合わせ">サポート</a>
   <a href="terms.html">利用規約</a>
   <a href="tokushoho.html">特定商取引法に基づく表記</a>
@@ -163,7 +171,7 @@
   <div class="wrap">
     <h1>Sonaure</h1>
     <div class="tagline">〜備えあれば憂いなし、お客様に＋αの感動を〜</div>
-    <p class="sub">住所や価格を入れるだけ。周辺環境・購入諸費用・売却収支・重説必要項目を30秒でレポートに。</p>
+    <p class="sub">住所や価格を入れるだけ。周辺環境・購入諸費用・売却収支・賃貸初期費用・重説必要項目を30秒でレポートに。</p>
     <a class="cta" href="#register">14日間無料で体験する</a>
     <div class="cta-note">クレジット決済｜いつでも解約できます</div>
   </div>
@@ -204,12 +212,12 @@
 <section class="services" id="services">
   <div class="wrap">
     <h2>サービスメニュー</h2>
-    <p class="lead">住所や価格を入れるだけで、4種類の調査レポートを自動作成。<br>
-    ①周辺環境調査書だけでなく、②購入諸費用計算・③売却収支計算・④重説必要項目調査書も時間短縮のために用意しました。</p>
+    <p class="lead">住所や価格を入れるだけで、6種類の調査レポートを自動作成。<br>
+    ①周辺環境調査書だけでなく、②購入諸費用計算・③売却収支計算・④賃貸初期費用計算・⑤家賃→購入シミュレーション・⑥重説必要項目調査書も時間短縮のために用意しました。</p>
     <div class="cards">
       <a class="card" href="detail-env.html"><div class="num">1</div>
-        <h3>周辺環境調査書</h3>
-        <p>最寄り駅・学校・保育園・スーパー・銀行・病院・コンビニ・公園・大型商業施設・コインパーキングを徒歩分数つきで1枚に。</p>
+        <h3>周辺環境調査書<span class="new-badge">機能追加</span></h3>
+        <p>最寄り駅・学校・保育園・スーパー・銀行・病院・コンビニ・公園・大型商業施設・コインパーキングを徒歩分数つきで1枚に。お客様タイプ別の切替・騒音チェック・位置図（地図）も加わりました。</p>
         <span class="card-more">詳しく見る →</span>
       </a>
       <a class="card" href="detail-costs.html"><div class="num">2</div>
@@ -222,7 +230,17 @@
         <p>売却価格を入れるだけで、仲介手数料・抵当権抹消・譲渡所得税まで差し引いた「手取り」を概算書に。</p>
         <span class="card-more">詳しく見る →</span>
       </a>
-      <a class="card" href="detail-juusetsu.html"><div class="num">4</div>
+      <a class="card" href="detail-rental.html"><div class="num">4</div>
+        <h3>賃貸初期費用計算<span class="new-badge">NEW</span></h3>
+        <p>家賃を入れるだけで、敷金・礼金・保証料・日割り家賃まで契約時の初期費用を概算書に。「初期費用いくら？」にその場で即答。</p>
+        <span class="card-more">詳しく見る →</span>
+      </a>
+      <a class="card" href="detail-rentbuy.html"><div class="num">5</div>
+        <h3>家賃→購入シミュレーション<span class="new-badge">NEW</span></h3>
+        <p>今の家賃と同じ支払いで「いくらの物件が買えるか」を逆算。賃貸のお客様への購入のご提案資料に。</p>
+        <span class="card-more">詳しく見る →</span>
+      </a>
+      <a class="card" href="detail-juusetsu.html"><div class="num">6</div>
         <h3>重説必要項目調査書</h3>
         <p>区域区分・用途地域・建ぺい率/容積率・防火指定・災害リスク4種。境界またがりは「要確認」として自動検出。</p>
         <span class="card-more">詳しく見る →</span>
@@ -258,7 +276,7 @@
       <u>登録メールアドレスを共有できれば法人様でのご利用も可能</u>です。<br>
       営業の人数が<u>多ければ多いほど非常にお得</u>になります。</div>
       <ul>
-        <li>4種類の調査レポートが使い放題</li>
+        <li>6種類の調査レポートが使い放題</li>
         <li>HTML / PDF / Excel 出力対応</li>
         <li>決済はクレジットカード</li>
         <li>解約はいつでも（利用規約のページから）</li>
@@ -353,7 +371,7 @@
 </div>
 
 <footer>
-  <p><a href="terms.html" style="color:#cfe2f8;">利用規約</a> ｜ <a href="tokushoho.html" style="color:#cfe2f8;">特定商取引法に基づく表記</a> ｜ <a href="privacy.html" style="color:#cfe2f8;">プライバシーポリシー</a></p>
+  <p><a href="tools/index.html" style="color:#cfe2f8;">無料計算ツール</a> ｜ <a href="terms.html" style="color:#cfe2f8;">利用規約</a> ｜ <a href="tokushoho.html" style="color:#cfe2f8;">特定商取引法に基づく表記</a> ｜ <a href="privacy.html" style="color:#cfe2f8;">プライバシーポリシー</a></p>
   <p style="margin-top:10px;">Sonaure 〜備えあれば憂いなし、お客様に＋αの感動を〜<br>
   出典：国土交通省「不動産情報ライブラリ」「国土数値情報」／国土地理院／© OpenStreetMap contributors<br>
   サポート：phrasekakumei@gmail.com ｜ © 2026 Sonaure</p>

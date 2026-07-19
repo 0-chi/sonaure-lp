@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>賃貸初期費用シミュレーション｜家賃を入れるだけで総額を自動計算【無料】</title>
+<meta name="description" content="賃貸の初期費用はいくら？家賃と管理費を入れるだけで、敷金・礼金・仲介手数料・保証料・前家賃までの総額を無料でシミュレーション。相場は家賃の4.5〜6ヶ月分。費目ごとの解説つき。">
+<link rel="canonical" href="https://sonae-are.com/tools/chintai-shokihiyo.html">
+<meta property="og:title" content="賃貸初期費用シミュレーション【無料】">
+<meta property="og:description" content="家賃を入れるだけで、敷金・礼金・仲介手数料・保証料・前家賃までの総額を自動計算。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sonae-are.com/tools/chintai-shokihiyo.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "賃貸初期費用シミュレーション",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"},
+      "description": "家賃と管理費を入力するだけで、賃貸契約時の初期費用（敷金・礼金・仲介手数料・保証料・火災保険・鍵交換・前家賃）の総額を概算するツール。"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "賃貸の初期費用の相場はいくらですか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "一般的に家賃の4.5〜6ヶ月分が目安です。例えば家賃8万円なら約36〜48万円。敷金・礼金の月数や保証会社の利用条件により変動します。敷金礼金ゼロの物件なら家賃の2〜3ヶ月分程度まで下がります。"}
+        },
+        {
+          "@type": "Question",
+          "name": "仲介手数料は家賃の何ヶ月分までですか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "宅地建物取引業法に基づく告示により、貸主・借主から受け取れる仲介手数料の合計は家賃の1ヶ月分＋消費税が上限です。借主の負担は原則0.5ヶ月分＋税で、承諾がある場合に1ヶ月分＋税まで認められます。"}
+        },
+        {
+          "@type": "Question",
+          "name": "敷金は退去時に返ってきますか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "敷金は預け金なので、原状回復費用や未払い家賃を差し引いた残額が返還されます。国土交通省の原状回復ガイドラインでは、通常の使用による損耗（経年劣化）の修繕費用は貸主負担とされています。"}
+        },
+        {
+          "@type": "Question",
+          "name": "初期費用を安くする方法はありますか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "敷金・礼金ゼロ物件やフリーレント（一定期間家賃無料）付き物件を選ぶ、仲介手数料0.5ヶ月分の不動産会社を利用する、火災保険を自分で選ぶ（可能な場合）、月初入居にして日割り家賃を抑える、などの方法があります。"}
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Yu Gothic","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);line-height:1.9;background:linear-gradient(180deg,#fff,#f3f8ff);}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px;}
+  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .logo{font-size:18px;font-weight:bold;background:linear-gradient(135deg,var(--blue-d),var(--blue-l));-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none;}
+  .bar a.nav{font-size:13px;color:var(--blue);text-decoration:none;font-weight:bold;}
+  h1{font-size:clamp(20px,4vw,26px);color:var(--blue-d);margin:28px 0 6px;line-height:1.5;}
+  .sub{font-size:14px;color:var(--muted);margin-bottom:20px;}
+  h2{font-size:18px;color:var(--blue-d);margin:36px 0 12px;display:flex;align-items:center;gap:8px;}
+  h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));flex-shrink:0;}
+  p{margin-bottom:14px;font-size:14.5px;}
+  /* 計算機 */
+  .calc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 8px 28px rgba(26,77,143,.10);position:relative;overflow:hidden;}
+  .calc::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue-d),var(--blue-l));}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;}
+  label{display:block;font-size:12.5px;font-weight:bold;color:var(--blue-d);margin-bottom:4px;}
+  input,select{width:100%;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:16px;background:#eaf3ff;color:#1a202c;}
+  .result{margin-top:18px;background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center;}
+  .result .total{font-size:30px;font-weight:bold;color:var(--blue-d);}
+  .result .months{font-size:13px;color:var(--muted);margin-top:2px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:14px;}
+  th,td{border:1px solid #cbd5e0;padding:6px 9px;text-align:left;}
+  th{background:#f7fafc;color:var(--blue-d);white-space:nowrap;}
+  td.n{text-align:right;white-space:nowrap;}
+  .assume{font-size:12px;color:var(--muted);background:#f7fafc;border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-top:14px;}
+  .assume strong{color:var(--blue-d);}
+  ul.plain{padding-left:20px;font-size:14.5px;margin-bottom:14px;}
+  ul.plain li{margin-bottom:6px;}
+  /* FAQ */
+  details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+  summary{font-weight:bold;color:var(--blue-d);cursor:pointer;font-size:14.5px;}
+  details p{margin:10px 0 0;font-size:14px;}
+  /* CTA */
+  .cta-box{background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:14px;padding:22px;margin:36px 0;text-align:center;}
+  .cta-box .t{font-weight:bold;color:var(--blue-d);font-size:15px;margin-bottom:8px;}
+  .cta-box p{font-size:13.5px;color:var(--muted);}
+  .cta-btn{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:14px;padding:11px 34px;border-radius:999px;box-shadow:0 6px 18px rgba(43,108,176,.3);margin-top:6px;}
+  .related{font-size:14px;}
+  .related a{color:var(--blue);font-weight:bold;}
+  .note{font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:30px;line-height:1.8;}
+  footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:36px;}
+  footer a{color:#cfe2f8;}
+</style>
+</head>
+<body>
+<header><div class="wrap bar"><a class="logo" href="../index.html">Sonaure</a><a class="nav" href="index.html">無料計算ツール一覧</a></div></header>
+
+<div class="wrap">
+  <h1>賃貸初期費用シミュレーション</h1>
+  <p class="sub">家賃と管理費を入れるだけで、契約時にかかる初期費用の総額を自動計算します（無料・登録不要）。</p>
+
+  <div class="calc">
+    <div class="grid">
+      <div><label for="rent">家賃（円/月）</label><input id="rent" type="number" value="80000" step="1000" min="0" inputmode="numeric"></div>
+      <div><label for="kanri">管理費・共益費（円/月）</label><input id="kanri" type="number" value="5000" step="500" min="0" inputmode="numeric"></div>
+      <div><label for="shikikin">敷金</label><select id="shikikin"><option value="0">なし</option><option value="1" selected>1ヶ月</option><option value="2">2ヶ月</option></select></div>
+      <div><label for="reikin">礼金</label><select id="reikin"><option value="0">なし</option><option value="1" selected>1ヶ月</option><option value="2">2ヶ月</option></select></div>
+    </div>
+    <div class="result">
+      <div style="font-size:12px;color:var(--muted);">初期費用の概算合計</div>
+      <div class="total" id="total">—</div>
+      <div class="months" id="months"></div>
+    </div>
+    <table id="breakdown"></table>
+    <div class="assume"><strong>計算の前提（一般的な条件で固定）：</strong>仲介手数料は家賃1ヶ月分＋消費税10%、保証会社の初回保証料は総賃料（家賃＋管理費）の50%、火災保険（2年）20,000円、鍵交換16,500円、前家賃（翌月分）1ヶ月分。日割り家賃は入居日で変わるため含みません。</div>
+  </div>
+
+  <div class="cta-box">
+    <div class="t">不動産会社にお勤めの方へ</div>
+    <p>入居日からの日割り計算・条件の細かい調整・お客様にそのまま渡せるPDF/Excelレポート出力は、不動産事業者向けツール「Sonaure」で。</p>
+    <a class="cta-btn" href="../detail-rental.html">Sonaureの賃貸初期費用計算を見る</a>
+  </div>
+
+  <h2>賃貸の初期費用の内訳と相場</h2>
+  <p>賃貸契約の初期費用は、一般的に<strong>家賃の4.5〜6ヶ月分</strong>が目安です。内訳は次のとおりです。</p>
+  <ul class="plain">
+    <li><strong>敷金（0〜2ヶ月）</strong> — 貸主に預けるお金。退去時に原状回復費用等を差し引いて返還されます</li>
+    <li><strong>礼金（0〜2ヶ月）</strong> — 貸主へのお礼として支払うお金。返還されません</li>
+    <li><strong>仲介手数料（上限1ヶ月＋税）</strong> — 不動産会社への報酬。宅地建物取引業法に基づく告示で上限が定められています</li>
+    <li><strong>保証会社の初回保証料（総賃料の30〜100%）</strong> — 連帯保証人の代わり。近年はほぼ必須の物件が多数</li>
+    <li><strong>火災保険料（2年で1.5〜2万円程度）</strong> — 借家人賠償責任保険付きの家財保険</li>
+    <li><strong>鍵交換費用（1.5〜2.2万円程度）</strong> — 前入居者の鍵からの交換</li>
+    <li><strong>前家賃・日割り家賃</strong> — 入居月の日割り分と翌月分を契約時に支払うのが一般的</li>
+  </ul>
+
+  <h2>よくある質問</h2>
+  <details open><summary>賃貸の初期費用の相場はいくらですか？</summary><p>一般的に家賃の4.5〜6ヶ月分が目安です。例えば家賃8万円なら約36〜48万円。敷金・礼金の月数や保証会社の条件により変動します。敷金礼金ゼロの物件なら家賃の2〜3ヶ月分程度まで下がります。</p></details>
+  <details><summary>仲介手数料は家賃の何ヶ月分までですか？</summary><p>宅地建物取引業法に基づく告示により、貸主・借主から受け取れる合計で家賃の1ヶ月分＋消費税が上限です。借主の負担は原則0.5ヶ月分＋税で、承諾がある場合に1ヶ月分＋税まで認められます。</p></details>
+  <details><summary>敷金は退去時に返ってきますか？</summary><p>敷金は預け金なので、原状回復費用や未払い家賃を差し引いた残額が返還されます。国土交通省の「原状回復をめぐるトラブルとガイドライン」では、通常使用による損耗（経年劣化）の修繕は貸主負担とされています。</p></details>
+  <details><summary>初期費用を安くする方法はありますか？</summary><p>敷金・礼金ゼロ物件やフリーレント付き物件を選ぶ、仲介手数料0.5ヶ月分の不動産会社を利用する、月初入居にして日割り家賃を抑える、などの方法があります。ただし敷金ゼロ物件は退去時にクリーニング費用が別途かかる場合があるため契約条件をご確認ください。</p></details>
+
+  <p class="related">関連ツール：<a href="kounyu-shohiyo.html">住宅購入の諸費用シミュレーション</a>｜<a href="baikyaku-tedori.html">不動産売却の手取りシミュレーション</a></p>
+
+  <p class="note">※ 本シミュレーションは一般的な契約条件に基づく概算であり、実際の金額は物件・契約条件・管理会社・保証会社・保険商品により変動します。正式な金額は重要事項説明および契約金明細でご確認ください。<br>
+  参考：宅地建物取引業法第46条・国土交通省告示（仲介手数料の上限）／国土交通省「原状回復をめぐるトラブルとガイドライン」</p>
+</div>
+
+<footer>
+  <a href="../index.html">Sonaure</a> — 不動産営業のための調査レポート自動作成ツール<br>
+  <a href="../terms.html">利用規約</a>｜<a href="../privacy.html">プライバシーポリシー</a>｜© 2026 Sonaure
+</footer>
+
+<script>
+// 計算ロジックはSonaureアプリ（rental.py）の簡易版。前提条件は画面に明記。
+const BROKERAGE_MONTHS = 1.0, TAX = 1.10, GUARANTEE = 0.5, FIRE = 20000, KEY = 16500;
+const yen = v => Math.round(v).toLocaleString("ja-JP") + "円";
+
+function calc() {
+  const rent = Number(document.getElementById("rent").value) || 0;
+  const kanri = Number(document.getElementById("kanri").value) || 0;
+  const shikikin = Number(document.getElementById("shikikin").value);
+  const reikin = Number(document.getElementById("reikin").value);
+  const totalRent = rent + kanri;
+
+  const rows = [];
+  if (shikikin > 0) rows.push(["敷金", rent * shikikin, `家賃${shikikin}ヶ月分（退去時精算の預け金）`]);
+  if (reikin > 0) rows.push(["礼金", rent * reikin, `家賃${reikin}ヶ月分`]);
+  rows.push(["仲介手数料", rent * BROKERAGE_MONTHS * TAX, "家賃1ヶ月分＋消費税10%"]);
+  rows.push(["保証会社 初回保証料", totalRent * GUARANTEE, "総賃料（家賃＋管理費）の50%"]);
+  rows.push(["火災保険料（2年）", FIRE, "借家人賠償責任保険付き・目安"]);
+  rows.push(["鍵交換費用", KEY, "シリンダー交換・目安（税込）"]);
+  rows.push(["前家賃（翌月分）", totalRent, "家賃＋管理費の1ヶ月分"]);
+
+  const total = rows.reduce((s, r) => s + r[1], 0);
+  document.getElementById("total").textContent = "約 " + yen(total);
+  document.getElementById("months").textContent = rent > 0 ? `家賃の約${(total / rent).toFixed(1)}ヶ月分` : "";
+  document.getElementById("breakdown").innerHTML =
+    "<tr><th>項目</th><th>金額</th><th>備考</th></tr>" +
+    rows.map(r => `<tr><td>${r[0]}</td><td class="n">${yen(r[1])}</td><td>${r[2]}</td></tr>`).join("");
+}
+for (const id of ["rent", "kanri", "shikikin", "reikin"]) {
+  document.getElementById(id).addEventListener("input", calc);
+}
+calc();
+</script>
+</body>
+</html>

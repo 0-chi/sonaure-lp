@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>不動産売却の手取りシミュレーション｜諸費用・譲渡所得税を引いた手残りを自動計算【無料】</title>
+<meta name="description" content="家・マンションを売ったら手取りはいくら？売却価格を入れるだけで、仲介手数料・譲渡所得税・ローン残債を差し引いた手残り額を無料でシミュレーション。3,000万円特別控除にも対応。">
+<link rel="canonical" href="https://sonae-are.com/tools/baikyaku-tedori.html">
+<meta property="og:title" content="不動産売却の手取りシミュレーション【無料】">
+<meta property="og:description" content="売却価格を入れるだけで、諸費用・譲渡所得税・ローン残債を差し引いた手取り額を自動計算。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sonae-are.com/tools/baikyaku-tedori.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "不動産売却の手取りシミュレーション",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"},
+      "description": "売却価格と住宅ローン残債を入力するだけで、不動産売却時の諸費用・譲渡所得税を差し引いた手取り額を概算するツール。居住用財産の3,000万円特別控除に対応。"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "マイホームを売っても税金がかからないのはなぜですか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "居住用財産（マイホーム）を売却した場合、譲渡所得から最大3,000万円を控除できる特例があるためです。売却益が3,000万円以下なら譲渡所得税はかかりません。適用には自分が住んでいた家であること等の要件があり、確定申告が必要です。"}
+        },
+        {
+          "@type": "Question",
+          "name": "購入時の価格（取得費）がわからない場合はどうなりますか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "取得費が不明な場合は、売却価格の5%を概算取得費として計算します。実際の取得費より低くなることが多く税額が増えやすいため、購入時の売買契約書を探すことをおすすめします。"}
+        },
+        {
+          "@type": "Question",
+          "name": "所有期間5年で税率が変わるのはなぜですか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "譲渡した年の1月1日時点で所有期間が5年以下だと短期譲渡所得（税率39.63%）、5年超だと長期譲渡所得（税率20.315%）になります。短期売買の投機を抑制するための制度で、税率は約2倍違います。"}
+        },
+        {
+          "@type": "Question",
+          "name": "不動産を売却したら確定申告は必要ですか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "売却益（譲渡所得）が出た場合は確定申告が必要です。3,000万円特別控除などの特例を使う場合も、税額が0円でも申告が必要です。売却損が出た場合は原則不要ですが、損益通算の特例を使う場合は申告します。"}
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Yu Gothic","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);line-height:1.9;background:linear-gradient(180deg,#fff,#f3f8ff);}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px;}
+  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .logo{font-size:18px;font-weight:bold;background:linear-gradient(135deg,var(--blue-d),var(--blue-l));-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none;}
+  .bar a.nav{font-size:13px;color:var(--blue);text-decoration:none;font-weight:bold;}
+  h1{font-size:clamp(20px,4vw,26px);color:var(--blue-d);margin:28px 0 6px;line-height:1.5;}
+  .sub{font-size:14px;color:var(--muted);margin-bottom:20px;}
+  h2{font-size:18px;color:var(--blue-d);margin:36px 0 12px;display:flex;align-items:center;gap:8px;}
+  h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));flex-shrink:0;}
+  p{margin-bottom:14px;font-size:14.5px;}
+  .calc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 8px 28px rgba(26,77,143,.10);position:relative;overflow:hidden;}
+  .calc::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue-d),var(--blue-l));}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;}
+  label{display:block;font-size:12.5px;font-weight:bold;color:var(--blue-d);margin-bottom:4px;}
+  input[type=number],select{width:100%;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:16px;background:#eaf3ff;color:#1a202c;}
+  .chk{display:flex;align-items:center;gap:8px;font-size:14px;padding:6px 0;}
+  .chk input{width:18px;height:18px;}
+  .result{margin-top:18px;background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center;}
+  .result .total{font-size:30px;font-weight:bold;color:var(--blue-d);}
+  .result .months{font-size:13px;color:var(--muted);margin-top:2px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:14px;}
+  th,td{border:1px solid #cbd5e0;padding:6px 9px;text-align:left;}
+  th{background:#f7fafc;color:var(--blue-d);white-space:nowrap;}
+  td.n{text-align:right;white-space:nowrap;}
+  .assume{font-size:12px;color:var(--muted);background:#f7fafc;border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-top:14px;}
+  .assume strong{color:var(--blue-d);}
+  ul.plain{padding-left:20px;font-size:14.5px;margin-bottom:14px;}
+  ul.plain li{margin-bottom:6px;}
+  details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+  summary{font-weight:bold;color:var(--blue-d);cursor:pointer;font-size:14.5px;}
+  details p{margin:10px 0 0;font-size:14px;}
+  .cta-box{background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:14px;padding:22px;margin:36px 0;text-align:center;}
+  .cta-box .t{font-weight:bold;color:var(--blue-d);font-size:15px;margin-bottom:8px;}
+  .cta-box p{font-size:13.5px;color:var(--muted);}
+  .cta-btn{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:14px;padding:11px 34px;border-radius:999px;box-shadow:0 6px 18px rgba(43,108,176,.3);margin-top:6px;}
+  .related{font-size:14px;}
+  .related a{color:var(--blue);font-weight:bold;}
+  .note{font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:30px;line-height:1.8;}
+  footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:36px;}
+  footer a{color:#cfe2f8;}
+</style>
+</head>
+<body>
+<header><div class="wrap bar"><a class="logo" href="../index.html">Sonaure</a><a class="nav" href="index.html">無料計算ツール一覧</a></div></header>
+
+<div class="wrap">
+  <h1>不動産売却の手取りシミュレーション</h1>
+  <p class="sub">売却価格を入れるだけで、諸費用と譲渡所得税を差し引いた「手取り額」を自動計算します（無料・登録不要）。</p>
+
+  <div class="calc">
+    <div class="grid">
+      <div><label for="price">売却予定価格（万円）</label><input id="price" type="number" value="3000" step="100" min="0" inputmode="numeric"></div>
+      <div><label for="loan">住宅ローン残債（万円）</label><input id="loan" type="number" value="0" step="100" min="0" inputmode="numeric"></div>
+      <div><label for="holding">所有期間</label><select id="holding"><option value="long" selected>5年超（長期）</option><option value="short">5年以下（短期）</option></select></div>
+    </div>
+    <div class="chk" style="margin-top:8px;"><input id="residence" type="checkbox" checked><label for="residence" style="margin:0;font-size:14px;">自分が住んでいたマイホーム（3,000万円特別控除を適用）</label></div>
+    <div class="result">
+      <div style="font-size:12px;color:var(--muted);">手取り額（概算）</div>
+      <div class="total" id="total">—</div>
+      <div class="months" id="detail"></div>
+    </div>
+    <table id="breakdown"></table>
+    <div class="assume"><strong>計算の前提（一般的な条件で固定）：</strong>取得費は概算取得費（売却価格の5%）で計算、抵当権抹消費用はローン残債がある場合に2万円、測量・解体・クリーニング費用は含みません。譲渡した年の1月1日時点の所有期間で長期・短期を判定します。</div>
+  </div>
+
+  <div class="cta-box">
+    <div class="t">不動産会社にお勤めの方へ</div>
+    <p>実際の取得費での計算・測量/解体費用の追加・お客様にそのまま渡せるPDF/Excelの概算書出力は、不動産事業者向けツール「Sonaure」で。</p>
+    <a class="cta-btn" href="../detail-sale.html">Sonaureの売却収支計算を見る</a>
+  </div>
+
+  <h2>売却時にかかる費用と税金</h2>
+  <p>売却の手取り額は「<strong>売却価格 − 諸費用 − ローン残債 − 譲渡所得税</strong>」で計算します。</p>
+  <ul class="plain">
+    <li><strong>仲介手数料</strong> — 400万円超は「価格×3%＋6万円＋消費税」が上限。売却費用の大半を占めます</li>
+    <li><strong>印紙税</strong> — 売買契約書に貼付（1,000万円超5,000万円以下で1万円・軽減税率）</li>
+    <li><strong>抵当権抹消費用</strong> — 住宅ローンが残っている場合。登録免許税＋司法書士報酬で2万円前後</li>
+    <li><strong>譲渡所得税・住民税</strong> — 売却益に対して長期20.315%／短期39.63%。マイホームは3,000万円特別控除あり</li>
+    <li><strong>そのほか</strong> — 測量・境界確定費（土地）、ハウスクリーニング、引越し費用など</li>
+  </ul>
+
+  <h2>よくある質問</h2>
+  <details open><summary>マイホームを売っても税金がかからないのはなぜですか？</summary><p>居住用財産（マイホーム）の売却には、譲渡所得から最大3,000万円を控除できる特例があるためです。売却益が3,000万円以下なら譲渡所得税はかかりません。適用には要件があり、税額0円でも確定申告が必要です。</p></details>
+  <details><summary>購入時の価格（取得費）がわからない場合は？</summary><p>取得費が不明な場合は売却価格の5%を「概算取得費」として計算します。実際の取得費より低くなることが多く税額が増えやすいため、購入時の売買契約書を探すことをおすすめします。</p></details>
+  <details><summary>所有期間5年で税率が変わるのはなぜですか？</summary><p>譲渡した年の1月1日時点で所有期間5年以下は短期譲渡（39.63%）、5年超は長期譲渡（20.315%）です。税率が約2倍違うため、5年前後で売却を検討している場合は時期の確認が重要です。</p></details>
+  <details><summary>売却したら確定申告は必要ですか？</summary><p>売却益が出た場合は必要です。3,000万円特別控除などの特例を使う場合は、税額が0円でも申告が必要です。売却損の場合は原則不要ですが、損益通算の特例を使うなら申告します。</p></details>
+
+  <p class="related">関連ツール：<a href="kounyu-shohiyo.html">住宅購入の諸費用シミュレーション</a>｜<a href="chintai-shokihiyo.html">賃貸初期費用シミュレーション</a></p>
+
+  <p class="note">※ 本シミュレーションは概算です。譲渡所得税は取得費・所有期間・各種特例（3,000万円控除・軽減税率・買換え特例等）で大きく変わります。正式な税額は必ず税理士・税務署に、費用は司法書士・金融機関にご確認ください。<br>
+  参考：国税庁「土地や建物を売ったとき」「マイホームを売ったときの特例（No.3302）」／宅地建物取引業法（仲介手数料の上限）</p>
+</div>
+
+<footer>
+  <a href="../index.html">Sonaure</a> — 不動産営業のための調査レポート自動作成ツール<br>
+  <a href="../terms.html">利用規約</a>｜<a href="../privacy.html">プライバシーポリシー</a>｜© 2026 Sonaure
+</footer>
+
+<script>
+// 計算ロジックはSonaureアプリ（sale.py）の簡易版。単位は万円。
+const RATE_LONG = 0.20315, RATE_SHORT = 0.3963, DEDUCTION = 3000;
+function brokerage(p) {
+  let fee;
+  if (p <= 200) fee = p * 0.05;
+  else if (p <= 400) fee = p * 0.04 + 2;
+  else fee = p * 0.03 + 6;
+  return fee * 1.10;
+}
+function stamp(p) {
+  if (p <= 100) return 0.05;
+  if (p <= 500) return 0.1;
+  if (p <= 1000) return 0.5;
+  if (p <= 5000) return 1;
+  if (p <= 10000) return 3;
+  return 6;
+}
+const man = v => "約 " + v.toLocaleString("ja-JP", {maximumFractionDigits: 1}) + " 万円";
+
+function calc() {
+  const price = Number(document.getElementById("price").value) || 0;
+  const loan = Number(document.getElementById("loan").value) || 0;
+  const long = document.getElementById("holding").value === "long";
+  const residence = document.getElementById("residence").checked;
+
+  const b = brokerage(price), s = stamp(price);
+  const rows = [
+    ["仲介手数料", b, "（価格×3%＋6万円）×消費税10%"],
+    ["売買契約書の印紙税", s, "軽減税率適用後"],
+  ];
+  if (loan > 0) rows.push(["抵当権抹消費用", 2.0, "登録免許税＋司法書士報酬の目安"]);
+  const costTotal = rows.reduce((sum, r) => sum + r[1], 0);
+
+  // 譲渡所得税（概算取得費5%・譲渡費用=仲介＋印紙）
+  const acq = price * 0.05;
+  const gain = price - acq - (b + s);
+  const ded = (residence && gain > 0) ? Math.min(DEDUCTION, gain) : 0;
+  const taxable = Math.max(0, gain - ded);
+  const tax = taxable * (long ? RATE_LONG : RATE_SHORT);
+
+  rows.push(["譲渡所得税・住民税（概算）", tax,
+    tax > 0 ? (long ? "長期 20.315%" : "短期 39.63%") + "（概算取得費5%で計算）"
+            : (residence ? "3,000万円特別控除の範囲内" : "課税対象の譲渡益なし")]);
+  if (loan > 0) rows.push(["住宅ローン残債の返済", loan, "売却代金から一括返済"]);
+
+  const net = price - costTotal - tax - loan;
+  document.getElementById("total").textContent = man(Math.round(net));
+  document.getElementById("detail").textContent =
+    `売却価格 ${price.toLocaleString()} 万円 − 諸費用 ${man(Math.round(costTotal)).replace("約 ", "")} − 税 ${man(Math.round(tax)).replace("約 ", "")}` + (loan > 0 ? ` − 残債 ${loan.toLocaleString()} 万円` : "");
+  document.getElementById("breakdown").innerHTML =
+    "<tr><th>差し引かれるもの</th><th>概算額</th><th>備考</th></tr>" +
+    rows.map(r => `<tr><td>${r[0]}</td><td class="n">${man(Math.round(r[1] * 10) / 10)}</td><td>${r[2]}</td></tr>`).join("");
+}
+for (const id of ["price", "loan", "holding", "residence"]) {
+  document.getElementById(id).addEventListener("input", calc);
+}
+calc();
+</script>
+</body>
+</html>
