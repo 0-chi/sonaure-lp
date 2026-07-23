@@ -94,6 +94,17 @@
   .note{font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:30px;line-height:1.8;}
   footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:36px;}
   footer a{color:#cfe2f8;}
+  /* 内訳のロック（合計は無料表示・内訳は登録で解除） */
+  .locked-wrap{position:relative;margin-top:4px;}
+  .locked{filter:blur(6px);pointer-events:none;user-select:none;-webkit-user-select:none;}
+  .unlock{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;
+    background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,.8));border-radius:12px;}
+  .unlock-inner{max-width:340px;}
+  .unlock-icon{font-size:26px;line-height:1;}
+  .unlock-title{font-weight:bold;color:var(--blue-d);font-size:15px;margin:6px 0 2px;}
+  .unlock-sub{font-size:12px;color:var(--muted);margin-bottom:12px;}
+  .unlock-btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-weight:bold;padding:11px 24px;border-radius:999px;font-size:14px;}
+  .unlock-btn:hover{background:var(--blue-d);}
 </style>
 </head>
 <body>
@@ -101,7 +112,7 @@
 
 <div class="wrap">
   <h1>住宅購入の諸費用シミュレーション</h1>
-  <p class="sub">物件価格を入れるだけで、家・マンション購入時にかかる諸費用の総額を自動計算します（無料・登録不要）。</p>
+  <p class="sub">物件価格を入れるだけで、購入時にかかる諸費用の総額を無料でその場計算（登録不要）。項目ごとの内訳は無料登録で表示できます。</p>
 
   <div class="calc">
     <div class="grid">
@@ -113,8 +124,20 @@
       <div class="total" id="total">—</div>
       <div class="months" id="pct"></div>
     </div>
-    <table id="breakdown"></table>
-    <div class="assume"><strong>計算の前提（中古住宅・仲介取引の一般的な条件で固定）：</strong>登録免許税は固定資産税評価額を価格の70%と仮定して税率1.5%で概算、司法書士報酬10万円、融資事務手数料は借入額×2.2%（定率型）、火災保険（5年一括）20万円。不動産取得税・引越し費用は含みません。</div>
+    <div class="locked-wrap">
+      <div class="locked">
+        <table id="breakdown"></table>
+        <div class="assume"><strong>計算の前提（中古住宅・仲介取引の一般的な条件で固定）：</strong>登録免許税は固定資産税評価額を価格の70%と仮定して税率1.5%で概算、司法書士報酬10万円、融資事務手数料は借入額×2.2%（定率型）、火災保険（5年一括）20万円。不動産取得税・引越し費用は含みません。</div>
+      </div>
+      <div class="unlock">
+        <div class="unlock-inner">
+          <div class="unlock-icon">🔒</div>
+          <p class="unlock-title">項目ごとの内訳（金額・備考）は無料登録で表示</p>
+          <p class="unlock-sub">メールとパスワードだけで登録・14日間無料。合計金額はこのまま無料でご覧いただけます。</p>
+          <a class="unlock-btn" href="https://sonaure-plsalfa.streamlit.app">無料で内訳を見る</a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="cta-box">
