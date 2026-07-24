@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sonaure（ソナウレ）｜備えあれば憂いなし、お客様に＋αの感動を</title>
-<meta name="description" content="不動産営業のための調査レポート自動作成ツール。住所や価格を入れるだけで、周辺環境調査書・購入諸費用・売却収支・賃貸初期費用・重説必要項目を30秒でレポートに。月額460円・14日間無料。">
+<meta name="description" content="不動産営業のための調査レポート自動作成ツール。住所や価格を入れるだけで、周辺環境調査書・購入諸費用・売却収支・賃貸初期費用・重説必要項目を30秒でレポートに。1案件の準備が約1時間→数分に。月額500円・14日間無料。">
 <link rel="canonical" href="https://sonae-are.com/">
 <meta property="og:title" content="Sonaure（ソナウレ）｜不動産営業のための調査レポート自動作成ツール">
-<meta property="og:description" content="住所や価格を入れるだけで、お客様にそのまま渡せる調査レポートを30秒で自動作成。月額460円・14日間無料。">
+<meta property="og:description" content="住所や価格を入れるだけで、お客様にそのまま渡せる調査レポートを30秒で自動作成。1案件の準備が約1時間→数分に。月額500円・14日間無料。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sonae-are.com/">
 <style>
@@ -75,6 +75,21 @@
   .card p { font-size: 13.5px; color: var(--muted); }
   .formats { text-align: center; margin-top: 22px; font-size: 13px; color: var(--muted); }
 
+  /* ===== 時短の訴求（トップ） ===== */
+  .timesave { background: #fff; }
+  .ts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; max-width: 820px; margin: 0 auto; }
+  .ts-card { background: linear-gradient(135deg, #f4f9ff, #eaf3ff); border: 1px solid var(--line); border-radius: 14px; padding: 22px 18px; text-align: center; }
+  .ts-case { font-size: 13px; color: var(--muted); font-weight: bold; }
+  .ts-before { font-size: 20px; font-weight: bold; color: var(--muted); margin-top: 8px; }
+  .ts-before s { color: var(--muted); }
+  .ts-after { font-size: 20px; font-weight: bold; color: var(--blue); margin-top: 2px; }
+  .ts-detail { font-size: 11.5px; color: var(--muted); margin-top: 10px; line-height: 1.7; }
+  .ts-trust { max-width: 760px; margin: 30px auto 0; border-left: 4px solid var(--blue); background: #f4f9ff; padding: 18px 22px; border-radius: 0 10px 10px 0; font-size: 14px; }
+  .ts-trust strong { color: var(--blue-d); }
+  /* サービスカードの時短バッジ */
+  .time-badge { display: inline-block; background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); color: #fff; font-size: 12px; font-weight: bold; border-radius: 999px; padding: 4px 14px; margin-bottom: 12px; letter-spacing: .02em; }
+  .time-badge b { font-size: 13.5px; }
+
   /* ===== 料金 ===== */
   .value-calc { max-width: 480px; margin: 0 auto 26px; background: linear-gradient(135deg,#f4f9ff,#eaf3ff); border: 1px solid var(--line); border-radius: 16px; padding: 28px 30px; text-align: center; }
   .vc-q { font-size: 19px; font-weight: bold; color: var(--blue-d); margin-bottom: 10px; }
@@ -99,6 +114,12 @@
   .coffee u { font-weight: bold; color: var(--blue-d); text-decoration-color: var(--blue); text-underline-offset: 3px; }
   .price-card ul { list-style: none; text-align: left; margin: 18px auto 0; font-size: 13.5px; max-width: 300px; }
   .price-card li::before { content: "✓ "; color: var(--blue); font-weight: bold; }
+  .plan-label { display: inline-block; background: #eaf3ff; color: var(--blue-d); font-weight: bold; font-size: 13px; border-radius: 999px; padding: 3px 16px; margin-bottom: 8px; }
+  .corp-plan { margin-top: 24px; padding-top: 22px; border-top: 1px dashed var(--line); }
+  .corp-price { font-size: 30px; font-weight: bold; background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.2; }
+  .corp-price small { font-size: 14px; }
+  .corp-plan p { font-size: 13px; color: var(--ink); margin-top: 10px; text-align: left; line-height: 1.9; }
+  .corp-plan p a { color: var(--blue); font-weight: bold; }
 
   /* ===== ログイン・登録 ===== */
   .auth { background: linear-gradient(180deg, #eef5ff 0%, #fff 100%); }
@@ -179,34 +200,32 @@
   </div>
 </div>
 
-<!-- ===== 周辺環境の訴求 ===== -->
-<section class="pitch" id="about">
+<!-- ===== 時短の訴求（トップ） ===== -->
+<section class="timesave" id="about">
   <div class="wrap">
-    <p class="lead">物件の案内をする時、周辺環境を調べると思いますがこんな経験ありませんか？</p>
-    <div class="pitch-card">
-      <ul class="pain-list">
-        <li>調べ始めると5分〜10分、レポートにまとめるとなると15分前後かかるし面倒だからやらない</li>
-        <li>大体把握してるから調べなくていいや、と省略する</li>
-        <li>来店のお客様がいるときは、すぐ案内に出ないといけない。時間的な余裕がない</li>
-        <li>ChatGPTにまとめてもらっても、メモのように出力されるからお客様に渡せない</li>
-      </ul>
-      <h2 class="pitch-h2">頭に入ってると思って、意外と抜けている。</h2>
-      <p class="pitch-intro">ランドマークになる建物は知っていても、<strong>学校・病院・銀行・スーパー</strong>……周辺環境の全部を把握しきるのは難しいものです。</p>
-      <p class="pitch-intro pitch-intro-gap"><u>また、あなた（あなたの会社）は月に何件内見していますか？</u><br>
-      事前準備をしなくても困らない＋面倒だからやらない営業も多いかもしれません。<br>
-      <strong>事前準備を丁寧にやっているとしたら、内見があるたびに営業の貴重な15分が無くなっています。</strong></p>
-      <div class="answer">そんなとき、Sonaureが<span class="ten">30秒</span>で解決します。</div>
-      <div class="pitch-conclusion">
-        <p>Sonaureは<strong>「あえてしなくていいこと」を「あえてすること」で</strong><br>
-        営業の信頼感を増すツールです。</p>
+    <h2>1案件の準備が、約1時間 → 数分に。</h2>
+    <p class="lead">周辺環境の下調べ、費用計算、重説の項目確認……お客様ごとの準備は、手作業だと1件あたり約1時間。<br>Sonaureは住所や価格を入れるだけで、お客様にそのまま渡せる資料を数分で作ります。</p>
+    <div class="ts-grid">
+      <div class="ts-card">
+        <div class="ts-case">購入検討のお客様</div>
+        <div class="ts-before"><s>約1〜1.5時間</s></div>
+        <div class="ts-after">→ 数分</div>
+        <div class="ts-detail">周辺環境＋購入諸費用＋重説必要項目</div>
       </div>
-      <div class="trust-box">
-        <strong>この調査結果をプリントアウトすれば、そのままお客様に渡せる仕様にもなっています。</strong><br>
-        注釈もついており、ChatGPTやGeminiのような無機質なAI感は排除した仕上がりになっています。<br>
-        Sonaureを最後にお客様にお渡しすれば<br>
-        「丁寧な営業さんだな」という<strong>＋αの信頼</strong>につながります。
+      <div class="ts-card">
+        <div class="ts-case">売却のお客様</div>
+        <div class="ts-before"><s>約1〜1.5時間</s></div>
+        <div class="ts-after">→ 数分</div>
+        <div class="ts-detail">売却収支＋重説必要項目＋周辺環境</div>
+      </div>
+      <div class="ts-card">
+        <div class="ts-case">賃貸のお客様</div>
+        <div class="ts-before"><s>約40〜55分</s></div>
+        <div class="ts-after">→ 数分</div>
+        <div class="ts-detail">賃貸初期費用＋家賃→購入＋周辺環境</div>
       </div>
     </div>
+    <div class="ts-trust"><strong>プリントすれば、そのままお客様にお渡しできる仕様。</strong>ChatGPTのようなメモ感を排除し、宅地建物取引士の監修で作っています。最後にSonaureのレポートをお渡しすれば「丁寧な営業さんだな」という<strong>＋αの信頼</strong>につながります。<br>各機能ごとの時短の目安は、下のサービスメニューに記載しています。</div>
   </div>
 </section>
 
@@ -217,32 +236,44 @@
     <p class="lead">住所や価格を入れるだけで、6種類の調査レポートを自動作成。<br>
     ①周辺環境調査書だけでなく、②購入諸費用計算・③売却収支計算・④賃貸初期費用計算・⑤家賃→購入シミュレーション・⑥重説必要項目調査書も時間短縮のために用意しました。</p>
     <div class="cards">
-      <a class="card" href="detail-env.html"><div class="num">1</div>
+      <a class="card" href="detail-env.html">
+        <div class="time-badge">⏱ 時短の目安 <b>約20〜30分</b></div>
+        <div class="num">1</div>
         <h3>周辺環境調査書<span class="new-badge">機能追加</span></h3>
         <p>最寄り駅・学校・保育園・スーパー・銀行・病院・コンビニ・公園・大型商業施設・コインパーキングを徒歩分数つきで1枚に。お客様タイプ別の切替・騒音チェック・位置図（地図）も加わりました。</p>
         <span class="card-more">詳しく見る →</span>
       </a>
-      <a class="card" href="detail-costs.html"><div class="num">2</div>
+      <a class="card" href="detail-costs.html">
+        <div class="time-badge">⏱ 時短の目安 <b>約10〜18分</b></div>
+        <div class="num">2</div>
         <h3>購入諸費用計算</h3>
         <p>物件価格を入れるだけで、仲介手数料・登記・ローン費用・保険・清算金まで概算書を自動作成。</p>
         <span class="card-more">詳しく見る →</span>
       </a>
-      <a class="card" href="detail-sale.html"><div class="num">3</div>
+      <a class="card" href="detail-sale.html">
+        <div class="time-badge">⏱ 時短の目安 <b>約15〜25分</b></div>
+        <div class="num">3</div>
         <h3>売却収支計算</h3>
         <p>売却価格を入れるだけで、仲介手数料・抵当権抹消・譲渡所得税まで差し引いた「手取り」を概算書に。</p>
         <span class="card-more">詳しく見る →</span>
       </a>
-      <a class="card" href="detail-rental.html"><div class="num">4</div>
+      <a class="card" href="detail-rental.html">
+        <div class="time-badge">⏱ 時短の目安 <b>約8〜12分</b></div>
+        <div class="num">4</div>
         <h3>賃貸初期費用計算<span class="new-badge">NEW</span></h3>
         <p>家賃を入れるだけで、敷金・礼金・保証料・日割り家賃まで契約時の初期費用を概算書に。「初期費用いくら？」にその場で即答。</p>
         <span class="card-more">詳しく見る →</span>
       </a>
-      <a class="card" href="detail-rentbuy.html"><div class="num">5</div>
+      <a class="card" href="detail-rentbuy.html">
+        <div class="time-badge">⏱ 時短の目安 <b>約8〜12分</b></div>
+        <div class="num">5</div>
         <h3>家賃→購入シミュレーション<span class="new-badge">NEW</span></h3>
         <p>今の家賃と同じ支払いで「いくらの物件が買えるか」を逆算。賃貸のお客様への購入のご提案資料に。</p>
         <span class="card-more">詳しく見る →</span>
       </a>
-      <a class="card" href="detail-juusetsu.html"><div class="num">6</div>
+      <a class="card" href="detail-juusetsu.html">
+        <div class="time-badge">⏱ 時短の目安 <b>約25〜40分</b></div>
+        <div class="num">6</div>
         <h3>重説必要項目調査書</h3>
         <p>区域区分・用途地域・建ぺい率/容積率・防火指定・災害リスク4種。境界またがりは「要確認」として自動検出。</p>
         <span class="card-more">詳しく見る →</span>
@@ -258,31 +289,35 @@
   <div class="wrap">
     <h2>料金</h2>
     <div class="value-calc">
-      <p class="vc-q">「あなたの15分はいくらの価値がありますか？」</p>
-      <p class="vc-eg">〜例1〜</p>
+      <p class="vc-q">「あなたの1時間はいくらの価値がありますか？」</p>
+      <p class="vc-eg">〜例〜</p>
       <p class="vc-formula">年収400万<sup>(※1)</sup><br>
       ＝ 月給33.3万 ÷ 22営業日<sup>(※2)</sup> ÷ 8時間<sup>(※3)</sup><br>
       ＝ 時給 約1,893円</p>
-      <p class="vc-result">15分に換算すると <strong>473円</strong> です。</p>
-      <p class="vc-sub">あなたの年収が高ければ高いほど、15分の価値は上がります。</p>
+      <p class="vc-result">1案件の準備＝約1時間なら <strong>約1,893円</strong> の価値。</p>
+      <p class="vc-sub">Sonaureは月額500円。月に1案件使うだけで、十分に元が取れます。</p>
       <p class="vc-notes">※1 不動産営業年収のボリュームゾーンで換算<br>
       ※2 年間休日105日で換算<br>
       ※3 実働時間8時間で換算</p>
     </div>
     <div class="price-card">
       <div class="free-badge">14日間無料：サービス体験期間</div>
-      <div class="price-big">月額 460<small>円（税込）</small></div>
+      <div class="plan-label">個人プラン</div>
+      <div class="price-big">月額 500<small>円（税込550円）</small></div>
       <div class="coffee">月に1回以上使うだけで——<br>
       十分に元が取れる、続けやすさを最優先に——<br>
-      <strong>あなたの貴重な15分を、30秒に圧縮。</strong><br>
-      <u>登録メールアドレスを共有できれば法人様でのご利用も可能</u>です。<br>
-      営業の人数が<u>多ければ多いほど非常にお得</u>になります。</div>
+      <strong>1案件の準備を、まとめて数分に。</strong></div>
       <ul>
         <li>6種類の調査レポートが使い放題</li>
         <li>HTML / PDF / Excel 出力対応</li>
         <li>決済はクレジットカード</li>
         <li>解約はいつでも（利用規約のページから）</li>
       </ul>
+      <div class="corp-plan">
+        <div class="plan-label">法人プラン</div>
+        <div class="corp-price">月額 1,980円<small>（税込2,178円）</small></div>
+        <p><strong>4名以上でお得。</strong>複数人でお使いの不動産会社さま向けのプランです（10名未満の事業所向け・最大9席が目安）。導入は<a href="mailto:phrasekakumei@gmail.com?subject=【Sonaure】法人プランのご相談&body=会社名・お名前・ご連絡先・ご利用予定人数をご記入ください：">法人プランのご相談</a>からお問い合わせください。10名以上の会社さまも同じ窓口でご案内します。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -358,7 +393,7 @@
       </ol>
       <h3>第3条（料金・支払い）</h3>
       <ol>
-        <li>料金は月額460円（税込）、決済はクレジットカードによります。</li>
+        <li>料金は月額500円（税込550円）、決済はクレジットカードによります。</li>
         <li>登録から14日間は無料体験期間です。無料期間中に解約した場合、料金は発生しません。</li>
       </ol>
       <h3>第4条（解約）</h3>
