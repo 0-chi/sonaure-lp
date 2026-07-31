@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sonaure ご紹介｜不動産会社さま向け</title>
+<meta name="description" content="不動産営業の調査・資料作成を自動化するSonaureの、不動産会社さま向けご紹介資料です。1契約で最大9名、月額1,980円（税込2,178円）。">
+<link rel="canonical" href="https://sonae-are.com/deck-corporate.html">
+<meta property="og:title" content="Sonaure ご紹介｜不動産会社さま向け">
+<meta property="og:description" content="1案件の準備を約1時間から数分に。1契約で最大9名、月額1,980円（税込2,178円）。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sonae-are.com/deck-corporate.html">
+<style>
+  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;--bg:#f3f8ff;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Yu Gothic","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);background:#e8eef7;line-height:1.8;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+  /* ===== スライド（A4横 297×210mm）===== */
+  .slide{position:relative;width:297mm;height:210mm;margin:0 auto 14px;background:#fff;overflow:hidden;
+         display:flex;flex-direction:column;padding:17mm 20mm 15mm;box-shadow:0 6px 24px rgba(26,77,143,.14);}
+  .slide::after{content:"© 2026 Sonaure";position:absolute;right:20mm;bottom:8mm;font-size:8.5pt;color:#a8b6c9;letter-spacing:.04em;}
+  .pnum{position:absolute;left:20mm;bottom:8mm;font-size:8.5pt;color:#a8b6c9;letter-spacing:.08em;}
+  .label{font-size:9.5pt;letter-spacing:.22em;color:var(--blue-l);font-weight:bold;margin-bottom:3mm;}
+  h2{font-size:21pt;color:var(--blue-d);line-height:1.35;margin-bottom:5mm;letter-spacing:.01em;}
+  h2 .sub{display:block;font-size:10.5pt;color:var(--muted);font-weight:normal;letter-spacing:.02em;margin-top:2mm;}
+  .rule{width:22mm;height:3px;background:linear-gradient(90deg,var(--blue-d),var(--blue-l));margin-bottom:6mm;border-radius:2px;}
+  p{font-size:11pt;}
+
+  /* 表紙 */
+  .cover{justify-content:center;align-items:center;text-align:center;
+         background:linear-gradient(140deg,#ffffff 0%,#eaf3ff 55%,#d7e9ff 100%);}
+  .cover .logo{font-size:44pt;font-weight:bold;letter-spacing:.06em;
+        background:linear-gradient(135deg,var(--blue-d),var(--blue-l));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .cover .tag{font-size:12pt;color:var(--blue-d);margin-top:4mm;letter-spacing:.08em;}
+  .cover .for{margin-top:14mm;font-size:15pt;color:var(--blue-d);font-weight:bold;
+        border:1.5px solid var(--blue-l);border-radius:999px;padding:3mm 12mm;background:rgba(255,255,255,.7);}
+  .cover .date{margin-top:10mm;font-size:9.5pt;color:var(--muted);letter-spacing:.1em;}
+
+  /* 汎用レイアウト */
+  .body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:9mm;}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;}
+  table{width:100%;border-collapse:collapse;font-size:10pt;}
+  th,td{border:1px solid #cbd5e0;padding:2.6mm 3.5mm;text-align:left;vertical-align:middle;}
+  th{background:#eef5ff;color:var(--blue-d);white-space:nowrap;font-weight:bold;}
+  td.n{text-align:right;white-space:nowrap;}
+  td.k{background:#f7fafc;color:var(--blue-d);font-weight:bold;white-space:nowrap;width:38mm;}
+
+  .card{border:1px solid var(--line);border-radius:4mm;padding:5mm 6mm;background:#fff;}
+  .card .no{display:inline-flex;width:8mm;height:8mm;align-items:center;justify-content:center;border-radius:50%;
+        background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;font-weight:bold;font-size:10pt;margin-bottom:2.5mm;}
+  .card h3{font-size:12pt;color:var(--blue-d);margin-bottom:2mm;line-height:1.45;}
+  .card p{font-size:9.5pt;color:var(--muted);line-height:1.75;}
+
+  .kpi{display:flex;gap:5mm;margin:4mm 0;}
+  .kpi div{flex:1;border:1px solid var(--line);border-radius:3mm;padding:4mm;text-align:center;background:#f8fbff;}
+  .kpi .v{font-size:19pt;font-weight:bold;color:var(--blue-d);line-height:1.3;}
+  .kpi .l{font-size:9pt;color:var(--muted);margin-top:1.5mm;}
+
+  .big{background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:4mm;padding:6mm 7mm;}
+  .big strong{color:var(--blue-d);}
+  .note{font-size:8.5pt;color:var(--muted);margin-top:3mm;line-height:1.7;}
+
+  .flow{display:flex;align-items:stretch;gap:0;margin-top:3mm;}
+  .flow .step{flex:1;border:1px solid var(--line);border-radius:3mm;padding:4mm;background:#fff;text-align:center;}
+  .flow .arw{display:flex;align-items:center;color:var(--blue-l);font-size:15pt;padding:0 2.5mm;}
+  .flow .st{font-size:8.5pt;color:var(--blue-l);font-weight:bold;letter-spacing:.1em;}
+  .flow h4{font-size:11pt;color:var(--blue-d);margin:1.5mm 0;}
+  .flow p{font-size:8.5pt;color:var(--muted);line-height:1.7;}
+
+  /* 契約・席のイメージ */
+  .seats{display:flex;flex-wrap:wrap;gap:2.4mm;margin-top:3mm;}
+  .seat{width:15mm;height:15mm;border-radius:2.5mm;background:linear-gradient(135deg,var(--blue),var(--blue-l));
+        color:#fff;display:flex;align-items:center;justify-content:center;font-size:8.5pt;font-weight:bold;text-align:center;line-height:1.3;}
+  .seat.owner{background:linear-gradient(135deg,#1a4d8f,#2b6cb0);box-shadow:0 0 0 2px #ecc94b inset;}
+
+  .contact{font-size:11pt;}
+  .contact td.k{width:32mm;}
+
+  /* 画面表示のみ */
+  .screenbar{max-width:297mm;margin:14px auto 10px;padding:10px 14px;background:#fff;border:1px solid var(--line);
+        border-radius:10px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+  .screenbar a{color:var(--blue);font-weight:bold;text-decoration:none;}
+
+  @media print{
+    body{background:#fff;}
+    .screenbar{display:none;}
+    .slide{margin:0;box-shadow:none;page-break-after:always;break-after:page;}
+    .slide:last-child{page-break-after:auto;break-after:auto;}
+  }
+  @page{size:A4 landscape;margin:0;}
+  @media screen and (max-width:1200px){
+    body{background:#fff;}
+    .slide{width:100%;height:auto;min-height:0;padding:24px 20px 40px;margin-bottom:0;border-bottom:1px solid var(--line);box-shadow:none;}
+    .two,.three{grid-template-columns:1fr;}
+    .flow{flex-direction:column;gap:8px;}
+    .flow .arw{transform:rotate(90deg);justify-content:center;padding:0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="screenbar">
+  <span>不動産会社さま向けのご紹介資料です。印刷（Ctrl / ⌘ + P）でPDFとして保存できます。</span>
+  <span><a href="index.html">Sonaure トップへ</a>　|　<a href="deck-individual.html">個人の営業の方向けはこちら</a></span>
+</div>
+
+<!-- 1 表紙 -->
+<section class="slide cover">
+  <div class="logo">Sonaure</div>
+  <div class="tag">〜 備えあれば憂いなし、お客様に＋αの感動を 〜</div>
+  <div class="for">不動産会社さま向け ご紹介</div>
+  <div class="date">2026.07</div>
+</section>
+
+<!-- 2 運営者情報 -->
+<section class="slide">
+  <div class="pnum">02</div>
+  <div class="label">COMPANY</div>
+  <h2>運営者情報<span class="sub">扱う情報が費用・税金・法令に関わるため、運営者の資格を明示しています</span></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <table>
+      <tr><td class="k">サービス名</td><td>Sonaure（ソナウレ）</td></tr>
+      <tr><td class="k">運営統括責任者</td><td><strong>尾内 啓人</strong>（宅地建物取引士）</td></tr>
+      <tr><td class="k">所在地</td><td>大阪府大阪市西区江戸堀1-22-33</td></tr>
+      <tr><td class="k">事業内容</td><td>■ 不動産営業向け 調査レポート自動作成サービス「Sonaure」の開発・運営<br>■ 不動産の費用・税金・調査に関する解説メディアの運営</td></tr>
+      <tr><td class="k">サービスURL</td><td>https://sonae-are.com/</td></tr>
+      <tr><td class="k">お問い合わせ</td><td>phrasekakumei@gmail.com／080-3687-1636</td></tr>
+    </table>
+    <div class="big" style="margin-top:6mm;">
+      Sonaureは、<strong>売買仲介の実務にあたってきた宅地建物取引士</strong>が、自らの業務経験をもとに開発・監修しています。費用・税金・法令に関する情報は、<strong>国土交通省・国税庁などの公的な一次情報を出典</strong>として設計しています。
+    </div>
+  </div>
+</section>
+
+<!-- 3 課題 -->
+<section class="slide">
+  <div class="pnum">03</div>
+  <div class="label">ISSUE</div>
+  <h2>お客様1人あたりの準備に、毎回1時間<span class="sub">その時間は、営業活動そのものには使われていません</span></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <p>周辺環境の下調べ、費用計算、重要事項説明の項目確認。お客様ごとの事前準備は、手作業だと<strong>1件あたり約1時間</strong>かかります。</p>
+    <div class="kpi">
+      <div><div class="v">約1〜1.5時間</div><div class="l">購入検討のお客様<br>周辺環境＋購入諸費用＋重説必要項目</div></div>
+      <div><div class="v">約1〜1.5時間</div><div class="l">売却のお客様<br>売却収支＋重説必要項目＋周辺環境</div></div>
+      <div><div class="v">約40〜55分</div><div class="l">賃貸のお客様<br>賃貸初期費用＋家賃→購入＋周辺環境</div></div>
+    </div>
+    <div class="big">
+      この準備は、<strong>やる人によって内容も精度もばらつきます。</strong>ベテランは調べる場所を知っていて、新人は知らない。結果として、同じ会社の営業でも<strong>お客様に渡る資料の質が変わってしまう</strong>——これは個人の努力ではなく、仕組みで解くべき問題です。
+    </div>
+    <div class="note">※ 時間は当社が実務をもとに算出した目安です。案件の内容・調査範囲により変動します。</div>
+  </div>
+</section>
+
+<!-- 4 Sonaureとは -->
+<section class="slide">
+  <div class="pnum">04</div>
+  <div class="label">SERVICE</div>
+  <h2>住所と価格を入れるだけ。<br>お客様にそのまま渡せる資料が、数分で。</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="two">
+      <div>
+        <p>Sonaureは、住所や価格を入力するだけで、周辺環境調査書・購入諸費用・売却収支・賃貸初期費用・重要事項説明の必要項目などを、その場で概算レポートにまとめるツールです。</p>
+        <p>出力は <strong>HTML / PDF / Excel</strong>。プリントすればそのままお客様にお渡しできる仕様で、不要な項目はExcelで編集してお客様ごとにアレンジできます。</p>
+        <div class="big" style="margin-top:4mm;">
+          <strong>ChatGPTのようなメモ感を排除しています。</strong>最後にSonaureのレポートをお渡しすることが、「丁寧な営業さんだな」という<strong>＋αの信頼</strong>につながります。
+        </div>
+      </div>
+      <div>
+        <table>
+          <tr><th>入力するもの</th><th>出てくるもの</th></tr>
+          <tr><td>物件の住所</td><td>周辺環境調査書／重説必要項目調査書</td></tr>
+          <tr><td>物件価格・借入額</td><td>購入諸費用の概算書</td></tr>
+          <tr><td>売却価格・残債</td><td>売却収支・手取りの概算書</td></tr>
+          <tr><td>家賃・入居日</td><td>賃貸初期費用の概算書</td></tr>
+          <tr><td>現在の家賃</td><td>家賃→購入シミュレーション</td></tr>
+        </table>
+        <div class="note">出典：国土交通省 不動産情報ライブラリ等の公的データ。<br>※ 出力されるレポートは重要事項説明書ではありません。金額は一般的な前提に基づく概算です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 6機能 -->
+<section class="slide">
+  <div class="pnum">05</div>
+  <div class="label">MENU</div>
+  <h2>6種類の調査レポート<span class="sub">それぞれの時短の目安</span></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <table>
+      <tr><th style="width:10mm;">#</th><th style="width:62mm;">機能</th><th>内容</th><th style="width:30mm;">時短の目安</th></tr>
+      <tr><td>1</td><td><strong>周辺環境調査書</strong></td><td>最寄り駅・学校・保育園・スーパー・銀行・病院・コンビニ・公園・商業施設・駐車場を徒歩分数つきで1枚に。お客様タイプ別の切替・騒音チェック・位置図つき</td><td class="n">約20〜30分</td></tr>
+      <tr><td>2</td><td><strong>購入諸費用計算</strong></td><td>仲介手数料・登記・ローン費用・保険・清算金までの概算書</td><td class="n">約10〜18分</td></tr>
+      <tr><td>3</td><td><strong>売却収支計算</strong></td><td>仲介手数料・抵当権抹消・譲渡所得税まで差し引いた「手取り」の概算書</td><td class="n">約15〜25分</td></tr>
+      <tr><td>4</td><td><strong>賃貸初期費用計算</strong></td><td>敷金・礼金・保証料・日割り家賃まで、契約時の初期費用を概算書に</td><td class="n">約8〜12分</td></tr>
+      <tr><td>5</td><td><strong>家賃→購入シミュレーション</strong></td><td>今の家賃と同じ支払いで「いくらの物件が買えるか」を逆算。賃貸のお客様への購入提案に</td><td class="n">約8〜12分</td></tr>
+      <tr><td>6</td><td><strong>重説必要項目調査書</strong></td><td>区域区分・用途地域・建ぺい率／容積率・防火指定・災害リスク4種。境界またがりは「要確認」を自動検出</td><td class="n">約25〜40分</td></tr>
+    </table>
+    <div class="note">※ 時短の目安は、同じ内容を手作業で調べた場合との比較による当社試算です。実際の短縮時間は調査範囲・習熟度により異なります。</div>
+  </div>
+</section>
+
+<!-- 6 導入メリット -->
+<section class="slide">
+  <div class="pnum">06</div>
+  <div class="label">MERIT</div>
+  <h2>会社として導入する4つの意味</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="two" style="gap:6mm;">
+      <div class="card">
+        <div class="no">01</div>
+        <h3>準備の質が、人によって変わらない</h3>
+        <p>調べる項目と出力の様式が固定されるため、ベテランでも新人でも同じ水準の資料がお客様に渡ります。属人化していた「調べ方の知識」を、仕組み側に持たせられます。</p>
+      </div>
+      <div class="card">
+        <div class="no">02</div>
+        <h3>1契約で最大9名</h3>
+        <p>法人プランは1契約で最大9名までご利用いただけます。契約後、アプリの「メンバー管理」から社員のメールアドレスを登録するだけで、それぞれのアカウントでログインできます。</p>
+      </div>
+      <div class="card">
+        <div class="no">03</div>
+        <h3>宅建士監修・公的データが出典</h3>
+        <p>費用・税金・法令の情報は宅地建物取引士が監修し、国土交通省・国税庁などの一次情報を出典としています。お客様にお渡しする資料だからこそ、根拠を明示できる状態にしています。</p>
+      </div>
+      <div class="card">
+        <div class="no">04</div>
+        <h3>教育にかかる時間が減る</h3>
+        <p>「どこで何を調べるか」を新人に教える時間そのものが圧縮されます。入社直後から、お客様に出せる体裁の資料を作れる状態になります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 料金と席 -->
+<section class="slide">
+  <div class="pnum">07</div>
+  <div class="label">PRICING</div>
+  <h2>法人プラン 月額1,980円<span class="sub">税込2,178円／1契約で最大9名／14日間無料</span></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="two">
+      <div>
+        <table>
+          <tr><th>プラン</th><th class="n">月額</th><th class="n">ご利用人数</th></tr>
+          <tr><td>個人プラン</td><td class="n">500円<br><span style="font-size:8.5pt;color:#64748b;">（税込550円）</span></td><td class="n">1名</td></tr>
+          <tr><td><strong>法人プラン</strong></td><td class="n"><strong>1,980円</strong><br><span style="font-size:8.5pt;color:#64748b;">（税込2,178円）</span></td><td class="n"><strong>最大9名</strong></td></tr>
+        </table>
+        <div class="big">
+          <strong>4名以上なら法人プランのほうがお得です。</strong>9名でご利用の場合、<strong>1人あたり月額約242円</strong>（税込）。<br>
+          10名以上の会社さまは個別にご相談ください。
+        </div>
+        <div class="note">お支払いはクレジットカード（決済代行：Stripe）。解約はアプリのメニューからいつでも可能で、無料期間中の解約なら料金は発生しません。</div>
+      </div>
+      <div>
+        <p style="font-size:10pt;margin-bottom:2mm;"><strong>1契約 ＝ 9席</strong>（契約者さまを含む）</p>
+        <div class="seats">
+          <div class="seat owner">契約者</div>
+          <div class="seat">社員2</div><div class="seat">社員3</div><div class="seat">社員4</div>
+          <div class="seat">社員5</div><div class="seat">社員6</div><div class="seat">社員7</div>
+          <div class="seat">社員8</div><div class="seat">社員9</div>
+        </div>
+        <table style="margin-top:5mm;">
+          <tr><td class="k">追加のしかた</td><td>アプリの「メンバー管理」でメールアドレスを登録</td></tr>
+          <tr><td class="k">ログイン</td><td>各自のメールアドレスとパスワード</td></tr>
+          <tr><td class="k">退職時</td><td>契約者さまがメンバー管理から削除</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 費用対効果 -->
+<section class="slide">
+  <div class="pnum">08</div>
+  <div class="label">SIMULATION</div>
+  <h2>「あなたの1時間はいくらの価値がありますか？」</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="two">
+      <div>
+        <div class="big">
+          <div style="font-size:10pt;color:#64748b;margin-bottom:2mm;">〜 時給に換算すると 〜</div>
+          年収400万円<span style="font-size:8pt;">（※1）</span> ＝ 月給33.3万円 ÷ 22営業日<span style="font-size:8pt;">（※2）</span> ÷ 8時間<span style="font-size:8pt;">（※3）</span><br>
+          ＝ <strong style="font-size:15pt;">時給 約1,893円</strong>
+        </div>
+        <div class="note">※1 不動産営業の年収ボリュームゾーンで換算　※2 年間休日105日で換算　※3 実働8時間で換算</div>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="2">9名でご利用の場合の試算</th></tr>
+          <tr><td class="k">短縮時間</td><td class="n">9名 × 月10案件 × 50分 ＝ <strong>月75時間</strong></td></tr>
+          <tr><td class="k">金額に換算</td><td class="n">75時間 × 1,893円 ＝ <strong>約141,000円／月</strong></td></tr>
+          <tr><td class="k">ご利用料金</td><td class="n"><strong>2,178円／月</strong>（税込）</td></tr>
+        </table>
+        <div class="note">※ 「1人あたり月10案件・1案件50分の短縮」という前提を置いた試算です。実際の案件数・短縮時間は業務内容により異なります。削減効果を保証するものではありません。</div>
+      </div>
+    </div>
+    <div class="big" style="margin-top:4mm;text-align:center;">
+      浮いた時間を、<strong>内見・追客・提案</strong>に回せます。準備は、成果が出る仕事ではありません。
+    </div>
+  </div>
+</section>
+
+<!-- 9 導入の流れ -->
+<section class="slide">
+  <div class="pnum">09</div>
+  <div class="label">HOW TO START</div>
+  <h2>導入の流れ<span class="sub">申込書・初期費用・導入研修は不要です</span></h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="flow">
+      <div class="step"><div class="st">STEP 1</div><h4>無料登録</h4><p>メールアドレスとパスワードだけ。<strong>14日間の無料体験</strong>がその場で始まります。</p></div>
+      <div class="arw">▶</div>
+      <div class="step"><div class="st">STEP 2</div><h4>試す</h4><p>実際の案件でレポートを出してみてください。無料期間中に解約すれば料金は一切かかりません。</p></div>
+      <div class="arw">▶</div>
+      <div class="step"><div class="st">STEP 3</div><h4>法人プランを選択</h4><p>クレジットカードを登録。<strong>15日目から月額2,178円</strong>（税込）。</p></div>
+      <div class="arw">▶</div>
+      <div class="step"><div class="st">STEP 4</div><h4>メンバー登録</h4><p>「メンバー管理」から社員のメールアドレスを追加。各自がログインして利用開始。</p></div>
+    </div>
+    <div class="big" style="margin-top:6mm;">
+      <strong>登録なしで試せるものもあります。</strong>購入諸費用・売却手取り・賃貸初期費用の3つは、無料の計算ツールとして公開しています（<strong>sonae-are.com/tools/</strong>）。まずは計算の中身をご確認ください。
+    </div>
+  </div>
+</section>
+
+<!-- 10 CONTACT -->
+<section class="slide cover">
+  <div class="label" style="letter-spacing:.3em;">CONTACT</div>
+  <div class="logo" style="font-size:34pt;">Sonaure</div>
+  <div class="tag" style="margin-bottom:10mm;">〜 備えあれば憂いなし、お客様に＋αの感動を 〜</div>
+  <table class="contact" style="max-width:150mm;background:rgba(255,255,255,.75);">
+    <tr><td class="k">担当</td><td>尾内 啓人（宅地建物取引士）</td></tr>
+    <tr><td class="k">TEL</td><td>080-3687-1636</td></tr>
+    <tr><td class="k">MAIL</td><td>phrasekakumei@gmail.com</td></tr>
+    <tr><td class="k">WEB</td><td>https://sonae-are.com/</td></tr>
+  </table>
+  <div class="note" style="max-width:150mm;text-align:center;">10名以上でのご利用、その他ご要望はお気軽にご相談ください。</div>
+</section>
+
+</body>
+</html>
