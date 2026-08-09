@@ -112,6 +112,13 @@
   .cta-box .t{font-weight:bold;color:var(--blue-d);font-size:15px;margin-bottom:8px;}
   .cta-box p{font-size:13.5px;color:var(--muted);}
   .cta-btn{display:inline-block;background:var(--blue-d);color:#fff;text-decoration:none;font-weight:bold;font-size:14px;padding:11px 30px;border-radius:999px;margin-top:8px;}
+  /* 一般のお客様向けの相談導線。不動産会社向けCTAと区別がつくよう、塗りではなく枠線で出す */
+  .soudan{background:#fff;border:2px solid var(--blue-l);border-radius:14px;padding:24px 22px;margin:30px 0;text-align:center;}
+  .soudan .t{font-weight:bold;color:var(--blue-d);font-size:16.5px;margin-bottom:10px;line-height:1.6;}
+  .soudan p{font-size:13.5px;color:var(--muted);margin-bottom:16px;}
+  .soudan .btn{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:15px;padding:12px 34px;border-radius:999px;box-shadow:0 6px 18px rgba(43,108,176,.28);}
+  .soudan .line{font-size:13px;color:var(--muted);margin:18px 0 0;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+  .soudan .line img{vertical-align:middle;}
   details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
   summary{font-weight:bold;color:var(--blue-d);cursor:pointer;font-size:14.5px;}
   details p{margin:10px 0 0;font-size:14px;}
@@ -222,6 +229,13 @@
   <details><summary>諸費用の概算で最初に確定させるべき数字は何ですか？</summary><p>借入額です。仲介手数料や印紙税は価格が決まれば決まりますが、融資事務手数料・抵当権設定費用・ローン契約の印紙税は借入額が決まらないと出せません。しかも金額が大きいのはこちらです。価格だけで概算を渡すと、あとから数十万円単位で修正することになります。</p></details>
   <details><summary>融資事務手数料はどのくらいかかりますか？</summary><p>定率型では借入額の2.2%程度が一般的で、3,000万円の借入なら約66万円です。定額型では3万〜6万円程度で済みますが、代わりに保証料が別途かかる商品が多く、総額では大きく変わらないこともあります。どちらの型かで内訳が変わります。</p></details>
   <details><summary>決済時の諸費用に含まれない費用はありますか？</summary><p>不動産取得税は取得から数か月後に納税通知書が届くため、決済時の諸費用には含まれません。住宅の軽減措置で0円になることも多い一方、要件を満たさない場合はまとまった金額になります。リフォーム・引越し・家具家電も含まれないのが一般的です。</p></details>
+
+  <div class="soudan">
+    <div class="t">自宅を購入・売却したい方は、ぜひ一度ご相談ください。</div>
+    <p>「今の家賃でいくらの家が買えるのか」「うちは今いくらで売れるのか」を知りたいだけでも構いません。宅地建物取引士がお話をうかがいます。</p>
+    <a class="btn" href="https://forms.gle/PvbwuzqfPuMUgwLn6" target="_blank" rel="noopener">お問い合わせフォームへ →</a>
+    <p class="line">LINEでもご相談いただけます<a href="https://lin.ee/7yGIqUn" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a></p>
+  </div>
 
   <div class="cta-box">
     <div class="t">不動産会社にお勤めの方へ</div>
