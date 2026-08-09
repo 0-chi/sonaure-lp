@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sonaure（ソナウレ）｜備えあれば憂いなし、お客様に＋αの感動を</title>
-<meta name="description" content="不動産営業のための調査レポート自動作成ツール。住所や価格を入れるだけで、周辺環境調査書・購入諸費用・売却収支・賃貸初期費用・重説必要項目を30秒でレポートに。1案件の準備が30分〜1時間→数分に。月額990円（税込）・7日間無料。">
+<meta name="description" content="不動産営業のための調査レポート自動作成ツール。住所や価格を入れるだけで、周辺環境調査書・購入諸費用・売却収支・賃貸初期費用・投資判断調査項目を30秒でレポートに。1案件の準備が30分〜1時間→数分に。月額990円（税込）・7日間無料。">
 <link rel="canonical" href="https://sonae-are.com/">
 <meta property="og:title" content="Sonaure（ソナウレ）｜不動産営業のための調査レポート自動作成ツール">
 <meta property="og:description" content="住所や価格を入れるだけで、お客様にそのまま渡せる調査レポートを30秒で自動作成。1案件の準備が30分〜1時間→数分に。月額990円（税込）・7日間無料。">
@@ -74,6 +74,25 @@
   .card h3 { font-size: 16px; color: var(--blue-d); margin-bottom: 8px; }
   .card p { font-size: 13.5px; color: var(--muted); }
   .formats { text-align: center; margin-top: 22px; font-size: 13px; color: var(--muted); }
+
+  /* 見出しの上に置く、誰に向けた話かの札 */
+  .aud-label { display: block; width: fit-content; margin: 0 auto 14px; background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); color: #fff; font-size: 13px; font-weight: bold; border-radius: 999px; padding: 5px 20px; letter-spacing: .04em; }
+
+  /* ===== 読者別のご案内（投資家／実需層）===== */
+  .aud { background: #fff; }
+  .aud-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; max-width: 880px; margin: 0 auto; }
+  .aud-card { background: linear-gradient(135deg, #f4f9ff, #eaf3ff); border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px; }
+  .aud-card h3 { font-size: 17px; color: var(--blue-d); margin-bottom: 10px; line-height: 1.6; }
+  .aud-card p { font-size: 14px; color: var(--ink); line-height: 1.9; }
+  .aud-card .use { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); }
+  .aud-card .use a { color: var(--blue); font-weight: bold; text-decoration: none; }
+
+  /* ===== 記事への導線 ===== */
+  .blog-lead { background: #fff; }
+  .blog-box { max-width: 780px; margin: 0 auto; background: linear-gradient(135deg, #f4f9ff, #eaf3ff); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px; text-align: center; }
+  .blog-box h3 { font-size: 18px; color: var(--blue-d); margin-bottom: 8px; }
+  .blog-box p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+  .blog-btn { display: inline-block; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; text-decoration: none; font-weight: bold; font-size: 15px; padding: 12px 34px; border-radius: 999px; box-shadow: 0 6px 18px rgba(43,108,176,.28); }
 
   /* ===== 時短の訴求（トップ） ===== */
   .timesave { background: #fff; }
@@ -195,7 +214,7 @@
   <div class="wrap">
     <h1>Sonaure</h1>
     <div class="tagline">〜備えあれば憂いなし、お客様に＋αの感動を〜</div>
-    <p class="sub">住所や価格を入れるだけ。周辺環境・購入諸費用・売却収支・賃貸初期費用・重説必要項目を30秒でレポートに。</p>
+    <p class="sub">住所や価格を入れるだけ。周辺環境・購入諸費用・売却収支・賃貸初期費用・投資判断調査項目を30秒でレポートに。</p>
     <a class="cta" href="#register">7日間無料で体験する</a>
     <div class="cta-note">クレジット決済｜いつでも解約できます</div>
   </div>
@@ -204,20 +223,21 @@
 <!-- ===== 時短の訴求（トップ） ===== -->
 <section class="timesave" id="about">
   <div class="wrap">
+    <div class="aud-label">不動産営業のみなさまへ</div>
     <h2>1案件の準備が、30分〜1時間 → 数分に。</h2>
-    <p class="lead">周辺環境の下調べ、費用計算、重説の項目確認……お客様ごとの準備は、手作業だと1件あたり30分〜1時間。<br>Sonaureは住所や価格を入れるだけで、お客様にそのまま渡せる資料を数分で作ります。</p>
+    <p class="lead">周辺環境の下調べ、費用計算、法令・災害リスクの確認……お客様ごとの準備は、手作業だと1件あたり30分〜1時間。<br>Sonaureは住所や価格を入れるだけで、お客様にそのまま渡せる資料を数分で作ります。</p>
     <div class="ts-grid">
       <div class="ts-card">
         <div class="ts-case">購入検討のお客様</div>
         <div class="ts-before"><s>30分〜1時間</s></div>
         <div class="ts-after">→ 数分</div>
-        <div class="ts-detail">周辺環境＋購入諸費用＋重説必要項目</div>
+        <div class="ts-detail">周辺環境＋購入諸費用＋投資判断調査項目</div>
       </div>
       <div class="ts-card">
         <div class="ts-case">売却のお客様</div>
         <div class="ts-before"><s>30分〜1時間</s></div>
         <div class="ts-after">→ 数分</div>
-        <div class="ts-detail">売却収支＋重説必要項目＋周辺環境</div>
+        <div class="ts-detail">売却収支＋投資判断調査項目＋周辺環境</div>
       </div>
       <div class="ts-card">
         <div class="ts-case">賃貸のお客様</div>
@@ -230,12 +250,30 @@
   </div>
 </section>
 
+<!-- ===== 読者別のご案内 ===== -->
+<section class="aud">
+  <div class="wrap">
+    <div class="aud-grid">
+      <div class="aud-card">
+        <h3>不動産投資家のみなさまへ</h3>
+        <p>投資判断に必要な周辺環境調査書や投資判断調査項目をご活用いただき、よりよい物件のご購入をサポートします。用途地域・建ぺい率／容積率・災害リスクといった、価格に効く条件を住所から一気に確認できます。</p>
+        <span class="use"><a href="detail-env.html">周辺環境調査書</a>／<a href="detail-juusetsu.html">投資判断調査項目</a>／<a href="detail-costs.html">購入諸費用計算</a></span>
+      </div>
+      <div class="aud-card">
+        <h3>実需層（マイホームの購入・売却・賃貸）のみなさまへ</h3>
+        <p>初期費用の計算や家賃→購入シミュレーションを使えば、賃貸と購入をかんたんに比べられます。住みたいエリアの周辺環境もすぐに調べられるので、楽しみながらご検討いただけます。</p>
+        <span class="use"><a href="detail-rentbuy.html">家賃→購入シミュレーション</a>／<a href="detail-rental.html">賃貸初期費用計算</a>／<a href="detail-sale.html">売却収支計算</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== サービスメニュー ===== -->
 <section class="services" id="services">
   <div class="wrap">
     <h2>サービスメニュー</h2>
     <p class="lead">住所や価格を入れるだけで、6種類の調査レポートを自動作成。<br>
-    ①周辺環境調査書だけでなく、②家賃→購入シミュレーション・③賃貸初期費用計算・④購入諸費用計算・⑤売却収支計算・⑥重説必要項目調査書も時間短縮のために用意しました。</p>
+    ①周辺環境調査書だけでなく、②家賃→購入シミュレーション・③賃貸初期費用計算・④購入諸費用計算・⑤売却収支計算・⑥投資判断調査項目も時間短縮のために用意しました。</p>
     <div class="cards">
       <a class="card" href="detail-env.html">
         <div class="time-badge">⏱ 時短の目安 <b>約20〜30分</b></div>
@@ -275,13 +313,24 @@
       <a class="card" href="detail-juusetsu.html">
         <div class="time-badge">⏱ 時短の目安 <b>約10〜15分</b></div>
         <div class="num">6</div>
-        <h3>重説必要項目調査書</h3>
+        <h3>投資判断調査項目</h3>
         <p>区域区分・用途地域・建ぺい率/容積率・防火指定・災害リスク4種。境界またがりは「要確認」として自動検出。</p>
         <span class="card-more">詳しく見る →</span>
       </a>
     </div>
     <div class="formats">レポートはすべて <strong>HTML / PDF / Excel</strong> でダウンロードできます（出典：国土交通省 不動産情報ライブラリ等の公的データ）。<br>
     不要な項目はエクセルで編集すれば、お客様ごとにアレンジ可能♪</div>
+  </div>
+</section>
+
+<!-- ===== 記事への導線 ===== -->
+<section class="blog-lead">
+  <div class="wrap">
+    <div class="blog-box">
+      <h3>不動産に関する有益情報</h3>
+      <p>費用・税金・手続き・物件調査について、宅地建物取引士が解説した記事を公開しています。ツールが出す数字の根拠も、こちらで確認いただけます。</p>
+      <a class="blog-btn" href="blog/index.html">記事一覧を見る →</a>
+    </div>
   </div>
 </section>
 
