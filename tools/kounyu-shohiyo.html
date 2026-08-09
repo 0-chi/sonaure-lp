@@ -174,7 +174,7 @@
   <details><summary>不動産取得税はいくらかかりますか？</summary><p>固定資産税評価額×3%（住宅の軽減税率）が原則ですが、要件を満たす住宅は控除により0円になるケースも多くあります。取得後数ヶ月してから納税通知が届くため、忘れがちな費用です。</p></details>
   <details><summary>諸費用はいつ支払いますか？</summary><p>手付金は契約時、仲介手数料は契約時・引渡時に半金ずつ（または引渡時一括）、登記費用・ローン費用・火災保険・清算金は引渡（決済）時が一般的です。</p></details>
 
-  <p class="related">くわしい解説：<a href="../blog/bukken-kakaku-shohiyo-zukai.html">物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</a>｜<a href="../blog/chuko-jutaku-shohiyo.html">中古住宅の諸費用は何パーセント？価格別の目安と内訳</a>｜<a href="../blog/touki-hiyou-keisan.html">登記費用の計算方法｜登録免許税の税率と軽減措置</a>｜<a href="../blog/kounyu-shohiyo-gaisan.html">購入諸費用の概算の出し方｜「価格の◯%」で出すと外れる理由</a>｜<a href="../blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担</a></p>
+  <p class="related">くわしい解説：<a href="../blog/bukken-kakaku-shohiyo-zukai.html">物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</a>｜<a href="../blog/chuko-jutaku-shohiyo.html">中古住宅の諸費用は何パーセント？価格別の目安と内訳</a>｜<a href="../blog/toushiyou-bukken-shohiyo.html">投資用物件の諸費用は物件価格の何%？居住用より高くなる3つの理由</a>｜<a href="../blog/touki-hiyou-keisan.html">登記費用の計算方法｜登録免許税の税率と軽減措置</a>｜<a href="../blog/kounyu-shohiyo-gaisan.html">購入諸費用の概算の出し方｜「価格の◯%」で出すと外れる理由</a>｜<a href="../blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担</a></p>
   <p class="related">関連ツール：<a href="chintai-shokihiyo.html">賃貸初期費用シミュレーション</a>｜<a href="baikyaku-tedori.html">不動産売却の手取りシミュレーション</a></p>
 
   <p class="note">※ 本シミュレーションは中古住宅・個人間売買の仲介取引を想定した概算であり、実額は物件・契約条件・金融機関・保険商品により変動します。正式な金額は司法書士の見積り・金融機関の事前審査・保険見積りでご確認ください。<br>
@@ -212,7 +212,7 @@ const ASSUME_HOME = "<strong>計算の前提（中古住宅・仲介取引の一
 const ASSUME_INV = "<strong>計算の前提（賃貸用・土地と建物を50:50と仮定）：</strong>"
   + "住宅の軽減特例は「自己の居住の用に供する」ことが要件のため未適用。登録免許税は評価額（価格の70%）に対し"
   + "土地1.5%・建物2.0%（本則）、不動産取得税は土地1/2×3%・建物3%で計上。融資事務手数料は借入額×3.3%、"
-  + "火災保険（5年一括）30万円。入居者募集の広告料・管理会社への初期費用は含みません。";
+  + "抵当権設定は本則0.4%（0.1%への軽減は自己居住用が要件）、火災保険（5年一括）30万円。入居者募集の広告料・管理会社への初期費用は含みません。";
 
 function calc() {
   const price = Number(document.getElementById("price").value) || 0;
@@ -242,7 +242,10 @@ function calc() {
   if (loan > 0) {
     rows.push(["融資事務手数料", loan * (invest ? 0.033 : 0.022),
                invest ? "借入額×3.3%（不動産投資ローンは料率が高い傾向）" : "借入額×2.2%（定率型）"]);
-    rows.push(["抵当権設定費用", loan * 0.001 + 5, "登録免許税＋司法書士報酬"]);
+    // 抵当権設定の0.1%軽減は自己居住用の住宅取得資金が要件。賃貸用は本則0.4%
+    rows.push(["抵当権設定費用", loan * (invest ? 0.004 : 0.001) + 5,
+               invest ? "借入額×0.4%（本則）＋司法書士報酬。0.1%への軽減は自己居住用が要件"
+                      : "登録免許税＋司法書士報酬"]);
     rows.push(["ローン契約の印紙税", 1, "紙契約の場合の目安"]);
   }
   rows.push(["火災保険料（5年一括の目安）", invest ? 30 : 20,
