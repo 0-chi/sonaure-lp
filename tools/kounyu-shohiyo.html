@@ -94,6 +94,12 @@
   .note{font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:30px;line-height:1.8;}
   footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:36px;}
   footer a{color:#cfe2f8;}
+  /* 用途の切り替え。ラジオボタンのまま見た目だけセグメントにする（JSなしでも操作できる） */
+  .seg{display:inline-flex;gap:3px;border:1px solid var(--line);border-radius:999px;padding:3px;background:#fff;margin-bottom:16px;}
+  .seg input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+  .seg label{margin:0;padding:7px 20px;border-radius:999px;font-size:13.5px;font-weight:bold;color:var(--muted);cursor:pointer;}
+  .seg input:checked + label{background:var(--blue);color:#fff;}
+  .seg input:focus-visible + label{outline:2px solid var(--blue-d);outline-offset:2px;}
   /* 内訳のロック（合計は無料表示・内訳は登録で解除） */
   .locked-wrap{position:relative;margin-top:4px;}
   .locked{filter:blur(6px);pointer-events:none;user-select:none;-webkit-user-select:none;}
@@ -116,9 +122,13 @@
   <p class="sub">物件価格を入れるだけで、購入時にかかる諸費用の総額を無料でその場計算（登録不要）。項目ごとの内訳は無料登録で表示できます。</p>
 
   <div class="calc">
+    <div class="seg" role="radiogroup" aria-label="用途">
+      <input type="radio" name="usage" id="u-home" checked><label for="u-home">居住用</label>
+      <input type="radio" name="usage" id="u-inv"><label for="u-inv">投資用</label>
+    </div>
     <div class="grid">
       <div><label for="price">物件価格（万円）</label><input id="price" type="number" value="3000" step="100" min="0" inputmode="numeric"></div>
-      <div class="chk"><input id="useloan" type="checkbox" checked><label for="useloan" style="margin:0;font-size:14px;">住宅ローンを利用する（借入額＝物件価格で計算）</label></div>
+      <div class="chk"><input id="useloan" type="checkbox" checked><label for="useloan" id="loanlabel" style="margin:0;font-size:14px;">住宅ローンを利用する（借入額＝物件価格で計算）</label></div>
     </div>
     <div class="result">
       <div style="font-size:12px;color:var(--muted);">諸費用の概算合計</div>
@@ -128,7 +138,7 @@
     <div class="locked-wrap">
       <div class="locked">
         <table id="breakdown"></table>
-        <div class="assume"><strong>計算の前提（中古住宅・仲介取引の一般的な条件で固定）：</strong>登録免許税は固定資産税評価額を価格の70%と仮定して税率1.5%で概算、司法書士報酬10万円、融資事務手数料は借入額×2.2%（定率型）、火災保険（5年一括）20万円。不動産取得税・引越し費用は含みません。</div>
+        <div class="assume" id="assume"></div>
       </div>
       <div class="unlock">
         <div class="unlock-inner">
@@ -195,22 +205,48 @@ function stamp(p) {
 }
 const man = v => "約 " + v.toLocaleString("ja-JP", {maximumFractionDigits: 1}) + " 万円";
 
+// 投資用は住宅の軽減特例が使えない前提。土地と建物は50:50と仮定する
+const ASSUME_HOME = "<strong>計算の前提（中古住宅・仲介取引の一般的な条件で固定）：</strong>"
+  + "登録免許税は固定資産税評価額を価格の70%と仮定して税率1.5%で概算、司法書士報酬10万円、"
+  + "融資事務手数料は借入額×2.2%（定率型）、火災保険（5年一括）20万円。不動産取得税・引越し費用は含みません。";
+const ASSUME_INV = "<strong>計算の前提（賃貸用・土地と建物を50:50と仮定）：</strong>"
+  + "住宅の軽減特例は「自己の居住の用に供する」ことが要件のため未適用。登録免許税は評価額（価格の70%）に対し"
+  + "土地1.5%・建物2.0%（本則）、不動産取得税は土地1/2×3%・建物3%で計上。融資事務手数料は借入額×3.3%、"
+  + "火災保険（5年一括）30万円。入居者募集の広告料・管理会社への初期費用は含みません。";
+
 function calc() {
   const price = Number(document.getElementById("price").value) || 0;
   const loan = document.getElementById("useloan").checked ? price : 0;
+  const invest = document.getElementById("u-inv").checked;
+  const assessed = price * 0.7;
+
+  document.getElementById("loanlabel").textContent = invest
+    ? "不動産投資ローンを利用する（借入額＝物件価格で計算）"
+    : "住宅ローンを利用する（借入額＝物件価格で計算）";
+  document.getElementById("assume").innerHTML = invest ? ASSUME_INV : ASSUME_HOME;
 
   const rows = [
     ["仲介手数料", brokerage(price), "（価格×3%＋6万円）×消費税10%"],
     ["売買契約書の印紙税", stamp(price), "軽減税率適用後"],
-    ["登録免許税（所有権移転・目安）", price * 0.7 * 0.015, "評価額を価格の70%と仮定×1.5%"],
-    ["司法書士報酬（移転登記）", 10, "一般的な相場の目安"],
   ];
+  if (invest) {
+    rows.push(["登録免許税（所有権移転・目安）", assessed * (0.5 * 0.015 + 0.5 * 0.02),
+               "評価額を価格の70%と仮定。土地1.5%／建物2.0%（本則）を50:50で按分"]);
+    rows.push(["司法書士報酬（移転登記）", 10, "一般的な相場の目安"]);
+    rows.push(["不動産取得税", assessed * (0.5 * 0.5 * 0.03 + 0.5 * 0.03),
+               "土地は1/2×3%、建物は3%。住宅の控除は自己居住が要件のため未適用"]);
+  } else {
+    rows.push(["登録免許税（所有権移転・目安）", assessed * 0.015, "評価額を価格の70%と仮定×1.5%"]);
+    rows.push(["司法書士報酬（移転登記）", 10, "一般的な相場の目安"]);
+  }
   if (loan > 0) {
-    rows.push(["融資事務手数料", loan * 0.022, "借入額×2.2%（定率型）"]);
+    rows.push(["融資事務手数料", loan * (invest ? 0.033 : 0.022),
+               invest ? "借入額×3.3%（不動産投資ローンは料率が高い傾向）" : "借入額×2.2%（定率型）"]);
     rows.push(["抵当権設定費用", loan * 0.001 + 5, "登録免許税＋司法書士報酬"]);
     rows.push(["ローン契約の印紙税", 1, "紙契約の場合の目安"]);
   }
-  rows.push(["火災保険料（5年一括の目安）", 20, "構造・所在地・補償内容で変動"]);
+  rows.push(["火災保険料（5年一括の目安）", invest ? 30 : 20,
+             invest ? "賃貸経営では施設賠償責任などを付けるぶん高くなりやすい" : "構造・所在地・補償内容で変動"]);
   rows.push(["固定資産税・都市計画税の清算金", price * 0.002, "引渡日による日割り清算の目安"]);
 
   const total = rows.reduce((s, r) => s + r[1], 0);
@@ -220,8 +256,8 @@ function calc() {
     "<tr><th>項目</th><th>概算額</th><th>備考</th></tr>" +
     rows.map(r => `<tr><td>${r[0]}</td><td class="n">${man(Math.round(r[1] * 10) / 10)}</td><td>${r[2]}</td></tr>`).join("");
 }
-document.getElementById("price").addEventListener("input", calc);
-document.getElementById("useloan").addEventListener("input", calc);
+["price", "useloan", "u-home", "u-inv"].forEach(
+  id => document.getElementById(id).addEventListener("input", calc));
 calc();
 </script>
 <script src="../assets/motion.js" defer></script>

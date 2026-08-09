@@ -94,6 +94,12 @@
   .note{font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:30px;line-height:1.8;}
   footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:36px;}
   footer a{color:#cfe2f8;}
+  /* 用途の切り替え。ラジオボタンのまま見た目だけセグメントにする（JSなしでも操作できる） */
+  .seg{display:inline-flex;gap:3px;border:1px solid var(--line);border-radius:999px;padding:3px;background:#fff;margin-bottom:16px;}
+  .seg input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+  .seg label{margin:0;padding:7px 20px;border-radius:999px;font-size:13.5px;font-weight:bold;color:var(--muted);cursor:pointer;}
+  .seg input:checked + label{background:var(--blue);color:#fff;}
+  .seg input:focus-visible + label{outline:2px solid var(--blue-d);outline-offset:2px;}
   /* 内訳のロック（合計は無料表示・内訳は登録で解除） */
   .locked-wrap{position:relative;margin-top:4px;}
   .locked{filter:blur(6px);pointer-events:none;user-select:none;-webkit-user-select:none;}
@@ -116,12 +122,19 @@
   <p class="sub">売却価格を入れるだけで、諸費用と譲渡所得税を差し引いた「手取り額」を無料でその場計算（登録不要）。項目ごとの内訳は無料登録で表示できます。</p>
 
   <div class="calc">
+    <div class="seg" role="radiogroup" aria-label="用途">
+      <input type="radio" name="usage" id="u-home" checked><label for="u-home">居住用</label>
+      <input type="radio" name="usage" id="u-inv"><label for="u-inv">投資用</label>
+    </div>
     <div class="grid">
       <div><label for="price">売却予定価格（万円）</label><input id="price" type="number" value="3000" step="100" min="0" inputmode="numeric"></div>
-      <div><label for="loan">住宅ローン残債（万円）</label><input id="loan" type="number" value="0" step="100" min="0" inputmode="numeric"></div>
+      <div><label for="loan" id="loanlabel">住宅ローン残債（万円）</label><input id="loan" type="number" value="0" step="100" min="0" inputmode="numeric"></div>
       <div><label for="holding">所有期間</label><select id="holding"><option value="long" selected>5年超（長期）</option><option value="short">5年以下（短期）</option></select></div>
     </div>
-    <div class="chk" style="margin-top:8px;"><input id="residence" type="checkbox" checked><label for="residence" style="margin:0;font-size:14px;">自分が住んでいたマイホーム（3,000万円特別控除を適用）</label></div>
+    <div class="chk" id="residence-wrap" style="margin-top:8px;"><input id="residence" type="checkbox" checked><label for="residence" style="margin:0;font-size:14px;">自分が住んでいたマイホーム（3,000万円特別控除を適用）</label></div>
+    <div class="grid" id="depre-wrap" style="margin-top:8px;display:none;">
+      <div><label for="depre">減価償却費の累計（万円）</label><input id="depre" type="number" value="0" step="100" min="0" inputmode="numeric"></div>
+    </div>
     <div class="result">
       <div style="font-size:12px;color:var(--muted);">手取り額（概算）</div>
       <div class="total" id="total">—</div>
@@ -130,7 +143,7 @@
     <div class="locked-wrap">
       <div class="locked">
         <table id="breakdown"></table>
-        <div class="assume"><strong>計算の前提（一般的な条件で固定）：</strong>取得費は概算取得費（売却価格の5%）で計算、抵当権抹消費用はローン残債がある場合に2万円、測量・解体・クリーニング費用は含みません。譲渡した年の1月1日時点の所有期間で長期・短期を判定します。</div>
+        <div class="assume" id="assume"></div>
       </div>
       <div class="unlock">
         <div class="unlock-inner">
@@ -197,11 +210,27 @@ function stamp(p) {
 }
 const man = v => "約 " + v.toLocaleString("ja-JP", {maximumFractionDigits: 1}) + " 万円";
 
+const ASSUME_HOME = "<strong>計算の前提（一般的な条件で固定）：</strong>"
+  + "取得費は概算取得費（売却価格の5%）で計算、抵当権抹消費用はローン残債がある場合に2万円、"
+  + "測量・解体・クリーニング費用は含みません。譲渡した年の1月1日時点の所有期間で長期・短期を判定します。";
+const ASSUME_INV = "<strong>計算の前提（賃貸用）：</strong>"
+  + "居住用財産の3,000万円特別控除・10年超所有の軽減税率は自己居住が要件のため未適用。"
+  + "取得費は概算取得費（売却価格の5%）から減価償却費の累計を差し引いて計算します。"
+  + "測量・解体・クリーニング費用、売主が課税事業者の場合の建物分の消費税は含みません。";
+
 function calc() {
   const price = Number(document.getElementById("price").value) || 0;
   const loan = Number(document.getElementById("loan").value) || 0;
   const long = document.getElementById("holding").value === "long";
-  const residence = document.getElementById("residence").checked;
+  const invest = document.getElementById("u-inv").checked;
+  // 3,000万円特別控除は自己居住が要件なので、投資用では常に効かない
+  const residence = !invest && document.getElementById("residence").checked;
+  const depre = invest ? (Number(document.getElementById("depre").value) || 0) : 0;
+
+  document.getElementById("residence-wrap").style.display = invest ? "none" : "";
+  document.getElementById("depre-wrap").style.display = invest ? "" : "none";
+  document.getElementById("loanlabel").textContent = invest ? "ローン残債（万円）" : "住宅ローン残債（万円）";
+  document.getElementById("assume").innerHTML = invest ? ASSUME_INV : ASSUME_HOME;
 
   const b = brokerage(price), s = stamp(price);
   const rows = [
@@ -212,16 +241,19 @@ function calc() {
   const costTotal = rows.reduce((sum, r) => sum + r[1], 0);
 
   // 譲渡所得税（概算取得費5%・譲渡費用=仲介＋印紙）
-  const acq = price * 0.05;
+  // 賃貸に出していた期間の減価償却費は取得費から差し引く（そのぶん譲渡益が増える）
+  const acq = Math.max(0, price * 0.05 - depre);
   const gain = price - acq - (b + s);
   const ded = (residence && gain > 0) ? Math.min(DEDUCTION, gain) : 0;
   const taxable = Math.max(0, gain - ded);
   const tax = taxable * (long ? RATE_LONG : RATE_SHORT);
 
   rows.push(["譲渡所得税・住民税（概算）", tax,
-    tax > 0 ? (long ? "長期 20.315%" : "短期 39.63%") + "（概算取得費5%で計算）"
+    tax > 0 ? (long ? "長期 20.315%" : "短期 39.63%")
+              + (depre > 0 ? "（概算取得費5%−減価償却累計で計算）" : "（概算取得費5%で計算）")
+              + (invest ? "／3,000万円特別控除は適用外" : "")
             : (residence ? "3,000万円特別控除の範囲内" : "課税対象の譲渡益なし")]);
-  if (loan > 0) rows.push(["住宅ローン残債の返済", loan, "売却代金から一括返済"]);
+  if (loan > 0) rows.push([invest ? "ローン残債の返済" : "住宅ローン残債の返済", loan, "売却代金から一括返済"]);
 
   const net = price - costTotal - tax - loan;
   document.getElementById("total").textContent = man(Math.round(net));
@@ -231,7 +263,7 @@ function calc() {
     "<tr><th>差し引かれるもの</th><th>概算額</th><th>備考</th></tr>" +
     rows.map(r => `<tr><td>${r[0]}</td><td class="n">${man(Math.round(r[1] * 10) / 10)}</td><td>${r[2]}</td></tr>`).join("");
 }
-for (const id of ["price", "loan", "holding", "residence"]) {
+for (const id of ["price", "loan", "holding", "residence", "depre", "u-home", "u-inv"]) {
   document.getElementById(id).addEventListener("input", calc);
 }
 calc();
