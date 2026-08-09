@@ -92,6 +92,13 @@
   .blog-box { max-width: 780px; margin: 0 auto; background: linear-gradient(135deg, #f4f9ff, #eaf3ff); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px; text-align: center; }
   .blog-box h3 { font-size: 18px; color: var(--blue-d); margin-bottom: 8px; }
   .blog-box p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+  .pop { margin: 18px auto 20px; max-width: 620px; text-align: left; }
+  .pop-t { text-align: center; font-size: 13px; font-weight: bold; color: var(--blue-d); letter-spacing: .08em; margin-bottom: 10px; }
+  .pop ul { list-style: none; }
+  .pop li { border-top: 1px solid var(--line); }
+  .pop li:last-child { border-bottom: 1px solid var(--line); }
+  .pop a { display: block; padding: 12px 4px 12px 18px; position: relative; font-size: 14px; line-height: 1.7; color: var(--blue-d); text-decoration: none; font-weight: bold; }
+  .pop a::before { content: "・"; position: absolute; left: 0; color: var(--blue-l); }
   .blog-btn { display: inline-block; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; text-decoration: none; font-weight: bold; font-size: 15px; padding: 12px 34px; border-radius: 999px; box-shadow: 0 6px 18px rgba(43,108,176,.28); }
 
   /* ===== 時短の訴求（トップ） ===== */
@@ -319,7 +326,7 @@
         <span class="card-more">詳しく見る →</span>
       </a>
     </div>
-    <div class="formats">レポートはすべて <strong>HTML / PDF / Excel</strong> でダウンロードできます（出典：国土交通省 不動産情報ライブラリ等の公的データ）。<br>
+    <div class="formats">レポートはすべて <strong>PDF / Excel</strong> でダウンロードできます（出典：国土交通省 不動産情報ライブラリ等の公的データ）。<br>
     不要な項目はエクセルで編集すれば、お客様ごとにアレンジ可能♪</div>
   </div>
 </section>
@@ -330,6 +337,14 @@
     <div class="blog-box">
       <h3>不動産に関する有益情報</h3>
       <p>費用・税金・手続き・物件調査について、宅地建物取引士が解説した記事を公開しています。ツールが出す数字の根拠も、こちらで確認いただけます。</p>
+      <div class="pop">
+        <div class="pop-t">〜 人気記事 〜</div>
+        <ul>
+          <li><a href="blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</a></li>
+          <li><a href="blog/bukken-kakaku-shohiyo-zukai.html">物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</a></li>
+          <li><a href="blog/chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</a></li>
+        </ul>
+      </div>
       <a class="blog-btn" href="blog/index.html">記事一覧を見る →</a>
     </div>
   </div>
@@ -360,7 +375,7 @@
       <strong>1案件の準備を、まとめて数分に。</strong></div>
       <ul>
         <li>6種類の調査レポートが使い放題</li>
-        <li>HTML / PDF / Excel 出力対応</li>
+        <li>PDF / Excel 出力対応</li>
         <li>決済はクレジットカード</li>
         <li>解約はいつでも（アプリの「ご契約・解約」から）</li>
       </ul>
