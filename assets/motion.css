@@ -1,0 +1,117 @@
+/* Sonaure — マイクロインタラクション
+ *
+ * 方針:
+ *  - 効かせるのは transform と opacity だけ。レイアウトを起こさないので描画が軽い
+ *  - 初期状態を隠すのは .motion（JSが付ける）配下に限る。JSが動かなければ
+ *    何も起きず、コンテンツはそのまま見える
+ *  - ホバーは (hover: hover) の環境だけ。スマホでタップ後に:hoverが残る現象も避ける
+ *  - prefers-reduced-motion: reduce では動きを止める
+ */
+
+/* ===== スクロールで現れる ===== */
+.motion .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.motion .reveal.is-in {
+  opacity: 1;
+  transform: none;
+  /* 立ち上がりが速く、着地がゆっくり止まる曲線。滑らかに見える */
+  transition: opacity .55s cubic-bezier(.22, .61, .36, 1),
+              transform .55s cubic-bezier(.22, .61, .36, 1);
+}
+
+/* ===== ホバー（ポインタがある環境だけ）===== */
+@media (hover: hover) and (pointer: fine) {
+  .motion .card,
+  .motion .aud-card,
+  .motion .ts-card,
+  .motion .tool-box,
+  .motion .cta-box,
+  .motion .soudan,
+  .motion .blog-box,
+  .motion .price-card,
+  .motion .biz-card {
+    transition: transform .22s cubic-bezier(.22, .61, .36, 1),
+                box-shadow .22s cubic-bezier(.22, .61, .36, 1);
+  }
+  .motion .card:hover,
+  .motion .aud-card:hover,
+  .motion .ts-card:hover,
+  .motion .tool-box:hover,
+  .motion .cta-box:hover,
+  .motion .soudan:hover,
+  .motion .blog-box:hover,
+  .motion .price-card:hover,
+  .motion .biz-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(26, 77, 143, .14);
+  }
+
+  /* ボタンとリンクは面積が小さいので、持ち上がりも控えめにする */
+  .motion .cta,
+  .motion .tool-btn,
+  .motion .cta-btn,
+  .motion .blog-btn,
+  .motion .soudan .btn,
+  .motion .backlink a,
+  .motion .cancel-btn,
+  .motion .go {
+    transition: transform .18s cubic-bezier(.22, .61, .36, 1),
+                box-shadow .18s cubic-bezier(.22, .61, .36, 1);
+  }
+  .motion .cta:hover,
+  .motion .tool-btn:hover,
+  .motion .cta-btn:hover,
+  .motion .blog-btn:hover,
+  .motion .soudan .btn:hover,
+  .motion .backlink a:hover,
+  .motion .cancel-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(26, 77, 143, .22);
+  }
+
+  /* カードの中の「詳しく見る →」は、カードごと持ち上がるので矢印だけ動かす */
+  .motion .card:hover .go,
+  .motion .card:hover .card-more {
+    transform: translateX(2px);
+  }
+  .motion .card-more {
+    display: inline-block;
+    transition: transform .18s cubic-bezier(.22, .61, .36, 1);
+  }
+}
+
+/* ===== 動きを減らす設定のとき ===== */
+@media (prefers-reduced-motion: reduce) {
+  .motion .reveal,
+  .motion .reveal.is-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .motion *,
+  .motion *::before,
+  .motion *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+  .motion .card:hover,
+  .motion .aud-card:hover,
+  .motion .ts-card:hover,
+  .motion .tool-box:hover,
+  .motion .cta-box:hover,
+  .motion .soudan:hover,
+  .motion .blog-box:hover,
+  .motion .price-card:hover,
+  .motion .biz-card:hover,
+  .motion .cta:hover,
+  .motion .tool-btn:hover,
+  .motion .cta-btn:hover,
+  .motion .blog-btn:hover,
+  .motion .soudan .btn:hover,
+  .motion .backlink a:hover,
+  .motion .cancel-btn:hover {
+    transform: none;
+  }
+}
