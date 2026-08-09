@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した【2026年】</title>
+<meta name="description" content="家賃10万円を35年払うと4,200万円。同じ10万円で買うと3,266万円の物件に手が届き、完済後に半値で売れた前提なら実質の月額は約68,995円。購入価格の1割弱で売れれば家賃と並ぶ計算です。家賃別の比較表と、前提を変えたときの感度を宅建士が解説します。">
+<link rel="canonical" href="https://sonae-are.com/blog/chintai-vs-kounyu.html">
+<meta property="og:title" content="賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した">
+<meta property="og:description" content="家賃10万円を35年で4,200万円。同じ支払いで買うと実質いくらになるか、売却まで含めて計算しました。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sonae-are.com/blog/chintai-vs-kounyu.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した",
+      "description": "家賃と同じ支払いで買った場合、完済後に売却するまで含めて実質いくらで住んだことになるのかを、家賃別に計算しました。前提を変えたときの感度もあわせて解説します。",
+      "datePublished": "2026-08-08",
+      "dateModified": "2026-08-08",
+      "author": {
+        "@type": "Person",
+        "name": "おうち",
+        "jobTitle": "宅地建物取引士",
+        "url": "https://sonae-are.com/operator.html",
+        "knowsAbout": ["不動産売買仲介", "購入諸費用", "売却収支", "住宅ローン"]
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sonaure",
+        "url": "https://sonae-are.com/"
+      },
+      "mainEntityOfPage": "https://sonae-are.com/blog/chintai-vs-kounyu.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://sonae-are.com/"},
+        {"@type": "ListItem", "position": 2, "name": "不動産に関する有益情報", "item": "https://sonae-are.com/blog/"},
+        {"@type": "ListItem", "position": 3, "name": "賃貸と購入どっちが得？"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "賃貸と購入、結局どちらが得ですか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "住む年数と、売るときいくらで売れるかで決まります。家賃と同じ額を35年払う前提なら、購入価格の1割弱で売れるだけで購入側の実質負担が賃貸と並びます。半値で売れる前提なら、家賃10万円に対して実質の月額は約68,995円まで下がります。一方、短い年数で手放す場合はローン残債が減っていないため、購入が不利になりやすくなります。"}
+        },
+        {
+          "@type": "Question",
+          "name": "この試算に固定資産税や修繕積立金は入っていますか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "入っていません。購入すると固定資産税・都市計画税、マンションなら管理費・修繕積立金、戸建てなら修繕費が別途かかります。これらを足すと購入側の実質負担は本記事の金額より増えます。固定資産税の税額は物件が所在する市区町村、管理費・修繕積立金の額は物件ごとの重要事項説明書でご確認ください。"}
+        },
+        {
+          "@type": "Question",
+          "name": "家賃と同じ支払いなら、いくらの物件が買えますか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "金利1.5%・35年・元利均等・ボーナス払いなしで計算すると、家賃8万円なら約2,613万円、家賃10万円なら約3,266万円が借入額の目安です。ただし物件価格のほかに購入諸費用がかかり、3,266万円の物件なら約267万円が別途必要になります。実際の借入可能額は年収・勤続年数・他の借入などの審査条件で変わります。"}
+        },
+        {
+          "@type": "Question",
+          "name": "売却価格を何パーセントと見ておけばいいですか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "将来の価格は誰にも分からないため、幅を持って複数の前提で試算するのが現実的です。目安として、35年後に購入価格の1割弱でも売れれば実質負担は賃貸と並び、半値で売れれば家賃を大きく下回ります。逆に、まったく値が付かない前提でも実質の月額は家賃をやや上回る程度にとどまります。立地・築年数・市況で大きく変わるため、地域の相場感に合わせて数字を動かして確認してください。"}
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Yu Gothic","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);line-height:1.9;background:linear-gradient(180deg,#fff,#f3f8ff);}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px;}
+  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .logo{font-size:18px;font-weight:bold;background:linear-gradient(135deg,var(--blue-d),var(--blue-l));-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none;}
+  .bar a.nav{font-size:13px;color:var(--blue);text-decoration:none;font-weight:bold;}
+  .crumb{font-size:12px;color:var(--muted);margin:16px 0 0;}
+  .crumb a{color:var(--blue);text-decoration:none;}
+  h1{font-size:clamp(21px,4.4vw,27px);color:var(--blue-d);margin:14px 0 8px;line-height:1.5;}
+  .meta{font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:6px;}
+  .meta a{color:var(--blue);}
+  h2{font-size:19px;color:var(--blue-d);margin:38px 0 12px;display:flex;align-items:center;gap:8px;line-height:1.5;}
+  h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));flex-shrink:0;}
+  h3{font-size:16px;color:var(--blue-d);margin:24px 0 8px;}
+  p{margin-bottom:14px;font-size:14.5px;}
+  .lead{background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:18px 0 6px;font-size:14.5px;}
+  .lead strong{color:var(--blue-d);font-size:16px;}
+  /* 表は幅が出るので、はみ出す場合だけ表の中で横スクロールさせる（本文は動かさない） */
+  .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0 16px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:8px 0 16px;}
+  .tw table{margin:0;min-width:520px;}
+  th,td{border:1px solid #cbd5e0;padding:8px 10px;text-align:left;}
+  th{background:#eef5ff;color:var(--blue-d);white-space:nowrap;}
+  td.n{text-align:right;white-space:nowrap;}
+  td.hi{text-align:right;white-space:nowrap;font-weight:bold;color:var(--blue-d);background:#f4f9ff;}
+  ul.plain{padding-left:20px;font-size:14.5px;margin-bottom:14px;}
+  ul.plain li{margin-bottom:7px;}
+  .callout{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue-l);border-radius:12px;padding:14px 18px;margin:16px 0;font-size:14px;}
+  .callout strong{color:var(--blue-d);}
+  .tool-box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;margin:30px 0;box-shadow:0 8px 28px rgba(26,77,143,.10);position:relative;overflow:hidden;text-align:center;}
+  .tool-box::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue-d),var(--blue-l));}
+  .tool-box .t{font-weight:bold;color:var(--blue-d);font-size:16px;margin-bottom:6px;}
+  .tool-box p{font-size:13.5px;color:var(--muted);margin-bottom:12px;}
+  .tool-btn{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:15px;padding:12px 38px;border-radius:999px;box-shadow:0 6px 18px rgba(43,108,176,.3);}
+  .cta-box{background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:14px;padding:22px;margin:30px 0;text-align:center;}
+  .cta-box .t{font-weight:bold;color:var(--blue-d);font-size:15px;margin-bottom:8px;}
+  .cta-box p{font-size:13.5px;color:var(--muted);}
+  .cta-btn{display:inline-block;background:var(--blue-d);color:#fff;text-decoration:none;font-weight:bold;font-size:14px;padding:11px 30px;border-radius:999px;margin-top:8px;}
+  details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+  summary{font-weight:bold;color:var(--blue-d);cursor:pointer;font-size:14.5px;}
+  details p{margin:10px 0 0;font-size:14px;}
+  .related{font-size:14px;margin-top:8px;}
+  .related a{color:var(--blue);font-weight:bold;}
+  .author{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:30px 0 0;}
+  .author .ava{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--blue-d),var(--blue-l));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:18px;flex-shrink:0;}
+  .author .nm{font-weight:bold;color:var(--blue-d);font-size:14.5px;}
+  .author .rl{font-size:12.5px;color:var(--muted);margin-top:2px;}
+  .author .rl a{color:var(--blue);}
+  .note{font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:30px;line-height:1.8;}
+  .backlink{text-align:center;margin:26px 0 0;}
+  .backlink a{display:inline-block;border:1px solid var(--blue);color:var(--blue);background:#fff;text-decoration:none;font-size:14px;font-weight:bold;padding:11px 32px;border-radius:999px;}
+  footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:36px;}
+  footer a{color:#cfe2f8;}
+</style>
+</head>
+<body>
+<header><div class="wrap bar"><a class="logo" href="../index.html">Sonaure</a><a class="nav" href="../tools/index.html">無料計算ツール一覧</a></div></header>
+
+<div class="wrap">
+  <p class="crumb"><a href="../index.html">ホーム</a> › <a href="index.html">不動産に関する有益情報</a> › 賃貸と購入どっちが得？</p>
+  <h1>賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</h1>
+  <p class="meta">最終更新：2026年8月8日｜監修：<a href="../operator.html">おうち（宅地建物取引士）</a></p>
+
+  <div class="lead">
+    <strong>結論：住む年数と、売るときの値段で決まります。</strong><br>
+    家賃10万円を35年払うと<strong>4,200万円</strong>で、手元には何も残りません。同じ10万円の支払いで買うと約3,266万円の物件に手が届き、完済後に<strong>購入価格の1割弱でも売れれば実質負担は賃貸と並びます</strong>。半値で売れる前提なら、実質の月額は<strong>約68,995円</strong>まで下がります。
+  </div>
+
+  <p>「賃貸と購入はどちらが得か」は結論の出ない議論としてよく扱われますが、条件を固定すれば計算はできます。この記事では<strong>「今の家賃と同じ額を払う」という条件をそろえて</strong>、購入した場合に最終的にいくら負担したことになるのかを、売却まで含めて数字にしました。</p>
+
+  <h2>家賃を払い続けると、35年でいくら払うか</h2>
+  <p>まず賃貸側です。家賃は払い終わっても資産にならないので、金額はそのまま出ていく総額になります。</p>
+  <table>
+    <tr><th>今の家賃</th><th>10年</th><th>20年</th><th>35年</th></tr>
+    <tr><td>7万円</td><td class="n">840万円</td><td class="n">1,680万円</td><td class="n">2,940万円</td></tr>
+    <tr><td>8万円</td><td class="n">960万円</td><td class="n">1,920万円</td><td class="n">3,360万円</td></tr>
+    <tr><td>10万円</td><td class="n">1,200万円</td><td class="n">2,400万円</td><td class="n">4,200万円</td></tr>
+    <tr><td>12万円</td><td class="n">1,440万円</td><td class="n">2,880万円</td><td class="n">5,040万円</td></tr>
+  </table>
+  <p>更新料や引っ越し費用は含んでいないので、実際にはもう少し増えます。</p>
+
+  <h2>同じ支払いなら、いくらの物件が買えるか</h2>
+  <p>次に購入側です。家賃と同じ額を住宅ローンの返済に充てた場合、いくら借りられるかを逆算します。金利1.5%・35年・元利均等・ボーナス払いなしで計算した目安です。</p>
+  <div class="tw">
+  <table>
+    <tr><th>今の家賃</th><th>借入額の目安</th><th>購入諸費用の目安</th><th>用意する総額</th></tr>
+    <tr><td>7万円</td><td class="n">約2,286万円</td><td class="n">約200万円</td><td class="n">約2,486万円</td></tr>
+    <tr><td>8万円</td><td class="n">約2,613万円</td><td class="n">約223万円</td><td class="n">約2,836万円</td></tr>
+    <tr><td>10万円</td><td class="n">約3,266万円</td><td class="n">約267万円</td><td class="n">約3,533万円</td></tr>
+    <tr><td>12万円</td><td class="n">約3,919万円</td><td class="n">約312万円</td><td class="n">約4,231万円</td></tr>
+  </table>
+  </div>
+  <p class="callout"><strong>注意：</strong>物件価格のほかに<strong>購入諸費用</strong>がかかります。仲介手数料・登記費用・住宅ローンの事務手数料・火災保険料などで、上の表では物件価格の8%前後（7.9〜8.8%）になっています。この分は原則として現金で先に動くお金です。くわしくは<a href="chuko-jutaku-shohiyo.html">中古住宅の諸費用は何パーセント？</a>で解説しています。</p>
+
+  <div class="tool-box">
+    <div class="t">検討中の物件価格で、諸費用を確認する</div>
+    <p>物件価格を入れるだけで、仲介手数料・登記費用・ローン費用などの内訳と合計をその場で計算できます（登録不要）。</p>
+    <a class="tool-btn" href="../tools/kounyu-shohiyo.html">無料の諸費用シミュレーションを使う →</a>
+  </div>
+
+  <h2>「実質いくらで住んだことになるか」の考え方</h2>
+  <p>賃貸と購入の比較が噛み合わなくなるのは、購入側に<strong>売れば戻ってくるお金</strong>があるからです。払った総額だけを見ると購入のほうが大きく見えますが、最後に売って現金化した分を差し引かないと、賃貸と同じ土俵になりません。</p>
+  <p>そこで次のように整理します。</p>
+  <ul class="plain">
+    <li><strong>総支払額</strong> ＝ ローン返済の累計 ＋ 頭金 ＋ 購入諸費用</li>
+    <li><strong>売却時の手残り</strong> ＝ 売却価格 − 売却諸費用 − ローン残債</li>
+    <li><strong>実質の負担額</strong> ＝ 総支払額 − 売却時の手残り</li>
+    <li><strong>実質の月額</strong> ＝ 実質の負担額 ÷ 住んだ月数</li>
+  </ul>
+  <p>この「実質の月額」なら、今の家賃とそのまま並べて比べられます。以下は<strong>35年で完済し、そのまま売却した</strong>場合の計算です。</p>
+
+  <h2>完済後に半値で売れた場合の実質負担</h2>
+  <p>売却価格を購入価格の50%と置いた場合です。売却時には仲介手数料・印紙税・抵当権抹消費用がかかるものとして差し引いています。</p>
+  <div class="tw">
+  <table>
+    <tr><th>今の家賃</th><th>総支払額<br>（35年）</th><th>想定売却価格<br>（購入価格の50%）</th><th>売却時の<br>手残り</th><th>実質の<br>負担額</th><th>実質の月額</th></tr>
+    <tr><td>7万円</td><td class="n">約3,140万円</td><td class="n">約1,143万円</td><td class="n">約1,096万円</td><td class="n">約2,044万円</td><td class="hi">約48,677円</td></tr>
+    <tr><td>8万円</td><td class="n">約3,583万円</td><td class="n">約1,306万円</td><td class="n">約1,254万円</td><td class="n">約2,329万円</td><td class="hi">約55,450円</td></tr>
+    <tr><td>10万円</td><td class="n">約4,467万円</td><td class="n">約1,633万円</td><td class="n">約1,570万円</td><td class="n">約2,898万円</td><td class="hi">約68,995円</td></tr>
+    <tr><td>12万円</td><td class="n">約5,352万円</td><td class="n">約1,960万円</td><td class="n">約1,885万円</td><td class="n">約3,467万円</td><td class="hi">約82,541円</td></tr>
+  </table>
+  </div>
+  <p>家賃10万円の行を読むと、35年で払うのは総額4,467万円ですが、売って1,570万円が戻るので実質は2,898万円。月あたりに直すと<strong>約68,995円</strong>で、今の家賃10万円を約3万円下回ります。</p>
+
+  <h2>売却価格をいくらと見るかで、結論は動く</h2>
+  <p>上の表は「半値で売れたら」という前提を置いたものです。将来の価格は誰にも分からないので、前提を動かすとどうなるかを見ておきます。家賃10万円の場合です。</p>
+  <div class="tw">
+  <table>
+    <tr><th>35年後の売却価格</th><th>金額</th><th>売却時の手残り</th><th>実質の月額</th><th>今の家賃との差</th></tr>
+    <tr><td>値が付かない（0%）</td><td class="n">0円</td><td class="n">ほぼ0円</td><td class="n">約106,414円</td><td class="n">＋約6,400円</td></tr>
+    <tr><td>購入価格の30%</td><td class="n">約980万円</td><td class="n">約938万円</td><td class="n">約84,023円</td><td class="n">−約16,000円</td></tr>
+    <tr><td>購入価格の50%</td><td class="n">約1,633万円</td><td class="n">約1,570万円</td><td class="n">約68,995円</td><td class="n">−約31,000円</td></tr>
+    <tr><td>購入価格の70%</td><td class="n">約2,286万円</td><td class="n">約2,201万円</td><td class="n">約53,956円</td><td class="n">−約46,000円</td></tr>
+  </table>
+  </div>
+  <p class="callout"><strong>損益分岐：</strong>実質の月額が今の家賃と並ぶのは、<strong>売却価格が購入価格の8〜9%のとき</strong>です（家賃10万円なら約8.7%＝約284万円）。つまり、35年後に<strong>購入価格の1割弱でも売れれば、賃貸と同じ負担で済んだ</strong>ことになります。まったく値が付かない前提でも、家賃との差は月6,400円ほどにとどまります。</p>
+  <p>建物の価値は経年で下がりますが、<strong>土地には価値が残ります</strong>。土地付きの戸建てや、立地の良いマンションであれば、1割弱という水準は現実的に上回ることが多くなります。逆に、借地権や再建築不可、需要の薄い立地では慎重に見る必要があります。</p>
+
+  <h2>金利が変わるとどうなるか</h2>
+  <p>金利が上がると、同じ支払いで借りられる額が減ります。家賃10万円・35年で計算した場合です。</p>
+  <div class="tw">
+  <table>
+    <tr><th>金利（年）</th><th>借入額の目安</th><th>実質の月額（売却50%の前提）</th></tr>
+    <tr><td>0.5%</td><td class="n">約3,852万円</td><td class="n">約63,202円</td></tr>
+    <tr><td>1.0%</td><td class="n">約3,543万円</td><td class="n">約66,263円</td></tr>
+    <tr><td>1.5%</td><td class="n">約3,266万円</td><td class="n">約68,995円</td></tr>
+    <tr><td>2.0%</td><td class="n">約3,019万円</td><td class="n">約71,439円</td></tr>
+    <tr><td>3.0%</td><td class="n">約2,598万円</td><td class="n">約75,592円</td></tr>
+  </table>
+  </div>
+  <p>金利が1.5%から3.0%に上がると、買える物件は約668万円小さくなります。ただし実質の月額の増え方は緩やかです。金利が上がっても買える物件が小さくなるだけで、支払いの重さ自体は月々の額で固定されているためです。変動金利の場合は返済額そのものが見直しで増えることがあるため、この表の前提とは別に、金利上昇時の返済額も確認しておいてください。</p>
+
+  <h2>この計算に入っていないもの</h2>
+  <p>数字を単純にするために外している要素があります。<strong>どちらに有利にも働く</strong>ので、両方を把握しておいてください。</p>
+  <h3>購入側に足りていないもの（負担が増える方向）</h3>
+  <ul class="plain">
+    <li><strong>固定資産税・都市計画税</strong> — 保有している間、毎年かかります。税額は物件の評価額と所在する市区町村で決まります。</li>
+    <li><strong>管理費・修繕積立金（マンション）／修繕費（戸建て）</strong> — 毎月または随時かかります。マンションは物件ごとに額が決まっているので、重要事項説明書で確認できます。</li>
+    <li><strong>リフォーム・設備の更新</strong> — 35年住めば給湯器・水回り・外壁などの更新が発生します。</li>
+  </ul>
+  <h3>賃貸側に足りていないもの（負担が増える方向）</h3>
+  <ul class="plain">
+    <li><strong>更新料</strong> — 契約更新のたびにかかる地域・物件があります。</li>
+    <li><strong>引っ越しのたびの初期費用</strong> — 敷金・礼金・仲介手数料などが、住み替えるたびにかかります。くわしくは<a href="chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？</a>をご覧ください。</li>
+    <li><strong>高齢になってからの契約</strong> — 収入や保証人の条件で、借りられる物件が限られることがあります。</li>
+  </ul>
+  <h3>購入側に有利に働くもの（本記事では見込んでいない）</h3>
+  <ul class="plain">
+    <li><strong>住宅ローン控除</strong> — 要件を満たせば所得税・住民税が軽減されます。適用の可否と控除額は年により制度が変わるため、入居年の要件をご確認ください。</li>
+    <li><strong>団体信用生命保険</strong> — 契約者に万一のことがあった場合、以後の返済が不要になります。賃貸にはこの機能がありません。</li>
+  </ul>
+  <p class="callout"><strong>読み方：</strong>購入側のランニングコストを足すと実質の月額は上がりますが、賃貸側にも更新料や住み替え費用があり、購入側には住宅ローン控除と団信があります。<strong>本記事の数字は「同じ支払額で比べたときの骨格」</strong>として使い、そこに各自の条件を足し引きしてください。</p>
+
+  <h2>賃貸が向いている場合／購入が向いている場合</h2>
+  <p>ここまでの計算から言えるのは、<strong>年数が短いほど購入は不利になる</strong>ということです。ローンの初期は返済のほとんどが利息に充てられるため残債が減らず、売っても手残りが出にくいためです。加えて購入諸費用は最初に一度かかります。</p>
+  <div class="tw">
+  <table>
+    <tr><th>状況</th><th>向いているほう</th><th>理由</th></tr>
+    <tr><td>数年以内に転勤・転職の可能性がある</td><td>賃貸</td><td>短期の売却は残債が減っておらず、購入諸費用も回収できない</td></tr>
+    <tr><td>家族構成が変わる見込みが立っていない</td><td>賃貸</td><td>広さの要件が変わると住み替えになり、売買を繰り返すと費用がかさむ</td></tr>
+    <tr><td>同じ地域に長く住む見込みがある</td><td>購入</td><td>年数が伸びるほど残債が減り、売却時の手残りが増える</td></tr>
+    <tr><td>土地に値の付く立地を選べる</td><td>購入</td><td>建物の価値が下がっても土地が残り、売却時の手残りが確保しやすい</td></tr>
+  </table>
+  </div>
+  <p>「どちらが得か」を一般論で決めるより、<strong>自分の家賃を入れて数字にしてみる</strong>ほうが判断は早くなります。上の表の数字は、家賃・金利・返済期間・頭金・売却価格の前提を変えればすべて動きます。</p>
+
+  <div class="cta-box">
+    <div class="t">不動産会社にお勤めの方へ</div>
+    <p>お客様の今の家賃を入れるだけで、買える物件価格・総支払額・完済後に売却した場合の実質負担までを1枚のレポート（PDF/Excel）にできます。売却価格の前提や金利もその場で変えられるので、「半値でもこうなります」を面談中に見せられます。</p>
+    <a class="cta-btn" href="../detail-rentbuy.html">Sonaureの家賃→購入シミュレーションを見る →</a>
+  </div>
+
+  <h2>よくある質問</h2>
+  <details open><summary>賃貸と購入、結局どちらが得ですか？</summary><p>住む年数と、売るときいくらで売れるかで決まります。家賃と同じ額を35年払う前提なら、購入価格の1割弱で売れるだけで購入側の実質負担が賃貸と並びます。半値で売れる前提なら、家賃10万円に対して実質の月額は約68,995円まで下がります。一方、短い年数で手放す場合はローン残債が減っていないため、購入が不利になりやすくなります。</p></details>
+  <details><summary>この試算に固定資産税や修繕積立金は入っていますか？</summary><p>入っていません。購入すると固定資産税・都市計画税、マンションなら管理費・修繕積立金、戸建てなら修繕費が別途かかります。これらを足すと購入側の実質負担は本記事の金額より増えます。固定資産税の税額は物件が所在する市区町村、管理費・修繕積立金の額は物件ごとの重要事項説明書でご確認ください。</p></details>
+  <details><summary>家賃と同じ支払いなら、いくらの物件が買えますか？</summary><p>金利1.5%・35年・元利均等・ボーナス払いなしで計算すると、家賃8万円なら約2,613万円、家賃10万円なら約3,266万円が借入額の目安です。ただし物件価格のほかに購入諸費用がかかり、3,266万円の物件なら約267万円が別途必要になります。実際の借入可能額は年収・勤続年数・他の借入などの審査条件で変わります。</p></details>
+  <details><summary>売却価格を何パーセントと見ておけばいいですか？</summary><p>将来の価格は誰にも分からないため、幅を持って複数の前提で試算するのが現実的です。目安として、35年後に購入価格の1割弱でも売れれば実質負担は賃貸と並び、半値で売れれば家賃を大きく下回ります。逆に、まったく値が付かない前提でも実質の月額は家賃をやや上回る程度にとどまります。立地・築年数・市況で大きく変わるため、地域の相場感に合わせて数字を動かして確認してください。</p></details>
+
+  <p class="related">関連ツール：<a href="../tools/kounyu-shohiyo.html">購入諸費用シミュレーション</a>｜<a href="../tools/chintai-shokihiyo.html">賃貸初期費用シミュレーション</a>｜<a href="../tools/baikyaku-tedori.html">売却手取りシミュレーション</a></p>
+
+  <div class="author">
+    <div class="ava">お</div>
+    <div>
+      <div class="nm">監修：おうち</div>
+      <div class="rl">宅地建物取引士。物件調査・購入諸費用・売却収支の試算を専門領域とし、Sonaure を開発・監修。<a href="../operator.html">運営者情報を見る</a></div>
+    </div>
+  </div>
+
+  <p class="note">※ 本記事の試算は、元利均等返済・変動金利・ボーナス払いなし・頭金0円を前提とした概算です。売却価格は「購入価格の◯%で売れた場合」という前提を置いたものであり、将来価格の予測ではありません。実際の借入可能額は年収・勤続年数・他の借入等の審査条件により変わります。固定資産税・都市計画税・管理費・修繕積立金・リフォーム費用、および賃貸側の更新料・住み替え費用は含んでいません。住宅ローン控除は制度改正があるため、適用の可否と控除額は入居年の要件でご確認ください。個別具体の税務・法務判断は税理士・司法書士等の専門家にご相談ください。<br>
+  参考：宅地建物取引業法（仲介手数料の上限）／国税庁「印紙税額の一覧表」「登録免許税の税額表」「No.3302 マイホームを売ったときの特例」。本記事の金額は、Sonaure の家賃→購入シミュレーションおよび購入諸費用計算と同じ計算式によります。</p>
+
+  <p class="backlink"><a href="index.html">← 記事一覧に戻る</a></p>
+</div>
+
+<footer>
+  <a href="../index.html">Sonaure</a> — 不動産営業のための調査レポート自動作成ツール<br>
+  <a href="../operator.html">運営者情報</a>｜<a href="../terms.html">利用規約</a>｜<a href="../privacy.html">プライバシーポリシー</a>｜© 2026 Sonaure
+</footer>
+</body>
+</html>
