@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sonaure（ソナウレ）｜備えあれば憂いなし、お客様に＋αの感動を</title>
+<title>Sonaure（ソナウレ）｜備えあれば憂いなし、＋αの感動を</title>
 <meta name="description" content="不動産営業のための調査レポート自動作成ツール。住所や価格を入れるだけで、周辺環境調査書・購入諸費用・売却収支・賃貸初期費用・投資判断調査項目を30秒でレポートに。1案件の準備が30分〜1時間→数分に。月額990円（税込）・7日間無料。">
 <link rel="canonical" href="https://sonae-are.com/">
 <meta property="og:title" content="Sonaure（ソナウレ）｜不動産営業のための調査レポート自動作成ツール">
@@ -70,6 +70,7 @@
   .card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(26,77,143,.16); }
   .card-more { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: bold; color: var(--blue); }
   .card .num { display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-weight: bold; margin-bottom: 10px; }
+  .card .need-login { display: block; margin-top: 8px; font-size: 11.5px; font-weight: bold; color: var(--muted); }
   .new-badge { display: inline-block; background: linear-gradient(135deg, #e53e3e, #f56565); color: #fff; font-size: 10.5px; font-weight: bold; border-radius: 999px; padding: 1px 10px; margin-left: 8px; vertical-align: middle; letter-spacing: .08em; }
   .card h3 { font-size: 16px; color: var(--blue-d); margin-bottom: 8px; }
   .card p { font-size: 13.5px; color: var(--muted); }
@@ -80,12 +81,12 @@
 
   /* ===== 読者別のご案内（投資家／実需層）===== */
   .aud { background: #fff; }
-  .aud-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; max-width: 880px; margin: 0 auto; }
-  .aud-card { background: linear-gradient(135deg, #f4f9ff, #eaf3ff); border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px; }
-  .aud-card h3 { font-size: 17px; color: var(--blue-d); margin-bottom: 10px; line-height: 1.6; }
-  .aud-card p { font-size: 14px; color: var(--ink); line-height: 1.9; }
-  .aud-card .use { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); }
-  .aud-card .use a { color: var(--blue); font-weight: bold; text-decoration: none; }
+  /* 読者別のご案内。囲みカードだと本文が窮屈になるので、「不動産営業のみなさまへ」と同じラベル＋本文の形にそろえる */
+  .aud-block { max-width: 760px; margin: 0 auto 40px; text-align: center; }
+  .aud-block:last-child { margin-bottom: 0; }
+  .aud-block p { font-size: 14.5px; color: var(--ink); line-height: 1.95; }
+  .aud-block .use { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); }
+  .aud-block .use a { color: var(--blue); font-weight: bold; text-decoration: none; }
 
   /* ===== 記事への導線 ===== */
   .blog-lead { background: #fff; }
@@ -221,12 +222,27 @@
 <div class="hero" id="top">
   <div class="wrap">
     <h1>Sonaure</h1>
-    <div class="tagline">〜備えあれば憂いなし、お客様に＋αの感動を〜</div>
-    <p class="sub">住所や価格を入れるだけ。周辺環境・購入諸費用・売却収支・賃貸初期費用・投資判断調査項目を30秒でレポートに。</p>
+    <div class="tagline">〜備えあれば憂いなし、＋αの感動を〜</div>
+    <p class="sub">住所や価格を入れるだけ。周辺環境・購入諸費用・売却収支・賃貸初期費用・投資判断調査項目を30秒でレポートに。無料登録すればご希望の物件の周辺に何があるのかなどを調べることもできます♪</p>
     <a class="cta" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
-    <div class="cta-note">クレジット決済｜いつでも解約できます</div>
   </div>
 </div>
+
+<!-- ===== 読者別のご案内 ===== -->
+<section class="aud">
+  <div class="wrap">
+    <div class="aud-block">
+      <div class="aud-label">不動産投資家のみなさまへ</div>
+      <p>投資判断に必要な周辺環境調査書や投資判断調査項目をご活用いただき、よりよい物件のご購入をサポートします。用途地域・建ぺい率／容積率・災害リスクといった、価格に効く条件を住所から一気に確認できます。</p>
+      <span class="use"><a href="detail-env.html">周辺環境調査書</a>／<a href="detail-juusetsu.html">投資判断調査項目</a>／<a href="detail-costs.html">購入諸費用計算</a></span>
+    </div>
+    <div class="aud-block">
+      <div class="aud-label">実需層（マイホームの購入・売却・賃貸）のみなさまへ</div>
+      <p>初期費用の計算や家賃→購入シミュレーションを使えば、賃貸と購入をかんたんに比べられます。住みたいエリアの周辺環境もすぐに調べられるので、楽しみながらご検討いただけます。</p>
+      <span class="use"><a href="detail-rentbuy.html">家賃→購入シミュレーション</a>／<a href="detail-rental.html">賃貸初期費用計算</a>／<a href="detail-sale.html">売却収支計算</a></span>
+    </div>
+  </div>
+</section>
 
 <!-- ===== 時短の訴求（トップ） ===== -->
 <section class="timesave" id="about">
@@ -258,64 +274,47 @@
   </div>
 </section>
 
-<!-- ===== 読者別のご案内 ===== -->
-<section class="aud">
-  <div class="wrap">
-    <div class="aud-grid">
-      <div class="aud-card">
-        <h3>不動産投資家のみなさまへ</h3>
-        <p>投資判断に必要な周辺環境調査書や投資判断調査項目をご活用いただき、よりよい物件のご購入をサポートします。用途地域・建ぺい率／容積率・災害リスクといった、価格に効く条件を住所から一気に確認できます。</p>
-        <span class="use"><a href="detail-env.html">周辺環境調査書</a>／<a href="detail-juusetsu.html">投資判断調査項目</a>／<a href="detail-costs.html">購入諸費用計算</a></span>
-      </div>
-      <div class="aud-card">
-        <h3>実需層（マイホームの購入・売却・賃貸）のみなさまへ</h3>
-        <p>初期費用の計算や家賃→購入シミュレーションを使えば、賃貸と購入をかんたんに比べられます。住みたいエリアの周辺環境もすぐに調べられるので、楽しみながらご検討いただけます。</p>
-        <span class="use"><a href="detail-rentbuy.html">家賃→購入シミュレーション</a>／<a href="detail-rental.html">賃貸初期費用計算</a>／<a href="detail-sale.html">売却収支計算</a></span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== サービスメニュー ===== -->
 <section class="services" id="services">
   <div class="wrap">
     <h2>サービスメニュー</h2>
     <p class="lead">住所や価格を入れるだけで、6種類の調査レポートを自動作成。<br>
-    ①周辺環境調査書だけでなく、②家賃→購入シミュレーション・③賃貸初期費用計算・④購入諸費用計算・⑤売却収支計算・⑥投資判断調査項目も時間短縮のために用意しました。</p>
+    ①家賃→購入シミュレーション・②購入諸費用計算・③売却収支計算・④賃貸初期費用計算は<strong>登録なし</strong>で、⑤周辺環境調査書・⑥投資判断調査項目は<strong>無料の会員登録</strong>でお使いいただけます。</p>
     <div class="cards">
-      <a class="card" href="detail-env.html">
-        <div class="time-badge">⏱ 時短の目安 <b>約20〜30分</b></div>
-        <div class="num">1</div>
-        <h3>周辺環境調査書<span class="new-badge">機能追加</span></h3>
-        <p>最寄り駅・学校・保育園・スーパー・銀行・病院・コンビニ・公園・大型商業施設・コインパーキングを徒歩分数つきで1枚に。調べる施設は項目ごとに選べます。位置図（地図）も加わりました。</p>
-        <span class="card-more">詳しく見る →</span>
-      </a>
       <a class="card" href="detail-rentbuy.html">
         <div class="time-badge">⏱ 時短の目安 <b>約10〜20分</b></div>
-        <div class="num">2</div>
+        <div class="num">1</div>
         <h3>家賃→購入シミュレーション<span class="new-badge">NEW</span></h3>
         <p>今の家賃と同じ支払いで「いくらの物件が買えるか」を逆算。賃貸のお客様への購入のご提案資料に。</p>
         <span class="card-more">詳しく見る →</span>
       </a>
-      <a class="card" href="detail-rental.html">
-        <div class="time-badge">⏱ 時短の目安 <b>約8〜12分</b></div>
-        <div class="num">3</div>
-        <h3>賃貸初期費用計算<span class="new-badge">NEW</span></h3>
-        <p>家賃を入れるだけで、敷金・礼金・保証料・日割り家賃まで契約時の初期費用を概算書に。「初期費用いくら？」にその場で即答。</p>
-        <span class="card-more">詳しく見る →</span>
-      </a>
       <a class="card" href="detail-costs.html">
         <div class="time-badge">⏱ 時短の目安 <b>約10〜18分</b></div>
-        <div class="num">4</div>
+        <div class="num">2</div>
         <h3>購入諸費用計算</h3>
         <p>物件価格を入れるだけで、仲介手数料・登記・ローン費用・保険・清算金まで概算書を自動作成。</p>
         <span class="card-more">詳しく見る →</span>
       </a>
       <a class="card" href="detail-sale.html">
         <div class="time-badge">⏱ 時短の目安 <b>約15〜25分</b></div>
-        <div class="num">5</div>
+        <div class="num">3</div>
         <h3>売却収支計算</h3>
         <p>売却価格を入れるだけで、仲介手数料・抵当権抹消・譲渡所得税まで差し引いた「手取り」を概算書に。</p>
+        <span class="card-more">詳しく見る →</span>
+      </a>
+      <a class="card" href="detail-rental.html">
+        <div class="time-badge">⏱ 時短の目安 <b>約8〜12分</b></div>
+        <div class="num">4</div>
+        <h3>賃貸初期費用計算<span class="new-badge">NEW</span></h3>
+        <p>家賃を入れるだけで、敷金・礼金・保証料・日割り家賃まで契約時の初期費用を概算書に。「初期費用いくら？」にその場で即答。</p>
+        <span class="card-more">詳しく見る →</span>
+      </a>
+      <a class="card" href="detail-env.html">
+        <div class="time-badge">⏱ 時短の目安 <b>約20〜30分</b></div>
+        <div class="num">5</div>
+        <h3>周辺環境調査書<span class="new-badge">機能追加</span></h3>
+        <p>最寄り駅・学校・保育園・スーパー・銀行・病院・コンビニ・公園・大型商業施設・コインパーキングを徒歩分数つきで1枚に。調べる施設は項目ごとに選べます。位置図（地図）も加わりました。</p>
+        <span class="need-login">※無料会員登録が必要です</span>
         <span class="card-more">詳しく見る →</span>
       </a>
       <a class="card" href="detail-juusetsu.html">
@@ -323,6 +322,7 @@
         <div class="num">6</div>
         <h3>投資判断調査項目</h3>
         <p>区域区分・用途地域・建ぺい率/容積率・防火指定・災害リスク4種。境界またがりは「要確認」として自動検出。</p>
+        <span class="need-login">※無料会員登録が必要です</span>
         <span class="card-more">詳しく見る →</span>
       </a>
     </div>
@@ -470,7 +470,7 @@
 
 <footer>
   <p><a href="tools/index.html" style="color:#cfe2f8;">無料計算ツール</a> ｜ <a href="blog/index.html" style="color:#cfe2f8;">不動産に関する有益情報</a> ｜ <a href="operator.html" style="color:#cfe2f8;">運営者情報</a> ｜ <a href="terms.html" style="color:#cfe2f8;">利用規約</a> ｜ <a href="tokushoho.html" style="color:#cfe2f8;">特定商取引法に基づく表記</a> ｜ <a href="privacy.html" style="color:#cfe2f8;">プライバシーポリシー</a></p>
-  <p style="margin-top:10px;">Sonaure 〜備えあれば憂いなし、お客様に＋αの感動を〜<br>
+  <p style="margin-top:10px;">Sonaure 〜備えあれば憂いなし、＋αの感動を〜<br>
   出典：国土交通省「不動産情報ライブラリ」「国土数値情報」／国土地理院／© OpenStreetMap contributors<br>
   サポート：phrasekakumei@gmail.com ｜ © 2026 Sonaure</p>
 </footer>
