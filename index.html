@@ -197,7 +197,7 @@
   <div class="bar">
     <button class="menu-btn" onclick="toggleMenu()" aria-label="メニュー"><span></span><span></span><span></span></button>
     <a class="logo" href="#top">Sonaure</a>
-    <a class="login-link" href="#login">ログイン</a>
+    <a class="login-link" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
   </div>
 </header>
 <div id="overlay" onclick="toggleMenu()"></div>
@@ -206,7 +206,7 @@
   <a href="#about" onclick="toggleMenu()">Sonaureについて</a>
   <a href="business.html">事業概要</a>
   <a href="javascript:void(0)" onclick="toggleMenu(); openMessage();">メッセージ</a>
-  <a href="#login" onclick="toggleMenu()">ログイン</a>
+  <a href="https://sonaure-plsalfa.streamlit.app" onclick="toggleMenu()">無料ツールを使う</a>
   <a href="#services" onclick="toggleMenu()">サービスメニュー</a>
   <a href="tools/index.html">無料計算ツール</a>
   <a href="blog/index.html">不動産に関する有益情報</a>
@@ -223,7 +223,7 @@
     <h1>Sonaure</h1>
     <div class="tagline">〜備えあれば憂いなし、お客様に＋αの感動を〜</div>
     <p class="sub">住所や価格を入れるだけ。周辺環境・購入諸費用・売却収支・賃貸初期費用・投資判断調査項目を30秒でレポートに。</p>
-    <a class="cta" href="#register">7日間無料で体験する</a>
+    <a class="cta" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
     <div class="cta-note">クレジット決済｜いつでも解約できます</div>
   </div>
 </div>
@@ -354,35 +354,21 @@
 <section id="price">
   <div class="wrap">
     <h2>料金</h2>
-    <div class="value-calc">
-      <p class="vc-q">「あなたの1時間はいくらの価値がありますか？」</p>
-      <p class="vc-eg">〜例〜</p>
-      <p class="vc-formula">年収400万<sup>(※1)</sup><br>
-      ＝ 月給33.3万 ÷ 22営業日<sup>(※2)</sup> ÷ 8時間<sup>(※3)</sup><br>
-      ＝ 時給 約1,893円</p>
-      <p class="vc-result">1案件の準備＝30分〜1時間なら <strong>約950〜1,893円</strong> の価値。</p>
-      <p class="vc-sub">Sonaureは月額990円（税込）。月に1〜2案件使うだけで、十分に元が取れます。</p>
-      <p class="vc-notes">※1 不動産営業年収のボリュームゾーンで換算<br>
-      ※2 年間休日105日で換算<br>
-      ※3 実働時間8時間で換算</p>
-    </div>
     <div class="price-card">
-      <div class="free-badge">7日間無料：サービス体験期間</div>
-      <div class="plan-label">個人プラン</div>
-      <div class="price-big">月額 900<small>円（税込990円）</small></div>
-      <div class="coffee">月に1回以上使うだけで——<br>
-      十分に元が取れる、続けやすさを最優先に——<br>
-      <strong>1案件の準備を、まとめて数分に。</strong></div>
+      <div class="free-badge">2026年8月、月額制をやめました</div>
+      <div class="plan-label">すべての機能</div>
+      <div class="price-big">無料<small>（月額料金はありません）</small></div>
+      <div class="coffee">6種類の調査レポートを、そのままお使いいただけます。<br>
+      <strong>PDF / Excel の出力も無料です。</strong></div>
       <ul>
-        <li>6種類の調査レポートが使い放題</li>
-        <li>PDF / Excel 出力対応</li>
-        <li>決済はクレジットカード</li>
-        <li>解約はいつでも（アプリの「ご契約・解約」から）</li>
+        <li><strong>登録なしで使えます</strong>：諸費用概算書／売却収支概算書／賃貸初期費用概算書／家賃→購入シミュレーション</li>
+        <li><strong>無料の会員登録が必要です</strong>：周辺環境調査／投資判断調査項目（住所から公的データや地図を取得するため、ご利用状況を把握できるようにしています）</li>
+        <li>PDF / Excel 出力に対応</li>
+        <li>お支払いは発生しません</li>
       </ul>
       <div class="corp-plan">
-        <div class="plan-label">法人プラン</div>
-        <div class="corp-price">月額 2,700円<small>（税込2,970円）</small></div>
-        <p><strong>1契約で最大9名までご利用いただけます（4名以上でお得）。</strong>ご契約後、アプリの「メンバー管理」から社員のメールアドレスを登録するだけで、それぞれのアカウントでログインできます。10名以上の会社さまは<a href="mailto:phrasekakumei@gmail.com?subject=【Sonaure】法人プランのご相談&body=会社名・お名前・ご連絡先・ご利用予定人数をご記入ください：">こちら</a>からご相談ください。</p>
+        <div class="plan-label">これまでご契約いただいていた方へ</div>
+        <p><strong>ご契約は自動では止まりません。</strong>お手数ですが、<a href="https://sonaure-plsalfa.streamlit.app/?billing=1">こちら</a>からログインのうえ解約のお手続きをお願いします。<strong>解約されても、これまでどおり全機能をお使いいただけます。</strong></p>
       </div>
     </div>
   </div>
@@ -391,23 +377,24 @@
 <!-- ===== ログイン・新規登録 ===== -->
 <section class="auth" id="login">
   <div class="wrap">
-    <h2>ログイン / 新規導入のご相談</h2>
-    <p class="lead">アカウントひとつで、すべての調査メニューが使えます</p>
+    <h2>使ってみる</h2>
+    <p class="lead">登録なしで、その場で使えます</p>
     <div class="auth-grid">
       <div class="auth-card">
-        <h3>ログイン</h3>
+        <h3>そのまま使う</h3>
         <p style="font-size:13px; color:var(--muted); margin-bottom:14px;">
-          ご登録済みの方は、下のボタンからログイン画面へお進みください。メールアドレスとパスワードでログインできます。
+          諸費用概算書・売却収支概算書・賃貸初期費用概算書・家賃→購入シミュレーションの4つは、
+          <strong>登録もログインも不要</strong>でお使いいただけます。
         </p>
-        <button onclick="location.href='https://sonaure-plsalfa.streamlit.app'">ログイン画面へ</button>
+        <button onclick="location.href='https://sonaure-plsalfa.streamlit.app'">無料ツールを使う</button>
       </div>
       <div class="auth-card" id="register">
-        <h3>無料ではじめる</h3>
+        <h3>会員登録（無料）</h3>
         <p style="font-size:13px; color:var(--muted); margin-bottom:8px;">
-          メールアドレスとパスワードだけで、その場で<strong>7日間の無料体験</strong>を始められます。
-          無料期間中に解約すれば料金は一切かかりません。
+          周辺環境調査と投資判断調査項目は、住所から公的データや地図を取得するため、
+          <strong>無料の会員登録</strong>が必要です。メールアドレスとパスワードだけで登録でき、料金はかかりません。
         </p>
-        <button onclick="location.href='https://sonaure-plsalfa.streamlit.app'">7日間無料で登録する</button>
+        <button onclick="location.href='https://sonaure-plsalfa.streamlit.app'">無料で登録する</button>
         <div class="auth-note">不動産会社さまの複数アカウント導入は
           <a href="mailto:phrasekakumei@gmail.com?subject=【Sonaure】法人導入のご相談&body=会社名・お名前・ご連絡先・利用人数をご記入ください：">こちら</a>
           からご相談ください。</div>
@@ -459,8 +446,8 @@
       </ol>
       <h3>第3条（料金・支払い）</h3>
       <ol>
-        <li>料金は、個人プラン 月額900円（税込990円）、法人プラン 月額2,700円（税込2,970円）。決済はクレジットカードによります。</li>
-        <li>登録から7日間は無料体験期間です。無料期間中に解約した場合、料金は発生しません。</li>
+        <li>本サービスは無料でご利用いただけます。新たな料金は発生しません。</li>
+        <li>2026年8月の変更前にご契約いただいた方は、解約されるまで従前の料金の請求が続きます。第5条の方法で解約をお願いします。</li>
       </ol>
       <h3>第4条（法人プランの利用・席数）</h3>
       <ol>
