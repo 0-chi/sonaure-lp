@@ -89,6 +89,16 @@
   .cta-box .t{font-weight:bold;color:var(--blue-d);font-size:15px;margin-bottom:8px;}
   .cta-box p{font-size:13.5px;color:var(--muted);}
   .cta-btn{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:14px;padding:11px 34px;border-radius:999px;box-shadow:0 6px 18px rgba(43,108,176,.3);margin-top:6px;}
+  /* 一般のお客様向けの相談導線。事業者向けCTAと区別がつくよう、塗りではなく枠線で出す */
+  .soudan{background:#fff;border:2px solid var(--blue-l);border-radius:14px;padding:24px 22px;margin:30px 0;text-align:center;}
+  .soudan .t{font-weight:bold;color:var(--blue-d);font-size:16.5px;margin-bottom:4px;line-height:1.6;}
+  .soudan .lead-s{font-size:13.5px;color:var(--muted);margin-bottom:14px;}
+  .soudan .opts{list-style:none;padding:0;margin:0 0 18px;display:flex;flex-direction:column;gap:8px;text-align:left;}
+  .soudan .opts li{font-size:13.5px;line-height:1.75;background:#f4f9ff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;}
+  .soudan .opts strong{color:var(--blue-d);}
+  .soudan .btn{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:15px;padding:12px 34px;border-radius:999px;box-shadow:0 6px 18px rgba(43,108,176,.28);}
+  .soudan .line{font-size:13px;color:var(--muted);margin:18px 0 0;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+  .soudan .note-s{font-size:11.5px;color:var(--muted);margin:12px 0 0;}
   .related{font-size:14px;}
   .related a{color:var(--blue);font-weight:bold;}
   .note{font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:30px;line-height:1.8;}
@@ -156,6 +166,18 @@
     </div>
   </div>
 
+  <div class="soudan">
+    <div class="t">この試算をもとに、ご相談いただけます</div>
+    <p class="lead-s">試算した手取り額のまま、そのまま相談に進めます。</p>
+    <ul class="opts">
+      <li><strong>この金額で売却を相談したい</strong><br>手取りベースで、いつ・いくらで動くかを整理します。</li>
+      <li><strong>もっと高く売れないか相談したい</strong><br>売り出し価格の付け方や売却の時期で、結果が変わることがあります。</li>
+    </ul>
+    <a class="btn" id="soudan-btn" href="https://forms.gle/PvbwuzqfPuMUgwLn6" target="_blank" rel="noopener">相談フォームへ →</a>
+    <p class="line">LINEでもご相談いただけます<a href="https://lin.ee/7yGIqUn" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a></p>
+    <p class="note-s">宅地建物取引士がお答えします。ご相談にあたって会員登録は必要ありません。</p>
+  </div>
+
   <div class="cta-box">
     <div class="t">不動産会社にお勤めの方へ</div>
     <p>実際の取得費での計算・測量/解体費用の追加・お客様にそのまま渡せるPDF/Excelの概算書出力は、不動産事業者向けツール「Sonaure」で。</p>
@@ -218,6 +240,22 @@ const ASSUME_INV = "<strong>計算の前提（賃貸用）：</strong>"
   + "取得費は概算取得費（売却価格の5%）から減価償却費の累計を差し引いて計算します。"
   + "測量・解体・クリーニング費用、売主が課税事業者の場合の建物分の消費税は含みません。";
 
+/* 相談フォームの事前入力設定。
+   PREFILL に null 以外を入れると、相談ボタンのリンクに「どのツールから来たか」と試算内容が付きます。
+   取得方法：Googleフォーム → 右上「⋮」→「事前入力したURLを取得」→ 各項目に見本を入力 → リンクを取得。
+   得られる .../viewform?usp=pp_url&entry.111=...&entry.222=... の
+   viewform までを base に、項目ごとの entry.NNN を source / detail に割り当ててください。 */
+const FORM_URL = "https://forms.gle/PvbwuzqfPuMUgwLn6";
+const PREFILL = null;  // 例: {base:"https://docs.google.com/forms/d/e/XXXX/viewform", source:"entry.111", detail:"entry.222"}
+
+function soudanHref() {
+  if (!PREFILL) return FORM_URL;
+  const q = new URLSearchParams({usp: "pp_url"});
+  q.set(PREFILL.source, "売却手取りシミュレーション");
+  q.set(PREFILL.detail, `売却予定価格 ${Number(document.getElementById("price").value) || 0} 万円／ローン残債 ${Number(document.getElementById("loan").value) || 0} 万円／手取りの概算 ${document.getElementById("total").textContent}`);
+  return PREFILL.base + "?" + q.toString();
+}
+
 function calc() {
   const price = Number(document.getElementById("price").value) || 0;
   const loan = Number(document.getElementById("loan").value) || 0;
@@ -267,6 +305,12 @@ for (const id of ["price", "loan", "holding", "residence", "depre", "u-home", "u
   document.getElementById(id).addEventListener("input", calc);
 }
 calc();
+// 相談ボタンのリンクを試算内容に合わせて更新する（PREFILL 未設定なら素のフォームURLのまま）
+const soudanBtn = document.getElementById("soudan-btn");
+const syncSoudan = () => { soudanBtn.href = soudanHref(); };
+document.addEventListener("input", syncSoudan);
+document.addEventListener("change", syncSoudan);
+syncSoudan();
 </script>
 <script src="../assets/motion.js" defer></script>
 </body>
