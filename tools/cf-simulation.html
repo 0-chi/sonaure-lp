@@ -90,6 +90,8 @@
   .legend span{display:inline-flex;align-items:center;gap:5px;}
   .legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
   .legend i.bar{height:11px;width:11px;border-radius:3px;}
+  .chartbox{-webkit-overflow-scrolling:touch;}
+  .scrollhint{font-size:12px;color:var(--muted);text-align:center;margin:2px 0 0;}
   .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;}
   table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px;}
   th,td{border:1px solid #cbd5e0;padding:5px 8px;text-align:right;white-space:nowrap;}
@@ -216,14 +218,15 @@
 
     <div class="chartbox">
       <svg id="chart" role="img" aria-label="年次のキャッシュフロー推移"></svg>
-      <div class="legend">
-        <span><i class="bar" style="background:#c9a7e8"></i>累計CF（右軸）</span>
-        <span><i class="bar" style="background:#a8cdf0"></i>売却時累計CF（右軸）</span>
-        <span><i style="background:#2f855a"></i>実質年間収入（左軸）</span>
-        <span><i style="background:#dd6b20"></i>支出（左軸）</span>
-        <span><i style="background:#d53f8c"></i>CF（左軸）</span>
-      </div>
     </div>
+    <div class="legend">
+      <span><i class="bar" style="background:#eda100"></i>累計CF（右軸）</span>
+      <span><i class="bar" style="background:#e87ba4"></i>売却時累計CF（右軸）</span>
+      <span><i style="background:#1baf7a"></i>実質年間収入（左軸）</span>
+      <span><i style="background:#eb6834"></i>支出（左軸）</span>
+      <span><i style="background:#2a78d6"></i>CF（左軸）</span>
+    </div>
+    <p class="scrollhint">グラフは横にスクロールできます。</p>
 
     <div class="tw"><table id="tbl"></table></div>
     <div class="assume" id="assume"></div>
@@ -403,8 +406,8 @@ function drawChart(rows) {
       const y0 = yR(0), y1 = yR(v);
       g += `<rect x="${x(i) - bw + off}" y="${Math.min(y0, y1)}" width="${bw}" height="${Math.max(1, Math.abs(y1 - y0))}" fill="${color}" opacity="0.75"><title>${r.y}年 ${man(v)}万円</title></rect>`;
     };
-    draw(r.cum, "#c9a7e8", 0);
-    draw(r.exit, "#a8cdf0", bw);
+    draw(r.cum, "#eda100", 0);
+    draw(r.exit, "#e87ba4", bw);
     if (r.repair > 0) {
       g += `<circle cx="${x(i)}" cy="${yL(r.running + r.repair + r.pay + r.tax)}" r="3.5" fill="#1a202c"><title>${r.y}年 大規模修繕</title></circle>`;
     }
@@ -413,9 +416,9 @@ function drawChart(rows) {
     const d = rows.map((r, i) => `${i ? "L" : "M"}${x(i)},${yL(fn(r))}`).join(" ");
     g += `<path d="${d}" fill="none" stroke="${color}" stroke-width="2"/>`;
   };
-  path(r => r.eff, "#2f855a");
-  path(r => r.running + r.repair + r.pay + r.tax, "#dd6b20");
-  path(r => r.cf, "#d53f8c");
+  path(r => r.eff, "#1baf7a");
+  path(r => r.running + r.repair + r.pay + r.tax, "#eb6834");
+  path(r => r.cf, "#2a78d6");
 
   const stepX = Math.ceil(rows.length / 8);
   rows.forEach((r, i) => {
