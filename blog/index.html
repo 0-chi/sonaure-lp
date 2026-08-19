@@ -31,11 +31,25 @@
   .bar a.nav{font-size:13px;color:var(--blue);text-decoration:none;font-weight:bold;}
   h1{font-size:clamp(20px,4vw,26px);color:var(--blue-d);margin:28px 0 6px;line-height:1.5;}
   .sub{font-size:14px;color:var(--muted);margin-bottom:24px;}
-  .cat{font-size:12px;color:var(--muted);font-weight:bold;margin:26px 0 10px;padding-left:2px;letter-spacing:.04em;}
+  /* カテゴリ見出し。目次から飛んできたとき sticky ヘッダーの下に隠れないよう scroll-margin を取る */
+  .cat{font-size:clamp(17px,3.4vw,20px);color:var(--blue-d);font-weight:bold;margin:40px 0 14px;padding:2px 0 2px 13px;
+       letter-spacing:.02em;line-height:1.5;border-left:5px solid var(--blue);scroll-margin-top:118px;}
+  /* 目次のプルダウン。ヘッダーのすぐ下に貼りつけ、スクロール中でも切り替えられるようにする */
+  .toc{position:sticky;top:56px;z-index:9;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);
+       border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 8px;
+       display:flex;align-items:center;gap:10px;box-shadow:0 4px 14px rgba(26,77,143,.07);}
+  .toc label{font-size:12.5px;font-weight:bold;color:var(--blue-d);white-space:nowrap;}
+  .toc select{flex:1;min-width:0;font-family:inherit;font-size:15px;color:var(--ink);background:#fff;
+              border:1px solid var(--line);border-radius:8px;padding:9px 34px 9px 12px;height:42px;
+              appearance:none;-webkit-appearance:none;cursor:pointer;
+              background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%232b6cb0' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+              background-repeat:no-repeat;background-position:right 12px center;background-size:12px 8px;}
+  .toc select:focus{outline:2px solid var(--blue-l);outline-offset:1px;}
+  @media (max-width:420px){ .toc label{display:none;} }
   .card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-top:4px solid var(--blue);border-radius:14px;padding:22px;box-shadow:0 4px 16px rgba(26,77,143,.07);transition:transform .15s,box-shadow .15s;margin-bottom:16px;}
   .card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(26,77,143,.16);}
   .card .tag{display:inline-block;background:#eaf3ff;color:var(--blue-d);border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:11.5px;font-weight:bold;margin-bottom:8px;}
-  .card h2{font-size:17px;color:var(--blue-d);margin-bottom:6px;line-height:1.5;}
+  .card h3{font-size:17px;color:var(--blue-d);margin-bottom:6px;line-height:1.5;}
   .card p{font-size:13.5px;color:var(--muted);}
   .card .go{display:inline-block;margin-top:8px;font-size:13px;font-weight:bold;color:var(--blue);}
   .soon{background:#fff;border:1px dashed var(--line);border-radius:14px;padding:18px 20px;font-size:13px;color:var(--muted);margin-bottom:16px;}
@@ -53,236 +67,254 @@
   <h1>不動産に関する有益情報</h1>
   <p class="sub">不動産の購入・売却・賃貸にまつわる費用・税金・手続きを、宅地建物取引士が分かりやすく解説します。読んだあとは、関連する無料の計算ツールでそのまま試算できます。</p>
 
-  <p class="cat">購入諸費用</p>
+  <div class="toc">
+    <label for="toc-select">目次</label>
+    <select id="toc-select" aria-label="カテゴリを選んで移動">
+      <option value="">読みたいカテゴリを選ぶ</option>
+      <option value="cat-kounyu-hiyo">購入諸費用（4本）</option>
+      <option value="cat-nagare">購入の流れ・スケジュール（1本）</option>
+      <option value="cat-loan">住宅ローン（2本）</option>
+      <option value="cat-baikyaku">売却・税金（3本）</option>
+      <option value="cat-hoyu-zei">保有中の税金（1本）</option>
+      <option value="cat-hikaku">賃貸と購入の比較（1本）</option>
+      <option value="cat-chintai">賃貸（2本）</option>
+      <option value="cat-toushi">不動産投資（9本）</option>
+      <option value="cat-chousa">物件調査・重要事項説明（6本）</option>
+      <option value="cat-shuhen">周辺環境（3本）</option>
+      <option value="cat-yotei">今後追加予定</option>
+    </select>
+  </div>
+
+  <h2 class="cat" id="cat-kounyu-hiyo">購入諸費用</h2>
   <a class="card" href="chuko-jutaku-shohiyo.html">
     <span class="tag">購入諸費用</span>
-    <h2>中古住宅の諸費用は何パーセント？価格別の目安と内訳を宅建士が解説</h2>
+    <h3>中古住宅の諸費用は何パーセント？価格別の目安と内訳を宅建士が解説</h3>
     <p>中古住宅の諸費用は物件価格の6〜10%が目安。2,000万〜5,000万円の価格別の金額、費用の内訳、新築より高くなる理由、支払い時期までを解説します。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="kounyu-shohiyo-gaisan.html">
     <span class="tag">購入諸費用</span>
-    <h2>購入諸費用の概算の出し方｜「価格の◯%」で出すと外れる理由</h2>
+    <h3>購入諸費用の概算の出し方｜「価格の◯%」で出すと外れる理由</h3>
     <p>同じ3,000万円の物件でも現金なら約5.8%、フルローンなら約8.3%。差の大半は融資事務手数料です。費目を3層に分けて積み上げる手順、800万円以下の物件で効く報酬特例、決済時に含まれない費用までを実務目線で整理します。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="touki-hiyou-keisan.html">
     <span class="tag">購入諸費用</span>
-    <h2>登記費用の計算方法｜登録免許税の税率と軽減措置を一覧で</h2>
+    <h3>登記費用の計算方法｜登録免許税の税率と軽減措置を一覧で</h3>
     <p>課税標準は売買価格ではなく固定資産税評価額。土地1.5%（2029年3月末まで）と住宅用家屋0.3%（2027年3月末まで）は期限も別です。3,000万円の中古住宅を例に、登録免許税と司法書士報酬を合わせた総額の出し方を解説します。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="bukken-kakaku-shohiyo-zukai.html">
     <span class="tag">購入諸費用</span>
-    <h2>物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</h2>
+    <h3>物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</h3>
     <p>3,000万円の物件に必要なのは約3,242万円。価格帯別の積み上げ図、諸費用の内訳ランキング、そしてローンを使うだけで約68万円増える理由を図で解説します。融資事務手数料は定率型と定額型で50万円以上の差が出ます。</p>
     <span class="go">記事を読む →</span>
   </a>
 
-  <p class="cat">購入の流れ・スケジュール</p>
+  <h2 class="cat" id="cat-nagare">購入の流れ・スケジュール</h2>
   <a class="card" href="ie-kounyu-kikan.html">
     <span class="tag">購入の流れ</span>
-    <h2>家を買うまでの期間｜「平均◯か月」より、入居日から逆算するほうが早い</h2>
+    <h3>家を買うまでの期間｜「平均◯か月」より、入居日から逆算するほうが早い</h3>
     <p>期間を決めているのは探す時間ではなく、契約後の手続きです。本審査→金銭消費貸借契約→決済・登記・引渡しは直列で並行できず、決済日は金融機関と法務局が動いている平日にしか置けません。入居希望日からの逆算表、契約書に書かれた本当のデッドライン、期間が延びる4つの原因、引渡し後に残る手続きまで。</p>
     <span class="go">記事を読む →</span>
   </a>
 
-  <p class="cat">住宅ローン</p>
+  <h2 class="cat" id="cat-loan">住宅ローン</h2>
   <a class="card" href="jutaku-loan-hitsuyou-shorui.html">
     <span class="tag">住宅ローン</span>
-    <h2>住宅ローンの必要書類｜事前審査と本審査で何が違い、誰が用意するか</h2>
+    <h3>住宅ローンの必要書類｜事前審査と本審査で何が違い、誰が用意するか</h3>
     <p>書類は「自分で取るもの・不動産会社が出すもの・金融機関が用意するもの」の3つ。止まるのはたいてい自分で取るものです。雇用形態別の収入資料、スマホの分割払いも借入として合算されること、団信は別の審査であることまで、個人で借りる場合を前提に整理します。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="jutaku-loan-honshinsa-ochiru.html">
     <span class="tag">住宅ローン</span>
-    <h2>住宅ローンの本審査に落ちる理由｜事前審査に通ったのに、なぜ</h2>
+    <h3>住宅ローンの本審査に落ちる理由｜事前審査に通ったのに、なぜ</h3>
     <p>国交省の調査では、金融機関が見る項目の1位は完済時年齢98.4%。年収93.4%より年齢と健康が上です。事前審査は自己申告、本審査は裏を取る段階。申告漏れ・信用情報・団信・物件の担保評価・審査中の変化という5つの理由と、落ちたときの動き方、ローン特約の期限まで。</p>
     <span class="go">記事を読む →</span>
   </a>
 
-  <p class="cat">売却・税金</p>
+  <h2 class="cat" id="cat-baikyaku">売却・税金</h2>
   <a class="card" href="myhome-jouto-shotokuzei.html">
     <span class="tag">売却・税金</span>
-    <h2>マイホーム売却の譲渡所得税はいくら？計算方法と3,000万円控除を宅建士が解説</h2>
+    <h3>マイホーム売却の譲渡所得税はいくら？計算方法と3,000万円控除を宅建士が解説</h3>
     <p>譲渡所得税の計算を3ステップで解説。3,000万円特別控除により多くのケースで税額は0円になります。税率と所有期間の判定日、取得費が不明なときの注意点、確定申告の要否まで。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="3000man-tokubetsu-kojo.html">
     <span class="tag">売却・税金</span>
-    <h2>3,000万円特別控除は自分も使える？適用要件と使えないケースを宅建士が解説</h2>
+    <h3>3,000万円特別控除は自分も使える？適用要件と使えないケースを宅建士が解説</h3>
     <p>判定チェックリスト付き。共有名義なら1人につき3,000万円（夫婦で最大6,000万円）、引っ越しから3年ルール、住宅ローン控除と併用できない期間、相続した空き家は別制度である点まで整理します。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="teitouken-masshou-hiyou.html">
     <span class="tag">売却・税金</span>
-    <h2>抵当権抹消の費用はいくら？登録免許税は不動産1個1,000円</h2>
+    <h3>抵当権抹消の費用はいくら？登録免許税は不動産1個1,000円</h3>
     <p>費用は物件価格では決まりません。課税標準は「不動産の個数」。戸建て2,000円・司法書士込みで2万円前後が目安です。マンションの敷地権の数え方、2026年4月に義務化された住所変更登記、譲渡費用に算入できない理由まで解説します。</p>
     <span class="go">記事を読む →</span>
   </a>
 
-  <p class="cat">保有中の税金</p>
+  <h2 class="cat" id="cat-hoyu-zei">保有中の税金</h2>
   <a class="card" href="kotei-shisanzei-keisan.html">
     <span class="tag">保有中の税金</span>
-    <h2>固定資産税はいくら？計算方法と住宅用地の特例｜3,000万円の中古戸建で年13.7万円</h2>
+    <h3>固定資産税はいくら？計算方法と住宅用地の特例｜3,000万円の中古戸建で年13.7万円</h3>
     <p>決めるのは売買価格ではなく固定資産税評価額です。土地150㎡の中古戸建で固定資産税10.85万円＋都市計画税2.85万円＝年13.7万円。住宅用地の特例で土地が6分の1になる仕組み、200㎡を超える部分の計算、更地にすると約3.6倍になる理由、1月1日の所有者に課税される決まりと購入時の日割り清算まで。</p>
     <span class="go">記事を読む →</span>
   </a>
 
-  <p class="cat">賃貸と購入の比較</p>
+  <h2 class="cat" id="cat-hikaku">賃貸と購入の比較</h2>
   <a class="card" href="chintai-vs-kounyu.html">
     <span class="tag">賃貸vs購入</span>
-    <h2>賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</h2>
+    <h3>賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</h3>
     <p>家賃10万円を35年払うと4,200万円。同じ10万円で買うと約3,266万円の物件に手が届き、完済後に半値で売れた前提なら実質の月額は約68,995円です。購入価格の1割弱で売れれば賃貸と並ぶ計算と、前提を変えたときの感度を解説します。</p>
     <span class="go">記事を読む →</span>
   </a>
 
-  <p class="cat">賃貸</p>
+  <h2 class="cat" id="cat-chintai">賃貸</h2>
   <a class="card" href="chintai-shokihiyo-nankagetsu.html">
     <span class="tag">賃貸初期費用</span>
-    <h2>賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</h2>
+    <h3>賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</h3>
     <p>家賃8万円の物件で条件を変えると25.9万円（3.2ヶ月分）から62.3万円（7.8ヶ月分）まで開きます。入居日を数日ずらすだけで7.6万円動く理由、交渉して効く3項目、申込金の返還ルールまで解説します。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="shikikin-reikin-souba.html">
     <span class="tag">賃貸初期費用</span>
-    <h2>敷金・礼金・仲介手数料の相場｜条件次第で12万円変わる</h2>
+    <h3>敷金・礼金・仲介手数料の相場｜条件次第で12万円変わる</h3>
     <p>3つとも家賃1ヶ月分が目安ですが、初期費用の合計は家賃5〜6ヶ月分。家賃8万円の物件で条件を変えると46.3万円が33.9万円になります。仲介手数料の法律上の上限（居住用は原則0.55ヶ月分）と、敷金が返ってくる範囲まで解説します。</p>
     <span class="go">記事を読む →</span>
   </a>
 
-  <p class="cat">不動産投資</p>
+  <h2 class="cat" id="cat-toushi">不動産投資</h2>
   <a class="card" href="shuueki-bukken-sagashikata.html">
     <span class="tag">不動産投資</span>
-    <h2>収益物件を探すときのポイント｜表面利回り8%が5%になる理由と、買う前の6項目</h2>
+    <h3>収益物件を探すときのポイント｜表面利回り8%が5%になる理由と、買う前の6項目</h3>
     <p>表面利回りは購入諸費用も空室も運営経費も入っていない数字。順に織り込むと8.00%が5.15%になります。融資と出口に効く6項目（接道・容積率・検査済証・権利・残存耐用年数・管理組合）、レントロールの読み方、サブリースが家賃保証とは限らない理由まで。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="shuueki-bukken-genchi-chousa.html">
     <span class="tag">不動産投資</span>
-    <h2>収益物件の現地調査｜書面に出てこない「これから出ていくお金」の見つけ方</h2>
+    <h3>収益物件の現地調査｜書面に出てこない「これから出ていくお金」の見つけ方</h3>
     <p>販売図面に載っているのは収入だけ。外壁と防水の劣化、設備の製造年、法定点検の記録（消防法・水道法）、共用部の管理状態、周辺の募集条件、前面道路の実測。空室率と経費率の前提が妥当かを決めるのは現地です。持ち物リストつき。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="toushiyou-bukken-shohiyo.html">
     <span class="tag">不動産投資</span>
-    <h2>投資用物件の諸費用は物件価格の何%？居住用より高くなる3つの理由</h2>
+    <h3>投資用物件の諸費用は物件価格の何%？居住用より高くなる3つの理由</h3>
     <p>同じ3,000万円でも投資用は約354万円（価格の11.8%）、居住用は約249万円（8.3%）。住宅の軽減特例が「自己の居住」を要件にしているため、登録免許税・不動産取得税・抵当権設定で差がつきます。価格別の目安と項目ごとの内訳、決済時に払う額と後から来る額の分け方まで。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="shuueki-bukken-baikyaku-zeikin.html">
     <span class="tag">不動産投資</span>
-    <h2>収益物件の売却でかかる税金｜減価償却した分は、売るときに戻ってきます</h2>
+    <h3>収益物件の売却でかかる税金｜減価償却した分は、売るときに戻ってきます</h3>
     <p>2,150万円で買って2,200万円で売ったのに税金が約238万円。賃貸期間の減価償却費は取得費から差し引かれるためです。中古の耐用年数（簡便法）、長期20.315%と短期39.63%の判定日、3,000万円控除が使えない理由、譲渡損失を給与と相殺できないことまで計算例つきで。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="fudosan-toushi-kanpu.html">
     <span class="tag">不動産投資</span>
-    <h2>不動産投資の税還付｜「赤字だから返ってくる」仕組みと、止まる日</h2>
+    <h3>不動産投資の税還付｜「赤字だから返ってくる」仕組みと、止まる日</h3>
     <p>還付の正体は損益通算です。土地分の借入利子は通算できないため、フルローンにしても還付は増えません（同条件で13.3万円と13.3万円、違うのは返済額だけ）。減価償却が終われば止まって課税に転じ、売却時には償却した分が取得費から消えます。計算例つき。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="koukousei-fudosan-toushi.html">
     <span class="tag">不動産投資</span>
-    <h2>高校生でもわかる不動産投資｜ゲーム機5台を友達に貸す話</h2>
+    <h3>高校生でもわかる不動産投資｜ゲーム機5台を友達に貸す話</h3>
     <p>お小遣い月5,000円の高校生がゲーム機5台を20万円で買って、友達に貸す。この話だけで、自己資金・融資審査・元金と利息の違い・空室・修繕・税金・減価償却・出口まで全部説明がつきます。5台にすると2台空くまで赤字にならない——本物の木造アパート6戸とまったく同じ形です。図4つ、最後に4,500万円の一棟に置き換えます。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="genka-shokyaku-zukai.html">
     <span class="tag">不動産投資</span>
-    <h2>不動産の減価償却を図解｜建物3,000万円が毎年いくら経費になるかを4つの図で</h2>
+    <h3>不動産の減価償却を図解｜建物3,000万円が毎年いくら経費になるかを4つの図で</h3>
     <p>土地と建物を分ける、建物を耐用年数で割る、構造と築年数で年数が変わる、現金が出ていかないのに経費になる。この4段を図で追います。同じ建物3,000万円でも木造なら4年で年750万円、RC造なら27年で年111.1万円と6.8倍の差。実質収入608.0万円で手元に59.6万円残るのに、帳簿は418.7万円の赤字になる理由まで。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="houjin-shuueki-fudosan-setsuzei.html">
     <span class="tag">不動産投資</span>
-    <h2>法人が収益不動産で節税できる仕組み｜4年で566万円軽くして、売る年に517万円戻る</h2>
+    <h3>法人が収益不動産で節税できる仕組み｜4年で566万円軽くして、売る年に517万円戻る</h3>
     <p>節税を成立させているのは減価償却ひとつ。木造築22年超なら簡便法で4年償却になり、建物3,000万円で年750万円が経費に。実効税率34%の法人が4年で566.3万円軽くする一方、償却が終わる5年目に税引後CFは184.1万円からマイナス77.0万円へ転じ、売却した年には517万円が戻る。個人との4つの違いと、入口・出口それぞれの有利不利まで。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="fudosan-toushi-cashflow.html">
     <span class="tag">不動産投資</span>
-    <h2>不動産投資のキャッシュフロー計算｜家賃240万円の手残りが50.7万円になるまで</h2>
+    <h3>不動産投資のキャッシュフロー計算｜家賃240万円の手残りが50.7万円になるまで</h3>
     <p>満室家賃から空室・運営経費・ローン返済・税金を順に引くと、残るのは50.7万円（満室家賃の21%）。帳簿は24.5万円の赤字なのに現金が残る理由（減価償却と元金返済のズレ）、返済比率を実効総収入で見る意味、金利と期間の感度表、そして11年目に手残りが7.5万円へ落ちる過程まで。</p>
     <span class="go">記事を読む →</span>
   </a>
 
-  <p class="cat">物件調査・重要事項説明</p>
+  <h2 class="cat" id="cat-chousa">物件調査・重要事項説明</h2>
   <a class="card" href="juusetsu-chousa-koumoku.html">
     <span class="tag">重要事項説明</span>
-    <h2>重要事項説明の調査項目とやり方｜35条書面の順に「どこで何を調べるか」</h2>
+    <h3>重要事項説明の調査項目とやり方｜35条書面の順に「どこで何を調べるか」</h3>
     <p>書面の記載事項を順に並べ、各項目の調べ先と調べる内容を対応させた索引。あわせて「調査して説明する項目」と「記録があれば説明する項目」（石綿・耐震診断）の違い、耐震診断の対象となる着工時期の線引きまで整理します。</p>
     <span class="go">記事を読む →</span>
   </a>
   <a class="card" href="bukken-chousa-checklist.html">
     <span class="tag">物件調査</span>
-    <h2>物件調査チェックリスト｜どこで何を調べるかを場所別に整理</h2>
+    <h3>物件調査チェックリスト｜どこで何を調べるかを場所別に整理</h3>
     <p>法務局・役所・ライフライン事業者・現地の4か所に分けたチェックリスト。権利関係、法令上の制限、インフラ、災害リスク、現地確認の項目と、私設管・越境・接道義務など見落としやすい5項目を解説します。</p>
     <span class="go">記事を読む →</span>
   </a>
   <a class="card" href="bukken-chousa-kouritsuka.html">
     <span class="tag">物件調査</span>
-    <h2>物件調査の効率化｜1案件の日数を決めているのは「返事待ち」です</h2>
+    <h3>物件調査の効率化｜1案件の日数を決めているのは「返事待ち」です</h3>
     <p>調査項目を「自分だけで終わる／窓口で終わる／相手の返事待ち」の3つに仕分け、待ちのある依頼を初日に出すだけで完了が早まる理由を、営業日で並べて説明します。管理会社への照会で1通目に聞き切る項目、資料作成から清書をなくす4原則まで。</p>
     <span class="go">記事を読む →</span>
   </a>
   <a class="card" href="kenpeiritsu-yousekiritsu-shirabekata.html">
     <span class="tag">物件調査</span>
-    <h2>建ぺい率・容積率の調べ方と、調べた数字どおりに建たない3つの理由</h2>
+    <h3>建ぺい率・容積率の調べ方と、調べた数字どおりに建たない3つの理由</h3>
     <p>都市計画情報に出るのは指定値。前面道路の幅員で容積率が下がり、角地・防火地域の緩和で建ぺい率が上がり、セットバックで敷地面積が減ります。100㎡・容積率200%の土地が延床144㎡になる例で解説します。</p>
     <span class="go">記事を読む →</span>
   </a>
   <a class="card" href="youto-chiiki-shirabekata.html">
     <span class="tag">物件調査</span>
-    <h2>用途地域の調べ方3つと、実務で間違えやすい「またがり」の判定</h2>
+    <h3>用途地域の調べ方3つと、実務で間違えやすい「またがり」の判定</h3>
     <p>自治体の都市計画情報Web・国土交通省の不動産情報ライブラリ・窓口の使い分けと、敷地が複数の用途地域にまたがる場合の扱い（用途制限は過半、建ぺい率と容積率は加重平均、防火は厳しい方）を実務目線で解説します。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="saigai-risk-chousa.html">
     <span class="tag">物件調査</span>
-    <h2>不動産の災害リスク調査｜重説で説明が必要な項目と調べ方</h2>
+    <h3>不動産の災害リスク調査｜重説で説明が必要な項目と調べ方</h3>
     <p>2020年8月から水害ハザードマップの説明が重要事項説明の義務項目に。洪水・内水・高潮／土砂災害警戒区域／津波災害警戒区域は根拠法が違い調べる場所も異なります。見落としやすい内水を含めた手順を解説します。</p>
     <span class="go">記事を読む →</span>
   </a>
 
-  <p class="cat">周辺環境</p>
+  <h2 class="cat" id="cat-shuhen">周辺環境</h2>
   <a class="card" href="shuhen-kankyo-shirabekata.html">
     <span class="tag">周辺環境</span>
-    <h2>不動産の周辺環境の調べ方｜調査項目・情報源と、徒歩分数のルール</h2>
+    <h3>不動産の周辺環境の調べ方｜調査項目・情報源と、徒歩分数のルール</h3>
     <p>周辺環境は35条の法定説明事項ではありませんが、宅建業法47条は「環境」「交通等の利便」を名指ししています。交通・教育・医療・買い物・嫌悪施設・騒音の調べ方と情報源の使い分け、徒歩1分＝道路距離80mの表示ルール、最寄り校と指定校の違いまで解説します。</p>
     <span class="go">記事を読む →</span>
   </a>
   <a class="card" href="shuhen-kankyo-chousasho-template.html">
     <span class="tag">周辺環境</span>
-    <h2>周辺環境調査書のテンプレート｜項目構成・記載例・免責文のひな形</h2>
+    <h3>周辺環境調査書のテンプレート｜項目構成・記載例・免責文のひな形</h3>
     <p>7ブロックの構成、施設一覧の5列、そのままコピーできる免責文のひな形。お客様に渡す調査書は表示規約でいう「表示」に当たり得るため、距離の書き方にもルールが及びます。評価語を書かない・「無し」を空欄にしないなど、書き方の型も解説します。</p>
     <span class="go">記事を読む →</span>
   </a>
 
   <a class="card" href="naiken-junbi-eigyo.html">
     <span class="tag">周辺環境</span>
-    <h2>内見の準備｜営業が前日までにそろえるものと、現地での段取り</h2>
+    <h3>内見の準備｜営業が前日までにそろえるものと、現地での段取り</h3>
     <p>内見の成否は前日までに決まります。鍵と電気の手配、持ち物、案内の順番、必ず採寸すべき5か所（最優先は搬入経路）まで時間の流れで整理。現地での口頭の案内も表示規約の「表示」に当たり得るため、「駅まで5分」の言い方にもルールが及びます。</p>
     <span class="go">記事を読む →</span>
   </a>
 
-  <p class="cat">今後追加予定</p>
+  <h2 class="cat" id="cat-yotei">今後追加予定</h2>
   <div class="soon">不動産営業の業務効率化に関する解説記事を順次追加していきます。</div>
 
   <div class="biz">
@@ -297,5 +329,16 @@
   <a href="../tools/index.html">無料計算ツール</a>｜<a href="../operator.html">運営者情報</a>｜<a href="../terms.html">利用規約</a>｜<a href="../privacy.html">プライバシーポリシー</a>｜© 2026 Sonaure
 </footer>
 <script src="../assets/motion.js" defer></script>
+<script>
+(function () {
+  var sel = document.getElementById("toc-select");
+  if (!sel) return;
+  sel.value = "";                     // 再読み込みで前回の選択が残らないようにする
+  sel.addEventListener("change", function () {
+    var el = this.value && document.getElementById(this.value);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+})();
+</script>
 </body>
 </html>
