@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>買取査定判断シミュレーション｜Sonaure</title>
+<meta name="description" content="想定売却価格から「いくらまでなら買えるか」を目標利益率ごとに逆算。仲介手数料・利息・不動産取得税・消費税まで織り込み、買取再販の仕入判断をその場で。">
+<link rel="canonical" href="https://sonae-are.com/detail-kaitori.html">
+<meta property="og:title" content="買取査定判断シミュレーション｜Sonaure">
+<meta property="og:description" content="想定売却価格から「いくらまでなら買えるか」を目標利益率ごとに逆算。仲介手数料・利息・不動産取得税・消費税まで織り込み、買取再販の仕入判断をその場で。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sonae-are.com/detail-kaitori.html">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap');
+  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Noto Sans JP","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);line-height:1.9;background:linear-gradient(180deg,#fff,#f3f8ff);}
+  .wrap{max-width:840px;margin:0 auto;padding:0 20px;}
+  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
+  .bar{display:flex;align-items:center;height:56px;}
+  .back{font-size:14px;color:var(--blue);text-decoration:none;font-weight:bold;}
+  .hero{background:linear-gradient(135deg,#eaf3ff,#d7e9ff 60%,#c8e0ff);border-radius:18px;border:1px solid var(--line);padding:34px 24px;text-align:center;margin:24px 0;}
+  .hero .num{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;font-weight:bold;font-size:18px;margin-bottom:12px;}
+  .hero h1{font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;font-size:28px;color:var(--blue-d);letter-spacing:.04em;}
+  .hero p{color:var(--blue-d);font-size:14px;margin-top:8px;}
+  section{padding:10px 0 24px;}
+  h2{font-size:20px;color:var(--blue-d);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));}
+  .lead{font-size:15px;margin-bottom:16px;}
+  ul.feat{list-style:none;background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:14px;padding:18px 22px;}
+  ul.feat li{padding:5px 0 5px 26px;position:relative;font-size:14.5px;}
+  ul.feat li::before{content:"✓";position:absolute;left:4px;color:var(--blue);font-weight:bold;}
+  .preview{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 28px rgba(26,77,143,.10);padding:22px 22px 16px;overflow-x:auto;}
+  .pv-title{font-size:18px;font-weight:bold;border-bottom:3px solid var(--blue);padding-bottom:6px;}
+  .pv-title span{color:var(--blue);font-size:12px;margin-left:8px;}
+  .pv-note{color:var(--muted);font-size:10px;margin-left:8px;}
+  .pv-meta{font-size:11px;color:var(--muted);margin:6px 0 14px;}
+  .preview h3{font-size:14px;background:#ebf4ff;padding:6px 10px;border-left:4px solid var(--blue);color:var(--blue-d);margin:14px 0 8px;}
+  .preview h3:first-of-type{margin-top:0;}
+  table{width:100%;border-collapse:collapse;font-size:12px;}
+  th,td{border:1px solid #cbd5e0;padding:5px 8px;text-align:left;}
+  th{background:#f7fafc;color:var(--blue-d);}
+  .item{font-weight:bold;white-space:nowrap;}
+  .num-c{text-align:right;white-space:nowrap;}
+  .kpis{display:flex;gap:8px;flex-wrap:wrap;}
+  .kpi{flex:1;min-width:130px;border:1px solid #cbd5e0;border-radius:6px;padding:10px;text-align:center;}
+  .kpi .l{font-size:11px;color:var(--muted);}
+  .kpi .v{font-size:16px;font-weight:bold;color:var(--blue-d);margin-top:4px;}
+  .pv-brand{text-align:right;color:var(--blue);font-weight:bold;font-size:14px;margin-top:14px;}
+  .cap{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
+  .login-note{background:#fffaf0;border:1px solid #f6d8a8;border-radius:10px;padding:12px 16px;font-size:13px;color:#7a5320;margin-top:16px;}
+  .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto;max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
+  footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:20px;}
+</style>
+<link rel="stylesheet" href="assets/motion.css">
+</head>
+<body>
+<header><div class="wrap bar"><a class="back" href="index.html">← Sonaure トップへ</a></div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="num">8</div>
+    <h1>買取査定判断シミュレーション</h1>
+    <p>想定売却価格から「いくらまでなら買えるか」を逆算。買取再販の仕入判断に。</p>
+  </div>
+
+  <section>
+    <h2>こんな場面で活躍します</h2>
+    <p class="lead">「この物件、いくらまでなら出せる？」——買取の話は、その場で数字を返せるかどうかで決まります。売れる価格の見込みと諸条件を入れれば、目標利益率ごとの買取上限が並びます。</p>
+    <ul class="feat">
+      <li>目標利益率ごとに「買取上限価格」を逆算（3つまで同時に比較）</li>
+      <li>仲介手数料・支払利息は仕入価格に連動して増えるため、逆算で求めています</li>
+      <li>不動産取得税は土地・建物それぞれの評価額から自動計算。買取再販の特例にも対応</li>
+      <li>消費税（本則課税）の納付見込みまで織り込み。個人からの仕入は非課税として扱います</li>
+      <li>提示価格を動かすと、利益率・粗利・収支明細がその場で組み替わります</li>
+      <li>利益率の分母は「売価ベース／投資額ベース／仕入価格ベース」を切替。自社の基準に合わせられます</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>出力イメージ</h2>
+    <div class="preview">
+      <div class="pv-title">買取査定判断シミュレーション<span>Sonaure</span><span class="pv-note">※あくまで概算になるため変動いたします</span></div>
+      <div class="pv-meta">対象：売却 3,000 万円／リフォーム 300 万円／6ヶ月保有　（売価ベース｜粗利 ÷ 想定売却価格）</div>
+      <h3>目標利益率ごとの買取上限価格</h3>
+      <table>
+        <thead><tr><th>目標利益率</th><th class="num-c">買取上限価格</th><th class="num-c">粗利益</th></tr></thead>
+        <tbody>
+          <tr><td class="item">20%</td><td class="num-c">1,763 万円</td><td class="num-c">600 万円</td></tr>
+          <tr><td class="item">15%</td><td class="num-c">1,904 万円</td><td class="num-c">450 万円</td></tr>
+          <tr><td class="item">10%</td><td class="num-c">2,045 万円</td><td class="num-c">300 万円</td></tr>
+        </tbody>
+      </table>
+      <h3>提示価格 2,200 万円 での収支</h3>
+      <div class="kpis">
+        <div class="kpi"><div class="l">利益率（売価ベース）</div><div class="v">4.47%</div></div>
+        <div class="kpi"><div class="l">粗利益</div><div class="v">134 万円</div></div>
+        <div class="kpi"><div class="l">総投資額</div><div class="v">2,866 万円</div></div>
+      </div>
+      <h3>収支の内訳（抜粋）</h3>
+      <table>
+        <thead><tr><th>区分</th><th>項目</th><th class="num-c">金額</th></tr></thead>
+        <tbody>
+          <tr><td class="item">購入諸費用</td><td>仲介手数料(購入)</td><td class="num-c">792,000 円</td></tr>
+          <tr><td class="item">購入諸費用</td><td>融資事務手数料</td><td class="num-c">550,000 円</td></tr>
+          <tr><td class="item">不動産取得税</td><td>土地／建物</td><td class="num-c">189,000／198,000 円</td></tr>
+          <tr><td class="item">リフォーム</td><td>工事費(税込)</td><td class="num-c">3,000,000 円</td></tr>
+          <tr><td class="item">保有コスト</td><td>支払利息（6ヶ月）</td><td class="num-c">375,000 円</td></tr>
+          <tr><td class="item">消費税</td><td>納付見込(本則課税)</td><td class="num-c">737,091 円</td></tr>
+          <tr><td class="item">合計</td><td>経費合計</td><td class="num-c">6,659,091 円</td></tr>
+          <tr><td class="item">合計</td><td>粗利益</td><td class="num-c">1,340,909 円</td></tr>
+        </tbody>
+      </table>
+      <div class="pv-brand">Sonaure</div>
+    </div>
+    <p class="cap">※ 実際のレポートには全20項目の内訳・計算の前提・注意事項も記載。PDF / Excelでダウンロードできます（上記は表示イメージ）。</p>
+    <div class="login-note">
+      <strong>※ この機能のご利用には、無料の会員登録が必要です。</strong>
+      メールアドレスとパスワードだけで登録でき、料金はかかりません。
+    </div>
+  </section>
+
+  <section>
+    <h2>ご利用にあたって</h2>
+    <p class="lead">税率は2027年3月31日までの軽減措置にもとづく概算です。利息は満期一括返済（期中は利息のみ）、消費税は本則課税として計算しており、簡易課税・インボイスの調整は含みません。固定資産税評価額も概算のため、実額は市区町村の評価によります。実際の申告・税務判断は税理士にご確認ください。</p>
+  </section>
+
+  <a class="cta" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
+</div>
+
+<footer>Sonaure 〜備えあれば憂いなし、＋αの感動を〜<br>© 2026 Sonaure</footer>
+<script src="assets/motion.js" defer></script>
+</body>
+</html>
