@@ -87,6 +87,13 @@
   .aud-block p { font-size: 14.5px; color: var(--ink); line-height: 1.95; }
   .aud-block .use { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); }
   .aud-block .use a { color: var(--blue); font-weight: bold; text-decoration: none; }
+  /* 公式LINEへの導線。本文と地続きに見えないよう、薄い枠で区切る */
+  .aud-line { margin-top: 22px; padding: 18px 16px 16px; background: linear-gradient(135deg, #f4f9ff, #eaf3ff);
+              border: 1px solid var(--line); border-radius: 14px; }
+  .aud-line p { font-size: 14px; line-height: 1.9; margin-bottom: 12px; }
+  .aud-line strong { color: var(--blue-d); }
+  /* LINE公式のボタン画像。img{max-width:100%} で潰れないよう高さを保つ */
+  .aud-line img { height: 36px; width: auto; vertical-align: middle; }
 
   /* ===== 記事への導線 ===== */
   .blog-lead { background: #fff; }
@@ -237,6 +244,10 @@
       <div class="aud-label">実需層（マイホームの購入・売却・賃貸）のみなさまへ</div>
       <p>初期費用の計算や家賃→購入シミュレーションを使えば、賃貸と購入をかんたんに比べられます。住みたいエリアの周辺環境もすぐに調べられるので、楽しみながらご検討いただけます。</p>
       <span class="use"><a href="detail-rentbuy.html">家賃→購入シミュレーション</a>／<a href="detail-rental.html">賃貸初期費用計算</a>／<a href="detail-sale.html">売却収支計算</a></span>
+      <div class="aud-line">
+        <p>東京、大阪の割安中古マンション情報や<br>お得な不動産情報を知りたい方は<br><strong>是非公式LINEの無料登録を！</strong></p>
+        <a href="https://lin.ee/yHprA5U" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+      </div>
     </div>
     <div class="aud-block">
       <div class="aud-label">不動産投資家のみなさまへ</div>
