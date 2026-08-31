@@ -47,6 +47,7 @@
   .hero h1 { font-size: clamp(40px, 7vw, 64px); letter-spacing: .04em; background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .hero .tagline { font-size: clamp(15px, 2.4vw, 20px); color: var(--blue-d); margin: 14px 0 10px; font-weight: bold; }
   .hero .sub { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
+  .hero .hero-who { margin-bottom: 10px; color: var(--blue-d); font-weight: bold; }
   .cta { display: inline-block; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; text-decoration: none; font-weight: bold; font-size: 17px; padding: 15px 52px; border-radius: 999px; box-shadow: 0 8px 24px rgba(43,108,176,.35); transition: transform .15s; }
   .cta:hover { transform: translateY(-2px); }
   .cta-note { font-size: 12px; color: var(--muted); margin-top: 12px; }
@@ -88,12 +89,28 @@
   .aud-block .use { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); }
   .aud-block .use a { color: var(--blue); font-weight: bold; text-decoration: none; }
   /* 公式LINEへの導線。本文と地続きに見えないよう、薄い枠で区切る */
-  .aud-line { margin-top: 22px; padding: 18px 16px 16px; background: linear-gradient(135deg, #f4f9ff, #eaf3ff);
+  .line-cta { margin-top: 22px; padding: 18px 16px 16px; background: linear-gradient(135deg, #f4f9ff, #eaf3ff);
               border: 1px solid var(--line); border-radius: 14px; }
-  .aud-line p { font-size: 14px; line-height: 1.9; margin-bottom: 12px; }
-  .aud-line strong { color: var(--blue-d); }
+  .line-cta p { font-size: 14px; line-height: 1.9; margin-bottom: 12px; }
+  .line-cta strong { color: var(--blue-d); }
   /* LINE公式のボタン画像。img{max-width:100%} で潰れないよう高さを保つ */
-  .aud-line img { height: 36px; width: auto; vertical-align: middle; }
+  .line-cta img { height: 36px; width: auto; vertical-align: middle; }
+
+  /* 読者別のご案内。3つを畳んで並べ、タップした1つだけを開く */
+  .aud-hint { text-align: center; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .aud-acc { max-width: 760px; margin: 0 auto 12px; }
+  .aud-acc > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+                       gap: 10px; width: fit-content; max-width: 100%; margin: 0 auto;
+                       background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); color: #fff;
+                       font-size: 13px; font-weight: bold; border-radius: 999px; padding: 9px 22px; letter-spacing: .04em; }
+  .aud-acc > summary::-webkit-details-marker { display: none; }
+  .aud-acc > summary::after { content: "▼"; font-size: 9px; flex: none; transition: transform .2s; }
+  .aud-acc[open] > summary::after { transform: rotate(180deg); }
+  .aud-acc .aud-block { margin-bottom: 0; padding-top: 16px; }
+  /* 不動産営業の説明は見出しと表組みを含むので、幅の制限を外す */
+  .aud-acc .aud-wide { max-width: none; }
+  .aud-acc .aud-wide h2 { font-size: clamp(18px, 2.6vw, 24px); margin-top: 4px; }
+  @media (prefers-reduced-motion: reduce) { .aud-acc > summary::after { transition: none; } }
 
   /* ===== 記事への導線 ===== */
   .blog-lead { background: #fff; }
@@ -110,7 +127,6 @@
   .blog-btn { display: inline-block; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; text-decoration: none; font-weight: bold; font-size: 15px; padding: 12px 34px; border-radius: 999px; box-shadow: 0 6px 18px rgba(43,108,176,.28); }
 
   /* ===== 時短の訴求（トップ） ===== */
-  .timesave { background: #fff; }
   .ts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; max-width: 820px; margin: 0 auto; }
   .ts-card { background: linear-gradient(135deg, #f4f9ff, #eaf3ff); border: 1px solid var(--line); border-radius: 14px; padding: 22px 18px; text-align: center; }
   .ts-case { font-size: 13px; color: var(--muted); font-weight: bold; }
@@ -211,7 +227,7 @@
 <div id="overlay" onclick="toggleMenu()"></div>
 <nav id="drawer">
   <button class="close" onclick="toggleMenu()">✕</button>
-  <a href="#about" onclick="toggleMenu()">Sonaureについて</a>
+  <a href="#about" onclick="toggleMenu()">どんな方におすすめか</a>
   <a href="business.html">事業概要</a>
   <a href="javascript:void(0)" onclick="toggleMenu(); openMessage();">メッセージ</a>
   <a href="blog/index.html">不動産に関する有益情報</a>
@@ -229,38 +245,60 @@
   <div class="wrap">
     <h1>Sonaure</h1>
     <div class="tagline">〜備えあれば憂いなし、＋αの感動を〜</div>
+    <p class="sub hero-who">不動産会社の方だけでなく、ご自身で物件を探す方・売却を考えている方にもお使いいただけます。</p>
     <p class="sub">住所や価格を入れるだけ。周辺環境・購入諸費用・売却収支・賃貸初期費用・キャッシュフロー・投資判断調査項目を30秒でレポートに。無料登録すればご希望の物件の周辺に何があるのかなどを調べることもできます♪</p>
     <a class="cta" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
   </div>
 </div>
 
-<!-- ===== 読者別のご案内 ===== -->
-<section class="aud" id="about">
+<!-- ===== 記事への導線 ===== -->
+<section class="blog-lead">
   <div class="wrap">
-    <h2>Sonaureについて</h2>
-    <p class="lead">住所や価格を入れるだけで、周辺環境・費用・税金・法令の調査をレポートにまとめる無料ツールです。<br>
-    不動産会社の方だけでなく、ご自身で物件を探す方・売却を考えている方にもお使いいただけます。</p>
-    <div class="aud-block">
-      <div class="aud-label">実需層（マイホームの購入・売却・賃貸）のみなさまへ</div>
-      <p>初期費用の計算や家賃→購入シミュレーションを使えば、賃貸と購入をかんたんに比べられます。住みたいエリアの周辺環境もすぐに調べられるので、楽しみながらご検討いただけます。</p>
-      <span class="use"><a href="detail-rentbuy.html">家賃→購入シミュレーション</a>／<a href="detail-rental.html">賃貸初期費用計算</a>／<a href="detail-sale.html">売却収支計算</a></span>
-      <div class="aud-line">
+    <div class="blog-box">
+      <h3>不動産に関する有益情報</h3>
+      <p>費用・税金・手続き・物件調査について、宅地建物取引士が解説した記事を公開しています。ツールが出す数字の根拠も、こちらで確認いただけます。</p>
+      <div class="pop">
+        <div class="pop-t">〜 人気記事 〜</div>
+        <ul>
+          <li><a href="blog/koukousei-fudosan-toushi.html">高校生でもわかる不動産投資｜ゲーム機5台を友達に貸す話</a></li>
+          <li><a href="blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</a></li>
+          <li><a href="blog/bukken-kakaku-shohiyo-zukai.html">物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</a></li>
+          <li><a href="blog/chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</a></li>
+        </ul>
+      </div>
+      <a class="blog-btn" href="blog/index.html">記事一覧を見る →</a>
+    </div>
+      <div class="line-cta">
         <p>東京、大阪の割安中古マンション情報や<br>お得な不動産情報を知りたい方は<br><strong>是非公式LINEの無料登録を！</strong></p>
         <a href="https://lin.ee/yHprA5U" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
       </div>
-    </div>
-    <div class="aud-block">
-      <div class="aud-label">不動産投資家のみなさまへ</div>
-      <p>投資判断に必要な周辺環境調査書や投資判断調査項目をご活用いただき、よりよい物件のご購入をサポートします。用途地域・建ぺい率／容積率・災害リスクといった、価格に効く条件を住所から一気に確認できます。</p>
-      <span class="use"><a href="detail-cashflow.html">キャッシュフローシミュレーション</a>／<a href="detail-juusetsu.html">投資判断調査項目</a>／<a href="detail-env.html">周辺環境調査書</a></span>
-    </div>
   </div>
 </section>
 
-<!-- ===== 時短の訴求（トップ） ===== -->
-<section class="timesave">
+<!-- ===== 読者別のご案内 ===== -->
+<section class="aud" id="about">
   <div class="wrap">
-    <div class="aud-label">不動産営業のみなさまへ</div>
+    <p class="aud-hint">あてはまるものをタップすると、詳しい説明が開きます。</p>
+
+    <details class="aud-acc">
+      <summary>実需層（マイホームの購入・売却・賃貸）のみなさまへ</summary>
+      <div class="aud-block">
+        <p>初期費用の計算や家賃→購入シミュレーションを使えば、賃貸と購入をかんたんに比べられます。住みたいエリアの周辺環境もすぐに調べられるので、楽しみながらご検討いただけます。</p>
+        <span class="use"><a href="detail-rentbuy.html">家賃→購入シミュレーション</a>／<a href="detail-rental.html">賃貸初期費用計算</a>／<a href="detail-sale.html">売却収支計算</a></span>
+      </div>
+    </details>
+
+    <details class="aud-acc">
+      <summary>不動産投資家のみなさまへ</summary>
+      <div class="aud-block">
+        <p>投資判断に必要な周辺環境調査書や投資判断調査項目をご活用いただき、よりよい物件のご購入をサポートします。用途地域・建ぺい率／容積率・災害リスクといった、価格に効く条件を住所から一気に確認できます。</p>
+        <span class="use"><a href="detail-cashflow.html">キャッシュフローシミュレーション</a>／<a href="detail-juusetsu.html">投資判断調査項目</a>／<a href="detail-env.html">周辺環境調査書</a></span>
+      </div>
+    </details>
+
+    <details class="aud-acc">
+      <summary>不動産営業のみなさまへ</summary>
+      <div class="aud-block aud-wide">
     <h2>1案件の準備が、30分〜1時間 → 数分に。</h2>
     <p class="lead">周辺環境の下調べ、費用計算、法令・災害リスクの確認……お客様ごとの準備は、手作業だと1件あたり30分〜1時間。<br>Sonaureは住所や価格を入れるだけで、お客様にそのまま渡せる資料を数分で作ります。</p>
     <div class="ts-grid">
@@ -284,8 +322,11 @@
       </div>
     </div>
     <div class="ts-trust"><strong>プリントすれば、そのままお客様にお渡しできる仕様。</strong>ChatGPTのようなメモ感を排除し、宅地建物取引士の監修で作っています。最後にSonaureのレポートをお渡しすれば「丁寧な営業さんだな」という<strong>＋αの信頼</strong>につながります。<br>各機能ごとの時短の目安は、下のサービスメニューに記載しています。</div>
+      </div>
+    </details>
   </div>
 </section>
+
 
 <!-- ===== サービスメニュー ===== -->
 <section class="services" id="services">
@@ -359,25 +400,6 @@
   </div>
 </section>
 
-<!-- ===== 記事への導線 ===== -->
-<section class="blog-lead">
-  <div class="wrap">
-    <div class="blog-box">
-      <h3>不動産に関する有益情報</h3>
-      <p>費用・税金・手続き・物件調査について、宅地建物取引士が解説した記事を公開しています。ツールが出す数字の根拠も、こちらで確認いただけます。</p>
-      <div class="pop">
-        <div class="pop-t">〜 人気記事 〜</div>
-        <ul>
-          <li><a href="blog/koukousei-fudosan-toushi.html">高校生でもわかる不動産投資｜ゲーム機5台を友達に貸す話</a></li>
-          <li><a href="blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</a></li>
-          <li><a href="blog/bukken-kakaku-shohiyo-zukai.html">物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</a></li>
-          <li><a href="blog/chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</a></li>
-        </ul>
-      </div>
-      <a class="blog-btn" href="blog/index.html">記事一覧を見る →</a>
-    </div>
-  </div>
-</section>
 
 <!-- ===== 料金 ===== -->
 <section id="price">
