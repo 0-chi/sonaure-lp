@@ -65,7 +65,7 @@
   .trust-box strong { color: var(--blue-d); }
 
   /* ===== サービスメニュー ===== */
-  .services { background: linear-gradient(180deg, #fff 0%, #eef5ff 100%); }
+  .services { background: linear-gradient(180deg, #fff 0%, #eef5ff 100%); padding-top: 44px; }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
   .card { display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 14px; padding: 26px 20px; box-shadow: 0 4px 16px rgba(26,77,143,.07); transition: transform .15s, box-shadow .15s; }
   .card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(26,77,143,.16); }
@@ -81,7 +81,7 @@
   .aud-label { display: block; width: fit-content; margin: 0 auto 14px; background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); color: #fff; font-size: 13px; font-weight: bold; border-radius: 999px; padding: 5px 20px; letter-spacing: .04em; }
 
   /* ===== 読者別のご案内（投資家／実需層）===== */
-  .aud { background: #fff; }
+  .aud { background: #fff; padding: 28px 0 24px; }
   /* 読者別のご案内。囲みカードだと本文が窮屈になるので、「不動産営業のみなさまへ」と同じラベル＋本文の形にそろえる */
   .aud-block { max-width: 760px; margin: 0 auto 40px; text-align: center; }
   .aud-block:last-child { margin-bottom: 0; }
@@ -89,7 +89,8 @@
   .aud-block .use { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); }
   .aud-block .use a { color: var(--blue); font-weight: bold; text-decoration: none; }
   /* 公式LINEへの導線。本文と地続きに見えないよう、薄い枠で区切る */
-  .line-cta { margin-top: 22px; padding: 18px 16px 16px; background: linear-gradient(135deg, #f4f9ff, #eaf3ff);
+  .line-cta { max-width: 780px; margin: 22px auto 0; padding: 18px 16px 16px; text-align: center;
+              background: linear-gradient(135deg, #f4f9ff, #eaf3ff);
               border: 1px solid var(--line); border-radius: 14px; }
   .line-cta p { font-size: 14px; line-height: 1.9; margin-bottom: 12px; }
   .line-cta strong { color: var(--blue-d); }
@@ -97,7 +98,7 @@
   .line-cta img { height: 36px; width: auto; vertical-align: middle; }
 
   /* 読者別のご案内。3つを畳んで並べ、タップした1つだけを開く */
-  .aud-hint { text-align: center; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .aud-hint { text-align: center; font-size: 13px; color: var(--muted); margin-bottom: 16px; }
   .aud-acc { max-width: 760px; margin: 0 auto 12px; }
   .aud-acc > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
                        gap: 10px; width: fit-content; max-width: 100%; margin: 0 auto;
@@ -113,7 +114,7 @@
   @media (prefers-reduced-motion: reduce) { .aud-acc > summary::after { transition: none; } }
 
   /* ===== 記事への導線 ===== */
-  .blog-lead { background: #fff; }
+  .blog-lead { background: #fff; padding-bottom: 28px; }
   .blog-box { max-width: 780px; margin: 0 auto; background: linear-gradient(135deg, #f4f9ff, #eaf3ff); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px; text-align: center; }
   .blog-box h3 { font-size: 18px; color: var(--blue-d); margin-bottom: 8px; }
   .blog-box p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
@@ -281,7 +282,7 @@
     <p class="aud-hint">あてはまるものをタップすると、詳しい説明が開きます。</p>
 
     <details class="aud-acc">
-      <summary>実需層（マイホームの購入・売却・賃貸）のみなさまへ</summary>
+      <summary><span>マイホームの購入・売却・賃貸などの<br>実需層のみなさまへ</span></summary>
       <div class="aud-block">
         <p>初期費用の計算や家賃→購入シミュレーションを使えば、賃貸と購入をかんたんに比べられます。住みたいエリアの周辺環境もすぐに調べられるので、楽しみながらご検討いただけます。</p>
         <span class="use"><a href="detail-rentbuy.html">家賃→購入シミュレーション</a>／<a href="detail-rental.html">賃貸初期費用計算</a>／<a href="detail-sale.html">売却収支計算</a></span>
