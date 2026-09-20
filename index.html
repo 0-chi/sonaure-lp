@@ -66,17 +66,20 @@
 
   /* ===== サービスメニュー ===== */
   .services { background: linear-gradient(180deg, #fff 0%, #eef5ff 100%); padding-top: 44px; }
-  .services h2 { margin-bottom: 24px; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-  /* カードは「時短の目安・番号・名前」だけ。説明は各機能のページに置き、一覧では読ませない */
-  .card { position: relative; display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 14px; padding: 22px 44px 22px 20px; box-shadow: 0 4px 16px rgba(26,77,143,.07); transition: transform .15s, box-shadow .15s; }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(26,77,143,.16); }
-  /* 説明文を無くした分、タップできることが分かるように右端に矢印を置く */
-  .card::after { content: "›"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 26px; line-height: 1; color: var(--blue-l); }
-  .card .num { display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-weight: bold; margin-bottom: 10px; }
-  .card .need-login { display: block; margin-top: 6px; font-size: 11.5px; font-weight: bold; color: var(--muted); }
+  .services h2 { margin-bottom: 18px; }
+  /* 「登録なし」「会員登録」の2組に分ける小見出し。料金欄の2行と同じ分け方 */
+  .cards-h { font-size: 14px; font-weight: bold; color: var(--blue-d); margin: 26px 0 10px; padding-left: 4px; }
+  .cards-h:first-of-type { margin-top: 0; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 10px; }   /* PCで2列。3列だと名前が途中で折れる */
+  /* カードは「番号・名前」の1行だけ。説明は各機能のページに置き、一覧では読ませない。
+     飾り（上端の色線・大きな影）は付けない。8つ並ぶと飾りのほうが目に入ってしまう */
+  .card { position: relative; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 36px 12px 14px; box-shadow: 0 2px 8px rgba(26,77,143,.06); transition: transform .15s, box-shadow .15s; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(26,77,143,.14); }
+  /* 説明文が無いので、タップできることは右端の矢印で示す */
+  .card::after { content: "›"; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 24px; line-height: 1; color: var(--blue-l); }
+  .card .num { flex: none; display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-weight: bold; font-size: 14px; }
   .new-badge { display: inline-block; background: linear-gradient(135deg, #e53e3e, #f56565); color: #fff; font-size: 10.5px; font-weight: bold; border-radius: 999px; padding: 1px 10px; margin-left: 8px; vertical-align: middle; letter-spacing: .08em; }
-  .card h3 { font-size: 16px; color: var(--blue-d); }
+  .card h4 { font-size: 15.5px; color: var(--blue-d); line-height: 1.5; }
   .formats { text-align: center; margin-top: 22px; font-size: 13px; color: var(--muted); }
 
   /* 見出しの上に置く、誰に向けた話かの札 */
@@ -140,9 +143,6 @@
   .ts-detail { font-size: 11.5px; color: var(--muted); margin-top: 10px; line-height: 1.7; }
   .ts-trust { max-width: 760px; margin: 30px auto 0; border-left: 4px solid var(--blue); background: #f4f9ff; padding: 18px 22px; border-radius: 0 10px 10px 0; font-size: 14px; }
   .ts-trust strong { color: var(--blue-d); }
-  /* サービスカードの時短バッジ */
-  .time-badge { display: inline-block; background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); color: #fff; font-size: 12px; font-weight: bold; border-radius: 999px; padding: 4px 14px; margin-bottom: 12px; letter-spacing: .02em; }
-  .time-badge b { font-size: 13.5px; }
 
   /* ===== 料金 ===== */
   .value-calc { max-width: 480px; margin: 0 auto 26px; background: linear-gradient(135deg,#f4f9ff,#eaf3ff); border: 1px solid var(--line); border-radius: 16px; padding: 28px 30px; text-align: center; }
@@ -163,17 +163,12 @@
   .price-card { max-width: 430px; margin: 0 auto; background: #fff; border: 2px solid var(--blue); border-radius: 18px; padding: 38px 30px; text-align: center; box-shadow: 0 12px 32px rgba(26,77,143,.12); }
   .price-big { font-size: 54px; font-weight: bold; background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.2; }
   .price-big small { display: block; font-size: 18px; margin-top: 2px; }   /* 「無料」の下に改行して添える */
-  .free-badge { display: inline-block; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-size: 13px; font-weight: bold; border-radius: 999px; padding: 5px 18px; margin-bottom: 12px; }
-  .coffee { margin-top: 16px; font-size: 14px; color: var(--ink); background: #f4f9ff; border-radius: 10px; padding: 14px; }
-  .coffee u { font-weight: bold; color: var(--blue-d); text-decoration-color: var(--blue); text-underline-offset: 3px; }
-  .price-card ul { list-style: none; text-align: left; margin: 18px auto 0; font-size: 13.5px; max-width: 300px; }
+  /* 料金は「無料」＋「登録なし／登録が必要」の2行＋今後の予定だけ。同じことを何度も書かない */
+  .price-card ul { list-style: none; text-align: left; margin: 22px auto 0; font-size: 13.5px; max-width: 320px; }
+  .price-card li { margin-bottom: 8px; }
   .price-card li::before { content: "✓ "; color: var(--blue); font-weight: bold; }
-  .plan-label { display: inline-block; background: #eaf3ff; color: var(--blue-d); font-weight: bold; font-size: 13px; border-radius: 999px; padding: 3px 16px; margin-bottom: 8px; }
-  .corp-plan { margin-top: 24px; padding-top: 22px; border-top: 1px dashed var(--line); }
-  .corp-price { font-size: 30px; font-weight: bold; background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.2; }
-  .corp-price small { font-size: 14px; }
-  .corp-plan p { font-size: 13px; color: var(--ink); margin-top: 10px; text-align: left; line-height: 1.9; }
-  .corp-plan p a { color: var(--blue); font-weight: bold; }
+  .corp-plan { margin-top: 22px; padding-top: 18px; border-top: 1px dashed var(--line); }
+  .corp-plan p { font-size: 13px; color: var(--ink); text-align: left; line-height: 1.9; }
 
   /* ===== ログイン・登録 ===== */
   .auth { background: linear-gradient(180deg, #eef5ff 0%, #fff 100%); }
@@ -301,7 +296,7 @@
         <div class="ts-detail">賃貸初期費用＋家賃→購入＋周辺環境</div>
       </div>
     </div>
-    <div class="ts-trust"><strong>プリントすれば、そのままお客様にお渡しできる仕様。</strong>ChatGPTのようなメモ感を排除し、宅地建物取引士の監修で作っています。最後にSonaureのレポートをお渡しすれば「丁寧な営業さんだな」という<strong>＋αの信頼</strong>につながります。<br>各機能ごとの時短の目安は、下のサービスメニューに記載しています。</div>
+    <div class="ts-trust"><strong>プリントすれば、そのままお客様にお渡しできる仕様。</strong>ChatGPTのようなメモ感を排除し、宅地建物取引士の監修で作っています。最後にSonaureのレポートをお渡しすれば「丁寧な営業さんだな」という<strong>＋αの信頼</strong>につながります。</div>
       </div>
     </details>
   </div>
@@ -312,49 +307,42 @@
 <section class="services" id="services">
   <div class="wrap">
     <h2>サービスメニュー</h2>
+    <h3 class="cards-h">登録なしで使える</h3>
     <div class="cards">
       <a class="card" href="detail-rentbuy.html">
-        <div class="time-badge">⏱ 時短の目安 <b>約10〜20分</b></div>
-        <div class="num">1</div>
-        <h3>家賃→購入シミュレーション</h3>
+        <span class="num">1</span>
+        <h4>家賃→購入シミュレーション</h4>
       </a>
       <a class="card" href="detail-costs.html">
-        <div class="time-badge">⏱ 時短の目安 <b>約10〜18分</b></div>
-        <div class="num">2</div>
-        <h3>購入諸費用計算</h3>
+        <span class="num">2</span>
+        <h4>購入諸費用計算</h4>
       </a>
       <a class="card" href="detail-sale.html">
-        <div class="time-badge">⏱ 時短の目安 <b>約15〜25分</b></div>
-        <div class="num">3</div>
-        <h3>売却収支計算</h3>
+        <span class="num">3</span>
+        <h4>売却収支計算</h4>
       </a>
       <a class="card" href="detail-rental.html">
-        <div class="time-badge">⏱ 時短の目安 <b>約8〜12分</b></div>
-        <div class="num">4</div>
-        <h3>賃貸初期費用計算</h3>
+        <span class="num">4</span>
+        <h4>賃貸初期費用計算</h4>
       </a>
       <a class="card" href="detail-cashflow.html">
-        <div class="time-badge">⏱ 時短の目安 <b>約30〜60分</b></div>
-        <div class="num">5</div>
-        <h3>キャッシュフローシミュレーション<span class="new-badge">NEW</span></h3>
+        <span class="num">5</span>
+        <h4>キャッシュフローシミュレーション<span class="new-badge">NEW</span></h4>
       </a>
+    </div>
+    <h3 class="cards-h">無料の会員登録で使える</h3>
+    <div class="cards">
       <a class="card" href="detail-env.html">
-        <div class="time-badge">⏱ 時短の目安 <b>約20〜30分</b></div>
-        <div class="num">6</div>
-        <h3>周辺環境調査書<span class="new-badge">機能追加</span></h3>
-        <span class="need-login">※無料会員登録が必要です</span>
+        <span class="num">6</span>
+        <h4>周辺環境調査書<span class="new-badge">機能追加</span></h4>
       </a>
       <a class="card" href="detail-juusetsu.html">
-        <div class="time-badge">⏱ 時短の目安 <b>約10〜15分</b></div>
-        <div class="num">7</div>
-        <h3>投資判断調査項目</h3>
-        <span class="need-login">※無料会員登録が必要です</span>
+        <span class="num">7</span>
+        <h4>投資判断調査項目</h4>
       </a>
       <a class="card" href="detail-kaitori.html">
-        <div class="time-badge">⏱ 時短の目安 <b>約20〜40分</b></div>
-        <div class="num">8</div>
-        <h3>買取査定判断シミュレーション<span class="new-badge">NEW</span></h3>
-        <span class="need-login">※無料会員登録が必要です</span>
+        <span class="num">8</span>
+        <h4>買取査定判断シミュレーション<span class="new-badge">NEW</span></h4>
       </a>
     </div>
     <div class="formats">レポートはすべて <strong>PDF / Excel</strong> でダウンロードできます（出典：国土交通省 不動産情報ライブラリ等の公的データ）。<br>
@@ -368,20 +356,13 @@
   <div class="wrap">
     <h2>料金</h2>
     <div class="price-card">
-      <div class="free-badge">いまは無料でお使いいただけます</div>
-      <div class="plan-label">すべての機能</div>
       <div class="price-big">無料<small>（月額料金はありません）</small></div>
-      <div class="coffee">8種類の調査レポートを、そのままお使いいただけます。<br>
-      <strong>PDF / Excel の出力も無料です。</strong></div>
       <ul>
-        <li><strong>登録なしで使えます</strong>：購入諸費用概算書／売却収支概算書／賃貸初期費用概算書／家賃→購入シミュレーション／キャッシュフローシミュレーション</li>
-        <li><strong>無料の会員登録が必要です</strong>：周辺環境調査／投資判断調査項目／買取査定判断シミュレーション</li>
-        <li>PDF / Excel 出力に対応</li>
-        <li>お支払いは発生しません</li>
+        <li><strong>登録なしで使えます</strong>：家賃→購入シミュレーション／購入諸費用計算／売却収支計算／賃貸初期費用計算／キャッシュフローシミュレーション</li>
+        <li><strong>無料の会員登録が必要です</strong>：周辺環境調査書／投資判断調査項目／買取査定判断シミュレーション</li>
       </ul>
       <div class="corp-plan">
-        <div class="plan-label">今後について</div>
-        <p>将来的に<strong>従量課金制（使った分だけのお支払い）</strong>への移行を予定しています。<strong>移行するまでの間は、すべての機能を無料でお使いいただけます。</strong>移行する際は、事前にこのページでお知らせします。</p>
+        <p>将来は<strong>従量課金制（使った分だけのお支払い）</strong>へ移行する予定です。移行の前に、このページでお知らせします。</p>
       </div>
     </div>
   </div>
