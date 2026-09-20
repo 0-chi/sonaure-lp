@@ -66,15 +66,17 @@
 
   /* ===== サービスメニュー ===== */
   .services { background: linear-gradient(180deg, #fff 0%, #eef5ff 100%); padding-top: 44px; }
+  .services h2 { margin-bottom: 24px; }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-  .card { display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 14px; padding: 26px 20px; box-shadow: 0 4px 16px rgba(26,77,143,.07); transition: transform .15s, box-shadow .15s; }
+  /* カードは「時短の目安・番号・名前」だけ。説明は各機能のページに置き、一覧では読ませない */
+  .card { position: relative; display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 14px; padding: 22px 44px 22px 20px; box-shadow: 0 4px 16px rgba(26,77,143,.07); transition: transform .15s, box-shadow .15s; }
   .card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(26,77,143,.16); }
-  .card-more { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: bold; color: var(--blue); }
+  /* 説明文を無くした分、タップできることが分かるように右端に矢印を置く */
+  .card::after { content: "›"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 26px; line-height: 1; color: var(--blue-l); }
   .card .num { display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-weight: bold; margin-bottom: 10px; }
-  .card .need-login { display: block; margin-top: 8px; font-size: 11.5px; font-weight: bold; color: var(--muted); }
+  .card .need-login { display: block; margin-top: 6px; font-size: 11.5px; font-weight: bold; color: var(--muted); }
   .new-badge { display: inline-block; background: linear-gradient(135deg, #e53e3e, #f56565); color: #fff; font-size: 10.5px; font-weight: bold; border-radius: 999px; padding: 1px 10px; margin-left: 8px; vertical-align: middle; letter-spacing: .08em; }
-  .card h3 { font-size: 16px; color: var(--blue-d); margin-bottom: 8px; }
-  .card p { font-size: 13.5px; color: var(--muted); }
+  .card h3 { font-size: 16px; color: var(--blue-d); }
   .formats { text-align: center; margin-top: 22px; font-size: 13px; color: var(--muted); }
 
   /* 見出しの上に置く、誰に向けた話かの札 */
@@ -100,8 +102,9 @@
   /* 読者別のご案内。3つを畳んで並べ、タップした1つだけを開く */
   .aud-hint { text-align: center; font-size: 13px; color: var(--muted); margin-bottom: 16px; }
   .aud-acc { max-width: 760px; margin: 0 auto 12px; }
+  /* 3つの札は同じ大きさにそろえる（文の長さで幅や高さが変わると、並んだときに落ち着かない） */
   .aud-acc > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
-                       gap: 10px; width: fit-content; max-width: 100%; margin: 0 auto;
+                       gap: 10px; width: min(100%, 440px); min-height: 68px; margin: 0 auto; text-align: center;
                        background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); color: #fff;
                        font-size: 13px; font-weight: bold; border-radius: 999px; padding: 9px 22px; letter-spacing: .04em; }
   .aud-acc > summary::-webkit-details-marker { display: none; }
@@ -114,7 +117,7 @@
   @media (prefers-reduced-motion: reduce) { .aud-acc > summary::after { transition: none; } }
 
   /* ===== 記事への導線 ===== */
-  .blog-lead { background: #fff; padding-bottom: 28px; }
+  .blog-lead { background: #fff; padding: 8px 0 28px; }
   .blog-box { max-width: 780px; margin: 0 auto; background: linear-gradient(135deg, #f4f9ff, #eaf3ff); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px; text-align: center; }
   .blog-box h3 { font-size: 18px; color: var(--blue-d); margin-bottom: 8px; }
   .blog-box p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
@@ -159,7 +162,7 @@
   .vc-notes { font-size: 11px; color: var(--muted); margin-top: 18px; text-align: left; line-height: 1.8; border-top: 1px solid var(--line); padding-top: 14px; }
   .price-card { max-width: 430px; margin: 0 auto; background: #fff; border: 2px solid var(--blue); border-radius: 18px; padding: 38px 30px; text-align: center; box-shadow: 0 12px 32px rgba(26,77,143,.12); }
   .price-big { font-size: 54px; font-weight: bold; background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.2; }
-  .price-big small { font-size: 18px; }
+  .price-big small { display: block; font-size: 18px; margin-top: 2px; }   /* 「無料」の下に改行して添える */
   .free-badge { display: inline-block; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-size: 13px; font-weight: bold; border-radius: 999px; padding: 5px 18px; margin-bottom: 12px; }
   .coffee { margin-top: 16px; font-size: 14px; color: var(--ink); background: #f4f9ff; border-radius: 10px; padding: 14px; }
   .coffee u { font-weight: bold; color: var(--blue-d); text-decoration-color: var(--blue); text-underline-offset: 3px; }
@@ -252,30 +255,6 @@
   </div>
 </div>
 
-<!-- ===== 記事への導線 ===== -->
-<section class="blog-lead">
-  <div class="wrap">
-    <div class="blog-box">
-      <h3>不動産に関する有益情報</h3>
-      <p>費用・税金・手続き・物件調査について、宅地建物取引士が解説した記事を公開しています。ツールが出す数字の根拠も、こちらで確認いただけます。</p>
-      <div class="pop">
-        <div class="pop-t">〜 人気記事 〜</div>
-        <ul>
-          <li><a href="blog/koukousei-fudosan-toushi.html">高校生でもわかる不動産投資｜ゲーム機5台を友達に貸す話</a></li>
-          <li><a href="blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</a></li>
-          <li><a href="blog/bukken-kakaku-shohiyo-zukai.html">物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</a></li>
-          <li><a href="blog/chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</a></li>
-        </ul>
-      </div>
-      <a class="blog-btn" href="blog/index.html">記事一覧を見る →</a>
-    </div>
-      <div class="line-cta">
-        <p>東京、大阪の割安中古マンション情報や<br>お得な不動産情報を知りたい方は<br><strong>是非公式LINEの無料登録を！</strong></p>
-        <a href="https://lin.ee/yHprA5U" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
-      </div>
-  </div>
-</section>
-
 <!-- ===== 読者別のご案内 ===== -->
 <section class="aud" id="about">
   <div class="wrap">
@@ -333,67 +312,49 @@
 <section class="services" id="services">
   <div class="wrap">
     <h2>サービスメニュー</h2>
-    <p class="lead">住所や価格を入れるだけで、8種類の調査レポートを自動作成。<br>
-    ①家賃→購入シミュレーション・②購入諸費用計算・③売却収支計算・④賃貸初期費用計算・⑤キャッシュフローシミュレーションは<strong>登録なし</strong>で、⑥周辺環境調査書・⑦投資判断調査項目・⑧買取査定判断シミュレーションは<strong>無料の会員登録</strong>でお使いいただけます。</p>
     <div class="cards">
       <a class="card" href="detail-rentbuy.html">
         <div class="time-badge">⏱ 時短の目安 <b>約10〜20分</b></div>
         <div class="num">1</div>
         <h3>家賃→購入シミュレーション</h3>
-        <p>今の家賃と同じ支払いで「いくらの物件が買えるか」を逆算。賃貸のお客様への購入のご提案資料に。</p>
-        <span class="card-more">詳しく見る →</span>
       </a>
       <a class="card" href="detail-costs.html">
         <div class="time-badge">⏱ 時短の目安 <b>約10〜18分</b></div>
         <div class="num">2</div>
         <h3>購入諸費用計算</h3>
-        <p>物件価格を入れるだけで、仲介手数料・登記・ローン費用・保険・清算金まで概算書を自動作成。</p>
-        <span class="card-more">詳しく見る →</span>
       </a>
       <a class="card" href="detail-sale.html">
         <div class="time-badge">⏱ 時短の目安 <b>約15〜25分</b></div>
         <div class="num">3</div>
         <h3>売却収支計算</h3>
-        <p>売却価格を入れるだけで、仲介手数料・抵当権抹消・譲渡所得税まで差し引いた「手取り」を概算書に。</p>
-        <span class="card-more">詳しく見る →</span>
       </a>
       <a class="card" href="detail-rental.html">
         <div class="time-badge">⏱ 時短の目安 <b>約8〜12分</b></div>
         <div class="num">4</div>
         <h3>賃貸初期費用計算</h3>
-        <p>家賃を入れるだけで、敷金・礼金・保証料・日割り家賃まで契約時の初期費用を概算書に。「初期費用いくら？」にその場で即答。</p>
-        <span class="card-more">詳しく見る →</span>
       </a>
       <a class="card" href="detail-cashflow.html">
         <div class="time-badge">⏱ 時短の目安 <b>約30〜60分</b></div>
         <div class="num">5</div>
         <h3>キャッシュフローシミュレーション<span class="new-badge">NEW</span></h3>
-        <p>投資用物件の家賃・経費・返済・税金を年ごとに積み上げ、各年に売却した場合の手残りまで。減価償却は構造と築年数から自動計算、譲渡税は短期39.63%／長期20.315%で判定します。</p>
-        <span class="card-more">詳しく見る →</span>
       </a>
       <a class="card" href="detail-env.html">
         <div class="time-badge">⏱ 時短の目安 <b>約20〜30分</b></div>
         <div class="num">6</div>
         <h3>周辺環境調査書<span class="new-badge">機能追加</span></h3>
-        <p>最寄り駅・学校・保育園・スーパー・銀行・病院・コンビニ・公園・大型商業施設・コインパーキングを徒歩分数つきで1枚に。調べる施設は項目ごとに選べます。調べた施設は画面の地図でも確認できます。</p>
         <span class="need-login">※無料会員登録が必要です</span>
-        <span class="card-more">詳しく見る →</span>
       </a>
       <a class="card" href="detail-juusetsu.html">
         <div class="time-badge">⏱ 時短の目安 <b>約10〜15分</b></div>
         <div class="num">7</div>
         <h3>投資判断調査項目</h3>
-        <p>区域区分・用途地域・建ぺい率/容積率・防火指定・災害リスク4種。境界またがりは「要確認」として自動検出。</p>
         <span class="need-login">※無料会員登録が必要です</span>
-        <span class="card-more">詳しく見る →</span>
       </a>
       <a class="card" href="detail-kaitori.html">
         <div class="time-badge">⏱ 時短の目安 <b>約20〜40分</b></div>
         <div class="num">8</div>
         <h3>買取査定判断シミュレーション<span class="new-badge">NEW</span></h3>
-        <p>想定売却価格から「いくらまでなら買えるか」を目標利益率ごとに逆算。仲介手数料・利息・不動産取得税・消費税まで織り込み、提示価格を動かすとその場で収支が組み替わります。買取再販の仕入判断に。</p>
         <span class="need-login">※無料会員登録が必要です</span>
-        <span class="card-more">詳しく見る →</span>
       </a>
     </div>
     <div class="formats">レポートはすべて <strong>PDF / Excel</strong> でダウンロードできます（出典：国土交通省 不動産情報ライブラリ等の公的データ）。<br>
@@ -423,6 +384,30 @@
         <p>将来的に<strong>従量課金制（使った分だけのお支払い）</strong>への移行を予定しています。<strong>移行するまでの間は、すべての機能を無料でお使いいただけます。</strong>移行する際は、事前にこのページでお知らせします。</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== 記事への導線 ===== -->
+<section class="blog-lead">
+  <div class="wrap">
+    <div class="blog-box">
+      <h3>不動産に関する有益情報</h3>
+      <p>費用・税金・手続き・物件調査について、宅地建物取引士が解説した記事を公開しています。ツールが出す数字の根拠も、こちらで確認いただけます。</p>
+      <div class="pop">
+        <div class="pop-t">〜 人気記事 〜</div>
+        <ul>
+          <li><a href="blog/koukousei-fudosan-toushi.html">高校生でもわかる不動産投資｜ゲーム機5台を友達に貸す話</a></li>
+          <li><a href="blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</a></li>
+          <li><a href="blog/bukken-kakaku-shohiyo-zukai.html">物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</a></li>
+          <li><a href="blog/chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</a></li>
+        </ul>
+      </div>
+      <a class="blog-btn" href="blog/index.html">記事一覧を見る →</a>
+    </div>
+      <div class="line-cta">
+        <p>東京、大阪の割安中古マンション情報や<br>お得な不動産情報を知りたい方は<br><strong>是非公式LINEの無料登録を！</strong></p>
+        <a href="https://lin.ee/yHprA5U" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+      </div>
   </div>
 </section>
 
