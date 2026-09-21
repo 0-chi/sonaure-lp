@@ -19,15 +19,18 @@
     --ink: #f2f5f8;      /* 本文（白） */
     --muted: #aab6c4;    /* 補足 */
     --line: #2c333d;
-    --bg: #15181d;       /* 地：黒寄りのグレー */
-    --bg-soft: #1b1f26;
-    --bg-card: #1e232b;
+    --bg: #0b0e14;                     /* 地：夜空。星と星雲は canvas（#sky）で描く */
+    --bg-soft: rgba(24, 29, 38, .78);  /* 星空が少し透けるように半透明 */
+    --bg-card: rgba(28, 33, 43, .86);
     --before: #7d8794;
     --on-accent: #0f1418; /* 水色のボタンに載せる文字 */
     color-scheme: dark;
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Yu Gothic", "Hiragino Sans", "Meiryo", system-ui, sans-serif; line-height: 1.9; font-size: 15px; }
+  /* 星空。画面に固定して、本文はその上に載せる */
+  #sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  header, .hero, section, footer { position: relative; z-index: 1; }
   a { color: var(--blue); }
   .wrap { max-width: 900px; margin: 0 auto; padding-inline: 20px; }
   section { padding-block: 56px; }
@@ -37,14 +40,14 @@
   .num { font-variant-numeric: tabular-nums; }
 
   /* ヘッダー */
-  header { border-bottom: 1px solid var(--line); background: var(--bg); }
+  header { border-bottom: 1px solid var(--line); background: rgba(11, 14, 20, .82); }
   .bar { display: flex; align-items: center; gap: 14px; height: 56px; }
   .logo { font-size: 20px; font-weight: bold; color: var(--blue-d); text-decoration: none; }
   .logo small { font-size: 12px; font-weight: normal; color: var(--muted); margin-left: 8px; }
   .bar .go { margin-left: auto; font-size: 13px; color: var(--blue); text-decoration: none; border: 1px solid var(--blue); border-radius: 999px; padding: 5px 16px; white-space: nowrap; }
 
   /* ヒーロー */
-  .hero { padding-block: 64px 48px; background: linear-gradient(170deg, var(--bg) 0%, var(--bg-soft) 100%); }
+  .hero { padding-block: 64px 48px; }
   .hero h1 { font-size: clamp(26px, 4.6vw, 40px); line-height: 1.35; color: var(--blue-d); margin: 0 0 16px; text-wrap: balance; }
   .hero h1 .arrow { color: var(--blue-l); }
   .hero p { max-width: 36em; margin: 0 0 26px; }
@@ -113,6 +116,49 @@
 </style>
 </head>
 <body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<script>
+(function () {
+  // 夜空。黒地に青い星雲の帯と星を描く。写真を使わず、その場で描くので読み込みが無い
+  var c = document.getElementById("sky"), ctx = c.getContext("2d");
+  function rand(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+  function draw() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = window.innerWidth, h = window.innerHeight;
+    c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var g = ctx.createLinearGradient(0, 0, 0, h);
+    g.addColorStop(0, "#07090f"); g.addColorStop(1, "#0d1119");
+    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    var r = rand(20260921), i, x, y, s, a;
+    // 星雲：斜めの帯に沿って、青い光を重ねる
+    for (i = 0; i < 14; i++) {
+      var t = i / 13, cx = w * (0.1 + 0.8 * t), cy = h * (0.62 - 0.3 * t) + (r() - 0.5) * h * 0.18;
+      var rad = Math.max(w, h) * (0.14 + r() * 0.14);
+      var n = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
+      n.addColorStop(0, "rgba(90, 140, 210, " + (0.10 + r() * 0.08) + ")");
+      n.addColorStop(0.5, "rgba(60, 100, 170, 0.05)");
+      n.addColorStop(1, "rgba(20, 40, 80, 0)");
+      ctx.fillStyle = n; ctx.fillRect(0, 0, w, h);
+    }
+    // 星：小さいものを多く、明るいものを少し
+    var count = Math.round(w * h / 1400);
+    for (i = 0; i < count; i++) {
+      x = r() * w; y = r() * h; s = r(); a = 0.25 + r() * 0.6;
+      ctx.fillStyle = "rgba(" + (s > 0.85 ? "190,215,255" : "235,240,255") + "," + a + ")";
+      ctx.beginPath(); ctx.arc(x, y, s > 0.97 ? 1.6 : s > 0.8 ? 1.1 : 0.6, 0, Math.PI * 2); ctx.fill();
+    }
+    for (i = 0; i < Math.round(count / 40); i++) {
+      x = r() * w; y = r() * h;
+      var glow = ctx.createRadialGradient(x, y, 0, x, y, 7);
+      glow.addColorStop(0, "rgba(255,255,255,0.9)"); glow.addColorStop(0.3, "rgba(190,220,255,0.35)"); glow.addColorStop(1, "rgba(190,220,255,0)");
+      ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  var timer;
+  window.addEventListener("resize", function () { clearTimeout(timer); timer = setTimeout(draw, 150); });
+  draw();
+})();
+</script>
 
 <header>
   <div class="wrap bar">

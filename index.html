@@ -113,8 +113,11 @@
   .aud-acc .aud-block { margin-bottom: 0; padding-top: 16px; }
   @media (prefers-reduced-motion: reduce) { .aud-acc > summary::after { transition: none; } }
   /* 営業向けの話は pro.html に分けた。トップには入口の1行だけ置く */
-  .pro-link { color: var(--blue); font-weight: bold; text-decoration: none; }
-  .aud-pro { text-align: center; margin-top: 18px; font-size: 14px; }
+  .pro-link { display: inline-block; font-size: 16px; font-weight: bold; color: var(--blue-d); text-decoration: none;
+              background: #fff; border: 2px solid var(--blue); border-radius: 999px; padding: 10px 26px; }
+  .pro-link:hover { background: #eef5ff; }
+  .hero .cta-note { margin-top: 16px; }
+  .aud-pro { text-align: center; margin-top: 22px; }
 
   /* ===== 記事への導線 ===== */
   .blog-lead { background: #fff; padding: 8px 0 28px; }
