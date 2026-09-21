@@ -22,6 +22,9 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: "Yu Gothic", "Hiragino Sans", "Meiryo", sans-serif; color: var(--ink); line-height: 1.9; background: #fff; }
+  /* 水彩のにじみ。画面に固定して、本文はその上に載せる（写真は使わず、その場で描く） */
+  #wash { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  .hero, section, footer { position: relative; z-index: 1; }
   .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
   section { padding: 64px 0; }
   h2 { text-align: center; font-size: clamp(20px, 3vw, 28px); color: var(--blue-d); margin-bottom: 8px; }
@@ -43,7 +46,8 @@
   #drawer .close { position: absolute; top: 12px; right: 14px; border: none; background: none; font-size: 22px; color: var(--muted); cursor: pointer; }
 
   /* ===== ヒーロー ===== */
-  .hero { padding: 140px 0 90px; text-align: center; background: linear-gradient(165deg, #ffffff 0%, #eaf3ff 38%, #d7e9ff 70%, #c3ddff 100%); }
+  /* ヒーローは背景を持たない。ここだけ水彩をそのまま見せる */
+  .hero { padding: 140px 0 90px; text-align: center; }
   .hero h1 { font-size: clamp(40px, 7vw, 64px); letter-spacing: .04em; background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .hero .tagline { font-size: clamp(15px, 2.4vw, 20px); color: var(--blue-d); margin: 14px 0 10px; font-weight: bold; }
   .hero .sub { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
@@ -65,7 +69,8 @@
   .trust-box strong { color: var(--blue-d); }
 
   /* ===== サービスメニュー ===== */
-  .services { background: linear-gradient(180deg, #fff 0%, #eef5ff 100%); padding-top: 44px; }
+  /* ヒーローから下は、白を薄くかぶせて水彩を透かす（文字が読める濃さを保つ） */
+  .services { background: linear-gradient(180deg, rgba(255,255,255,.93) 0%, rgba(238,245,255,.9) 100%); padding-top: 44px; }
   .services h2 { margin-bottom: 18px; }
   /* 「登録なし」「会員登録」の2組に分ける小見出し。料金欄の2行と同じ分け方 */
   .cards-h { font-size: 14px; font-weight: bold; color: var(--blue-d); margin: 26px 0 10px; padding-left: 4px; }
@@ -83,7 +88,7 @@
   .formats { text-align: center; margin-top: 22px; font-size: 13px; color: var(--muted); }
 
   /* ===== 読者別のご案内（投資家／実需層）===== */
-  .aud { background: #fff; padding: 28px 0 24px; }
+  .aud { background: rgba(255,255,255,.88); padding: 28px 0 24px; }
   /* 読者別のご案内。囲みカードだと本文が窮屈になるので、ラベル＋本文の形にする */
   .aud-block { max-width: 760px; margin: 0 auto 40px; text-align: center; }
   .aud-block:last-child { margin-bottom: 0; }
@@ -120,7 +125,7 @@
   .aud-pro { text-align: center; margin-top: 22px; }
 
   /* ===== 記事への導線 ===== */
-  .blog-lead { background: #fff; padding: 8px 0 28px; }
+  .blog-lead { background: rgba(255,255,255,.9); padding: 8px 0 28px; }
   .blog-box { max-width: 780px; margin: 0 auto; background: linear-gradient(135deg, #f4f9ff, #eaf3ff); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px; text-align: center; }
   .blog-box h3 { font-size: 18px; color: var(--blue-d); margin-bottom: 8px; }
   .blog-box p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
@@ -161,7 +166,7 @@
   .corp-plan p { font-size: 13px; color: var(--ink); text-align: left; line-height: 1.9; }
 
   /* ===== ログイン・登録 ===== */
-  .auth { background: linear-gradient(180deg, #eef5ff 0%, #fff 100%); }
+  .auth { background: linear-gradient(180deg, rgba(238,245,255,.9) 0%, rgba(255,255,255,.93) 100%); }
   .auth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 760px; margin: 0 auto; }
   .auth-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 30px 26px; box-shadow: 0 4px 16px rgba(26,77,143,.07); }
   .auth-card h3 { color: var(--blue-d); margin-bottom: 16px; text-align: center; }
@@ -204,6 +209,59 @@
 <link rel="stylesheet" href="assets/motion.css">
 </head>
 <body>
+<canvas id="wash" aria-hidden="true"></canvas>
+<script>
+(function () {
+  // 水彩のにじみ。白地に青の絵の具を斜めに置く。
+  // 小さく描いてから引き伸ばすことで、ぼかし処理を使わずに絵の具のにじみになる。
+  var c = document.getElementById("wash"), ctx = c.getContext("2d");
+  function rand(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+  function draw() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = window.innerWidth, h = window.innerHeight;
+    c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var r = rand(20260921), i;
+
+    var sw = 96, sh = Math.max(48, Math.round(96 * h / w));
+    var o = document.createElement("canvas"); o.width = sw; o.height = sh;
+    var oc = o.getContext("2d");
+    oc.fillStyle = "#ffffff"; oc.fillRect(0, 0, sw, sh);
+    var tints = ["66,153,225", "43,108,176", "26,77,143", "150,205,240"];
+    for (i = 0; i < 80; i++) {
+      var x = r() * sw, y = r() * sh;
+      // 丸い塊ではなく筆あとに見えるよう、長く・細くする
+      var len = sw * (0.35 + r() * 0.95), th = sh * (0.012 + r() * 0.055);
+      oc.save(); oc.translate(x, y); oc.rotate(-0.42 + (r() - 0.5) * 0.3);
+      oc.fillStyle = "rgba(" + tints[Math.floor(r() * tints.length)] + "," + (0.04 + r() * 0.15) + ")";
+      oc.beginPath(); oc.ellipse(0, 0, len / 2, th / 2, 0, 0, Math.PI * 2); oc.fill();
+      oc.restore();
+    }
+    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
+    ctx.drawImage(o, 0, 0, w, h);
+
+    // 筆あと：ところどころ濃い青を斜めに走らせる
+    for (i = 0; i < 16; i++) {
+      var bx = r() * w * 1.2 - w * 0.1, by = r() * h;
+      var bl = w * (0.12 + r() * 0.5), bt = h * (0.005 + r() * 0.022);
+      var a = 0.05 + r() * 0.12;
+      ctx.save(); ctx.translate(bx, by); ctx.rotate(-0.42 + (r() - 0.5) * 0.22);
+      var g = ctx.createLinearGradient(-bl / 2, 0, bl / 2, 0);
+      g.addColorStop(0, "rgba(43,108,176,0)");
+      g.addColorStop(0.35, "rgba(43,108,176," + a + ")");
+      g.addColorStop(0.7, "rgba(26,77,143," + (a * 0.75) + ")");
+      g.addColorStop(1, "rgba(66,153,225,0)");
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.ellipse(0, 0, bl / 2, bt / 2, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    }
+    // 全体に白をかぶせて、文字が読める薄さに整える
+    ctx.fillStyle = "rgba(255,255,255,0.3)"; ctx.fillRect(0, 0, w, h);
+  }
+  var timer;
+  window.addEventListener("resize", function () { clearTimeout(timer); timer = setTimeout(draw, 150); });
+  draw();
+})();
+</script>
 
 <!-- ===== ヘッダー ===== -->
 <header>
