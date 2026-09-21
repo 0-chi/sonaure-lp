@@ -43,8 +43,12 @@
   header { border-bottom: 1px solid var(--line); background: rgba(11, 14, 20, .82); }
   .bar { display: flex; align-items: center; gap: 14px; height: 56px; }
   .logo { font-size: 20px; font-weight: bold; color: var(--blue-d); text-decoration: none; }
-  .logo small { font-size: 13px; font-weight: normal; color: var(--muted); margin-left: 8px; }
+  /* ヘッダーの実需側への入口。行き先に合わせた文言にする（ロゴの一部に見せない） */
+  .bar .who { font-size: 13.5px; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  .bar .who:hover { color: var(--blue); }
   .bar .go { margin-left: auto; font-size: 14px; font-weight: bold; color: var(--blue); text-decoration: none; border: 1px solid var(--blue); border-radius: 999px; padding: 5px 16px; white-space: nowrap; }
+  /* 狭い画面では入りきらない。ヒーローの下に同じ入口のボタンがあるので隠す */
+  @media (max-width: 860px) { .bar .who { display: none; } }
 
   /* ヒーロー */
   .hero { padding-block: 64px 48px; }
@@ -55,8 +59,9 @@
   .cta:focus-visible, .go:focus-visible, .sub-link:focus-visible { outline: 3px solid var(--blue-l); outline-offset: 3px; }
   .cta-note { font-size: 14.5px; color: var(--muted); margin-top: 10px; }
   /* もう一方の読者（実需・投資家）への入口。本文のリンクに紛れないよう枠を付ける */
-  .sub-link { display: inline-block; margin-top: 26px; padding: 11px 26px; border: 2px solid var(--blue);
-              border-radius: 999px; font-size: 15.5px; font-weight: bold; color: var(--blue); text-decoration: none; }
+  .sub-link { display: inline-block; margin-top: 30px; padding: 16px 34px; border: 2px solid var(--blue);
+              border-radius: 40px; font-size: 18px; font-weight: bold; color: var(--blue);
+              text-decoration: none; line-height: 1.6; }
   .sub-link:hover { background: rgba(124,196,255,.12); }
 
   /* 使う場面 */
@@ -165,7 +170,8 @@
 
 <header>
   <div class="wrap bar">
-    <a class="logo" href="index.html">Sonaure<small>不動産会社の方へ</small></a>
+    <a class="logo" href="index.html">Sonaure</a>
+    <a class="who" href="personal.html">マイホーム・投資不動産の購入をご希望の方へ →</a>
     <a class="go" href="https://sonaure-plsalfa.streamlit.app">無料で使う</a>
   </div>
 </header>
