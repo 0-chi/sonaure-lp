@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>サービスメニュー｜Sonaure（ソナウレ）</title>
+<meta name="description" content="Sonaure の8つの機能一覧。家賃→購入シミュレーション・購入諸費用計算・売却収支計算・賃貸初期費用計算・キャッシュフローシミュレーションは登録なしで、周辺環境調査書・投資判断調査項目・買取査定判断シミュレーションは無料の会員登録で使えます。">
+<link rel="canonical" href="https://sonae-are.com/services.html">
+<meta property="og:title" content="サービスメニュー｜Sonaure（ソナウレ）">
+<meta property="og:description" content="8つの機能一覧。5つは登録なし、3つは無料の会員登録で使えます。レポートは PDF / Excel で出力。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sonae-are.com/services.html">
+<style>
+  :root { --blue-d: #1a4d8f; --blue: #2b6cb0; --blue-l: #4299e1; --ink: #2d3748; --muted: #64748b; --line: #dbe7f5; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Yu Gothic", "Hiragino Sans", "Meiryo", sans-serif; color: var(--ink); line-height: 1.9; background: linear-gradient(180deg, #fff 0%, #eef5ff 100%); min-height: 100vh; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  header { position: sticky; top: 0; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 10; }
+  .bar { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .back { font-size: 14px; color: var(--blue); text-decoration: none; font-weight: bold; }
+  .bar .nav { font-size: 13px; color: var(--blue); text-decoration: none; border: 1px solid var(--blue); border-radius: 999px; padding: 5px 18px; white-space: nowrap; }
+
+  main { padding: 40px 0 56px; }
+  h1 { text-align: center; font-size: clamp(22px, 3.4vw, 30px); color: var(--blue-d); margin-bottom: 24px; }
+  /* 「登録なし」「会員登録」の2組に分ける小見出し */
+  .cards-h { font-size: 14px; font-weight: bold; color: var(--blue-d); margin: 26px 0 10px; padding-left: 4px; }
+  .cards-h:first-of-type { margin-top: 0; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 10px; }   /* PCで2列。3列だと名前が途中で折れる */
+  /* カードは「番号・名前（＋1行の説明）」だけ。飾りは付けない */
+  .card { position: relative; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 36px 12px 14px; box-shadow: 0 2px 8px rgba(26,77,143,.06); transition: transform .15s, box-shadow .15s; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(26,77,143,.14); }
+  .card::after { content: "›"; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 24px; line-height: 1; color: var(--blue-l); }
+  .card .num { flex: none; display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-weight: bold; font-size: 14px; }
+  .card h2 { font-size: 15.5px; color: var(--blue-d); line-height: 1.5; font-weight: bold; }
+  .card .cap { display: block; font-size: 12px; font-weight: normal; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+  .formats { text-align: center; margin-top: 22px; font-size: 13px; color: var(--muted); }
+
+  .go { text-align: center; margin-top: 36px; }
+  .cta { display: inline-block; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; text-decoration: none; font-weight: bold; font-size: 17px; padding: 15px 52px; border-radius: 999px; box-shadow: 0 8px 24px rgba(43,108,176,.35); }
+  .go p { font-size: 13px; color: var(--muted); margin-top: 12px; }
+
+  footer { background: var(--blue-d); color: #cfe2f8; font-size: 12px; text-align: center; padding: 26px 16px; }
+  footer a { color: #cfe2f8; }
+</style>
+<link rel="stylesheet" href="assets/motion.css">
+</head>
+<body>
+<header><div class="wrap bar"><a class="back" href="personal.html">← Sonaure トップへ</a><a class="nav" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a></div></header>
+
+<main>
+  <div class="wrap">
+    <h1>サービスメニュー</h1>
+
+    <h3 class="cards-h">登録なしで使える</h3>
+    <div class="cards">
+      <a class="card" href="detail-rentbuy.html">
+        <span class="num">1</span>
+        <h2>家賃→購入シミュレーション</h2>
+      </a>
+      <a class="card" href="detail-costs.html">
+        <span class="num">2</span>
+        <h2>購入諸費用計算</h2>
+      </a>
+      <a class="card" href="detail-sale.html">
+        <span class="num">3</span>
+        <h2>売却収支計算</h2>
+      </a>
+      <a class="card" href="detail-rental.html">
+        <span class="num">4</span>
+        <h2>賃貸初期費用計算</h2>
+      </a>
+      <a class="card" href="detail-cashflow.html">
+        <span class="num">5</span>
+        <h2>キャッシュフローシミュレーション<span class="cap">投資用物件の年ごとの手残りと、売却時の手取り</span></h2>
+      </a>
+    </div>
+
+    <h3 class="cards-h">無料の会員登録で使える</h3>
+    <div class="cards">
+      <a class="card" href="detail-env.html">
+        <span class="num">6</span>
+        <h2>周辺環境調査書<span class="cap">駅・学校・スーパー・病院などを徒歩分数つきで1枚に</span></h2>
+      </a>
+      <a class="card" href="detail-juusetsu.html">
+        <span class="num">7</span>
+        <h2>投資判断調査項目<span class="cap">用途地域・建ぺい率／容積率・災害リスクを住所から</span></h2>
+      </a>
+      <a class="card" href="detail-kaitori.html">
+        <span class="num">8</span>
+        <h2>買取査定判断シミュレーション<span class="cap">売れる価格から「いくらまでなら買えるか」を逆算</span></h2>
+      </a>
+    </div>
+
+    <div class="formats">レポートはすべて <strong>PDF / Excel</strong> でダウンロードできます（出典：国土交通省 不動産情報ライブラリ等の公的データ）。<br>
+    不要な項目は Excel で消して、ご自身の条件に合わせて編集できます。</div>
+
+    <div class="go">
+      <a class="cta" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
+      <p>1〜5 は登録なしでその場で使えます。6〜8 はメールアドレスとパスワードだけの無料登録で使えます。</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p><a href="personal.html">Sonaure トップ</a> ｜ <a href="tools/index.html">無料計算ツール</a> ｜ <a href="blog/index.html">不動産に関する有益情報</a> ｜ <a href="operator.html">運営者情報</a> ｜ <a href="terms.html">利用規約</a> ｜ <a href="tokushoho.html">特定商取引法に基づく表記</a> ｜ <a href="privacy.html">プライバシーポリシー</a></p>
+  <p style="margin-top:10px;">Sonaure 〜備えあれば憂いなし、＋αの感動を〜<br>© 2026 Sonaure</p>
+</footer>
+<script src="assets/motion.js" defer></script>
+</body>
+</html>
