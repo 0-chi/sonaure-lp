@@ -46,9 +46,14 @@
   /* ヘッダーの実需側への入口。行き先に合わせた文言にする（ロゴの一部に見せない） */
   .bar .who { font-size: 13.5px; color: var(--muted); text-decoration: none; white-space: nowrap; }
   .bar .who:hover { color: var(--blue); }
-  .bar .go { margin-left: auto; font-size: 14px; font-weight: bold; color: var(--blue); text-decoration: none; border: 1px solid var(--blue); border-radius: 999px; padding: 5px 16px; white-space: nowrap; }
+  /* ページ内の目次。長いページなので、PCでは機能・料金・はじめ方へ直接飛べるようにする */
+  .bar .anchors { display: flex; gap: 18px; margin-left: auto; }
+  .bar .anchors a { font-size: 13.5px; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  .bar .anchors a:hover { color: var(--blue); }
+  .bar .go { font-size: 14px; font-weight: bold; color: var(--blue); text-decoration: none; border: 1px solid var(--blue); border-radius: 999px; padding: 5px 16px; white-space: nowrap; }
   /* 狭い画面では入りきらない。ヒーローの下に同じ入口のボタンがあるので隠す */
-  @media (max-width: 860px) { .bar .who { display: none; } }
+  @media (max-width: 860px) { .bar .who, .bar .anchors { display: none; } .bar .go { margin-left: auto; } }
+  html { scroll-behavior: smooth; }
 
   /* ヒーロー */
   .hero { padding-block: 64px 48px; }
@@ -172,6 +177,7 @@
   <div class="wrap bar">
     <a class="logo" href="index.html">Sonaure</a>
     <a class="who" href="personal.html">マイホーム・投資不動産の購入をご希望の方へ →</a>
+    <nav class="anchors"><a href="#features">機能</a><a href="#price">料金</a><a href="#start">はじめ方</a></nav>
     <a class="go" href="https://sonaure-plsalfa.streamlit.app">無料で使う</a>
   </div>
 </header>
@@ -238,7 +244,7 @@
   </div>
 </section>
 
-<section style="background:var(--bg-soft)">
+<section style="background:var(--bg-soft)" id="features">
   <div class="wrap">
     <span class="eyebrow">機能と時短の目安</span>
     <h2>8つの機能</h2>
@@ -291,7 +297,7 @@
   </div>
 </section>
 
-<section style="background:var(--bg-soft)">
+<section style="background:var(--bg-soft)" id="price">
   <div class="wrap">
     <span class="eyebrow">料金</span>
     <h2>無料で、人数の制限もありません</h2>
@@ -308,7 +314,7 @@
   </div>
 </section>
 
-<section>
+<section id="start">
   <div class="wrap">
     <span class="eyebrow">はじめ方</span>
     <h2>3分で最初の1枚ができます</h2>

@@ -41,6 +41,9 @@
   nav#drawer.open { left: 0; }
   nav#drawer a { display: block; padding: 14px 24px; color: var(--ink); text-decoration: none; font-size: 14px; border-bottom: 1px solid #f1f5fb; }
   nav#drawer a:hover { background: #eef5ff; color: var(--blue-d); }
+  /* 使う項目（上）と、問い合わせ・規約など（下）の区切り */
+  nav#drawer hr { border: none; border-top: 1px solid var(--line); margin: 10px 0; }
+  nav#drawer a.small { font-size: 13px; padding: 11px 24px; color: var(--muted); border-bottom: none; }
   #overlay { position: fixed; inset: 0; background: rgba(15,30,60,.35); opacity: 0; pointer-events: none; transition: .25s; z-index: 150; }
   #overlay.show { opacity: 1; pointer-events: auto; }
   #drawer .close { position: absolute; top: 12px; right: 14px; border: none; background: none; font-size: 22px; color: var(--muted); cursor: pointer; }
@@ -54,19 +57,6 @@
   .hero .hero-who { margin-bottom: 10px; color: var(--blue-d); font-weight: bold; }
   .cta { display: inline-block; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; text-decoration: none; font-weight: bold; font-size: 17px; padding: 15px 52px; border-radius: 999px; box-shadow: 0 8px 24px rgba(43,108,176,.35); transition: transform .15s; }
   .cta:hover { transform: translateY(-2px); }
-  .cta-note { font-size: 12px; color: var(--muted); margin-top: 12px; }
-
-  /* ===== 周辺環境の訴求 ===== */
-  .pitch { background: #fff; }
-  .pitch-card { max-width: 760px; margin: 0 auto; }
-  .pitch-card p { margin-bottom: 18px; font-size: 15px; }
-  .pain-list { background: linear-gradient(135deg, #f4f9ff, #eaf3ff); border: 1px solid var(--line); border-radius: 14px; padding: 24px 28px; margin: 24px 0; }
-  .pain-list li { list-style: none; padding: 6px 0 6px 28px; position: relative; font-size: 14.5px; }
-  .pain-list li::before { content: "✗"; position: absolute; left: 4px; color: #c53030; font-weight: bold; }
-  .answer { text-align: center; font-size: clamp(18px, 3vw, 24px); font-weight: bold; color: var(--blue-d); margin: 30px 0; }
-  .answer .ten { font-size: 1.5em; background: linear-gradient(135deg, var(--blue), var(--blue-l)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .trust-box { border-left: 4px solid var(--blue); background: #f4f9ff; padding: 18px 22px; border-radius: 0 10px 10px 0; margin-top: 26px; }
-  .trust-box strong { color: var(--blue-d); }
 
   /* ===== サービスメニュー ===== */
   /* ヒーローから下は、白を薄くかぶせて水彩を透かす（文字が読める濃さを保つ） */
@@ -83,18 +73,21 @@
   /* 説明文が無いので、タップできることは右端の矢印で示す */
   .card::after { content: "›"; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 24px; line-height: 1; color: var(--blue-l); }
   .card .num { flex: none; display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-weight: bold; font-size: 14px; }
-  .new-badge { display: inline-block; background: linear-gradient(135deg, #e53e3e, #f56565); color: #fff; font-size: 10.5px; font-weight: bold; border-radius: 999px; padding: 1px 10px; margin-left: 8px; vertical-align: middle; letter-spacing: .08em; }
   .card h4 { font-size: 15.5px; color: var(--blue-d); line-height: 1.5; }
+  /* 名前だけでは中身が想像しにくい機能に、何がわかるかを1行だけ添える */
+  .card .cap { display: block; font-size: 12px; font-weight: normal; color: var(--muted); line-height: 1.5; margin-top: 2px; }
   .formats { text-align: center; margin-top: 22px; font-size: 13px; color: var(--muted); }
 
-  /* ===== 読者別のご案内（投資家／実需層）===== */
-  .aud { background: rgba(255,255,255,.88); padding: 28px 0 24px; }
-  /* 読者別のご案内。囲みカードだと本文が窮屈になるので、ラベル＋本文の形にする */
-  .aud-block { max-width: 760px; margin: 0 auto 40px; text-align: center; }
-  .aud-block:last-child { margin-bottom: 0; }
-  .aud-block p { font-size: 14.5px; color: var(--ink); line-height: 1.95; }
-  .aud-block .use { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); }
-  .aud-block .use a { color: var(--blue); font-weight: bold; text-decoration: none; }
+  /* ===== 読者別のご案内（実需層／投資家）===== */
+  /* 折りたたまず、2枚のカードで最初から見せる。文章が短いので畳む必要がない */
+  .aud { background: rgba(255,255,255,.88); padding: 40px 0 30px; }
+  .aud h2 { margin-bottom: 18px; }
+  .aud-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; max-width: 860px; margin: 0 auto; }
+  .aud-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 22px 22px 20px; box-shadow: 0 2px 8px rgba(26,77,143,.06); }
+  .aud-card h3 { font-size: 16px; color: var(--blue-d); line-height: 1.6; margin-bottom: 10px; }
+  .aud-card p { font-size: 14.5px; color: var(--ink); line-height: 1.95; }
+  .aud-card .use { display: block; margin-top: 12px; font-size: 13px; color: var(--muted); }
+  .aud-card .use a { color: var(--blue); font-weight: bold; text-decoration: none; }
   /* 公式LINEへの導線。本文と地続きに見えないよう、薄い枠で区切る */
   .line-cta { max-width: 780px; margin: 22px auto 0; padding: 18px 16px 16px; text-align: center;
               background: linear-gradient(135deg, #f4f9ff, #eaf3ff);
@@ -104,25 +97,11 @@
   /* LINE公式のボタン画像。img{max-width:100%} で潰れないよう高さを保つ */
   .line-cta img { height: 36px; width: auto; vertical-align: middle; }
 
-  /* 読者別のご案内。3つを畳んで並べ、タップした1つだけを開く */
-  .aud-hint { text-align: center; font-size: 13px; color: var(--muted); margin-bottom: 16px; }
-  .aud-acc { max-width: 760px; margin: 0 auto 12px; }
-  /* 3つの札は同じ大きさにそろえる（文の長さで幅や高さが変わると、並んだときに落ち着かない） */
-  .aud-acc > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
-                       gap: 10px; width: min(100%, 440px); min-height: 68px; margin: 0 auto; text-align: center;
-                       background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); color: #fff;
-                       font-size: 13px; font-weight: bold; border-radius: 999px; padding: 9px 22px; letter-spacing: .04em; }
-  .aud-acc > summary::-webkit-details-marker { display: none; }
-  .aud-acc > summary::after { content: "▼"; font-size: 9px; flex: none; transition: transform .2s; }
-  .aud-acc[open] > summary::after { transform: rotate(180deg); }
-  .aud-acc .aud-block { margin-bottom: 0; padding-top: 16px; }
-  @media (prefers-reduced-motion: reduce) { .aud-acc > summary::after { transition: none; } }
-  /* 営業向けの話は pro.html に分けた。トップには入口の1行だけ置く */
+  /* 営業向けの話はトップ（index.html）にある。このページには入口の1つだけ置く */
   .pro-link { display: inline-block; font-size: 16px; font-weight: bold; color: var(--blue-d); text-decoration: none;
               background: #fff; border: 2px solid var(--blue); border-radius: 999px; padding: 10px 26px; }
   .pro-link:hover { background: #eef5ff; }
-  .hero .cta-note { margin-top: 16px; }
-  .aud-pro { text-align: center; margin-top: 22px; }
+  .aud-pro { text-align: center; margin-top: 26px; }
 
   /* ===== 記事への導線 ===== */
   .blog-lead { background: rgba(255,255,255,.9); padding: 8px 0 28px; }
@@ -141,42 +120,11 @@
 
   /* ===== ログイン・登録 ===== */
   .auth { background: linear-gradient(180deg, rgba(238,245,255,.9) 0%, rgba(255,255,255,.93) 100%); }
-  .auth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 760px; margin: 0 auto; }
-  .auth-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 30px 26px; box-shadow: 0 4px 16px rgba(26,77,143,.07); }
-  .auth-card h3 { color: var(--blue-d); margin-bottom: 16px; text-align: center; }
-  .auth-card label { display: block; font-size: 12.5px; color: var(--muted); margin: 12px 0 4px; }
-  .auth-card input { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 14px; }
-  .auth-card button { width: 100%; margin-top: 20px; border: none; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-weight: bold; font-size: 15px; padding: 12px; border-radius: 999px; cursor: pointer; }
-  .auth-note { font-size: 11.5px; color: var(--muted); margin-top: 10px; text-align: center; }
-
-  /* ===== 利用規約 ===== */
-  .terms-box { max-width: 760px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 28px 30px; font-size: 13px; color: var(--ink); }
-  .terms-box h3 { color: var(--blue-d); font-size: 14.5px; margin: 18px 0 6px; }
-  .terms-box ol { padding-left: 20px; }
-  .cancel-area { margin-top: 24px; padding: 20px; background: #f7fafc; border-radius: 10px; text-align: center; }
-  .cancel-btn { display: inline-block; border: 1px solid #c53030; color: #c53030; background: #fff; border-radius: 999px; padding: 9px 32px; font-size: 13.5px; text-decoration: none; }
-
-  /* ===== モーダル（利用規約・メッセージ共通）===== */
-  #terms-modal, #message-modal { display: none; position: fixed; inset: 0; background: rgba(15,30,60,.5); z-index: 300; padding: 30px 16px; overflow-y: auto; }
-  #terms-modal.show, #message-modal.show { display: block; }
-  .modal-card { position: relative; max-width: 780px; margin: 20px auto; background: #fff; border-radius: 16px; padding: 36px 28px 28px; box-shadow: 0 20px 60px rgba(15,30,60,.35); }
-  .modal-card h2 { margin-bottom: 18px; }
-  .modal-close { position: absolute; top: 12px; right: 14px; border: none; background: none; font-size: 22px; color: var(--muted); cursor: pointer; }
-
-  /* メッセージモーダル：ヘッダーを青帯にして本文と区切る */
-  #message-modal .modal-card { padding: 0; overflow: hidden; }
-  #message-modal .modal-close { color: #fff; z-index: 2; }
-  .message-head { background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); padding: 30px 28px 26px; text-align: center; }
-  .message-head h2 { color: #fff; margin: 0; letter-spacing: .15em; }
-
-  /* メッセージ本文：淡い青背景＋左に引用ライン */
-  .message-box { font-size: 15px; line-height: 2.05; color: var(--ink);
-    background: linear-gradient(180deg, #f7fbff, #eef5ff);
-    padding: 30px 30px 26px; }
-  .message-box p { margin: 0 0 20px; }
-  .message-box p strong { color: var(--blue-d); }
-  .message-box .sign { text-align: right; color: var(--blue-d); font-weight: bold;
-    margin-top: 26px; border-top: 1px solid var(--line); padding-top: 16px; }
+  /* 「登録なし／登録あり」の分け方はサービスメニューで見せているので、ここは1枚で足りる */
+  .auth-card { max-width: 560px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 30px 26px; box-shadow: 0 4px 16px rgba(26,77,143,.07); text-align: center; }
+  .auth-card p { font-size: 14px; color: var(--ink); line-height: 1.9; }
+  .auth-card button { width: 100%; max-width: 320px; margin-top: 20px; border: none; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; font-weight: bold; font-size: 15px; padding: 12px; border-radius: 999px; cursor: pointer; }
+  .auth-note { font-size: 12px; color: var(--muted); margin-top: 12px; }
 
   footer { background: var(--blue-d); color: #cfe2f8; font-size: 12px; text-align: center; padding: 26px 16px; }
 </style>
@@ -248,18 +196,16 @@
 <div id="overlay" onclick="toggleMenu()"></div>
 <nav id="drawer">
   <button class="close" onclick="toggleMenu()">✕</button>
-  <a href="#about" onclick="toggleMenu()">どんな方におすすめか</a>
-  <a href="index.html">不動産会社の方へ</a>
-  <a href="business.html">事業概要</a>
-  <a href="javascript:void(0)" onclick="toggleMenu(); openMessage();">メッセージ</a>
-  <a href="blog/index.html">不動産に関する有益情報</a>
-  <a href="https://sonaure-plsalfa.streamlit.app" onclick="toggleMenu()">無料ツールを使う（8機能）</a>
   <a href="#services" onclick="toggleMenu()">サービスメニュー</a>
-  <a href="mailto:sonaure100@gmail.com?subject=【Sonaure】お問い合わせ">サポート</a>
-  <a href="operator.html">運営者情報</a>
-  <a href="terms.html">利用規約</a>
-  <a href="tokushoho.html">特定商取引法に基づく表記</a>
-  <a href="privacy.html">プライバシーポリシー</a>
+  <a href="https://sonaure-plsalfa.streamlit.app" onclick="toggleMenu()">無料ツールを使う</a>
+  <a href="blog/index.html">不動産に関する有益情報</a>
+  <a href="index.html">不動産会社・営業担当の方へ →</a>
+  <hr>
+  <a class="small" href="mailto:sonaure100@gmail.com?subject=【Sonaure】お問い合わせ">お問い合わせ</a>
+  <a class="small" href="operator.html">運営者情報</a>
+  <a class="small" href="terms.html">利用規約</a>
+  <a class="small" href="tokushoho.html">特定商取引法に基づく表記</a>
+  <a class="small" href="privacy.html">プライバシーポリシー</a>
 </nav>
 
 <!-- ===== ヒーロー ===== -->
@@ -268,33 +214,27 @@
     <h1>Sonaure</h1>
     <div class="tagline">〜備えあれば憂いなし、＋αの感動を〜</div>
     <p class="sub hero-who">ご自身で物件を探す方・売却をお考えの方・不動産投資を検討している方へ</p>
-    <p class="sub">住所や価格を入れるだけ。周辺環境・購入諸費用・売却収支・賃貸初期費用・キャッシュフロー・投資判断調査項目を30秒でレポートに。無料登録すればご希望の物件の周辺に何があるのかなどを調べることもできます♪</p>
+    <p class="sub">住所や価格を入れるだけで、購入にかかる費用・売ったときの手取り・家賃と購入の比較を、登録なし・無料で計算できます。</p>
     <a class="cta" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
-    <p class="cta-note"><a class="pro-link" href="index.html">不動産会社・営業担当の方はこちら →</a></p>
   </div>
 </div>
 
 <!-- ===== 読者別のご案内 ===== -->
 <section class="aud" id="about">
   <div class="wrap">
-    <p class="aud-hint">あてはまるものをタップすると、詳しい説明が開きます。</p>
-
-    <details class="aud-acc">
-      <summary><span>マイホームの購入・売却・賃貸などの<br>実需層のみなさまへ</span></summary>
-      <div class="aud-block">
-        <p>初期費用の計算や家賃→購入シミュレーションを使えば、賃貸と購入をかんたんに比べられます。住みたいエリアの周辺環境もすぐに調べられるので、楽しみながらご検討いただけます。</p>
+    <h2>こんな方に</h2>
+    <div class="aud-grid">
+      <div class="aud-card">
+        <h3>マイホームの購入・売却・賃貸を<br>お考えの方</h3>
+        <p>初期費用の計算や家賃→購入シミュレーションで、賃貸と購入をかんたんに比べられます。住みたいエリアの周辺環境も、住所を入れるだけで調べられます。</p>
         <span class="use"><a href="detail-rentbuy.html">家賃→購入シミュレーション</a>／<a href="detail-rental.html">賃貸初期費用計算</a>／<a href="detail-sale.html">売却収支計算</a></span>
       </div>
-    </details>
-
-    <details class="aud-acc">
-      <summary>不動産投資家のみなさまへ</summary>
-      <div class="aud-block">
-        <p>投資判断に必要な周辺環境調査書や投資判断調査項目をご活用いただき、よりよい物件のご購入をサポートします。用途地域・建ぺい率／容積率・災害リスクといった、価格に効く条件を住所から一気に確認できます。</p>
+      <div class="aud-card">
+        <h3>不動産投資を<br>検討している方</h3>
+        <p>用途地域・建ぺい率／容積率・災害リスクといった、価格に効く条件を住所から一気に確認できます。家賃・経費・返済・税金を年ごとに積み上げた手残りも試算できます。</p>
         <span class="use"><a href="detail-cashflow.html">キャッシュフローシミュレーション</a>／<a href="detail-juusetsu.html">投資判断調査項目</a>／<a href="detail-env.html">周辺環境調査書</a></span>
       </div>
-    </details>
-
+    </div>
     <p class="aud-pro"><a class="pro-link" href="index.html">不動産会社・営業担当の方はこちら →</a></p>
   </div>
 </section>
@@ -324,26 +264,26 @@
       </a>
       <a class="card" href="detail-cashflow.html">
         <span class="num">5</span>
-        <h4>キャッシュフローシミュレーション<span class="new-badge">NEW</span></h4>
+        <h4>キャッシュフローシミュレーション<span class="cap">投資用物件の年ごとの手残りと、売却時の手取り</span></h4>
       </a>
     </div>
     <h3 class="cards-h">無料の会員登録で使える</h3>
     <div class="cards">
       <a class="card" href="detail-env.html">
         <span class="num">6</span>
-        <h4>周辺環境調査書<span class="new-badge">機能追加</span></h4>
+        <h4>周辺環境調査書<span class="cap">駅・学校・スーパー・病院などを徒歩分数つきで1枚に</span></h4>
       </a>
       <a class="card" href="detail-juusetsu.html">
         <span class="num">7</span>
-        <h4>投資判断調査項目</h4>
+        <h4>投資判断調査項目<span class="cap">用途地域・建ぺい率／容積率・災害リスクを住所から</span></h4>
       </a>
       <a class="card" href="detail-kaitori.html">
         <span class="num">8</span>
-        <h4>買取査定判断シミュレーション<span class="new-badge">NEW</span></h4>
+        <h4>買取査定判断シミュレーション<span class="cap">売れる価格から「いくらまでなら買えるか」を逆算</span></h4>
       </a>
     </div>
     <div class="formats">レポートはすべて <strong>PDF / Excel</strong> でダウンロードできます（出典：国土交通省 不動産情報ライブラリ等の公的データ）。<br>
-    不要な項目はエクセルで編集すれば、お客様ごとにアレンジ可能♪</div>
+    不要な項目は Excel で消して、ご自身の条件に合わせて編集できます。</div>
   </div>
 </section>
 
@@ -377,98 +317,14 @@
   <div class="wrap">
     <h2>使ってみる</h2>
     <p class="lead">登録なしで、その場で使えます</p>
-    <div class="auth-grid">
-      <div class="auth-card">
-        <h3>そのまま使う</h3>
-        <p style="font-size:13px; color:var(--muted); margin-bottom:14px;">
-          購入諸費用概算書・売却収支概算書・賃貸初期費用概算書・家賃→購入シミュレーション・キャッシュフローシミュレーションの5つは、
-          <strong>登録もログインも不要</strong>でお使いいただけます。
-        </p>
-        <button onclick="location.href='https://sonaure-plsalfa.streamlit.app'">無料ツールを使う</button>
-      </div>
-      <div class="auth-card" id="register">
-        <h3>会員登録（無料）</h3>
-        <p style="font-size:13px; color:var(--muted); margin-bottom:8px;">
-          周辺環境調査・投資判断調査項目・買取査定判断シミュレーションの3つは、
-          <strong>無料の会員登録</strong>が必要です。メールアドレスとパスワードだけで登録でき、料金はかかりません。
-        </p>
-        <button onclick="location.href='https://sonaure-plsalfa.streamlit.app'">無料で登録する</button>
-        <div class="auth-note">不動産会社さまの複数アカウント導入は
-          <a href="mailto:sonaure100@gmail.com?subject=【Sonaure】法人導入のご相談&body=会社名・お名前・ご連絡先・利用人数をご記入ください：">こちら</a>
-          からご相談ください。</div>
-      </div>
+    <div class="auth-card">
+      <p>計算の5機能（1〜5）は<strong>登録もログインも不要</strong>です。<br>
+        住所から公的データを取得する3機能（6〜8）は、メールアドレスとパスワードだけの<strong>無料の会員登録</strong>でお使いいただけます。料金はかかりません。</p>
+      <button onclick="location.href='https://sonaure-plsalfa.streamlit.app'">無料ツールを使う</button>
+      <div class="auth-note">ご不明な点は <a href="mailto:sonaure100@gmail.com?subject=【Sonaure】お問い合わせ" style="color:var(--blue);">sonaure100@gmail.com</a> まで</div>
     </div>
   </div>
 </section>
-
-<!-- ===== メッセージ（メニューから開くモーダル）===== -->
-<div id="message-modal">
-  <div class="modal-card">
-    <button class="modal-close" onclick="closeMessage()">✕</button>
-    <div class="message-head">
-      <h2>メッセージ</h2>
-    </div>
-    <div class="message-box">
-      <p>Sonaureは<br>
-      <strong>不動産営業の皆様が信頼され、選ばれる人になってもらいたい。</strong><br>
-      こんな想いで始めたサービスです。</p>
-      <p>「ちゃんと事前準備をする」「即レス即対応をする」<br>
-      お客様が営業に信頼感を抱く理由は、本当に些細な事です。</p>
-      <p>情報社会である現代、会社の名前ではなく<br>
-      <strong>一人一人の営業マンが選ばれる時代</strong>です。</p>
-      <p>個人で利用する皆様、是非Sonaureを使って<br>
-      お客様に<strong>＋αの感動</strong>を与えてあげてください。</p>
-      <p>法人で利用する皆様、是非Sonaureを使って<br>
-      <strong>「全員がお客様に選ばれる」会社</strong>になっていただけたら幸いです。</p>
-      <p>そして、ご自身で家を探している方・売却を考えている方へ。<br>
-      費用や税金の計算は、本来<strong>誰でも自分で確かめられるもの</strong>だと思っています。<br>
-      2026年8月から、すべての機能を無料で公開しました。<br>
-      納得のいく判断のために、遠慮なく使ってください。</p>
-      <p class="sign">Sonaure 一同</p>
-    </div>
-  </div>
-</div>
-
-<!-- ===== 利用規約（メニューから開くモーダル）===== -->
-<div id="terms-modal">
-  <div class="modal-card">
-    <button class="modal-close" onclick="closeTerms()">✕</button>
-    <h2>利用規約（要旨）</h2>
-    <div class="terms-box">
-      <h3>第1条（サービス内容）</h3>
-      <p>Sonaure（以下「本サービス」）は、公的な公開データ等をもとに不動産の調査レポートを自動作成するサービスです。</p>
-      <h3>第2条（情報の性質・免責）</h3>
-      <ol>
-        <li>本サービスのレポートは参考情報であり、宅地建物取引業法に基づく重要事項説明書・不動産鑑定評価書ではありません。</li>
-        <li>判定は地点ベースの機械処理であり、境界付近等で実際と異なる場合があります。最終確認は必ず行政窓口・現地にて行ってください。</li>
-        <li>周辺環境（施設・学校区・店舗等）の情報は、開店・閉店・統廃合などにより最新の状況と異なる場合があります。</li>
-        <li>住所・地番から位置を特定する処理の性質上、位置情報に誤差や不具合が生じ、実際の物件とは異なる地点の結果が表示される可能性があります。表示された地点が正しいか必ずご確認ください。</li>
-        <li>購入諸費用・査定額などの金額は、あくまで概算です。物件・契約条件・金融機関・市場状況により実際の金額は変動することを大前提としてご利用ください。</li>
-        <li>本サービスの利用により生じた損害について、当方は故意または重過失による場合を除き責任を負いません。</li>
-      </ol>
-      <h3>第3条（料金・支払い）</h3>
-      <ol>
-        <li>本サービスは無料でご利用いただけます。新たな料金は発生しません。</li>
-        <li>2026年8月の変更前にご契約いただいた方は、解約されるまで従前の料金の請求が続きます。第5条の方法で解約をお願いします。</li>
-      </ol>
-      <h3>第4条（法人プランの利用・席数）</h3>
-      <ol>
-        <li>法人プランは契約者ご本人を含めて最大9名まで、個人プランは契約者ご本人のみご利用いただけます。</li>
-        <li>契約者はサービス内の「メンバー管理」から利用者のメールアドレスを登録でき、登録された方はご自身のアカウントでご利用いただけます（メンバーに料金は発生しません）。</li>
-        <li>退職者等が利用を続けられないよう、契約者は速やかに登録を削除するものとします。契約者が解約した場合、メンバーの利用も終了します。</li>
-      </ol>
-      <h3>第5条（解約）</h3>
-      <ol>
-        <li>解約はいつでも可能です。ログイン後、画面上部の「ご契約・解約」（またはメニュー内の「お支払い管理・解約」）からお手続きください。</li>
-        <li>解約後も、当月末まではサービスをご利用いただけます。日割りの返金は行いません。</li>
-      </ol>
-      <div class="cancel-area">
-        <p style="font-size:13px; margin-bottom:10px;">下のボタンからログインすると、そのまま「ご契約・解約」の画面が開きます。</p>
-        <a class="cancel-btn" href="https://sonaure-plsalfa.streamlit.app/?billing=1">ログインして解約手続きへ</a>
-      </div>
-    </div>
-  </div>
-</div>
 
 <footer>
   <p><a href="tools/index.html" style="color:#cfe2f8;">無料計算ツール</a> ｜ <a href="blog/index.html" style="color:#cfe2f8;">不動産に関する有益情報</a> ｜ <a href="operator.html" style="color:#cfe2f8;">運営者情報</a> ｜ <a href="terms.html" style="color:#cfe2f8;">利用規約</a> ｜ <a href="tokushoho.html" style="color:#cfe2f8;">特定商取引法に基づく表記</a> ｜ <a href="privacy.html" style="color:#cfe2f8;">プライバシーポリシー</a></p>
@@ -478,42 +334,10 @@
 </footer>
 
 <script>
-// ===== 決済設定 =====
-// Stripeの「お支払いリンク（Payment Link）」のURLをここに貼るだけで、登録ボタンが有効になります。
-// 例: const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/xxxxxxxxxxxx";
-const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/test_eVq28j2U0eqd5IV4Ez7kc02";
-
-function startRegister() {
-  if (STRIPE_CHECKOUT_URL) {
-    location.href = STRIPE_CHECKOUT_URL;
-  } else {
-    alert("ただいま決済の準備中です。正式リリースまでもう少々お待ちください！");
-  }
-}
-
 function toggleMenu() {
   document.getElementById("drawer").classList.toggle("open");
   document.getElementById("overlay").classList.toggle("show");
 }
-function openTerms() {
-  document.getElementById("terms-modal").classList.add("show");
-}
-function closeTerms() {
-  document.getElementById("terms-modal").classList.remove("show");
-}
-function openMessage() {
-  document.getElementById("message-modal").classList.add("show");
-}
-function closeMessage() {
-  document.getElementById("message-modal").classList.remove("show");
-}
-// モーダルの背景クリックでも閉じる
-document.getElementById("terms-modal").addEventListener("click", function (e) {
-  if (e.target === this) closeTerms();
-});
-document.getElementById("message-modal").addEventListener("click", function (e) {
-  if (e.target === this) closeMessage();
-});
 </script>
 <script src="assets/motion.js" defer></script>
 </body>

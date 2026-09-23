@@ -63,24 +63,13 @@
   .tl li:last-child{border-bottom:none;}
   .tl .d{position:absolute;left:0;top:8px;font-size:12.5px;color:var(--blue);font-weight:bold;}
 
-  .deck{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 8px;}
-  .deck a{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);
-        border-top:4px solid var(--blue);border-radius:14px;padding:22px;box-shadow:0 4px 16px rgba(26,77,143,.07);
-        transition:transform .15s,box-shadow .15s;}
-  .deck a:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(26,77,143,.16);}
-  .deck .tag{display:inline-block;background:#eaf3ff;color:var(--blue-d);border:1px solid var(--line);
-        border-radius:999px;padding:2px 10px;font-size:11.5px;font-weight:bold;margin-bottom:8px;}
-  .deck h3{font-size:16px;margin:0 0 6px;}
-  .deck p{font-size:13.5px;color:var(--muted);margin-bottom:8px;}
-  .deck .go{font-size:13px;font-weight:bold;color:var(--blue);}
-
   .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;
         text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto 10px;
         max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
   .note{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:26px;line-height:1.8;}
   footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:30px;}
   footer a{color:#cfe2f8;}
-  @media(max-width:640px){.two,.deck{grid-template-columns:1fr;}}
+  @media(max-width:640px){.two{grid-template-columns:1fr;}}
 </style>
 <link rel="stylesheet" href="assets/motion.css">
 </head>
@@ -101,7 +90,7 @@
       <div class="biz-card">
         <div class="no">01</div>
         <h3>Sonaure の開発・運営</h3>
-        <p>住所や価格を入力するだけで、周辺環境・購入諸費用・売却収支・賃貸初期費用・重要事項説明の必要項目などを概算レポートにまとめるサービスです。出力は PDF / Excel。プリントすればそのままお客様にお渡しできる仕様にしています。<br><br>2026年8月より<strong>すべての機能を無料</strong>で提供しています。計算だけで完結する4機能は登録不要、住所から公的データを取得する2機能のみ無料の会員登録が必要です。</p>
+        <p>住所や価格を入力するだけで、周辺環境・購入諸費用・売却収支・賃貸初期費用・重要事項説明の必要項目などを概算レポートにまとめるサービスです。出力は PDF / Excel。プリントすればそのままお客様にお渡しできる仕様にしています。<br><br>2026年8月より<strong>すべての機能を無料</strong>で提供しています。計算だけで完結する5機能は登録不要、住所から公的データを取得する3機能のみ無料の会員登録が必要です。</p>
       </div>
       <div class="biz-card">
         <div class="no">02</div>
@@ -115,9 +104,9 @@
     <div class="en-label">SERVICE</div>
     <h2>提供しているもの</h2>
     <div class="kpis">
-      <div><div class="v">6</div><div class="l">調査レポート機能</div></div>
-      <div><div class="v">3</div><div class="l">無料の計算ツール</div></div>
-      <div><div class="v">12</div><div class="l">解説記事（監修つき）</div></div>
+      <div><div class="v">8</div><div class="l">調査レポート機能</div></div>
+      <div><div class="v">5</div><div class="l">無料の計算ツール</div></div>
+      <div><div class="v">32</div><div class="l">解説記事（監修つき）</div></div>
       <div><div class="v">2形式</div><div class="l">PDF / Excel</div></div>
     </div>
     <table>
@@ -128,6 +117,8 @@
       <tr><td>4</td><td><strong>購入諸費用計算</strong></td><td>仲介手数料・登記・ローン費用・保険・清算金までの概算書</td><td class="n">約10〜18分</td></tr>
       <tr><td>5</td><td><strong>売却収支計算</strong></td><td>仲介手数料・抵当権抹消・譲渡所得税まで差し引いた「手取り」の概算書</td><td class="n">約15〜25分</td></tr>
       <tr><td>6</td><td><strong>投資判断調査項目</strong></td><td>区域区分・用途地域・建ぺい率／容積率・防火指定・災害リスク4種。境界またがりは「要確認」を自動検出</td><td class="n">約10〜15分</td></tr>
+      <tr><td>7</td><td><strong>キャッシュフローシミュレーション</strong></td><td>投資用物件の家賃・経費・返済・税金を年ごとに積み上げ、各年に売却した場合の手残りまで</td><td class="n">約30〜60分</td></tr>
+      <tr><td>8</td><td><strong>買取査定判断シミュレーション</strong></td><td>想定売却価格から「いくらまでなら買えるか」を目標利益率ごとに逆算。買取再販の特例・消費税の納付見込みまで織り込み</td><td class="n">約20〜40分</td></tr>
     </table>
     <p style="font-size:13px;color:#64748b;">※ 時短の目安は、同じ内容を手作業で調べた場合との比較による当社試算です。実際の短縮時間は調査範囲・習熟度により異なります。<br>※ 出力されるレポートは宅地建物取引業法に基づく重要事項説明書ではありません。金額は一般的な前提に基づく概算です。</p>
   </section>
@@ -137,20 +128,21 @@
     <h2>料金</h2>
     <table>
       <tr><th>機能</th><th class="n">料金</th><th>ご利用の条件</th></tr>
-      <tr><td>諸費用概算書／売却収支概算書／賃貸初期費用概算書／家賃→購入シミュレーション</td><td class="n"><strong>無料</strong></td><td>登録・ログイン不要</td></tr>
-      <tr><td>周辺環境調査書／投資判断調査項目</td><td class="n"><strong>無料</strong></td><td>無料の会員登録が必要（住所から公的データ・地図を取得するため）</td></tr>
+      <tr><td>家賃→購入シミュレーション／購入諸費用計算／売却収支計算／賃貸初期費用計算／キャッシュフローシミュレーション</td><td class="n"><strong>無料</strong></td><td>登録・ログイン不要</td></tr>
+      <tr><td>周辺環境調査書／投資判断調査項目／買取査定判断シミュレーション</td><td class="n"><strong>無料</strong></td><td>無料の会員登録が必要（住所から公的データ・地図を取得するため）</td></tr>
       <tr><td>PDF / Excel 出力</td><td class="n"><strong>無料</strong></td><td>すべての機能で利用可能</td></tr>
     </table>
-    <p>ご利用人数の制限はありません。<strong>2026年8月に月額制を廃止し、すべての機能を無料に変更しました。</strong>それ以前にご契約いただいていた方は、解約されるまで従前の料金の請求が継続するため、<a href="https://sonaure-plsalfa.streamlit.app/?billing=1" style="color:#2b6cb0;font-weight:bold;">こちら</a>から解約のお手続きをお願いします。解約後も、これまでどおり全機能をご利用いただけます。</p>
+    <p>ご利用人数の制限はありません。2026年8月に月額制を廃止しました。それ以前にご契約いただいていた方の解約手続きは、<a href="terms.html#legacy" style="color:#2b6cb0;font-weight:bold;">利用規約の附則</a>をご覧ください。</p>
   </section>
 
   <section>
     <div class="en-label">HISTORY</div>
     <h2>これまでの機能追加</h2>
     <ul class="tl">
-      <li><span class="d">2026.08</span>月額制を廃止し、全機能を無料化。計算系4機能はログイン不要に</li>
+      <li><span class="d">2026.08</span>買取査定判断シミュレーションを追加</li>
+      <li><span class="d">2026.08</span>キャッシュフローシミュレーションを追加</li>
+      <li><span class="d">2026.08</span>月額制を廃止し、全機能を無料化。計算系の機能はログイン不要に</li>
       <li><span class="d">2026.08</span>各ツールの試算結果から直接ご相談いただける導線を追加</li>
-      <li><span class="d">2026.07</span>法人プランの席管理（1契約で最大9名）とクレジット決済を実装</li>
       <li><span class="d">2026.07</span>解説メディアを開設。宅地建物取引士監修の記事を公開開始</li>
       <li><span class="d">2026.07</span>周辺環境調査書に施設項目の個別選択・位置図を追加</li>
       <li><span class="d">2026.07</span>賃貸初期費用計算／家賃→購入シミュレーションを追加</li>
@@ -160,29 +152,6 @@
       <strong>今後の方向性（検討中）</strong><br>
       レポート様式の拡充、法人でお使いいただく際の管理機能の強化、調査に使う公的データの拡充を検討しています。具体的な時期をお約束するものではありません。
     </div>
-  </section>
-
-  <section>
-    <div class="en-label">DOCUMENTS</div>
-    <h2>用途別のご紹介資料</h2>
-    <p>お立場に合わせた資料をご用意しています。画面で読めるほか、印刷（Ctrl / ⌘ + P）でPDFとして保存できます。</p>
-    <div class="deck">
-      <a href="deck-corporate.html">
-        <span class="tag">法人向け</span>
-        <h3>不動産会社さま向け ご紹介</h3>
-        <p>準備の属人化という課題、1契約で最大9名の席管理、費用対効果の試算、導入の流れまで。全10ページ。</p>
-        <span class="go">資料を見る →</span>
-      </a>
-      <a href="deck-individual.html">
-        <span class="tag">個人向け</span>
-        <h3>不動産営業の方へ ご紹介</h3>
-        <p>1案件あたりの準備時間、7機能と時短の目安、はじめ方まで。全10ページ。</p>
-        <span class="go">資料を見る →</span>
-      </a>
-    </div>
-    <p style="font-size:13.5px;">PDFで保存・共有される場合はこちら：
-      <a href="assets/Sonaure-corporate.pdf" style="color:#2b6cb0;font-weight:bold;">法人向け（PDF）</a>｜<a href="assets/Sonaure-individual.pdf" style="color:#2b6cb0;font-weight:bold;">個人向け（PDF）</a>
-    </p>
   </section>
 
   <section>
