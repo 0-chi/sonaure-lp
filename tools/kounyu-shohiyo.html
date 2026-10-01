@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>住宅購入の諸費用シミュレーション｜物件価格から仲介手数料・登記費用を自動計算【無料】</title>
+<title>物件購入の諸費用概算書｜物件価格から仲介手数料・登記費用を自動計算【無料シミュレーション】</title>
 <meta name="description" content="家・マンション購入の諸費用はいくら？物件価格を入れるだけで、仲介手数料・印紙税・登記費用・ローン費用・火災保険までの総額を無料でシミュレーション。中古の目安は価格の6〜10%。">
 <link rel="canonical" href="https://sonae-are.com/tools/kounyu-shohiyo.html">
-<meta property="og:title" content="住宅購入の諸費用シミュレーション【無料】">
+<meta property="og:title" content="物件購入の諸費用概算書（無料シミュレーション）">
 <meta property="og:description" content="物件価格を入れるだけで、仲介手数料・登記費用・ローン費用など購入諸費用の総額を自動計算。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sonae-are.com/tools/kounyu-shohiyo.html">
@@ -16,7 +16,7 @@
   "@graph": [
     {
       "@type": "WebApplication",
-      "name": "住宅購入の諸費用シミュレーション",
+      "name": "物件購入の諸費用概算書（無料シミュレーション）",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "Web",
       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"},
@@ -128,7 +128,7 @@
 <header><div class="wrap bar"><a class="logo" href="../personal.html">Sonaure</a><a class="nav" href="index.html">無料計算ツール一覧</a></div></header>
 
 <div class="wrap">
-  <h1>住宅購入の諸費用シミュレーション</h1>
+  <h1>物件購入の諸費用概算書（無料シミュレーション）</h1>
   <p class="sub">物件価格を入れるだけで、購入時にかかる諸費用の総額を無料でその場計算（登録不要）。項目ごとの内訳は無料登録で表示できます。</p>
 
   <div class="calc">
@@ -155,7 +155,7 @@
           <div class="unlock-icon">🔒</div>
           <p class="unlock-title">項目ごとの内訳（金額・備考）を見る</p>
           <p class="unlock-sub">登録不要・無料でお使いいただけます。費目ごとの調整やPDF／Excel出力もできます。</p>
-          <a class="unlock-btn" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
+          <a class="unlock-btn" href="https://sonaure-plsalfa.streamlit.app/?tool=costs&from=personal">無料ツールを使う</a>
         </div>
       </div>
     </div>
@@ -169,14 +169,14 @@
       <li><strong>諸費用をもっと下げられないか相談したい</strong><br>融資の受け方や火災保険の掛け方で、下げられる余地があることがあります。</li>
     </ul>
     <a class="btn" id="soudan-btn" href="https://forms.gle/PvbwuzqfPuMUgwLn6" target="_blank" rel="noopener">相談フォームへ →</a>
-    <p class="line">LINEでもご相談いただけます<a href="https://lin.ee/7yGIqUn" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a></p>
+    <p class="line">LINEでもご相談いただけます<a href="https://lin.ee/yHprA5U" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a></p>
     <p class="note-s">宅地建物取引士がお答えします。ご相談にあたって会員登録は必要ありません。</p>
   </div>
 
   <div class="cta-box">
     <div class="t">不動産会社にお勤めの方へ</div>
     <p>借入額の個別指定・費目ごとの調整・お客様にそのまま渡せるPDF/Excelの概算書出力は、不動産事業者向けツール「Sonaure」で。</p>
-    <a class="cta-btn" href="../detail-costs.html">Sonaureの購入諸費用計算を見る</a>
+    <a class="cta-btn" href="../detail-costs.html">Sonaureの物件購入の諸費用概算書を見る</a>
   </div>
 
   <h2>住宅購入の諸費用の内訳と目安</h2>
@@ -247,7 +247,7 @@ const PREFILL = null;  // 例: {base:"https://docs.google.com/forms/d/e/XXXX/vie
 function soudanHref() {
   if (!PREFILL) return FORM_URL;
   const q = new URLSearchParams({usp: "pp_url"});
-  q.set(PREFILL.source, "購入諸費用シミュレーション");
+  q.set(PREFILL.source, "物件購入の諸費用概算書（無料シミュレーション）");
   q.set(PREFILL.detail, `物件価格 ${Number(document.getElementById("price").value) || 0} 万円／諸費用の概算 ${document.getElementById("total").textContent}`);
   return PREFILL.base + "?" + q.toString();
 }

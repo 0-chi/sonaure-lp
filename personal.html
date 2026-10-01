@@ -55,6 +55,23 @@
   .hero .tagline { font-size: clamp(15px, 2.4vw, 20px); color: var(--blue-d); margin: 14px 0 10px; font-weight: bold; }
   .hero .sub { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
   .hero .hero-who { margin-bottom: 10px; color: var(--blue-d); font-weight: bold; }
+  /* 見出しは「何ができるか」を数字で。ブランド名は小さく上に置く。右に出来上がる資料の見本 */
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; text-align: left; }
+  .hero .brand { font-size: 15px; font-weight: bold; color: var(--blue-d); letter-spacing: .06em; margin-bottom: 14px; }
+  .hero .brand span { font-weight: normal; color: var(--muted); font-size: 13px; letter-spacing: 0; margin-left: 6px; }
+  .hero-grid h1 { font-size: clamp(26px, 3.6vw, 38px); line-height: 1.4; letter-spacing: .02em; margin-bottom: 14px; }
+  .hero-grid .sub { margin-bottom: 14px; }
+  .hero-grid .cta { margin-top: 10px; }
+  .hero .cta-note { font-size: 12.5px; color: var(--muted); margin-top: 14px; }
+  .hero-sample { margin: 0; }
+  .hero-sample img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--line);
+                     border-radius: 12px; box-shadow: 0 14px 40px rgba(26,77,143,.18); }
+  .hero-sample figcaption { font-size: 12.5px; color: var(--muted); margin-top: 10px; line-height: 1.6; }
+  @media (max-width: 900px) {
+    .hero { padding: 90px 0 60px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 26px; text-align: center; }
+    .hero-sample { max-width: 560px; margin: 0 auto; }
+  }
   .cta { display: inline-block; background: linear-gradient(135deg, var(--blue), var(--blue-l)); color: #fff; text-decoration: none; font-weight: bold; font-size: 17px; padding: 15px 52px; border-radius: 999px; box-shadow: 0 8px 24px rgba(43,108,176,.35); transition: transform .15s; }
   .cta:hover { transform: translateY(-2px); }
 
@@ -178,14 +195,14 @@
   <div class="bar">
     <button class="menu-btn" onclick="toggleMenu()" aria-label="メニュー"><span></span><span></span><span></span></button>
     <a class="logo" href="#top">Sonaure</a>
-    <a class="login-link" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
+    <a class="login-link" href="https://sonaure-plsalfa.streamlit.app/?from=personal">無料ツールを使う</a>
   </div>
 </header>
 <div id="overlay" onclick="toggleMenu()"></div>
 <nav id="drawer">
   <button class="close" onclick="toggleMenu()">✕</button>
   <a href="services.html">サービスメニュー</a>
-  <a href="https://sonaure-plsalfa.streamlit.app" onclick="toggleMenu()">無料ツールを使う</a>
+  <a href="https://sonaure-plsalfa.streamlit.app/?from=personal" onclick="toggleMenu()">無料ツールを使う</a>
   <a href="blog/index.html">不動産に関する有益情報</a>
   <a href="index.html">不動産会社・営業担当の方へ →</a>
   <hr>
@@ -198,12 +215,19 @@
 
 <!-- ===== ヒーロー ===== -->
 <div class="hero" id="top">
-  <div class="wrap">
-    <h1>Sonaure</h1>
-    <div class="tagline">〜備えあれば憂いなし、＋αの感動を〜</div>
-    <p class="sub hero-who">ご自身で物件を探す方・売却をお考えの方・不動産投資を検討している方へ</p>
-    <p class="sub">住所や価格を入れるだけで、購入にかかる費用・売ったときの手取り・家賃と購入の比較を、登録なし・無料で計算できます。</p>
-    <a class="cta" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="brand">Sonaure <span>〜備えあれば憂いなし、＋αの感動を〜</span></div>
+      <h1>5,000万円の物件なら、<br>諸費用は約375万円。</h1>
+      <p class="sub hero-who">ご自身で物件を探す方・売却をお考えの方・不動産投資を検討している方へ</p>
+      <p class="sub">住所や価格を入れるだけで、購入にかかる費用・売ったときの手取り・家賃と購入の比較を、登録なし・無料で計算できます。</p>
+      <a class="cta" href="https://sonaure-plsalfa.streamlit.app/?tool=costs&from=personal">無料ツールを使う</a>
+      <p class="cta-note">※ 中古住宅を仲介で購入し、4,500万円を借り入れた場合の概算です。右の見本と同じ計算です。</p>
+    </div>
+    <figure class="hero-sample">
+      <img src="assets/sample-costs.png" alt="物件購入の諸費用概算書の見本。物件価格5,000万円・借入4,500万円で、仲介手数料から火災保険料までの明細と合計約375万円" width="1070" height="800">
+      <figcaption>出来上がる資料の見本：物件購入の諸費用概算書（物件価格5,000万円・借入4,500万円）</figcaption>
+    </figure>
   </div>
 </div>
 
@@ -273,7 +297,7 @@
     <div class="auth-card">
       <p><a href="services.html" style="color:var(--blue);font-weight:bold;">計算の5機能（1〜5）</a>は<strong>登録もログインも不要</strong>です。<br>
         住所から公的データを取得する3機能（6〜8）は、メールアドレスとパスワードだけの<strong>無料の会員登録</strong>でお使いいただけます。料金はかかりません。</p>
-      <button onclick="location.href='https://sonaure-plsalfa.streamlit.app'">無料ツールを使う</button>
+      <button onclick="location.href='https://sonaure-plsalfa.streamlit.app/?from=personal'">無料ツールを使う</button>
       <div class="auth-note">ご不明な点は <a href="mailto:sonaure100@gmail.com?subject=【Sonaure】お問い合わせ" style="color:var(--blue);">sonaure100@gmail.com</a> まで</div>
     </div>
   </div>

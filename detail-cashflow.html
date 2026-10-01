@@ -51,6 +51,16 @@
   .cap{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
   .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto;max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
   footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:20px;}
+  /* スマホでは表をカードにする。「計算根拠・備考」の列が1行2〜3文字に折り返されて読めないため */
+  @media (max-width:640px){
+    table.cardify thead{display:none;}
+    table.cardify,table.cardify tbody,table.cardify tr,table.cardify td{display:block;width:100%;}
+    table.cardify tr{background:#fff;border:1px solid #cbd5e0;border-radius:10px;padding:8px 12px;margin-bottom:8px;}
+    table.cardify td{border:0;padding:3px 0;text-align:left;white-space:normal;display:flex;gap:10px;justify-content:space-between;align-items:baseline;}
+    table.cardify td::before{content:attr(data-label);flex:none;min-width:5.5em;font-size:11px;color:#64748b;}
+    table.cardify td:first-child{display:block;font-weight:bold;white-space:normal;}
+    table.cardify td:first-child::before{display:none;}
+  }
 </style>
 <link rel="stylesheet" href="assets/motion.css">
 </head>
@@ -93,13 +103,13 @@
         <div class="kpi"><div class="l">投下資金を回収できる年</div><div class="v">9年目</div></div>
       </div>
       <h3>年次の明細（単位：万円）</h3>
-      <table>
+      <table class="cardify">
         <thead><tr><th>年</th><th class="num-c">実質年間収入</th><th class="num-c">不動産所得</th><th class="num-c">税額</th><th class="num-c">CF</th><th class="num-c">売却時累計CF</th></tr></thead>
         <tbody>
-          <tr><td class="item">1</td><td class="num-c">564.3</td><td class="num-c">89.7</td><td class="num-c">26.9</td><td class="num-c">−62.7</td><td class="num-c">−1,230.5</td></tr>
-          <tr><td class="item">9</td><td class="num-c">519.6</td><td class="num-c">104.1</td><td class="num-c">31.2</td><td class="num-c">−107.9</td><td class="num-c">176.4</td></tr>
-          <tr><td class="item">12</td><td class="num-c">505.2</td><td class="num-c">−189.1</td><td class="num-c">−41.5</td><td class="num-c">−347.5</td><td class="num-c">299.9</td></tr>
-          <tr><td class="item">26</td><td class="num-c">438.9</td><td class="num-c">168.2</td><td class="num-c">50.5</td><td class="num-c">294.6</td><td class="num-c">2,853.6</td></tr>
+          <tr><td data-label="年" class="item">1</td><td data-label="実質年間収入" class="num-c">564.3</td><td data-label="不動産所得" class="num-c">89.7</td><td data-label="税額" class="num-c">26.9</td><td data-label="CF" class="num-c">−62.7</td><td data-label="売却時累計CF" class="num-c">−1,230.5</td></tr>
+          <tr><td data-label="年" class="item">9</td><td data-label="実質年間収入" class="num-c">519.6</td><td data-label="不動産所得" class="num-c">104.1</td><td data-label="税額" class="num-c">31.2</td><td data-label="CF" class="num-c">−107.9</td><td data-label="売却時累計CF" class="num-c">176.4</td></tr>
+          <tr><td data-label="年" class="item">12</td><td data-label="実質年間収入" class="num-c">505.2</td><td data-label="不動産所得" class="num-c">−189.1</td><td data-label="税額" class="num-c">−41.5</td><td data-label="CF" class="num-c">−347.5</td><td data-label="売却時累計CF" class="num-c">299.9</td></tr>
+          <tr><td data-label="年" class="item">26</td><td data-label="実質年間収入" class="num-c">438.9</td><td data-label="不動産所得" class="num-c">168.2</td><td data-label="税額" class="num-c">50.5</td><td data-label="CF" class="num-c">294.6</td><td data-label="売却時累計CF" class="num-c">2,853.6</td></tr>
         </tbody>
       </table>
       <div class="pv-brand">Sonaure</div>
@@ -113,7 +123,7 @@
     登録なしで試したい方は、<a href="tools/cf-simulation.html" style="color:#2b6cb0;font-weight:bold;">ブラウザ版のキャッシュフローシミュレーション</a>をお使いください。計算式は同じで、PDF／Excel出力だけがアプリ版の機能です。</p>
   </section>
 
-  <a class="cta" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
+  <a class="cta" href="https://sonaure-plsalfa.streamlit.app/?tool=cashflow&from=personal">無料ツールを使う</a>
 </div>
 
 <footer>Sonaure 〜備えあれば憂いなし、＋αの感動を〜<br>© 2026 Sonaure</footer>

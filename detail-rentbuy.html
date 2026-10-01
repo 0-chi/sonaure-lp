@@ -50,6 +50,16 @@
   .cap{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
   .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto;max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
   footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:20px;}
+  /* スマホでは表をカードにする。「計算根拠・備考」の列が1行2〜3文字に折り返されて読めないため */
+  @media (max-width:640px){
+    table.cardify thead{display:none;}
+    table.cardify,table.cardify tbody,table.cardify tr,table.cardify td{display:block;width:100%;}
+    table.cardify tr{background:#fff;border:1px solid #cbd5e0;border-radius:10px;padding:8px 12px;margin-bottom:8px;}
+    table.cardify td{border:0;padding:3px 0;text-align:left;white-space:normal;display:flex;gap:10px;justify-content:space-between;align-items:baseline;}
+    table.cardify td::before{content:attr(data-label);flex:none;min-width:5.5em;font-size:11px;color:#64748b;}
+    table.cardify td:first-child{display:block;font-weight:bold;white-space:normal;}
+    table.cardify td:first-child::before{display:none;}
+  }
 </style>
 <link rel="stylesheet" href="assets/motion.css">
 </head>
@@ -87,12 +97,12 @@
         <div class="kpi"><div class="l">物件価格の目安</div><div class="v">約 2,613 万円</div></div>
       </div>
       <h3>家賃を払い続けた場合との比較</h3>
-      <table>
+      <table class="cardify">
         <thead><tr><th>期間</th><th class="num-c">家賃を払い続けた場合の累計</th><th>備考</th></tr></thead>
         <tbody>
-          <tr><td class="item">10年</td><td class="num-c">約 960 万円</td><td>資産は残りません</td></tr>
-          <tr><td class="item">20年</td><td class="num-c">約 1,920 万円</td><td>資産は残りません</td></tr>
-          <tr><td class="item">35年</td><td class="num-c">約 3,360 万円</td><td>購入なら完済し、物件が資産として残ります</td></tr>
+          <tr><td data-label="期間" class="item">10年</td><td data-label="家賃を払い続けた場合の累計" class="num-c">約 960 万円</td><td data-label="備考">資産は残りません</td></tr>
+          <tr><td data-label="期間" class="item">20年</td><td data-label="家賃を払い続けた場合の累計" class="num-c">約 1,920 万円</td><td data-label="備考">資産は残りません</td></tr>
+          <tr><td data-label="期間" class="item">35年</td><td data-label="家賃を払い続けた場合の累計" class="num-c">約 3,360 万円</td><td data-label="備考">購入なら完済し、物件が資産として残ります</td></tr>
         </tbody>
       </table>
       <div class="pv-brand">Sonaure</div>
@@ -100,7 +110,7 @@
     <p class="cap">※ 実際のレポートには前提条件・総返済額・注意事項も記載。PDF / Excelでダウンロードできます（上記は表示イメージ）。</p>
   </section>
 
-  <a class="cta" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
+  <a class="cta" href="https://sonaure-plsalfa.streamlit.app/?tool=rentbuy&from=personal">無料ツールを使う</a>
 </div>
 
 <footer>Sonaure 〜備えあれば憂いなし、＋αの感動を〜<br>© 2026 Sonaure</footer>

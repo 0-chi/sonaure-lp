@@ -51,6 +51,16 @@
   .login-note{background:#fffaf0;border:1px solid #f6d8a8;border-radius:10px;padding:12px 16px;font-size:13px;color:#7a5320;margin-top:16px;}
   .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto;max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
   footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:20px;}
+  /* スマホでは表をカードにする。「計算根拠・備考」の列が1行2〜3文字に折り返されて読めないため */
+  @media (max-width:640px){
+    table.cardify thead{display:none;}
+    table.cardify,table.cardify tbody,table.cardify tr,table.cardify td{display:block;width:100%;}
+    table.cardify tr{background:#fff;border:1px solid #cbd5e0;border-radius:10px;padding:8px 12px;margin-bottom:8px;}
+    table.cardify td{border:0;padding:3px 0;text-align:left;white-space:normal;display:flex;gap:10px;justify-content:space-between;align-items:baseline;}
+    table.cardify td::before{content:attr(data-label);flex:none;min-width:5.5em;font-size:11px;color:#64748b;}
+    table.cardify td:first-child{display:block;font-weight:bold;white-space:normal;}
+    table.cardify td:first-child::before{display:none;}
+  }
 </style>
 <link rel="stylesheet" href="assets/motion.css">
 </head>
@@ -83,12 +93,12 @@
       <div class="pv-title">買取査定判断シミュレーション<span>Sonaure</span><span class="pv-note">※あくまで概算になるため変動いたします</span></div>
       <div class="pv-meta">対象：売却 3,000 万円／リフォーム 300 万円／6ヶ月保有　（売価ベース｜粗利 ÷ 想定売却価格）</div>
       <h3>目標利益率ごとの買取上限価格</h3>
-      <table>
+      <table class="cardify">
         <thead><tr><th>目標利益率</th><th class="num-c">買取上限価格</th><th class="num-c">粗利益</th></tr></thead>
         <tbody>
-          <tr><td class="item">20%</td><td class="num-c">1,763 万円</td><td class="num-c">600 万円</td></tr>
-          <tr><td class="item">15%</td><td class="num-c">1,904 万円</td><td class="num-c">450 万円</td></tr>
-          <tr><td class="item">10%</td><td class="num-c">2,045 万円</td><td class="num-c">300 万円</td></tr>
+          <tr><td data-label="目標利益率" class="item">20%</td><td data-label="買取上限価格" class="num-c">1,763 万円</td><td data-label="粗利益" class="num-c">600 万円</td></tr>
+          <tr><td data-label="目標利益率" class="item">15%</td><td data-label="買取上限価格" class="num-c">1,904 万円</td><td data-label="粗利益" class="num-c">450 万円</td></tr>
+          <tr><td data-label="目標利益率" class="item">10%</td><td data-label="買取上限価格" class="num-c">2,045 万円</td><td data-label="粗利益" class="num-c">300 万円</td></tr>
         </tbody>
       </table>
       <h3>提示価格 2,200 万円 での収支</h3>
@@ -98,17 +108,17 @@
         <div class="kpi"><div class="l">総投資額</div><div class="v">2,866 万円</div></div>
       </div>
       <h3>収支の内訳（抜粋）</h3>
-      <table>
+      <table class="cardify">
         <thead><tr><th>区分</th><th>項目</th><th class="num-c">金額</th></tr></thead>
         <tbody>
-          <tr><td class="item">購入諸費用</td><td>仲介手数料(購入)</td><td class="num-c">792,000 円</td></tr>
-          <tr><td class="item">購入諸費用</td><td>融資事務手数料</td><td class="num-c">550,000 円</td></tr>
-          <tr><td class="item">不動産取得税</td><td>土地／建物</td><td class="num-c">189,000／198,000 円</td></tr>
-          <tr><td class="item">リフォーム</td><td>工事費(税込)</td><td class="num-c">3,000,000 円</td></tr>
-          <tr><td class="item">保有コスト</td><td>支払利息（6ヶ月）</td><td class="num-c">375,000 円</td></tr>
-          <tr><td class="item">消費税</td><td>納付見込(本則課税)</td><td class="num-c">737,091 円</td></tr>
-          <tr><td class="item">合計</td><td>経費合計</td><td class="num-c">6,659,091 円</td></tr>
-          <tr><td class="item">合計</td><td>粗利益</td><td class="num-c">1,340,909 円</td></tr>
+          <tr><td data-label="区分" class="item">購入諸費用</td><td data-label="項目">仲介手数料(購入)</td><td data-label="金額" class="num-c">792,000 円</td></tr>
+          <tr><td data-label="区分" class="item">購入諸費用</td><td data-label="項目">融資事務手数料</td><td data-label="金額" class="num-c">550,000 円</td></tr>
+          <tr><td data-label="区分" class="item">不動産取得税</td><td data-label="項目">土地／建物</td><td data-label="金額" class="num-c">189,000／198,000 円</td></tr>
+          <tr><td data-label="区分" class="item">リフォーム</td><td data-label="項目">工事費(税込)</td><td data-label="金額" class="num-c">3,000,000 円</td></tr>
+          <tr><td data-label="区分" class="item">保有コスト</td><td data-label="項目">支払利息（6ヶ月）</td><td data-label="金額" class="num-c">375,000 円</td></tr>
+          <tr><td data-label="区分" class="item">消費税</td><td data-label="項目">納付見込(本則課税)</td><td data-label="金額" class="num-c">737,091 円</td></tr>
+          <tr><td data-label="区分" class="item">合計</td><td data-label="項目">経費合計</td><td data-label="金額" class="num-c">6,659,091 円</td></tr>
+          <tr><td data-label="区分" class="item">合計</td><td data-label="項目">粗利益</td><td data-label="金額" class="num-c">1,340,909 円</td></tr>
         </tbody>
       </table>
       <div class="pv-brand">Sonaure</div>
@@ -125,7 +135,7 @@
     <p class="lead">税率は2027年3月31日までの軽減措置にもとづく概算です。利息は満期一括返済（期中は利息のみ）、消費税は本則課税として計算しており、簡易課税・インボイスの調整は含みません。固定資産税評価額も概算のため、実額は市区町村の評価によります。実際の申告・税務判断は税理士にご確認ください。</p>
   </section>
 
-  <a class="cta" href="https://sonaure-plsalfa.streamlit.app">無料ツールを使う</a>
+  <a class="cta" href="https://sonaure-plsalfa.streamlit.app/?tool=kaitori&from=personal">無料ツールを使う</a>
 </div>
 
 <footer>Sonaure 〜備えあれば憂いなし、＋αの感動を〜<br>© 2026 Sonaure</footer>
