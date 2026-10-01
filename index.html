@@ -75,7 +75,14 @@
   .hero-sample img { display: block; width: 100%; height: auto; background: #fff; border-radius: 10px;
                      box-shadow: 0 16px 48px rgba(0,0,0,.45); }
   .hero-sample figcaption { font-size: 12.5px; color: var(--muted); margin-top: 10px; line-height: 1.6; }
-  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 28px; } }
+  /* スマホでは見本を見出しの直後に置く（本文・ボタンの前）。hero-text を透明にして並べ替える */
+  @media (max-width: 900px) {
+    .hero-grid { display: flex; flex-direction: column; gap: 0; }
+    .hero-text { display: contents; }
+    .hero-text > * { order: 3; }
+    .hero-text > .eyebrow, .hero-text > h1 { order: 1; }
+    .hero-sample { order: 2; margin: 6px 0 26px; }
+  }
   /* スマホでは表をカードにする。横にスワイプしないと右の列が見えないため */
   @media (max-width: 640px) {
     table.cardify thead { display: none; }
@@ -273,7 +280,7 @@
 <section style="background:var(--bg-soft)" id="features">
   <div class="wrap">
     <span class="eyebrow">機能と時短の目安</span>
-    <h2>8つの機能</h2>
+    <h2>9つの機能</h2>
     <p class="lead">時短の目安は、同じ内容を手作業で調べた場合との比較です。</p>
 
     <div class="grp">登録なしで使える</div>
@@ -290,7 +297,7 @@
     </table>
     </div>
 
-    <div class="grp">無料の会員登録で使える（住所から公的データ・地図を取得するため）</div>
+    <div class="grp">無料の会員登録で使える（公的データの取得や、自社情報の保存のため）</div>
     <div class="tblwrap">
     <table class="cardify">
       <thead><tr><th>機能</th><th>できること</th><th>時短の目安</th></tr></thead>
@@ -298,6 +305,7 @@
         <tr><td data-label="機能" class="n">周辺環境調査書</td><td data-label="できること" class="d">最寄り駅・学校・保育園・スーパー・病院・公園・商業施設などを徒歩分数つきで1枚に。調べる施設は選べます</td><td data-label="時短の目安" class="t">約20〜30分</td></tr>
         <tr><td data-label="機能" class="n">投資判断調査項目</td><td data-label="できること" class="d">区域区分・用途地域・建ぺい率／容積率・防火指定・災害リスク4種。境界またがりは「要確認」を自動検出</td><td data-label="時短の目安" class="t">約10〜15分</td></tr>
         <tr><td data-label="機能" class="n">買取査定判断シミュレーション</td><td data-label="できること" class="d">想定売却価格から「いくらまでなら買えるか」を目標利益率ごとに逆算</td><td data-label="時短の目安" class="t">約20〜40分</td></tr>
+        <tr><td data-label="機能" class="n">マイソク作成</td><td data-label="できること" class="d">レインズ様式の物件図面を PDF / Excel で。他社の図面は会社欄だけ自社に差し替える「帯替え」や、読み取って入力欄に転記も。投資家向けの紹介文も作れます</td><td data-label="時短の目安" class="t">約15〜40分</td></tr>
       </tbody>
     </table>
     </div>
@@ -317,7 +325,7 @@
       </div>
       <div class="box">
         <h3>これから追加する機能<span class="tag">準備中</span></h3>
-        <p><b>マイソク作成</b>：レインズ様式の物件図面を PDF / Excel で。他社の図面（PDF・画像）を読み込んで入力欄に転記できます。<br><b>AI重説作成</b>：登記簿などの資料を入れると、重要事項説明書の下書きと特約事項（案）を作ります。<br>順次公開します。時期はこのページでお知らせします。</p>
+        <p><b>AI重説作成</b>：登記簿などの資料を入れると、重要事項説明書の下書きと特約事項（案）を作ります。<br>公開の時期はこのページでお知らせします。<br><br><b>マイソク作成</b>は公開しました。他社図面の帯替え・読み取り・新規作成の3通りで、レインズ様式の図面を PDF / Excel にします。</p>
       </div>
     </div>
   </div>

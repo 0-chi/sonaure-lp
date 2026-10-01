@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>マイソク作成｜Sonaure</title>
+<meta name="description" content="レインズ様式の物件図面（マイソク）を PDF / Excel で。他社の図面は会社欄だけを自社に差し替える「帯替え」、PDF・画像を読み取って入力欄に転記、一から新規作成の3通り。投資家向けの紹介文も作れます。無料。">
+<link rel="canonical" href="https://sonae-are.com/detail-maisoku.html">
+<meta property="og:title" content="マイソク作成｜Sonaure">
+<meta property="og:description" content="レインズ様式の物件図面（マイソク）を PDF / Excel で。他社図面の帯替え・読み取り・新規作成の3通り。投資家向けの紹介文も作れます。無料。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sonae-are.com/detail-maisoku.html">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap');
+  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Noto Sans JP","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);line-height:1.9;background:linear-gradient(180deg,#fff,#f3f8ff);}
+  .wrap{max-width:840px;margin:0 auto;padding:0 20px;}
+  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
+  .bar{display:flex;align-items:center;height:56px;}
+  .back{font-size:14px;color:var(--blue);text-decoration:none;font-weight:bold;}
+  .hero{background:linear-gradient(135deg,#eaf3ff,#d7e9ff 60%,#c8e0ff);border-radius:18px;border:1px solid var(--line);padding:34px 24px;text-align:center;margin:24px 0;}
+  .hero .num{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;font-weight:bold;font-size:18px;margin-bottom:12px;}
+  .hero h1{font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;font-size:28px;color:var(--blue-d);letter-spacing:.04em;}
+  .hero p{color:var(--blue-d);font-size:14px;margin-top:8px;}
+  section{padding:10px 0 24px;}
+  h2{font-size:20px;color:var(--blue-d);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));}
+  .lead{font-size:15px;margin-bottom:16px;}
+  ul.feat{list-style:none;background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:14px;padding:18px 22px;}
+  ul.feat li{padding:5px 0 5px 26px;position:relative;font-size:14.5px;}
+  ul.feat li::before{content:"✓";position:absolute;left:4px;color:var(--blue);font-weight:bold;}
+  ul.pain{list-style:none;background:linear-gradient(135deg,#fff,#f7fbff);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin:8px 0 16px;}
+  ul.pain li{padding:6px 0 6px 28px;position:relative;font-size:14.5px;}
+  ul.pain li::before{content:"✗";position:absolute;left:4px;color:#c53030;font-weight:bold;}
+  .answer{text-align:center;font-size:22px;font-weight:bold;color:var(--blue-d);margin:26px 0;}
+  .answer .ten{font-size:1.5em;color:var(--blue);}
+  .ways{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:8px;}
+  .way{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;box-shadow:0 6px 20px rgba(26,77,143,.06);}
+  .way .step{display:inline-block;font-size:11px;font-weight:bold;color:#fff;background:linear-gradient(135deg,var(--blue),var(--blue-l));border-radius:999px;padding:1px 10px;margin-bottom:8px;letter-spacing:.08em;}
+  .way h3{font-size:15.5px;color:var(--blue-d);margin-bottom:6px;}
+  .way p{font-size:13.5px;line-height:1.75;}
+  .way .when{font-size:12px;color:var(--muted);margin-top:8px;}
+  .preview{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 28px rgba(26,77,143,.10);padding:14px;}
+  .preview img{display:block;width:100%;height:auto;border:1px solid #e2e8f0;}
+  .cap{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
+  .pitch{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;font-size:13.5px;white-space:pre-line;line-height:1.8;box-shadow:0 8px 28px rgba(26,77,143,.08);}
+  .trust-box{border-left:4px solid var(--blue);background:#f4f9ff;padding:18px 22px;border-radius:0 10px 10px 0;margin-top:20px;font-size:14px;}
+  .trust-box strong{color:var(--blue-d);}
+  .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto;max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
+  footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:20px;}
+  @media (max-width:640px){ .ways{grid-template-columns:1fr;} }
+</style>
+<link rel="stylesheet" href="assets/motion.css">
+</head>
+<body>
+<header><div class="wrap bar"><a class="back" href="personal.html">← Sonaure トップへ</a></div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="num">9</div>
+    <h1>マイソク作成</h1>
+    <p>レインズ様式の物件図面（マイソク）を PDF / Excel で。他社の図面は会社欄だけを自社に差し替えられます。</p>
+  </div>
+
+  <section>
+    <h2>図面づくりで、こんな手間ありませんか？</h2>
+    <ul class="pain">
+      <li>元付の図面を自社の帯で出したいだけなのに、画像ソフトで白く塗って会社情報を打ち直している</li>
+      <li>他社の図面を見ながら、同じ内容を自社の様式に1項目ずつ転記している</li>
+      <li>投資家に送るメールの文面を、物件ごとに一から考えている</li>
+    </ul>
+    <div class="answer">作り方は<span class="ten">3通り</span>。よく使う順に並んでいます。</div>
+  </section>
+
+  <section>
+    <h2>作り方は3通り</h2>
+    <div class="ways">
+      <div class="way">
+        <span class="step">1</span>
+        <h3>簡単作成（帯替え）</h3>
+        <p>他社の図面（PDF・画像）を入れ、消す範囲と自社情報を置く範囲を指定するだけ。レインズ様式の枠で、会社名・免許番号・住所・電話・担当者が入ります。</p>
+        <div class="when">元付の図面をそのまま自社名で出したいときに</div>
+      </div>
+      <div class="way">
+        <span class="step">2</span>
+        <h3>他社のチラシから読み取る</h3>
+        <p>PDF・画像の図面を読み取って、価格・所在地・面積・築年月などを入力欄に転記。直してから自社様式で出せます。</p>
+        <div class="when">自社の様式にそろえたいときに</div>
+      </div>
+      <div class="way">
+        <span class="step">3</span>
+        <h3>新規作成</h3>
+        <p>一から入力して作ります。土地・戸建・マンション・収益一棟の4種別。写真は最大4枚で、枚数に合わせて自動で並びます。</p>
+        <div class="when">自社物件・新規の媒介物件に</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>できること</h2>
+    <ul class="feat">
+      <li>レインズ様式のまま、A4横1枚の PDF と Excel で出力。Excel は細かく手直しできます</li>
+      <li>取引態様・免許番号・取扱会社など、広告に必要な記載欄は枠として固定。抜け漏れが出ません</li>
+      <li>自社情報は保存しておけば、次回から入力不要</li>
+      <li>未入力の必須項目は赤枠で表示。広告として出す前に確認できます</li>
+      <li>出来上がった図面から、投資家向けの<strong>紹介文</strong>を定型文で組み立て。ワンクリックでコピーできます</li>
+      <li>紹介文は不動産の表示規約（第18条）で使えない語を自動で確認。見つかれば指摘します</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>出力イメージ</h2>
+    <div class="preview">
+      <img src="assets/sample-maisoku.png" alt="マイソク作成の出力見本。レインズ様式の中古マンションの図面で、価格・所在地・面積・築年月などの概要表と、自社情報の欄が入っている" width="1070" height="749">
+    </div>
+    <p class="cap">※ 見本の物件・会社名はすべて架空です。PDF / Excel でダウンロードできます。</p>
+  </section>
+
+  <section>
+    <h2>投資家向けの紹介文も、その場で</h2>
+    <p class="lead">図面の数字から、メールにそのまま貼れる紹介文を組み立てます。AI は使わない定型文なので、無料で、数字が勝手に変わることもありません。</p>
+    <div class="pitch">■ 紹介文
+
+お世話になっております。
+中古マンションをご紹介します。
+
+【物件情報】
+・価格：価格 4,280万円。管理費 15,400円／月／修繕積立金 9,800円／月。
+・立地：大阪市中央区本町1-2-3。Osaka Metro御堂筋線「本町」駅 徒歩5分。
+・建物：グランドメゾン本町。2015年3月築・RC14階建。専有面積 70.25㎡。間取り 3LDK。8階部分。総戸数 120戸。
+・土地・法令：権利 所有権。商業地域。
+・現況・管理：現況 空家。管理 全部委託（○○管理）。駐車場 空有 月額25,000円。
+・引渡し：引渡時期 相談。
+
+物件資料をお送りしますので、ご興味があれば内見の日程をご相談ください。
+ご検討のほどよろしくお願いいたします。
+
+サンプル不動産株式会社　山田
+TEL 06-0000-0000
+大阪府知事(2)第012345号
+取引態様：媒介</div>
+    <p class="cap">※ 上の見本の図面（架空の物件）から実際に組み立てた文面です。読み取れた項目だけを使い、読み取れなかった項目は「確認したい点」として別に示します。</p>
+    <div class="trust-box"><strong>図面は宅建業法上の広告です。</strong>取引態様・免許番号・取扱会社の欄は画面外に出せない作りにしてあり、紹介文は表示規約で使えない語（「格安」「完璧」など）を自動で確認します。出す前の最終確認は、必ず担当者の目でお願いします。</div>
+  </section>
+
+  <a class="cta" href="https://sonaure-plsalfa.streamlit.app/?tool=maisoku&from=personal">無料ツールを使う</a>
+  <p class="cap" style="margin-top:-14px;">※ メールアドレスとパスワードだけの無料の会員登録が必要です（自社情報を保存するため）</p>
+</div>
+
+<footer>Sonaure 〜備えあれば憂いなし、＋αの感動を〜<br>© 2026 Sonaure</footer>
+<script src="assets/motion.js" defer></script>
+</body>
+</html>
