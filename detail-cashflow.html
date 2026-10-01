@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>キャッシュフローシミュレーション｜Sonaure</title>
-<meta name="description" content="投資用物件の家賃・経費・返済・税金を年ごとに積み上げ、各年に売却した場合の手残りまで試算。減価償却は構造と築年数から簡便法で自動計算、譲渡税は短期39.63%／長期20.315%、個人の土地負債利子の通算制限にも対応します。">
+<meta name="description" content="投資用物件の家賃・経費・返済・税金を年ごとに積み上げ、各年に売却した場合の手残りまで試算。表面利回りだけでは分からない「本当に残るお金」が分かります。減価償却は構造と築年数から自動計算、譲渡税は短期39.63%／長期20.315%に対応。登録なし・無料。">
 <link rel="canonical" href="https://sonae-are.com/detail-cashflow.html">
 <meta property="og:title" content="キャッシュフローシミュレーション｜Sonaure">
-<meta property="og:description" content="家賃・経費・返済・税金を年ごとに積み上げ、売却まで含めた手残りを試算。PDF／Excelで出力できます。">
+<meta property="og:description" content="家賃・経費・返済・税金を年ごとに積み上げ、売却まで含めて「本当にいくら残るか」を試算。登録なし・無料。PDF／Excelで出力できます。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sonae-are.com/detail-cashflow.html">
 <style>
@@ -49,6 +49,10 @@
   .kpi .v{font-size:16px;font-weight:bold;color:var(--blue-d);margin-top:4px;}
   .pv-brand{text-align:right;color:var(--blue);font-weight:bold;font-size:14px;margin-top:14px;}
   .cap{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
+  .pro-box{border-left:4px solid var(--blue);background:#f4f9ff;padding:16px 20px;border-radius:0 10px 10px 0;font-size:14px;}
+  .pro-box strong{color:var(--blue-d);display:block;margin-bottom:4px;}
+  .links{font-size:12.5px;color:var(--muted);line-height:1.9;margin-top:6px;}
+  .links a{color:var(--blue);font-weight:bold;}
   .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto;max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
   footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:20px;}
   /* スマホでは表をカードにする。「計算根拠・備考」の列が1行2〜3文字に折り返されて読めないため */
@@ -72,12 +76,24 @@
     <div class="new-badge">NEW</div><br>
     <div class="num">5</div>
     <h1>キャッシュフローシミュレーション</h1>
-    <p>投資用物件の家賃・経費・返済・税金を年ごとに積み上げ、売却まで含めた手残りを1枚に。</p>
+    <p>家賃・経費・返済・税金を年ごとに積み上げ、売却まで含めて「本当にいくら残るか」を1枚に。</p>
   </div>
 
   <section>
-    <h2>こんな場面で活躍します</h2>
-    <p class="lead">「この物件、買って大丈夫ですか？」——収益物件のご相談で必ず出るこの質問に、<strong>年ごとの数字</strong>で答えられます。表面利回りだけでは見えない、返済・税金・出口まで含めた手残りを提示できます。</p>
+    <h2>こんなときに使えます</h2>
+    <p class="lead">「この物件、買っても大丈夫？」——広告の表面利回りは、年間の家賃を価格で割っただけの数字です。そこから経費・ローン返済・税金を引き、売却まで含めると、手元に残るお金はまったく違う形になります。<strong>年ごとの数字</strong>で確かめてから決められます。</p>
+    <ul class="feat">
+      <li>はじめての不動産投資で、業者の提案資料の数字を自分でも確かめたい</li>
+      <li>「毎月いくら残るか」だけでなく、何年目に自己資金を回収できるかを知りたい</li>
+      <li>金利が上がったら、空室が増えたら、どこまで耐えられるか試したい</li>
+      <li>個人で買うか法人で買うかで、税金がどう変わるか見たい</li>
+      <li>何年目に売ると手残りが大きいか、出口まで考えて決めたい</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>計算に入っているもの</h2>
+    <p class="lead">入れるのは価格・家賃・経費・借入の条件など。住所は要りません。</p>
     <ul class="feat">
       <li>家賃・経費・返済・税金を<strong>年ごとに積み上げ</strong>、35年でも50年でも試算</li>
       <li><strong>各年に売却した場合の手残り</strong>を計算。投下した自己資金を回収できる年が分かります</li>
@@ -88,6 +104,11 @@
       <li>大規模修繕を2回まで、発生年と金額を指定して織り込み</li>
       <li>スライダーで金利・入居率・家賃増減率を動かすと、その場で再計算</li>
     </ul>
+  </section>
+
+  <section>
+    <h2>不動産会社・営業の方は</h2>
+    <div class="pro-box"><strong>収益物件のご提案で「買って大丈夫？」と聞かれたとき</strong>表面利回りだけの資料ではなく、返済・税金・出口まで含めた年ごとの手残りで答えられます。金利や入居率をその場で動かして見せられるので、お客様の不安に数字で応える打ち合わせに。PDF／Excelで渡せば、持ち帰って検討してもらう資料にもなります。</div>
   </section>
 
   <section>
@@ -119,9 +140,10 @@
 
   <section>
     <h2>ご利用にあたって</h2>
-    <p class="lead">この機能は<strong>無料の会員登録</strong>が必要です（料金はかかりません）。メールアドレスとパスワードだけで登録できます。<br>
-    登録なしで試したい方は、<a href="tools/cf-simulation.html" style="color:#2b6cb0;font-weight:bold;">ブラウザ版のキャッシュフローシミュレーション</a>をお使いください。計算式は同じで、PDF／Excel出力だけがアプリ版の機能です。</p>
+    <p class="lead">登録なし・無料で使えます。アプリを開かずに試したい方は、<a href="tools/cf-simulation.html" style="color:#2b6cb0;font-weight:bold;">ブラウザ版のキャッシュフローシミュレーション</a>もあります。計算式は同じで、PDF／Excel出力はアプリ版の機能です。</p>
   </section>
+
+  <p class="links">くわしい解説：<a href="blog/fudosan-toushi-cashflow.html">不動産投資のキャッシュフロー計算｜家賃240万円の手残りが50.7万円になるまで</a>｜<a href="blog/shuueki-bukken-sagashikata.html">収益物件を探すときのポイント｜表面利回り8%が5%になる理由</a>｜<a href="blog/genka-shokyaku-zukai.html">不動産の減価償却を図解</a>｜<a href="blog/fudosan-toushi-kanpu.html">不動産投資の税還付の仕組み</a>｜<a href="blog/koukousei-fudosan-toushi.html">高校生でもわかる不動産投資</a></p>
 
   <a class="cta" href="https://sonaure-plsalfa.streamlit.app/?tool=cashflow&from=personal">無料ツールを使う</a>
 </div>

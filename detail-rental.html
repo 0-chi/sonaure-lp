@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>賃貸初期費用計算｜Sonaure</title>
-<meta name="description" content="家賃を入れるだけで、敷金・礼金・仲介手数料・保証料・日割り家賃・前家賃までの契約時総額の概算書を自動作成。お客様への概算提示がその場で完了します。">
+<meta name="description" content="家賃を入れるだけで、敷金・礼金・仲介手数料・保証料・火災保険・日割り家賃・前家賃まで、契約のときに払う初期費用の合計を概算。登録なし・無料。不動産会社の方は申込前の概算提示にも。">
 <link rel="canonical" href="https://sonae-are.com/detail-rental.html">
 <meta property="og:title" content="賃貸初期費用計算｜Sonaure">
-<meta property="og:description" content="家賃を入れるだけで、敷金・礼金・仲介手数料・保証料・日割り家賃・前家賃までの契約時総額の概算書を自動作成。お客様への概算提示がその場で完了します。">
+<meta property="og:description" content="家賃を入れるだけで、敷金・礼金・仲介手数料・保証料・火災保険・日割り家賃・前家賃まで、契約のときに払う初期費用の合計を概算。登録なし・無料。不動産会社の方は申込前の概算提示にも。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sonae-are.com/detail-rental.html">
 <style>
@@ -48,6 +48,10 @@
   .kpi .v{font-size:16px;font-weight:bold;color:var(--blue-d);margin-top:4px;}
   .pv-brand{text-align:right;color:var(--blue);font-weight:bold;font-size:14px;margin-top:14px;}
   .cap{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
+  .pro-box{border-left:4px solid var(--blue);background:#f4f9ff;padding:16px 20px;border-radius:0 10px 10px 0;font-size:14px;}
+  .pro-box strong{color:var(--blue-d);display:block;margin-bottom:4px;}
+  .links{font-size:12.5px;color:var(--muted);line-height:1.9;margin-top:6px;}
+  .links a{color:var(--blue);font-weight:bold;}
   .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto;max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
   footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:20px;}
   /* スマホでは表をカードにする。「計算根拠・備考」の列が1行2〜3文字に折り返されて読めないため */
@@ -70,12 +74,23 @@
   <div class="hero">
     <div class="num">4</div>
     <h1>賃貸初期費用計算</h1>
-    <p>家賃を入れるだけ。敷金・礼金から日割り家賃まで、契約時の初期費用を概算書に。</p>
+    <p>家賃を入れるだけ。敷金・礼金から日割り家賃まで、契約のときに払う合計が分かります。</p>
   </div>
 
   <section>
-    <h2>こんな費用をまとめて概算します</h2>
-    <p class="lead">「初期費用って結局いくらかかりますか？」——賃貸のお客様に必ず聞かれるこの質問に、その場でサッと1枚出せます。家賃と契約条件を入れるだけ、住所入力は不要です。</p>
+    <h2>こんなときに使えます</h2>
+    <p class="lead">「初期費用って、結局いくら用意すればいいの？」——賃貸の初期費用は物件や条件によって家賃の3〜8ヶ月分と幅があり、家賃だけを見ていると足りなくなります。気になる部屋の家賃と条件を入れると、契約のときに払う合計が出ます。</p>
+    <ul class="feat">
+      <li>引っ越しを考え始めて、貯金がいくらあれば動けるか知りたい</li>
+      <li>気になる部屋が2〜3件あり、初期費用で比べたい（礼金なし・仲介手数料半月分など、条件の違いを反映できます）</li>
+      <li>入居日を決める前に、日割り家賃と前家賃でいくら変わるか見ておきたい</li>
+      <li>不動産会社からもらった見積りの内訳が妥当か、自分でも確かめたい</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>計算に入っているもの</h2>
+    <p class="lead">入れるのは家賃・管理費と契約条件（敷金・礼金の月数など）。住所は要りません。</p>
     <ul class="feat">
       <li>敷金・礼金（月数は物件に合わせて調整可能）</li>
       <li>仲介手数料（1ヶ月＋税／0.5ヶ月＋税／なし から選択）</li>
@@ -84,6 +99,11 @@
       <li>入居日を入れると日割り家賃・管理費を自動計算</li>
       <li>翌月分の前家賃までまとめて、合計と「家賃の何ヶ月分か」を自動表示</li>
     </ul>
+  </section>
+
+  <section>
+    <h2>不動産会社・営業の方は</h2>
+    <div class="pro-box"><strong>来店・内見中に「初期費用はいくら？」と聞かれたとき</strong>家賃と募集条件を入れれば、その場で1枚出せます。申込前の概算提示、入居日を動かしたときの日割りの説明、複数物件の比較に。募集条件にしかない費用は「その他費用」として足せます。</div>
   </section>
 
   <section>
@@ -114,6 +134,8 @@
     </div>
     <p class="cap">※ 実際のレポートはPDF / Excelでダウンロードできます（上記は表示イメージ）。</p>
   </section>
+
+  <p class="links">くわしい解説：<a href="blog/chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</a>｜<a href="blog/shikikin-reikin-souba.html">敷金・礼金・仲介手数料の相場｜条件次第で12万円変わる</a><br>アプリを開かずに試す：<a href="tools/chintai-shokihiyo.html">ブラウザ版の賃貸初期費用シミュレーション</a></p>
 
   <a class="cta" href="https://sonaure-plsalfa.streamlit.app/?tool=rental&from=personal">無料ツールを使う</a>
 </div>
