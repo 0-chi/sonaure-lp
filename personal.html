@@ -51,6 +51,10 @@
   /* ===== ヒーロー ===== */
   /* ヒーローは背景を持たない。ここだけ水彩をそのまま見せる */
   .hero { padding: 140px 0 90px; text-align: center; }
+  /* PDF の QR から来た人への一言（?src=pdf のときだけ JS で入れる）。業者を飛び越えない案内 */
+  .from-pdf { max-width: 760px; margin: -60px auto 36px; padding: 14px 18px; background: #fff; border: 1px solid var(--line);
+              border-left: 4px solid var(--blue); border-radius: 10px; font-size: 14px; line-height: 1.8; text-align: left; }
+  .from-pdf strong { color: var(--blue-d); display: block; }
   .hero h1 { font-size: clamp(40px, 7vw, 64px); letter-spacing: .04em; background: linear-gradient(135deg, var(--blue-d), var(--blue-l)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .hero .tagline { font-size: clamp(15px, 2.4vw, 20px); color: var(--blue-d); margin: 14px 0 10px; font-weight: bold; }
   .hero .sub { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
@@ -70,6 +74,7 @@
   /* スマホでは見本を見出しの直後に置く（本文・ボタンの前）。hero-text を透明にして並べ替える */
   @media (max-width: 900px) {
     .hero { padding: 90px 0 60px; }
+    .from-pdf { margin: -14px auto 24px; }   /* スマホは上の余白が小さいので、固定ヘッダーの下に潜らないように */
     .hero-grid { display: flex; flex-direction: column; gap: 0; text-align: center; }
     .hero-text { display: contents; }
     .hero-text > * { order: 3; }
@@ -319,6 +324,27 @@ function toggleMenu() {
   document.getElementById("drawer").classList.toggle("open");
   document.getElementById("overlay").classList.toggle("show");
 }
+// どこから来たか（?src=pdf：資料の QR、?src=html：HTML の資料）をアプリへのリンクに引き継ぐ。
+// アプリ側で入口ごとの数を取っている。PDF から来た人には、業者を飛び越えない一言を出す
+(function () {
+  var src = new URLSearchParams(location.search).get("src");
+  if (!src || !/^[a-z0-9_-]{1,20}$/i.test(src)) return;
+  var app = "https://sonaure-plsalfa.streamlit.app";
+  document.querySelectorAll('a[href^="' + app + '"]').forEach(function (a) {
+    var u = new URL(a.href); u.searchParams.set("src", src); a.href = u.toString();
+  });
+  document.querySelectorAll('button[onclick*="' + app + '"]').forEach(function (b) {
+    b.setAttribute("onclick", b.getAttribute("onclick").replace("?from=personal", "?from=personal&src=" + encodeURIComponent(src)));
+  });
+  if (src === "pdf" || src === "html") {
+    var d = document.createElement("div");
+    d.className = "from-pdf";
+    d.innerHTML = "<strong>お手元の資料は、お渡しした不動産会社が Sonaure で作成したものです。</strong>" +
+      "物件のご相談は、資料をくれた担当者へどうぞ。ここでは同じ計算を、ご自身の数字で無料で試せます。";
+    var hero = document.querySelector(".hero");
+    if (hero) hero.insertBefore(d, hero.firstChild);
+  }
+})();
 </script>
 <script src="assets/motion.js" defer></script>
 </body>
