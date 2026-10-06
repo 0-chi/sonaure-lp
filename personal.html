@@ -204,14 +204,14 @@
   <div class="bar">
     <button class="menu-btn" onclick="toggleMenu()" aria-label="メニュー"><span></span><span></span><span></span></button>
     <a class="logo" href="#top">Sonaure</a>
-    <a class="login-link" href="https://sonaure-plsalfa.streamlit.app/?from=personal">無料ツールを使う</a>
+    <a class="login-link" href="https://app.sonae-are.com/?from=personal">無料ツールを使う</a>
   </div>
 </header>
 <div id="overlay" onclick="toggleMenu()"></div>
 <nav id="drawer">
   <button class="close" onclick="toggleMenu()">✕</button>
   <a href="services.html">サービスメニュー</a>
-  <a href="https://sonaure-plsalfa.streamlit.app/?from=personal" onclick="toggleMenu()">無料ツールを使う</a>
+  <a href="https://app.sonae-are.com/?from=personal" onclick="toggleMenu()">無料ツールを使う</a>
   <a href="blog/index.html">不動産に関する有益情報</a>
   <a href="index.html">不動産会社・営業担当の方へ →</a>
   <hr>
@@ -230,7 +230,7 @@
       <h1>5,000万円の物件なら、<br>諸費用は約375万円。</h1>
       <p class="sub hero-who">ご自身で物件を探す方・売却をお考えの方・不動産投資を検討している方へ</p>
       <p class="sub">住所や価格を入れるだけで、購入にかかる費用・売ったときの手取り・家賃と購入の比較を、登録なし・無料で計算できます。</p>
-      <a class="cta" href="https://sonaure-plsalfa.streamlit.app/?tool=costs&from=personal">無料ツールを使う</a>
+      <a class="cta" href="https://app.sonae-are.com/?tool=costs&from=personal">無料ツールを使う</a>
       <p class="cta-note">※ 中古住宅を仲介で購入し、4,500万円を借り入れた場合の概算です。見本と同じ計算です。</p>
     </div>
     <figure class="hero-sample">
@@ -306,7 +306,7 @@
     <div class="auth-card">
       <p><a href="services.html" style="color:var(--blue);font-weight:bold;">計算の5機能（1〜5）</a>は<strong>登録もログインも不要</strong>です。<br>
         住所から公的データを取得する調査と、マイソク作成の4機能（6〜9）は、メールアドレスとパスワードだけの<strong>無料の会員登録</strong>でお使いいただけます。料金はかかりません。</p>
-      <button onclick="location.href='https://sonaure-plsalfa.streamlit.app/?from=personal'">無料ツールを使う</button>
+      <button onclick="location.href='https://app.sonae-are.com/?from=personal'">無料ツールを使う</button>
       <div class="auth-note">ご不明な点は <a href="mailto:sonaure100@gmail.com?subject=【Sonaure】お問い合わせ" style="color:var(--blue);">sonaure100@gmail.com</a> まで</div>
     </div>
   </div>
@@ -329,7 +329,7 @@ function toggleMenu() {
 (function () {
   var src = new URLSearchParams(location.search).get("src");
   if (!src || !/^[a-z0-9_-]{1,20}$/i.test(src)) return;
-  var app = "https://sonaure-plsalfa.streamlit.app";
+  var app = "https://app.sonae-are.com";
   document.querySelectorAll('a[href^="' + app + '"]').forEach(function (a) {
     var u = new URL(a.href); u.searchParams.set("src", src); a.href = u.toString();
   });
