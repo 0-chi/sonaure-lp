@@ -15,7 +15,12 @@
   .back{font-size:14px;color:var(--blue);text-decoration:none;font-weight:bold;}
   h1{font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;font-size:26px;color:var(--blue-d);margin:28px 0 6px;letter-spacing:.03em;}
   .updated{font-size:12px;color:var(--muted);margin-bottom:16px;}
-  .intro{font-size:13.5px;line-height:1.9;background:#f7fafc;border-left:4px solid #cbd5e0;padding:14px 18px;border-radius:0 8px 8px 0;margin-bottom:24px;}
+  .intro{font-size:13.5px;line-height:1.9;background:#f7fafc;border-left:4px solid #cbd5e0;padding:14px 18px;border-radius:0 8px 8px 0;margin-bottom:18px;}
+  .req{background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:24px;text-align:center;}
+  .req p{font-size:13.5px;}
+  .req-btn{display:inline-block;background:var(--blue);color:#fff;border-radius:999px;padding:10px 34px;font-size:14px;font-weight:bold;text-decoration:none;margin-top:8px;}
+  .req-btn:hover{background:var(--blue-d);}
+  .req .note{margin-top:10px;}
   table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px;}
   th,td{border-bottom:1px solid var(--line);padding:14px 16px;text-align:left;vertical-align:top;}
   th{background:#eef5ff;color:var(--blue-d);width:34%;white-space:nowrap;}
@@ -23,7 +28,7 @@
      34%に収まらず、表ごと画面からはみ出して横スクロールが出る */
   @media (max-width:600px){ th{white-space:normal;} }
   tr:last-child th,tr:last-child td{border-bottom:none;}
-  .fill{color:#c53030;font-weight:bold;}
+  td a{color:var(--blue);font-weight:bold;}
   .note{font-size:12px;color:var(--muted);margin-top:6px;}
   footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;}
 </style>
@@ -33,20 +38,26 @@
 <header><div class="wrap bar" style="padding-bottom:0;"><a class="back" href="index.html">← Sonaure トップへ</a></div></header>
 <div class="wrap">
   <h1>特定商取引法に基づく表記</h1>
-  <p class="updated">最終更新日：2026年8月31日</p>
-  <p class="intro">本サービスは全機能を無料でご提供しており、対価を伴う販売・有償の役務提供を行っていないため、特定商取引法にもとづく表示義務の対象ではありません。参考として、事業者に関する事項を以下に掲載します。<br>
-  <strong>将来、有料の機能を開始する際は、法令にもとづき運営統括責任者の氏名・所在地・電話番号を掲載します。</strong></p>
+  <p class="updated">最終更新日：2026年10月7日</p>
+  <p class="intro">本サービスは、宅地建物取引業者さまなど、<strong>事業者の方が業務のためにご利用いただくサービス</strong>です。有料プランのお申し込みは、事業者としてのご利用に限りお受けしています。</p>
+  <!-- 件名「【Sonaure】資料請求」と、会社名・ご担当者名などの記入欄を入れたメールが開く -->
+  <div class="req">
+    <p>料金プランの内容と料金は、資料にてご案内しています。</p>
+    <a class="req-btn" href="mailto:sonaure100@gmail.com?subject=%E3%80%90Sonaure%E3%80%91%E8%B3%87%E6%96%99%E8%AB%8B%E6%B1%82&amp;body=%E4%BC%9A%E7%A4%BE%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E6%8B%85%E5%BD%93%E8%80%85%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E5%88%A9%E7%94%A8%E4%BA%88%E5%AE%9A%E3%81%AE%E4%BA%BA%E6%95%B0%EF%BC%88%E4%BB%BB%E6%84%8F%EF%BC%89%EF%BC%9A%0D%0A">資料を請求する</a>
+    <p class="note">メールソフトが開きます。開かない場合は、sonaure100@gmail.com まで件名「資料請求」でお送りください。</p>
+  </div>
   <table>
     <tr><th>販売事業者（サービス名）</th><td>Sonaure（ソナウレ）</td></tr>
+    <tr><th>運営統括責任者・所在地・電話番号</th><td>ご請求があった場合は、遅滞なく開示いたします。<div class="note">※ ご請求・お問い合わせは、下記のメールアドレスでお受けしています。</div></td></tr>
     <tr><th>メールアドレス</th><td>sonaure100@gmail.com</td></tr>
     <tr><th>販売URL</th><td>https://sonae-are.com/</td></tr>
-    <tr><th>販売価格</th><td>無料<div class="note">※ 全機能を無料でご提供しています。お支払いは発生しません。</div></td></tr>
+    <tr><th>販売価格</th><td>各プランの料金は、資料にてご案内しています（<a href="mailto:sonaure100@gmail.com?subject=%E3%80%90Sonaure%E3%80%91%E8%B3%87%E6%96%99%E8%AB%8B%E6%B1%82&amp;body=%E4%BC%9A%E7%A4%BE%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E6%8B%85%E5%BD%93%E8%80%85%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E5%88%A9%E7%94%A8%E4%BA%88%E5%AE%9A%E3%81%AE%E4%BA%BA%E6%95%B0%EF%BC%88%E4%BB%BB%E6%84%8F%EF%BC%89%EF%BC%9A%0D%0A">資料を請求する</a>）。<br>お申し込みの際は、お申し込み画面で料金をご確認いただけます。<div class="note">※ 計算系ツールの画面での計算など、一部の機能は無料でご利用いただけます。</div></td></tr>
     <tr><th>商品代金以外の必要料金</th><td>インターネット接続にかかる通信料等はお客様のご負担となります。</td></tr>
-    <tr><th>お支払い方法</th><td>お支払いはありません。</td></tr>
-    <tr><th>お支払い時期</th><td>お支払いはありません。</td></tr>
-    <tr><th>サービスの提供時期</th><td>お申し込み手続きなしで、ただちにご利用いただけます。<div class="note">※ 周辺環境調査・重説調査項目・物件買取査定のみ、無料の会員登録が必要です。</div></td></tr>
-    <tr><th>返品・キャンセル</th><td>無料のため、返品・キャンセルの手続きはありません。</td></tr>
-    <tr><th>ご利用人数</th><td>制限はありません。</td></tr>
+    <tr><th>お支払い方法</th><td>クレジットカード（決済代行：Stripe）<div class="note">※ カード情報は決済代行会社が管理し、当方では保持しません。</div></td></tr>
+    <tr><th>お支払い時期</th><td>毎月1日から末日までを1か月として締め、毎月1日に、その月の月額料金と前月のご利用分をまとめてご請求し、ご登録のクレジットカードで決済します。<div class="note">※ ライトプランは、お申し込みの月の基本料はかかりません。1か月のご請求には上限があり、上限を超えてご請求することはありません。<br>※ 運営者が個別にご案内したプランは、お申し込みの月の残り日数分（日割り）を、お申し込みの際にご請求します。<br>※ カードの引き落とし日は、ご利用のカード会社の規定によります。</div></td></tr>
+    <tr><th>サービスの提供時期</th><td>お申し込み（決済の手続き）が完了したあと、すぐにご利用いただけます。</td></tr>
+    <tr><th>返品・キャンセル</th><td>サービスの性質上、お申し込み後の返品・返金はお受けしていません。<br>解約はいつでも可能です。本サービスにログインのうえ、「プラン・ご契約」からお手続きください。解約後も当月末日まではご利用いただけます（日割りでの返金はありません）。解約した月のご利用分は、月末の締めのあとにご請求します。</td></tr>
+    <tr><th>ご利用人数</th><td>1つのご契約で、ログイン用のアカウントを1つ発行します。ご契約いただいた事業者さまの社内であれば、人数の制限なく共有してお使いいただけます（社外の方との共有・貸し出しはできません）。<div class="note">※ 運営者が個別にご案内したプランは、お申し込みいただいたご本人のみのご利用です。</div></td></tr>
     <tr><th>動作環境</th><td>最新のWebブラウザ（Google Chrome、Safari、Microsoft Edge等）をご利用ください。</td></tr>
   </table>
 </div>
