@@ -141,7 +141,7 @@
     <div class="locked-wrap">
       <div class="locked">
         <table id="breakdown"></table>
-        <div class="assume"><strong>計算の前提（一般的な条件で固定）：</strong>仲介手数料は家賃1ヶ月分＋消費税10%、保証会社の初回保証料は総賃料（家賃＋管理費）の50%、火災保険（2年）20,000円、鍵交換16,500円、前家賃（翌月分）1ヶ月分。日割り家賃は入居日で変わるため含みません。</div>
+        <div class="assume"><strong>計算の前提（一般的な条件で固定）：</strong>仲介手数料は家賃1ヶ月分＋消費税10%、保証会社の初回保証料は総賃料（家賃＋管理費）の50%、火災保険（2年）20,000円、鍵交換33,000円、前家賃（翌月分）1ヶ月分。日割り家賃は入居日で変わるため含みません。</div>
       </div>
       <div class="unlock">
         <div class="unlock-inner">
@@ -180,7 +180,7 @@
     <li><strong>仲介手数料（上限1ヶ月＋税）</strong> — 不動産会社への報酬。宅地建物取引業法に基づく告示で上限が定められています</li>
     <li><strong>保証会社の初回保証料（総賃料の30〜100%）</strong> — 連帯保証人の代わり。近年はほぼ必須の物件が多数</li>
     <li><strong>火災保険料（2年で1.5〜2万円程度）</strong> — 借家人賠償責任保険付きの家財保険</li>
-    <li><strong>鍵交換費用（1.5〜2.2万円程度）</strong> — 前入居者の鍵からの交換</li>
+    <li><strong>鍵交換費用（1.5〜3.3万円程度）</strong> — 前入居者の鍵からの交換</li>
     <li><strong>前家賃・日割り家賃</strong> — 入居月の日割り分と翌月分を契約時に支払うのが一般的</li>
   </ul>
 
@@ -204,7 +204,7 @@
 
 <script>
 // 計算ロジックはSonaureアプリ（rental.py）の簡易版。前提条件は画面に明記。
-const BROKERAGE_MONTHS = 1.0, TAX = 1.10, GUARANTEE = 0.5, FIRE = 20000, KEY = 16500;
+const BROKERAGE_MONTHS = 1.0, TAX = 1.10, GUARANTEE = 0.5, FIRE = 20000, KEY = 33000;
 const yen = v => Math.round(v).toLocaleString("ja-JP") + "円";
 
 /* 相談フォームの事前入力設定。
