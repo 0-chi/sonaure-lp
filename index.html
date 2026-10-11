@@ -80,7 +80,7 @@
     .hero-grid { display: flex; flex-direction: column; gap: 0; }
     .hero-text { display: contents; }
     .hero-text > * { order: 3; }
-    .hero-text > .eyebrow, .hero-text > h1 { order: 1; }
+    .hero-text > .hero-catch, .hero-text > .eyebrow, .hero-text > h1 { order: 1; }
     .hero-sample { order: 2; margin: 6px 0 26px; }
   }
   /* スマホでは表をカードにする。横にスワイプしないと右の列が見えないため */
@@ -126,6 +126,20 @@
   @media (max-width: 520px) {
     td.n { width: auto; }
   }
+
+  /* 機能の一覧：タップで開く */
+  details.features { margin-top: 6px; }
+  details.features > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; }
+  details.features > summary::-webkit-details-marker { display: none; }
+  details.features > summary h2 { margin: 0; }
+  details.features > summary .open { flex: none; font-size: 14px; font-weight: bold; color: var(--blue); }
+  details.features > summary .open::after { content: " ▼"; }
+  details.features[open] > summary .open::after { content: " ▲"; }
+  details.features[open] > summary .open .t-open { display: none; }
+  details.features:not([open]) > summary .open .t-close { display: none; }
+  details.features .body { padding-top: 14px; }
+  .hero-catch { display: block; font-size: 22px; font-weight: bold; color: var(--blue); margin: 0 0 6px; letter-spacing: .04em; }
 
   /* 買取再販・これから */
   .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
@@ -213,11 +227,12 @@
 <div class="hero">
   <div class="wrap hero-grid">
    <div class="hero-text">
+    <span class="hero-catch">営業準備に革命を！</span>
     <span class="eyebrow">不動産会社・営業担当の方へ</span>
     <h1>1案件の準備が、<br>30分〜1時間 <span class="arrow">→</span> 数分に。</h1>
-    <p>周辺環境の下調べ、費用の計算、法令・災害リスクの確認。住所や価格を入れるだけで、お客様にそのまま渡せる資料ができます。宅地建物取引士が監修。計算機能は登録なし・無料で、すぐに試せます。</p>
+    <p>周辺環境の下調べ・費用の計算などの事務作業をしていると他の対応もあり、気づいたら30分経ってた… こんな経験ありませんか？<br>Sonaureなら住所や価格を入れるだけで、お客様にそのまま渡せる資料ができます。</p>
     <a class="cta" href="https://app.sonae-are.com/?from=business">無料で試してみる</a>
-    <div class="cta-note">6つの計算機能は、登録なしでその場で使えます</div>
+    <div class="cta-note">4つの計算機能は、登録なしでその場で使えます</div>
     <br>
     <a class="sub-link" href="personal.html">家を買う・売る・借りる方、不動産投資をお考えの方へ →</a>
    </div>
@@ -232,32 +247,23 @@
   <div class="wrap">
     <span class="eyebrow">使う場面</span>
     <h2>お客様のタイプごとに、渡す資料が決まっています</h2>
-    <p class="lead">手作業で調べると、どのケースも1件あたり30分〜1時間。Sonaureなら住所と価格を入れて数分です。</p>
+    <p class="lead">手作業で調べてExcel等に打ち込む事務作業だと、どのケースも1件あたり30分〜1時間。打ち間違いもたまにある…<br>お客様のタイプごとに、この流れをSonaureで調べたら、住所や価格を入れて約1〜2分です。</p>
     <div class="cases">
       <div class="case">
         <div class="who">購入検討のお客様</div>
-        <div class="time"><s class="num">30分〜1時間</s><b>→ 数分</b></div>
+        <div class="time"><s class="num">30分〜1時間</s><b>→ 約1〜2分</b></div>
         <ul>
-          <li>周辺環境調査書</li>
+          <li>内見時に周辺環境調査書</li>
           <li>物件購入の諸費用概算書</li>
-          <li>重説調査項目（用途地域・建ぺい率／容積率・災害リスク）</li>
-        </ul>
-      </div>
-      <div class="case">
-        <div class="who">売却のお客様</div>
-        <div class="time"><s class="num">30分〜1時間</s><b>→ 数分</b></div>
-        <ul>
-          <li>売却収支計算（手取りの概算）</li>
-          <li>物件買取査定</li>
         </ul>
       </div>
       <div class="case">
         <div class="who">賃貸のお客様</div>
-        <div class="time"><s class="num">30分〜1時間</s><b>→ 数分</b></div>
+        <div class="time"><s class="num">30分〜1時間</s><b>→ 約1〜2分</b></div>
         <ul>
-          <li>賃貸初期費用計算</li>
-          <li>家賃→購入シミュレーション（購入のご提案に）</li>
-          <li>周辺環境調査書</li>
+          <li>内見時に周辺環境調査書</li>
+          <li>初期費用が気になる方に賃貸初期費用概算書</li>
+          <li>※購入か迷っている方には家賃→購入シミュレーション</li>
         </ul>
       </div>
     </div>
@@ -268,67 +274,54 @@
   <div class="wrap">
     <div class="trust">
       <strong>プリントすれば、そのままお客様にお渡しできる仕様です。</strong>
-      ChatGPTのようなメモの体裁ではなく、宅地建物取引士の監修で帳票として作っています。最後にSonaureのレポートを添えると、「丁寧な営業さんだな」という<strong>＋αの信頼</strong>につながります。
-      <ul>
-        <li>金額は国税庁・国土交通省などの一次情報にもとづく概算。出典をレポートに明記</li>
-        <li>PDF / Excel で出力。不要な項目はExcelで消して、お客様ごとにアレンジ</li>
-        <li>周辺施設は国土交通省 不動産情報ライブラリ等の公的データから取得</li>
-      </ul>
+      打ち間違いも無し！社名も入れられて、データでも送れます！<br>
+      ChatGPTのようなメモ感もなく、最後にSonaureの資料を添えると、「丁寧な営業さんだな」という<strong>＋αの信頼</strong>につながります。
     </div>
   </div>
 </section>
 
 <section style="background:var(--bg-soft)" id="features">
   <div class="wrap">
-    <span class="eyebrow">機能と時短の目安</span>
-    <h2>9つの機能</h2>
-    <p class="lead">時短の目安は、同じ内容を手作業で調べた場合との比較です。</p>
-
-    <div class="grp">計算機能（登録なしで、画面での計算は無料）</div>
+    <details class="features">
+    <summary><h2>8つの機能</h2><span class="open"><span class="t-open">タップで開く</span><span class="t-close">閉じる</span></span></summary>
+    <div class="body">
+    <div class="grp">計算する（登録なしで、画面での計算は無料）</div>
     <div class="tblwrap">
     <table class="cardify">
-      <thead><tr><th>機能</th><th>できること</th><th>時短の目安</th></tr></thead>
+      <thead><tr><th>機能</th><th>できること</th></tr></thead>
       <tbody>
-        <tr><td data-label="機能" class="n">家賃→購入シミュレーション</td><td data-label="できること" class="d">今の家賃と同じ支払いで「いくらの物件が買えるか」を逆算。賃貸のお客様への購入のご提案に</td><td data-label="時短の目安" class="t">約10〜20分</td></tr>
-        <tr><td data-label="機能" class="n">物件購入の諸費用概算書</td><td data-label="できること" class="d">物件価格から、仲介手数料・登記・ローン費用・保険・清算金までの概算書</td><td data-label="時短の目安" class="t">約10〜18分</td></tr>
-        <tr><td data-label="機能" class="n">売却収支計算</td><td data-label="できること" class="d">売却価格から、仲介手数料・抵当権抹消・譲渡所得税まで差し引いた「手取り」の概算書</td><td data-label="時短の目安" class="t">約15〜25分</td></tr>
-        <tr><td data-label="機能" class="n">賃貸初期費用計算</td><td data-label="できること" class="d">家賃から、敷金・礼金・保証料・日割り家賃まで契約時の初期費用を概算書に</td><td data-label="時短の目安" class="t">約8〜12分</td></tr>
-        <tr><td data-label="機能" class="n">キャッシュフローシミュレーション</td><td data-label="できること" class="d">投資用物件の家賃・経費・返済・税金を年ごとに積み上げ、各年に売却した場合の手残りまで</td><td data-label="時短の目安" class="t">約30〜60分</td></tr>
-        <tr><td data-label="機能" class="n">物件買取査定</td><td data-label="できること" class="d">想定売却価格から「いくらまでなら買えるか」を目標利益率ごとに逆算</td><td data-label="時短の目安" class="t">約20〜40分</td></tr>
+        <tr><td data-label="機能" class="n">物件購入の諸費用概算書</td><td data-label="できること" class="d">物件価格から、仲介手数料・登記・ローン費用・保険・清算金までの概算書。項目ごとに金額を変更できます</td></tr>
+        <tr><td data-label="機能" class="n">物件売却の収支概算書</td><td data-label="できること" class="d">売却価格から、仲介手数料・抵当権抹消・譲渡所得税まで差し引いた「手取り」の概算書</td></tr>
+        <tr><td data-label="機能" class="n">賃貸初期費用概算書</td><td data-label="できること" class="d">家賃から、敷金・礼金・保証料・日割り家賃まで契約時の初期費用を概算書に。募集図面の読み取りにも対応</td></tr>
+        <tr><td data-label="機能" class="n">家賃→購入シミュレーション</td><td data-label="できること" class="d">今の家賃と同じ支払いで「いくらの物件が買えるか」を逆算。賃貸のお客様への購入のご提案に</td></tr>
       </tbody>
     </table>
     </div>
 
-    <div class="grp">調査・マイソク作成（会員登録）</div>
+    <div class="grp">調べる</div>
     <div class="tblwrap">
     <table class="cardify">
-      <thead><tr><th>機能</th><th>できること</th><th>時短の目安</th></tr></thead>
+      <thead><tr><th>機能</th><th>できること</th></tr></thead>
       <tbody>
-        <tr><td data-label="機能" class="n">周辺環境調査書</td><td data-label="できること" class="d">最寄り駅・学校・保育園・スーパー・病院・公園・商業施設などを徒歩分数つきで1枚に。調べる施設は選べます</td><td data-label="時短の目安" class="t">約20〜30分</td></tr>
-        <tr><td data-label="機能" class="n">重説調査項目</td><td data-label="できること" class="d">区域区分・用途地域・建ぺい率／容積率・防火指定・災害リスク4種。境界またがりは「要確認」を自動検出</td><td data-label="時短の目安" class="t">約10〜15分</td></tr>
-        <tr><td data-label="機能" class="n">マイソク作成</td><td data-label="できること" class="d">レインズ様式の物件図面を PDF / Excel で。他社の図面は会社欄だけ自社に差し替える「帯替え」や、読み取って入力欄に転記も。投資家向けの紹介文も作れます</td><td data-label="時短の目安" class="t">約15〜40分</td></tr>
+        <tr><td data-label="機能" class="n">周辺環境調査書</td><td data-label="できること" class="d">最寄り駅・学校・保育園・スーパー・病院・公園・商業施設などを徒歩分数つきで1枚に。調べる施設は選べます</td></tr>
+        <tr><td data-label="機能" class="n">物件買取査定</td><td data-label="できること" class="d">想定売却価格から「いくらまでなら買えるか」を目標利益率ごとに逆算</td></tr>
+        <tr><td data-label="機能" class="n">重説調査項目</td><td data-label="できること" class="d">区域区分・用途地域・建ぺい率／容積率・防火指定・災害リスク4種。境界またがりは「要確認」を自動検出</td></tr>
       </tbody>
     </table>
     </div>
-    <p class="note">※ 重説調査項目は、無料の会員登録でご利用いただけます。周辺環境調査書とマイソク作成は有料プランの機能で、無料の会員登録で月1回お試しいただけます。お客様にお渡しする書類（PDF / Excel）の発行は、有料プランの機能です。<br>※ 時短の目安は当社試算です。実際の短縮時間は調査範囲・習熟度により異なります。<br>※ レポートは宅地建物取引業法に基づく重要事項説明書ではありません。金額は一般的な前提にもとづく概算です。</p>
-  </div>
-</section>
 
-<section>
-  <div class="wrap">
-    <span class="eyebrow">買取再販の方へ</span>
-    <h2>「この物件、いくらまで出せる？」に、その場で数字を返す</h2>
-    <p class="lead">買取の話は、その場で数字を返せるかどうかで決まります。</p>
-    <div class="two">
-      <div class="box">
-        <h3>物件買取査定</h3>
-        <p>売れる価格の見込みとリフォーム費・保有期間を入れると、目標利益率ごとの買取上限価格が並びます（3つまで同時に比較）。仲介手数料・支払利息・不動産取得税（買取再販の特例に対応）・消費税の納付見込みまで織り込み、提示価格を動かすと収支がその場で組み替わります。</p>
-      </div>
-      <div class="box">
-        <h3>これから追加する機能<span class="tag">準備中</span></h3>
-        <p><b>AI重説作成</b>：登記簿などの資料を入れると、重要事項説明書の下書きと特約事項（案）を作ります。<br>公開の時期はこのページでお知らせします。<br><br><b>マイソク作成</b>は公開しました。他社図面の帯替え・読み取り・新規作成の3通りで、レインズ様式の図面を PDF / Excel にします。</p>
-      </div>
+    <div class="grp">作る</div>
+    <div class="tblwrap">
+    <table class="cardify">
+      <thead><tr><th>機能</th><th>できること</th></tr></thead>
+      <tbody>
+        <tr><td data-label="機能" class="n">マイソク作成</td><td data-label="できること" class="d">急に良い案件を貰った時にすぐに業者に情報を渡したい！でも会社に戻らないと送れない…。そんな時に会社欄だけ自社に差し替える「帯替え」機能と紹介文を作れます。</td></tr>
+      </tbody>
+    </table>
     </div>
+    <p class="note">※ 物件買取査定は登録なしで、重説調査項目は無料の会員登録でご利用いただけます。周辺環境調査書とマイソク作成は有料プランの機能で、無料の会員登録で月1回お試しいただけます。お客様にお渡しする書類（PDF / Excel）の発行は、有料プランの機能です。<br>※ レポートは宅地建物取引業法に基づく重要事項説明書ではありません。金額は一般的な前提にもとづく概算です。</p>
+    </div>
+    </details>
   </div>
 </section>
 
@@ -340,7 +333,7 @@
     <div class="price">
       <div class="big">使った分だけ<small>1か月のご請求には上限があり、上限に達したあとは、その月は追加料金なしで使い放題</small></div>
       <ul>
-        <li><strong>無料</strong>：6つの計算機能の画面での計算（登録なし）と、重説調査項目（無料の会員登録）。周辺環境調査書・マイソク作成は、無料の会員登録で月1回お試しいただけます</li>
+        <li><strong>無料</strong>：計算機能と物件買取査定の画面での計算（登録なし）と、重説調査項目（無料の会員登録）。周辺環境調査書・マイソク作成は、無料の会員登録で月1回お試しいただけます</li>
         <li><strong>有料プラン</strong>：周辺環境調査書・マイソク作成と、お客様に渡す書類（PDF / Excel）の発行</li>
         <li>料金は資料でご案内しています。お申し込みの前に、お申し込み画面でもご確認いただけます</li>
       </ul>
