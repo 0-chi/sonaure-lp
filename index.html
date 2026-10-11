@@ -46,7 +46,7 @@
   /* ヘッダーの実需側への入口。行き先に合わせた文言にする（ロゴの一部に見せない） */
   .bar .who { font-size: 13.5px; color: var(--muted); text-decoration: none; white-space: nowrap; }
   .bar .who:hover { color: var(--blue); }
-  /* ページ内の目次。長いページなので、PCでは機能・料金・はじめ方へ直接飛べるようにする */
+  /* ページ内の目次。長いページなので、PCでは機能・料金へ直接飛べるようにする */
   .bar .anchors { display: flex; gap: 18px; margin-left: auto; }
   .bar .anchors a { font-size: 13.5px; color: var(--muted); text-decoration: none; white-space: nowrap; }
   .bar .anchors a:hover { color: var(--blue); }
@@ -80,7 +80,7 @@
     .hero-grid { display: flex; flex-direction: column; gap: 0; }
     .hero-text { display: contents; }
     .hero-text > * { order: 3; }
-    .hero-text > .hero-catch, .hero-text > .eyebrow, .hero-text > h1 { order: 1; }
+    .hero-text > .eyebrow, .hero-text > h1 { order: 1; }
     .hero-sample { order: 2; margin: 6px 0 26px; }
   }
   /* スマホでは表をカードにする。横にスワイプしないと右の列が見えないため */
@@ -139,7 +139,10 @@
   details.features[open] > summary .open .t-open { display: none; }
   details.features:not([open]) > summary .open .t-close { display: none; }
   details.features .body { padding-top: 14px; }
-  .hero-catch { display: block; font-size: 22px; font-weight: bold; color: var(--blue); margin: 0 0 6px; letter-spacing: .04em; }
+  /* 合言葉。ページの最初に目に入るよう、見本と本文の上に横幅いっぱいの大きさで置く（スマホでも1行に収まる大きさ） */
+  .hero .hero-catch { max-width: none; font-size: clamp(22px, 6.6vw, 64px); line-height: 1.25; font-weight: bold; color: var(--blue);
+                text-align: center; letter-spacing: .02em; margin: 0 0 32px; text-wrap: balance; }
+  @media (max-width: 900px) { .hero { padding-top: 40px; } .hero .hero-catch { margin-bottom: 0; } }
 
   /* 買取再販・これから */
   .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
@@ -157,12 +160,6 @@
   .price li::before { content: "✓"; position: absolute; left: 0; color: var(--blue); font-weight: bold; }
   .price .cta { margin-top: 22px; font-size: 16px; padding: 12px 36px; }
   .price .future { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--line); font-size: 14.5px; text-align: left; }
-
-  /* はじめ方 */
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; counter-reset: s; }
-  .step { position: relative; background: var(--bg-soft); border-radius: 12px; padding: 18px 18px 18px 54px; font-size: 15.5px; }
-  .step::before { counter-increment: s; content: counter(s); position: absolute; left: 16px; top: 16px; width: 26px; height: 26px; border-radius: 50%; background: var(--blue); color: var(--on-accent); font-weight: bold; display: grid; place-items: center; font-size: 14px; }
-  .step b { display: block; color: var(--blue-d); margin-bottom: 2px; }
 
   .final { text-align: center; background: var(--bg-soft); }
   footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; text-align: center; padding-block: 22px; }
@@ -219,15 +216,15 @@
   <div class="wrap bar">
     <a class="logo" href="index.html">Sonaure</a>
     <a class="who" href="personal.html">マイホーム・投資不動産の購入をご希望の方へ →</a>
-    <nav class="anchors"><a href="#features">機能</a><a href="#price">料金</a><a href="#start">はじめ方</a></nav>
+    <nav class="anchors"><a href="#features">機能</a><a href="#price">料金</a></nav>
     <a class="go" href="https://app.sonae-are.com/?from=business">無料で試す</a>
   </div>
 </header>
 
 <div class="hero">
+  <div class="wrap"><p class="hero-catch">不動産営業の準備に革命を！</p></div>
   <div class="wrap hero-grid">
    <div class="hero-text">
-    <span class="hero-catch">営業準備に革命を！</span>
     <span class="eyebrow">不動産会社・営業担当の方へ</span>
     <h1>1案件の準備が、<br>30分〜1時間 <span class="arrow">→</span> 数分に。</h1>
     <p>周辺環境の下調べ・費用の計算などの事務作業をしていると他の対応もあり、気づいたら30分経ってた… こんな経験ありませんか？<br>Sonaureなら住所や価格を入れるだけで、お客様にそのまま渡せる資料ができます。</p>
@@ -339,18 +336,6 @@
       </ul>
       <a class="cta" href="mailto:sonaure100@gmail.com?subject=%E3%80%90Sonaure%E3%80%91%E8%B3%87%E6%96%99%E8%AB%8B%E6%B1%82&amp;body=%E4%BC%9A%E7%A4%BE%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E6%8B%85%E5%BD%93%E8%80%85%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E5%88%A9%E7%94%A8%E4%BA%88%E5%AE%9A%E3%81%AE%E4%BA%BA%E6%95%B0%EF%BC%88%E4%BB%BB%E6%84%8F%EF%BC%89%EF%BC%9A%0D%0A">資料を請求する</a>
       <div class="future">お申し込みは、アプリにログインして「プラン・ご契約」から。有料プランは事業者さま向けのサービスです。</div>
-    </div>
-  </div>
-</section>
-
-<section id="start">
-  <div class="wrap">
-    <span class="eyebrow">はじめ方</span>
-    <h2>3分で最初の1枚ができます</h2>
-    <div class="steps">
-      <div class="step"><b>ツールを開く</b>ブラウザで開くだけ。インストールはありません。スマホでも使えます</div>
-      <div class="step"><b>住所や価格を入れる</b>お客様の目の前でも、訪問前でも。計算機能はその場で結果が出ます</div>
-      <div class="step"><b>PDF / Excel で出す</b>書類の発行は有料プランで。プリントしてお渡し、またはメールで送付できます。会員登録はメールアドレスとパスワードだけ</div>
     </div>
   </div>
 </section>
