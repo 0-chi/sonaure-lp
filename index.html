@@ -75,7 +75,9 @@
   .hero-manga { margin: 0 auto 30px; max-width: 560px; }
   .hero-manga img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 16px 48px rgba(0,0,0,.45); }
   .hero-one h1 { margin: 0; }
-  .hero-after .lead-in { display: block; text-align: left; margin-bottom: 6px; }   /* 「Sonaureを使えば」だけ左に寄せる */
+  /* 「Sonaureを使えば」は左寄せで、「使う場面」などの小見出し（.eyebrow）と同じ大きさ・色に */
+  .hero-after .lead-in { display: block; text-align: left; margin-bottom: 8px; font-size: 14px; font-weight: bold;
+                         letter-spacing: .1em; color: var(--muted); line-height: 1.6; }
   .hero-after .c { display: block; text-align: center; }
   .hero { padding-bottom: 8px; }                                                  /* 次の「使う場面」との間を詰める */
   /* スマホでは表をカードにする。横にスワイプしないと右の列が見えないため */
