@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sonaure（ソナウレ）｜不動産会社の調査・資料作成を数分に</title>
+<title>Sonaure（ソナウレ）｜周辺環境まで説明できる不動産営業へ｜調査・資料作成を数分に</title>
 <meta name="description" content="不動産会社・営業担当のための調査レポート自動作成ツール。住所や価格を入れるだけで、お客様にそのまま渡せる周辺環境調査書・購入諸費用・売却収支・賃貸初期費用・買取査定の資料が数分でできます。宅地建物取引士監修。計算機能は登録なし・無料。ご契約は会社単位で、人数の制限はありません。">
 <link rel="canonical" href="https://sonae-are.com/">
-<meta property="og:title" content="Sonaure（ソナウレ）｜不動産会社の調査・資料作成を数分に">
-<meta property="og:description" content="1案件の準備が30分〜1時間→数分に。住所や価格を入れるだけで、お客様にそのまま渡せる資料ができます。計算機能は無料。ご契約は会社単位・人数制限なし。">
+<meta property="og:title" content="Sonaure（ソナウレ）｜周辺環境まで説明できる不動産営業へ">
+<meta property="og:description" content="物件だけでなく、周辺環境まで説明できる不動産営業へ。住所を入れるだけで、施設の徒歩分数と「エリアの特徴」が出典つきで、お客様にそのまま渡せる1枚に。計算機能は無料。ご契約は会社単位・人数制限なし。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sonae-are.com/">
 <style>
@@ -104,6 +104,13 @@
   .case .time s { color: var(--before); font-weight: normal; }
   .case .time b { color: var(--blue); font-size: 20px; }
   .case ul { margin: 10px 0 0; padding-left: 1.1em; font-size: 15px; color: var(--muted); }
+  .case .how { margin: 0; font-size: 15px; color: var(--muted); line-height: 1.7; }
+  .ptab { margin-bottom: 16px; }
+  .ptab b { color: var(--blue-d); font-size: 18px; }
+  .ptab td.n { width: 44%; }
+  .hero .sp { display: none; }
+  .hero .nw { white-space: nowrap; }
+  @media (max-width: 640px) { .hero .sp { display: inline; } }
   .case li { margin: 2px 0; }
 
   /* 渡せる資料 */
@@ -140,7 +147,7 @@
   details.features:not([open]) > summary .open .t-close { display: none; }
   details.features .body { padding-top: 14px; }
   /* 合言葉。ページの最初に目に入るよう、見本と本文の上に横幅いっぱいの大きさで置く（スマホでも1行に収まる大きさ） */
-  .hero .hero-catch { max-width: none; font-size: clamp(22px, 6.6vw, 64px); line-height: 1.25; font-weight: bold; color: var(--blue);
+  .hero .hero-catch { max-width: none; font-size: clamp(22px, 4.6vw, 46px); line-height: 1.3; font-weight: bold; color: var(--blue);
                 text-align: center; letter-spacing: .02em; margin: 0 0 32px; text-wrap: balance; }
   @media (max-width: 900px) { .hero { padding-top: 40px; } .hero .hero-catch { margin-bottom: 0; } }
 
@@ -222,20 +229,20 @@
 </header>
 
 <div class="hero">
-  <div class="wrap"><p class="hero-catch">不動産営業の準備に革命を！</p></div>
+  <div class="wrap"><p class="hero-catch">物件だけでなく、<br>周辺環境まで説明できる<br class="sp">不動産営業へ。</p></div>
   <div class="wrap hero-grid">
    <div class="hero-text">
     <span class="eyebrow">不動産会社・営業担当の方へ</span>
-    <h1>1案件の準備が、<br>30分〜1時間 <span class="arrow">→</span> 数分に。</h1>
-    <p>周辺環境の下調べ・費用の計算などの事務作業をしていると他の対応もあり、気づいたら30分経ってた… こんな経験ありませんか？<br>Sonaureなら住所や価格を入れるだけで、お客様にそのまま渡せる資料ができます。</p>
+    <h1>1案件の準備が、<br>30分〜1時間 <span class="arrow">→</span><br class="sp"> <span class="nw">約1〜2分に。</span></h1>
+    <p>周辺環境の下調べ・費用の計算などの事務作業をしていると他の対応もあり、気づいたら30分経ってた… こんな経験ありませんか？<br>Sonaureなら住所や価格を入れるだけで、お客様にそのまま渡せる資料ができます。<br>施設の徒歩分数に加えて、住んでいる人・駅のにぎわい・学区・地盤などの「エリアの特徴」を、出典つきの短い文で添えられます。</p>
     <a class="cta" href="https://app.sonae-are.com/?from=business">無料で試してみる</a>
     <div class="cta-note">4つの計算機能は、登録なしでその場で使えます</div>
     <br>
     <a class="sub-link" href="personal.html">家を買う・売る・借りる方、不動産投資をお考えの方へ →</a>
    </div>
    <figure class="hero-sample">
-    <img src="assets/sample-env.png" alt="周辺環境調査書の見本。最寄り駅・小学校・中学校・保育園・病院・スーパーなどを徒歩分数つきで一覧にしたレポート" width="1070" height="590">
-    <figcaption>住所を入れるだけで出来上がる「周辺環境調査書」の見本（見本の数値は架空です）</figcaption>
+    <img src="assets/sample-env.png" alt="周辺環境調査書の見本。地図、最寄り駅・小学校・スーパー・病院などの徒歩分数の表、住んでいる人・駅のにぎわいなどのエリアの特徴" width="1070" height="590">
+    <figcaption>住所を入れるだけで出来上がる「周辺環境調査書」の見本。施設の表と「エリアの特徴」（見本の数値・施設名は架空です）</figcaption>
    </figure>
   </div>
 </div>
@@ -243,25 +250,32 @@
 <section>
   <div class="wrap">
     <span class="eyebrow">使う場面</span>
-    <h2>お客様のタイプごとに、渡す資料が決まっています</h2>
-    <p class="lead">手作業で調べてExcel等に打ち込む事務作業だと、どのケースも1件あたり30分〜1時間。打ち間違いもたまにある…<br>お客様のタイプごとに、この流れをSonaureで調べたら、住所や価格を入れて約1〜2分です。</p>
+    <h2>物件紹介だけでなく、査定・業者間・仕入れ・収益の提案でも</h2>
+    <p class="lead">お客様への物件紹介だけでなく、売主・業者・投資家に向けても、同じツールで。知らない住所を受け取った瞬間から使えます。</p>
     <div class="cases">
       <div class="case">
-        <div class="who">購入検討のお客様</div>
-        <div class="time"><s class="num">30分〜1時間</s><b>→ 約1〜2分</b></div>
-        <ul>
-          <li>内見時に周辺環境調査書</li>
-          <li>物件購入の諸費用概算書</li>
-        </ul>
+        <div class="who">反響への返信</div>
+        <p class="how">住所を入れて、周辺環境調査書と概算書をPDFで添付</p>
       </div>
       <div class="case">
-        <div class="who">賃貸のお客様</div>
-        <div class="time"><s class="num">30分〜1時間</s><b>→ 約1〜2分</b></div>
-        <ul>
-          <li>内見時に周辺環境調査書</li>
-          <li>初期費用が気になる方に賃貸初期費用概算書</li>
-          <li>※購入か迷っている方には家賃→購入シミュレーション</li>
-        </ul>
+        <div class="who">内見・物件紹介</div>
+        <p class="how">社名・担当者名入りの1枚を渡す（30分〜1時間 → 約1〜2分）</p>
+      </div>
+      <div class="case">
+        <div class="who">収益物件の提案</div>
+        <p class="how">「なぜこの物件か」に、出典つきの数字を添える</p>
+      </div>
+      <div class="case">
+        <div class="who">買取再販（仕入れと再販）</div>
+        <p class="how">仕入れの時は周辺を調べ、より深い判断を。再販の時にも</p>
+      </div>
+      <div class="case">
+        <div class="who">売主への査定訪問</div>
+        <p class="how">「こう買い手に説明します」という街の資料を持っていく</p>
+      </div>
+      <div class="case">
+        <div class="who">業者間のやり取り・販売協力</div>
+        <p class="how">街をつかんで、帯替えしたマイソクを外出先から送る（開発・用地のご担当も）</p>
       </div>
     </div>
   </div>
@@ -272,7 +286,7 @@
     <div class="trust">
       <strong>プリントすれば、そのままお客様にお渡しできる仕様です。</strong>
       打ち間違いも無し！社名も入れられて、データでも送れます！<br>
-      ChatGPTのようなメモ感もなく、最後にSonaureの資料を添えると、「丁寧な営業さんだな」という<strong>＋αの信頼</strong>につながります。
+      メモのような文章ではなく、そのまま渡せる体裁です。最後にSonaureの資料を添えると、「丁寧な営業さんだな」という<strong>＋αの信頼</strong>につながります。
     </div>
   </div>
 </section>
@@ -300,7 +314,7 @@
     <table class="cardify">
       <thead><tr><th>機能</th><th>できること</th></tr></thead>
       <tbody>
-        <tr><td data-label="機能" class="n">周辺環境調査書</td><td data-label="できること" class="d">最寄り駅・学校・保育園・スーパー・病院・公園・商業施設などを徒歩分数つきで1枚に。調べる施設は選べます</td></tr>
+        <tr><td data-label="機能" class="n">周辺環境調査書</td><td data-label="できること" class="d">最寄り駅・学校・保育園・スーパー・病院・公園・商業施設などを徒歩分数つきで1枚に。住んでいる人・駅のにぎわい・学区・標高と坂・地盤・地価の動きなどの「エリアの特徴」を、出典つきの短い文で添えられます。調べる施設（25項目）と、書類に載せる行は選べます</td></tr>
         <tr><td data-label="機能" class="n">物件買取査定</td><td data-label="できること" class="d">想定売却価格から「いくらまでなら買えるか」を目標利益率ごとに逆算</td></tr>
         <tr><td data-label="機能" class="n">重説調査項目</td><td data-label="できること" class="d">区域区分・用途地域・建ぺい率／容積率・防火指定・災害リスク4種。境界またがりは「要確認」を自動検出</td></tr>
       </tbody>
@@ -327,12 +341,34 @@
     <span class="eyebrow">料金</span>
     <h2>会社単位のご契約で、人数の制限はありません</h2>
     <p class="lead">1つのご契約で発行するアカウントを、社内の皆さまで共有してお使いいただけます。計算機能は、ご契約がなくても無料でお使いいただけます。</p>
+    <div class="tblwrap">
+    <table class="cardify ptab">
+      <thead><tr><th>ライト（使った分だけ）</th><th>料金</th></tr></thead>
+      <tbody>
+        <tr><td data-label="ご利用内容" class="n">基本料</td><td data-label="料金" class="d"><b>月 1,980円</b>（ご登録月は無料）</td></tr>
+        <tr><td data-label="ご利用内容" class="n">周辺環境調査</td><td data-label="料金" class="d"><b>1回 50円</b></td></tr>
+        <tr><td data-label="ご利用内容" class="n">マイソク作成</td><td data-label="料金" class="d"><b>1枚 50円</b></td></tr>
+        <tr><td data-label="ご利用内容" class="n">お客様に渡す書類（PDF / Excel）</td><td data-label="料金" class="d"><b>追加料金なし</b>（計算ツール・物件買取査定・重説調査項目の書類）</td></tr>
+        <tr><td data-label="ご利用内容" class="n">1か月のご請求</td><td data-label="料金" class="d"><b>上限 9,980円</b>（上限に達したら、その月は使い放題）</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="tblwrap">
+    <table class="cardify ptab">
+      <thead><tr><th>無料で使えるもの</th><th>料金</th></tr></thead>
+      <tbody>
+        <tr><td data-label="ご利用内容" class="n">計算ツール（諸費用・売却収支・賃貸初期費用・家賃→購入）・物件買取査定</td><td data-label="料金" class="d"><b>無料</b>（登録なしで、画面で計算）</td></tr>
+        <tr><td data-label="ご利用内容" class="n">重説調査項目</td><td data-label="料金" class="d"><b>無料</b>（無料の会員登録で、画面表示）</td></tr>
+        <tr><td data-label="ご利用内容" class="n">周辺環境調査・マイソク作成のお試し</td><td data-label="料金" class="d"><b>月1回 無料</b>（無料の会員登録で）</td></tr>
+      </tbody>
+    </table>
+    </div>
     <div class="price">
       <div class="big">使った分だけ<small>1か月のご請求には上限があり、上限に達したあとは、その月は追加料金なしで使い放題</small></div>
       <ul>
-        <li><strong>無料</strong>：計算機能と物件買取査定の画面での計算（登録なし）と、重説調査項目（無料の会員登録）。周辺環境調査書・マイソク作成は、無料の会員登録で月1回お試しいただけます</li>
-        <li><strong>有料プラン</strong>：周辺環境調査書・マイソク作成と、お客様に渡す書類（PDF / Excel）の発行</li>
-        <li>料金は資料でご案内しています。お申し込みの前に、お申し込み画面でもご確認いただけます</li>
+        <li>契約は会社単位。社内で人数の制限なく共有できます</li>
+        <li>表示の金額が支払い総額。解約はいつでも（月末まで利用可）</li>
+        <li>料金は変更になる場合があります。お申し込みの前に、お申し込み画面でもご確認いただけます</li>
       </ul>
       <a class="cta" href="mailto:sonaure100@gmail.com?subject=%E3%80%90Sonaure%E3%80%91%E8%B3%87%E6%96%99%E8%AB%8B%E6%B1%82&amp;body=%E4%BC%9A%E7%A4%BE%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E6%8B%85%E5%BD%93%E8%80%85%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E5%88%A9%E7%94%A8%E4%BA%88%E5%AE%9A%E3%81%AE%E4%BA%BA%E6%95%B0%EF%BC%88%E4%BB%BB%E6%84%8F%EF%BC%89%EF%BC%9A%0D%0A">資料を請求する</a>
       <div class="future">お申し込みは、アプリにログインして「プラン・ご契約」から。有料プランは事業者さま向けのサービスです。</div>
@@ -342,7 +378,7 @@
 
 <section class="final">
   <div class="wrap">
-    <h2>次のお客様から、準備を数分に</h2>
+    <h2>次のお客様から、周辺環境まで渡す営業に</h2>
     <p class="lead" style="margin-inline:auto">まずは登録なしで使える計算機能から。</p>
     <a class="cta" href="https://app.sonae-are.com/?from=business">無料で試してみる</a>
     <div class="cta-note"><a href="mailto:sonaure100@gmail.com?subject=%E3%80%90Sonaure%E3%80%91%E8%B3%87%E6%96%99%E8%AB%8B%E6%B1%82&amp;body=%E4%BC%9A%E7%A4%BE%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E6%8B%85%E5%BD%93%E8%80%85%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E5%88%A9%E7%94%A8%E4%BA%88%E5%AE%9A%E3%81%AE%E4%BA%BA%E6%95%B0%EF%BC%88%E4%BB%BB%E6%84%8F%EF%BC%89%EF%BC%9A%0D%0A">料金の資料を請求する</a> ｜ 導入のご相談：<a href="mailto:sonaure100@gmail.com?subject=【Sonaure】導入のご相談">sonaure100@gmail.com</a></div>
