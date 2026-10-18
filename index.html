@@ -75,6 +75,9 @@
   .hero-manga { margin: 0 auto 30px; max-width: 560px; }
   .hero-manga img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 16px 48px rgba(0,0,0,.45); }
   .hero-one h1 { margin: 0; }
+  .hero-after .lead-in { display: block; text-align: left; margin-bottom: 6px; }   /* 「Sonaureを使えば」だけ左に寄せる */
+  .hero-after .c { display: block; text-align: center; }
+  .hero { padding-bottom: 8px; }                                                  /* 次の「使う場面」との間を詰める */
   /* スマホでは表をカードにする。横にスワイプしないと右の列が見えないため */
   @media (max-width: 640px) {
     table.cardify thead { display: none; }
@@ -157,7 +160,7 @@
   .price .cta { margin-top: 22px; font-size: 16px; padding: 12px 36px; }
   .price .future { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--line); font-size: 14.5px; text-align: left; }
 
-  .final { text-align: center; background: var(--bg-soft); }
+  .final { text-align: center; background: var(--bg-soft); padding-top: 36px; }
   footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; text-align: center; padding-block: 22px; }
   footer a { color: var(--muted); }
   @media (prefers-reduced-motion: no-preference) { .cta { transition: transform .15s; } .cta:hover { transform: translateY(-2px); } }
@@ -225,7 +228,7 @@
     <figure class="hero-manga">
       <img src="assets/manga-before.jpg" alt="今までのやり方：内見する物件の資料を作ろうとパソコンに向かう→固定電話が鳴って対応する→電話が終わって初期費用と周辺環境を調べ直す→気づいたら1時間経っていた" width="900" height="1624" loading="lazy">
     </figure>
-    <h1>Sonaureを使えば<br>1案件の準備が、<br>30分〜1時間 <span class="arrow">→</span><br><span class="nw">約1〜2分に！</span></h1>
+    <h1 class="hero-after"><span class="lead-in">Sonaureを使えば</span><span class="c">一案件の資料作成が<br>30分〜1時間 <span class="arrow">→</span> <span class="nw">1〜2分に！</span></span></h1>
   </div>
 </div>
 
@@ -339,10 +342,10 @@
 <section class="final">
   <div class="wrap">
     <h2>次のお客様から、周辺環境まで渡す営業に</h2>
-    <p class="lead" style="margin-inline:auto">まずは登録なしで使える計算機能から。</p>
-    <a class="sub-link" href="personal.html">家を買う・売る・借りる方、不動産投資をお考えの方へ →</a>
-    <div style="margin-top:30px"><a class="cta" href="https://app.sonae-are.com/?from=business">無料で試してみる</a></div>
+    <p class="lead" style="margin-inline:auto; margin-bottom:18px">まずは登録なしで使える計算機能から。</p>
+    <a class="cta" href="https://app.sonae-are.com/?from=business">無料で試してみる</a>
     <div class="cta-note"><a href="mailto:sonaure100@gmail.com?subject=%E3%80%90Sonaure%E3%80%91%E8%B3%87%E6%96%99%E8%AB%8B%E6%B1%82&amp;body=%E4%BC%9A%E7%A4%BE%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E6%8B%85%E5%BD%93%E8%80%85%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E5%88%A9%E7%94%A8%E4%BA%88%E5%AE%9A%E3%81%AE%E4%BA%BA%E6%95%B0%EF%BC%88%E4%BB%BB%E6%84%8F%EF%BC%89%EF%BC%9A%0D%0A">料金の資料を請求する</a> ｜ 導入のご相談：<a href="mailto:sonaure100@gmail.com?subject=【Sonaure】導入のご相談">sonaure100@gmail.com</a></div>
+    <a class="sub-link" href="personal.html" style="margin-top:22px">家を買う・売る・借りる方、不動産投資をお考えの方へ →</a>
   </div>
 </section>
 
