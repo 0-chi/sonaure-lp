@@ -68,18 +68,47 @@
               border-radius: 40px; font-size: 18px; font-weight: bold; color: var(--blue);
               text-decoration: none; line-height: 1.6; }
   .sub-link:hover { background: rgba(124,196,255,.12); }
-  /* ヒーローは1列・中央そろえ：対象 → 合言葉 → 「こんな経験ありませんか？」と漫画 → 時間の短縮 */
+  /* ヒーローは1列・中央そろえ：対象 → 合言葉 → 「漫画で見る こんな経験ありませんか？」（3本、タップで開く）→ なぜ作らないか → Sonaureを使えば */
   .hero-one { text-align: center; }
   .hero-one .eyebrow { display: block; }
-  .hero-one .hero-q { max-width: none; margin: 34px 0 14px; font-size: clamp(20px, 3.2vw, 26px); font-weight: bold; color: var(--ink); }
-  .hero-manga { margin: 0 auto 30px; max-width: 560px; }
+  .hero-one .hero-q { max-width: none; margin: 38px 0 14px; font-size: clamp(20px, 3.2vw, 26px); font-weight: bold; color: var(--ink); }
+  .hero-one .hero-q-sub { display: block; font-size: 14px; letter-spacing: .1em; color: var(--muted); margin-bottom: 4px; }
+  .manga-list { max-width: 640px; margin: 0 auto; text-align: left; }
+  details.manga { background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 10px; }
+  details.manga > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 14px 16px; }
+  details.manga > summary::-webkit-details-marker { display: none; }
+  details.manga .pat { flex: none; font-size: 12.5px; font-weight: bold; color: var(--on-accent); background: var(--blue); border-radius: 999px; padding: 2px 10px; }
+  details.manga .ttl { flex: 1; font-weight: bold; font-size: 15.5px; color: var(--ink); line-height: 1.5; }
+  details.manga .open { flex: none; font-size: 13px; font-weight: bold; color: var(--blue); white-space: nowrap; }
+  details.manga .open::after { content: " ▼"; }
+  details.manga[open] .open::after { content: " ▲"; }
+  details.manga[open] .open .t-open { display: none; }
+  details.manga:not([open]) .open .t-close { display: none; }
+  .hero-manga { margin: 0; padding: 0 12px 14px; }
   .hero-manga img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 16px 48px rgba(0,0,0,.45); }
-  .hero-one h1 { margin: 0; }
-  /* 「Sonaureを使えば」は左寄せで、「使う場面」などの小見出し（.eyebrow）と同じ大きさ・色に */
-  .hero-after .lead-in { display: block; text-align: left; margin-bottom: 8px; font-size: 14px; font-weight: bold;
-                         letter-spacing: .1em; color: var(--muted); line-height: 1.6; }
-  .hero-after .c { display: block; text-align: center; }
-  .hero { padding-bottom: 8px; }                                                  /* 次の「使う場面」との間を詰める */
+  /* なぜ作らないか → 理想 → Sonaureを使えば → 補完するサービス */
+  .why { max-width: 640px; margin: 40px auto 0; text-align: left; }
+  .why p { max-width: none; margin: 0 0 14px; font-size: 16.5px; line-height: 1.9; }
+  .why .why-list { margin: 0 0 14px; padding-left: 1.3em; font-size: 16.5px; line-height: 1.9; font-weight: bold; color: var(--blue-d); }
+  .why .ideal { margin-top: 26px; }
+  .why .ideal strong { color: var(--blue-d); }
+  .why .can { margin-top: 28px; padding: 20px 22px; border-left: 4px solid var(--blue); background: var(--bg-soft); border-radius: 0 10px 10px 0; }
+  .why .can .eyebrow { margin-bottom: 10px; }
+  .why .can ul { margin: 0; padding-left: 1.2em; font-size: 16.5px; line-height: 1.9; }
+  .why .can li { margin: 4px 0; }
+  .why .can .big { font-weight: bold; color: var(--blue); font-size: 1.15em; }
+  .why .can small { color: var(--muted); font-size: 14px; }
+  .why .sum { margin: 26px 0 0; font-weight: bold; text-align: center; }
+  .hero .pc { display: inline; }
+  @media (max-width: 640px) {
+    .hero .pc { display: none; }
+    .why p, .why .why-list, .why .can ul { font-size: 15.5px; }
+    /* スマホでは 1行目にパターン名と「タップで見る」、2行目に見出し（横に並べると見出しが縦に細くなるため） */
+    details.manga > summary { flex-wrap: wrap; gap: 8px 10px; padding: 12px 14px; }
+    details.manga .open { margin-left: auto; }
+    details.manga .ttl { flex-basis: 100%; order: 3; font-size: 15px; }
+  }
+  .hero { padding-bottom: 8px; }                                                  /* 次の「8つの機能」との間を詰める */
   /* スマホでは表をカードにする。横にスワイプしないと右の列が見えないため */
   @media (max-width: 640px) {
     table.cardify thead { display: none; }
@@ -93,19 +122,9 @@
     table.cardify td:first-child::before { display: none; }
   }
 
-  /* 使う場面 */
-  .cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
-  .case { background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 20px 18px; }
-  .case .who { font-weight: bold; color: var(--blue-d); font-size: 16.5px; margin-bottom: 8px; }
-  .case .time { display: flex; align-items: baseline; gap: 10px; font-weight: bold; }
-  .case .time s { color: var(--before); font-weight: normal; }
-  .case .time b { color: var(--blue); font-size: 20px; }
-  .case ul { margin: 10px 0 0; padding-left: 1.1em; font-size: 15px; color: var(--muted); }
-  .case .how { margin: 0; font-size: 15px; color: var(--muted); line-height: 1.7; }
   .hero .sp { display: none; }
   .hero .nw { white-space: nowrap; }
   @media (max-width: 640px) { .hero .sp { display: inline; } }
-  .case li { margin: 2px 0; }
 
   /* 渡せる資料 */
   .trust { border-left: 4px solid var(--blue); background: var(--bg-soft); padding: 18px 22px; border-radius: 0 10px 10px 0; }
@@ -143,6 +162,8 @@
   /* 合言葉。ページの最初に目に入るよう、見本と本文の上に横幅いっぱいの大きさで置く（スマホでも1行に収まる大きさ） */
   .hero .hero-catch { max-width: none; font-size: clamp(28px, 6.4vw, 58px); line-height: 1.3; font-weight: bold; color: var(--blue);
                 text-align: center; letter-spacing: .02em; margin: 0 0 32px; text-wrap: balance; }
+  /* 合言葉の前置き「物件のプロであることは当たり前」は一回り小さく、合言葉の上に */
+  .hero .hero-catch .pre { display: block; font-size: clamp(16px, 2.6vw, 24px); color: var(--ink); letter-spacing: .04em; margin-bottom: 10px; }
   @media (max-width: 900px) { .hero { padding-top: 40px; } }
 
   /* 買取再販・これから */
@@ -225,58 +246,51 @@
 <div class="hero">
   <div class="wrap hero-one">
     <span class="eyebrow">不動産会社・営業担当の方へ</span>
-    <p class="hero-catch">物件だけでなく、<br>周辺環境まで説明できる<br class="sp">不動産営業へ。</p>
-    <p class="hero-q">こんな経験ありませんか？</p>
-    <figure class="hero-manga">
-      <img src="assets/manga-before.jpg" alt="今までのやり方：内見する物件の資料を作ろうとパソコンに向かう→固定電話が鳴って対応する→電話が終わって初期費用と周辺環境を調べ直す→気づいたら1時間経っていた" width="900" height="1624" loading="lazy">
-    </figure>
-    <h1 class="hero-after"><span class="lead-in">Sonaureを使えば</span><span class="c">一案件の資料作成が<br>30分〜1時間 <span class="arrow">→</span> <span class="nw">1〜2分に！</span></span></h1>
+    <h1 class="hero-catch"><span class="pre">物件のプロであることは当たり前</span>周辺環境まで説明できる<br>不動産営業へ</h1>
+    <p class="hero-q"><span class="hero-q-sub">漫画で見る</span>こんな経験ありませんか？</p>
+    <div class="manga-list">
+      <details class="manga">
+        <summary><span class="pat">パターン1</span><span class="ttl">内見に来たけど、このエリアはあまり知らない</span><span class="open"><span class="t-open">タップで見る</span><span class="t-close">閉じる</span></span></summary>
+        <figure class="hero-manga">
+          <img src="assets/manga-1.jpg" alt="パターン1：内見に来たがこのエリアはあまり知らない→Googleマップでとりあえず調べる→お客様から「この近くにスーパーは？」「近くの小学校は？」「病院は？」と質問攻め→「ちょっと待って下さいね」と焦りながらスマホで調べてお客様を待たせている" width="1000" height="914" loading="lazy">
+        </figure>
+      </details>
+      <details class="manga">
+        <summary><span class="pat">パターン2</span><span class="ttl">査定や買取の依頼が来たけど、得意なエリアじゃない</span><span class="open"><span class="t-open">タップで見る</span><span class="t-close">閉じる</span></span></summary>
+        <figure class="hero-manga">
+          <img src="assets/manga-2.jpg" alt="パターン2：メールで査定依頼が来たが得意なエリアではない→他の業者から買い取りませんかと言われた物件も遠く知らないエリア→どちらも周辺にどんな施設があるか分からず現地で確認しないといけない→とりあえず物件はすぐ調べるが周辺環境は後回しにしてしまう" width="1000" height="914" loading="lazy">
+        </figure>
+      </details>
+      <details class="manga">
+        <summary><span class="pat">パターン3</span><span class="ttl">社内で資料を作っていたら、気づけば1時間</span><span class="open"><span class="t-open">タップで見る</span><span class="t-close">閉じる</span></span></summary>
+        <figure class="hero-manga">
+          <img src="assets/manga-3.jpg" alt="パターン3：紹介する物件の準備をしようとパソコンに向かう→固定電話が鳴って対応する→電話が終わって初期費用と周辺環境を調べる→気づいたら1時間経っていた" width="900" height="1523" loading="lazy">
+        </figure>
+      </details>
+    </div>
+
+    <div class="why">
+      <p>提案する上で物件資料だけでなく<br class="pc">周辺の環境の資料も作った方が良いのは分かっているけど</p>
+      <ul class="why-list">
+        <li>時間と余裕がない</li>
+        <li>口頭で説明するから作らない</li>
+      </ul>
+      <p>という不動産会社がほとんどです。</p>
+      <p class="ideal">ですが、不動産営業マンの理想は<br>
+        <strong>「物件資料だけでなく周辺の環境の資料もお客様に紙やデータで渡すことができ、それらの資料に書いていない＋αの知識や情報を説明できる」こと</strong><br>
+        ではないでしょうか？</p>
+      <div class="can">
+        <span class="eyebrow">Sonaureを使えば</span>
+        <ul>
+          <li><span class="big">30分〜1時間</span>かかっていた、または作っていなかった資料が<span class="big">30秒〜1分</span>で作れる<small>（その場で作れる）</small>。</li>
+          <li>プロの頭の中を、形に残して相手にお渡しできる。</li>
+          <li>知らなかったエリアのことを、より深く知れる。</li>
+        </ul>
+      </div>
+      <p class="sum">全員やった方がいいのは分かっていたけど<br class="pc">放置されていた部分を補完するサービスです。</p>
+    </div>
   </div>
 </div>
-
-<section>
-  <div class="wrap">
-    <span class="eyebrow">使う場面</span>
-    <h2>物件紹介だけでなく、査定・業者間・仕入れ・収益の提案でも</h2>
-    <p class="lead">お客様への物件紹介だけでなく、売主・業者・投資家に向けても、同じツールで。知らない住所を受け取った瞬間から使えます。</p>
-    <div class="cases">
-      <div class="case">
-        <div class="who">反響への返信</div>
-        <p class="how">住所を入れて、周辺環境調査書と概算書をPDFで添付</p>
-      </div>
-      <div class="case">
-        <div class="who">内見・物件紹介</div>
-        <p class="how">社名・担当者名入りの1枚を渡す（30分〜1時間 → 約1〜2分）</p>
-      </div>
-      <div class="case">
-        <div class="who">収益物件の提案</div>
-        <p class="how">「なぜこの物件か」に、出典つきの数字を添える</p>
-      </div>
-      <div class="case">
-        <div class="who">買取再販（仕入れと再販）</div>
-        <p class="how">仕入れの時は周辺を調べ、より深い判断を。再販の時にも</p>
-      </div>
-      <div class="case">
-        <div class="who">売主への査定訪問</div>
-        <p class="how">「こう買い手に説明します」という街の資料を持っていく</p>
-      </div>
-      <div class="case">
-        <div class="who">業者間のやり取り・販売協力</div>
-        <p class="how">街をつかんで、帯替えしたマイソクを外出先から送る（開発・用地のご担当も）</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-block:0 32px">
-  <div class="wrap">
-    <div class="trust">
-      <strong>プリントすれば、そのままお客様にお渡しできる仕様です。</strong>
-      打ち間違いも無し！社名も入れられて、データでも送れます！<br>
-      メモのような文章ではなく、そのまま渡せる体裁です。最後にSonaureの資料を添えると、「丁寧な営業さんだな」という<strong>＋αの信頼</strong>につながります。
-    </div>
-  </div>
-</section>
 
 <section style="background:var(--bg-soft); padding-block:28px 12px" id="features">
   <div class="wrap">
