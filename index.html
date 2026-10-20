@@ -166,9 +166,8 @@
   .hero .hero-catch .pre { display: block; font-size: clamp(16px, 2.6vw, 24px); color: var(--ink); letter-spacing: .04em; margin-bottom: 10px; }
   @media (max-width: 900px) { .hero { padding-top: 40px; } }
 
-  /* 不動産に関する有益情報（記事への導線）。合言葉の次に目に入るよう、ヒーローのすぐ下に水色の枠で置く */
-  .articles { padding-block: 28px 36px; }
-  .blog-box { max-width: 780px; margin: 0 auto; background: var(--bg-card); border: 2px solid var(--blue); border-radius: 16px; padding: 28px 26px; text-align: center; }
+  /* 不動産に関する有益情報（記事への導線）。最後の節の「料金の資料を請求する｜導入のご相談」の下に、水色の枠で置く */
+  .blog-box { max-width: 780px; margin: 30px auto 0; background: var(--bg-card); border: 2px solid var(--blue); border-radius: 16px; padding: 28px 26px; text-align: center; }
   .blog-box h2 { margin-bottom: 8px; }
   .blog-box .lead { margin: 0 auto 18px; font-size: 15px; }
   .pop { max-width: 620px; margin: 0 auto 22px; text-align: left; }
@@ -254,7 +253,7 @@
   <div class="wrap bar">
     <a class="logo" href="index.html">Sonaure</a>
     <a class="who" href="personal.html">マイホーム・投資不動産の購入をご希望の方へ →</a>
-    <nav class="anchors"><a href="#articles">記事</a><a href="#features">機能</a><a href="#price">料金</a></nav>
+    <nav class="anchors"><a href="#features">機能</a><a href="#price">料金</a><a href="#articles">記事</a></nav>
     <a class="go" href="https://app.sonae-are.com/?from=business">無料で試す</a>
   </div>
 </header>
@@ -308,25 +307,6 @@
     </div>
   </div>
 </div>
-
-<section class="articles" id="articles">
-  <div class="wrap">
-    <div class="blog-box">
-      <h2>不動産に関する有益情報</h2>
-      <p class="lead">費用・税金・手続き・物件調査について、宅地建物取引士が解説した記事を公開しています。ツールが出す数字の根拠も、こちらで確認いただけます。</p>
-      <div class="pop">
-        <div class="pop-t">〜 人気記事 〜</div>
-        <ul>
-          <li><a href="blog/koukousei-fudosan-toushi.html">高校生でもわかる不動産投資｜ゲーム機5台を友達に貸す話</a></li>
-          <li><a href="blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</a></li>
-          <li><a href="blog/bukken-kakaku-shohiyo-zukai.html">物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</a></li>
-          <li><a href="blog/chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</a></li>
-        </ul>
-      </div>
-      <a class="cta" href="blog/index.html">記事一覧を見る →</a>
-    </div>
-  </div>
-</section>
 
 <section style="background:var(--bg-soft); padding-block:28px 12px" id="features">
   <div class="wrap">
@@ -397,6 +377,20 @@
     <p class="lead" style="margin-inline:auto; margin-bottom:18px">まずは登録なしで使える計算機能から。</p>
     <a class="cta" href="https://app.sonae-are.com/?from=business">無料で試してみる</a>
     <div class="cta-note"><a href="mailto:sonaure100@gmail.com?subject=%E3%80%90Sonaure%E3%80%91%E8%B3%87%E6%96%99%E8%AB%8B%E6%B1%82&amp;body=%E4%BC%9A%E7%A4%BE%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E6%8B%85%E5%BD%93%E8%80%85%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E5%88%A9%E7%94%A8%E4%BA%88%E5%AE%9A%E3%81%AE%E4%BA%BA%E6%95%B0%EF%BC%88%E4%BB%BB%E6%84%8F%EF%BC%89%EF%BC%9A%0D%0A">料金の資料を請求する</a> ｜ 導入のご相談：<a href="mailto:sonaure100@gmail.com?subject=【Sonaure】導入のご相談">sonaure100@gmail.com</a></div>
+    <div class="blog-box" id="articles">
+      <h2>不動産に関する有益情報</h2>
+      <p class="lead">費用・税金・手続き・物件調査について、宅地建物取引士が解説した記事を公開しています。ツールが出す数字の根拠も、こちらで確認いただけます。</p>
+      <div class="pop">
+        <div class="pop-t">〜 人気記事 〜</div>
+        <ul>
+          <li><a href="blog/koukousei-fudosan-toushi.html">高校生でもわかる不動産投資｜ゲーム機5台を友達に貸す話</a></li>
+          <li><a href="blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</a></li>
+          <li><a href="blog/bukken-kakaku-shohiyo-zukai.html">物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</a></li>
+          <li><a href="blog/chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</a></li>
+        </ul>
+      </div>
+      <a class="cta" href="blog/index.html">記事一覧を見る →</a>
+    </div>
     <a class="sub-link" href="personal.html" style="margin-top:22px">家を買う・売る・借りる方、不動産投資をお考えの方へ →</a>
   </div>
 </section>
