@@ -99,9 +99,9 @@
   .why .can .big { font-weight: bold; color: var(--blue); font-size: 1.15em; }
   .why .can small { color: var(--muted); font-size: 14px; }
   .why .sum { margin: 26px 0 0; font-weight: bold; text-align: center; }
-  .hero .pc { display: inline; }
+  .hero .pc, .feat-head .pc { display: inline; }
   @media (max-width: 640px) {
-    .hero .pc { display: none; }
+    .hero .pc, .feat-head .pc { display: none; }
     .why p, .why .why-list, .why .can ul { font-size: 15.5px; }
     /* スマホでは 1行目にパターン名と「タップで見る」、2行目に見出し（横に並べると見出しが縦に細くなるため） */
     details.manga > summary { flex-wrap: wrap; gap: 8px 10px; padding: 12px 14px; }
@@ -147,17 +147,25 @@
     td.n { width: auto; }
   }
 
-  /* 機能の一覧：タップで開く */
-  details.features { margin-top: 6px; }
+  /* 8つの機能：周辺環境調査だけではないことを、まず例を2つ見せる。一覧は「他にも便利なツールを見る」で開く */
+  .feat-head { text-align: center; margin-bottom: 6px; }
+  .feat-head h2 { margin-bottom: 0; }
+  .ex-lead { text-align: center; font-size: 15px; font-weight: bold; color: var(--blue); letter-spacing: .1em; margin: 18px 0 10px; }
+  .ex { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .ex .box { border-color: rgba(124, 196, 255, .5); padding: 22px 20px 20px; }
+  .ex .box .tag { display: inline-block; margin: 0 0 10px; background: var(--blue); color: var(--on-accent); border-color: var(--blue); font-size: 12.5px; }
+  .ex .box h3 { font-size: 18px; line-height: 1.5; }
+  .ex .box p { color: var(--ink); }
+  details.features { margin-top: 18px; }
   details.features > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
     gap: 12px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; }
   details.features > summary::-webkit-details-marker { display: none; }
-  details.features > summary h2 { margin: 0; }
+  details.features > summary .sum-t { font-size: 17px; font-weight: bold; color: var(--blue-d); }
   details.features > summary .open { flex: none; font-size: 14px; font-weight: bold; color: var(--blue); }
-  details.features > summary .open::after { content: " ▼"; }
-  details.features[open] > summary .open::after { content: " ▲"; }
-  details.features[open] > summary .open .t-open { display: none; }
-  details.features:not([open]) > summary .open .t-close { display: none; }
+  details.features > summary .open::after { content: "▼"; }
+  details.features[open] > summary .open::after { content: "▲"; }
+  details.features[open] > summary .t-open { display: none; }
+  details.features:not([open]) > summary .t-close { display: none; }
   details.features .body { padding-top: 14px; }
   /* 合言葉。ページの最初に目に入るよう、見本と本文の上に横幅いっぱいの大きさで置く（スマホでも1行に収まる大きさ） */
   .hero .hero-catch { max-width: none; font-size: clamp(28px, 6.4vw, 58px); line-height: 1.3; font-weight: bold; color: var(--blue);
@@ -308,10 +316,27 @@
   </div>
 </div>
 
-<section style="background:var(--bg-soft); padding-block:28px 12px" id="features">
+<section style="background:var(--bg-soft); padding-block:40px 16px" id="features">
   <div class="wrap">
+    <div class="feat-head">
+      <span class="eyebrow">8つの機能</span>
+      <h2>周辺環境調査だけではありません。<br class="pc">毎日の営業で使える便利なツールがそろっています</h2>
+    </div>
+    <p class="ex-lead">例えば</p>
+    <div class="ex">
+      <div class="box">
+        <span class="tag">住所を入れるだけ</span>
+        <h3>重説で調べる項目を、数秒で仕分け</h3>
+        <p>売買でも賃貸でも、重要事項説明のために調査が必要な項目を住所から判定します。「調べないといけない項目」と「調べなくてもいい項目」が数秒で分かります。</p>
+      </div>
+      <div class="box">
+        <span class="tag">金額を入れるだけ</span>
+        <h3>購入の諸費用を、その場で概算</h3>
+        <p>「概算でいいから諸費用がいくらか知りたい」と聞かれたら、物件価格を入れるだけ。仲介手数料・登記・ローン費用・保険まで入った概算が数秒で出せます。</p>
+      </div>
+    </div>
     <details class="features">
-    <summary><h2>8つの機能</h2><span class="open"><span class="t-open">タップで開く</span><span class="t-close">閉じる</span></span></summary>
+    <summary><span class="sum-t"><span class="t-open">他にも便利なツールを見る</span><span class="t-close">閉じる</span></span><span class="open"></span></summary>
     <div class="body">
     <div class="grp">計算する（登録なしで、画面での計算は無料）</div>
     <div class="tblwrap">
