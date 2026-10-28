@@ -98,7 +98,13 @@
   .why .can li { margin: 4px 0; }
   .why .can .big { font-weight: bold; color: var(--blue); font-size: 1.15em; }
   .why .can small { color: var(--muted); font-size: 14px; }
-  .why .sum { margin: 26px 0 0; font-weight: bold; text-align: center; }
+  /* 締めの一文は、この節でいちばん伝えたいこと。2行目を大きく水色にし、「補完するサービス」に太い下線を引く
+     （途中で折り返さない。スマホでは「放置されていた部分を」「補完するサービスです。」の2行になる） */
+  .why .sum { margin: 34px 0 12px; font-weight: bold; text-align: center; font-size: clamp(20px, 3.4vw, 28px); line-height: 1.6;
+    color: var(--blue-d); text-wrap: balance; }
+  .why .sum .pre { display: block; font-size: .68em; color: var(--ink); margin-bottom: 6px; letter-spacing: .02em; }
+  .why .sum mark { background: none; color: inherit; white-space: nowrap; text-decoration: underline;
+    text-decoration-color: var(--blue); text-decoration-thickness: 4px; text-underline-offset: 7px; }
   .hero .pc, .feat-head .pc { display: inline; }
   @media (max-width: 640px) {
     .hero .pc, .feat-head .pc { display: none; }
@@ -315,7 +321,7 @@
           <li>知らなかったエリアのことを、より深く知れる。</li>
         </ul>
       </div>
-      <p class="sum">全員やった方がいいのは分かっていたけど<br class="pc">放置されていた部分を補完するサービスです。</p>
+      <p class="sum"><span class="pre">全員やった方がいいのは分かっていたけど</span>放置されていた部分を<mark>補完するサービス</mark>です。</p>
     </div>
   </div>
 </div>
