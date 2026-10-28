@@ -147,16 +147,20 @@
     td.n { width: auto; }
   }
 
-  /* 8つの機能：周辺環境調査だけではないことを、まず例を2つ見せる。一覧は「他にも便利なツールを見る」で開く */
+  /* 8つの機能：周辺環境調査だけではないことを、まず例を2つ見せる（どちらも4コマ漫画つき）。一覧は「便利なツール一覧を見る」で開く。
+     漫画が縦に長いので、例はパソコンでも1列に並べる（上の漫画の一覧と同じ幅） */
   .feat-head { text-align: center; margin-bottom: 6px; }
   .feat-head h2 { margin-bottom: 0; }
   .ex-lead { text-align: center; font-size: 15px; font-weight: bold; color: var(--blue); letter-spacing: .1em; margin: 18px 0 10px; }
-  .ex { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .ex { display: grid; gap: 14px; max-width: 640px; margin: 0 auto; }
+  .ex-manga { margin: 4px 0 14px; }
+  .ex-manga img { display: block; width: 100%; height: auto; border-radius: 8px; }
   .ex .box { border-color: rgba(124, 196, 255, .5); padding: 22px 20px 20px; }
   .ex .box .tag { display: inline-block; margin: 0 0 10px; background: var(--blue); color: var(--on-accent); border-color: var(--blue); font-size: 12.5px; }
   .ex .box h3 { font-size: 18px; line-height: 1.5; }
+  .ex .box h3 span { display: inline-block; }   /* 長い見出しは言葉の切れ目で折り返す */
   .ex .box p { color: var(--ink); }
-  details.features { margin-top: 18px; }
+  details.features { max-width: 640px; margin: 18px auto 0; }   /* 例のカードと同じ幅 */
   details.features > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
     gap: 12px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; }
   details.features > summary::-webkit-details-marker { display: none; }
@@ -327,16 +331,22 @@
       <div class="box">
         <span class="tag">住所を入れるだけ</span>
         <h3>重説で調べる項目を、数秒で仕分け</h3>
+        <figure class="ex-manga">
+          <img src="assets/manga-juusetsu.jpg?v=20261028" alt="重説の調査の漫画：①重要事項説明書の調査で、また役所…「役所で全部調べるの時間かかるしめんどくさいな…」②ネットで調べられる項目もあるが…「どれを調べればいいのか見当つかない」③手抜きでやったら後でトラブルになるかも…「調査漏れだけは怖い…」④「Sonaure」なら調べる項目を数秒で仕分け「調べる項目がすぐ分かる！めっちゃ楽！」" width="1122" height="1402" loading="lazy">
+        </figure>
         <p>売買でも賃貸でも、重要事項説明のために調査が必要な項目を住所から判定します。「調べないといけない項目」と「調べなくてもいい項目」が数秒で分かります。</p>
       </div>
       <div class="box">
         <span class="tag">金額を入れるだけ</span>
-        <h3>購入の諸費用を、その場で概算</h3>
-        <p>「概算でいいから諸費用がいくらか知りたい」と聞かれたら、物件価格を入れるだけ。仲介手数料・登記・ローン費用・保険まで入った概算が数秒で出せます。</p>
+        <h3><span>賃貸か購入か迷ってる人に</span><span>数秒でシミュレーション。</span><span>売った後の手残りまで。</span></h3>
+        <figure class="ex-manga">
+          <img src="assets/manga-rentbuy.jpg?v=20261028" alt="買うか賃貸かの漫画：①「買うか、賃貸か」で迷うお客様「購入か、もう一回賃貸か迷ってるんです」②同じ家賃でいくらの家が買えるんだろう…お客様「12万の家賃ならいくらの家を買えますか？売った場合はどうなりますか？」営業「えーっと、金利と返済期間が…」と電卓をたたく③売った後の手残りまでは、すぐ出せない…「資料作るのに何時間かかるんだ…」④「Sonaure」なら金額を入れるだけ、数秒で。毎月の家賃12万円で買える家の価格・売却後の手残り・実質の家賃が出て、お客様が「こんなに違うんですね！」" width="1122" height="1402" loading="lazy">
+        </figure>
+        <p>「購入しようか、賃貸にもう一回引っ越そうか迷ってるんです」というお客様に①同じ毎月の賃料でどのくらいの家を買えるか②ローンを完済して売ったらどのくらい手残りがあるか③実質の家賃はどのくらいかという資料を、金額を入れるだけで数秒で出せます。</p>
       </div>
     </div>
     <details class="features">
-    <summary><span class="sum-t"><span class="t-open">他にも便利なツールを見る</span><span class="t-close">閉じる</span></span><span class="open"></span></summary>
+    <summary><span class="sum-t"><span class="t-open">便利なツール一覧を見る</span><span class="t-close">閉じる</span></span><span class="open"></span></summary>
     <div class="body">
     <div class="grp">計算する（登録なしで、画面での計算は無料）</div>
     <div class="tblwrap">
