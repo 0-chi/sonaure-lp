@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 公開前の確認中：検索に載せず、一覧・サイトマップ・記事からもまだリンクしない。確認が済んだら noindex を外して組み込む -->
+<meta name="robots" content="noindex, nofollow">
+<title>減価償却の節税シミュレーション｜年収と物件から、戻る税金を個人・法人で比べる【無料】</title>
+<meta name="description" content="年収（役員報酬）と収益物件の条件を入れると、減価償却でいくら税金が戻る（減る）かを、個人で買う場合と法人で買う場合で並べて無料で試算。令和8年分の税制（基礎控除・給与所得控除の改正後）、中古の簡便法、売るときの税金まで含めた減価償却の本当の得も出します。">
+<link rel="canonical" href="https://sonae-are.com/tools/genka-shokyaku-setsuzei.html">
+<meta property="og:title" content="減価償却の節税シミュレーション【無料】">
+<meta property="og:description" content="減価償却でいくら税金が戻るかを、個人で買う場合と法人で買う場合で並べて試算。売るときの税金まで含めて比べます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sonae-are.com/tools/genka-shokyaku-setsuzei.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "減価償却の節税シミュレーション",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "url": "https://sonae-are.com/tools/genka-shokyaku-setsuzei.html",
+  "description": "年収（役員報酬）と会社の利益から今の税金を出し、収益物件を買ったときに減価償却でいくら税金が戻る（減る）かを、個人で買う場合と法人で買う場合で並べて年ごとに試算するツール。売るときにかかる税金まで含めた減価償却の効果も出します。",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}
+}
+</script>
+<style>
+  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;--neg:#c05621;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Yu Gothic","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);line-height:1.9;background:linear-gradient(180deg,#fff,#f3f8ff);}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px;}
+  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .logo{font-size:18px;font-weight:bold;background:linear-gradient(135deg,var(--blue-d),var(--blue-l));-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none;}
+  .bar a.nav{font-size:13px;color:var(--blue);text-decoration:none;font-weight:bold;}
+  h1{font-size:clamp(20px,4vw,26px);color:var(--blue-d);margin:28px 0 6px;line-height:1.5;}
+  .sub{font-size:14px;color:var(--muted);margin-bottom:20px;}
+  h2{font-size:18px;color:var(--blue-d);margin:36px 0 12px;display:flex;align-items:center;gap:8px;}
+  h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));flex-shrink:0;}
+  h3{font-size:14.5px;color:var(--blue-d);margin:18px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--line);}
+  p{margin-bottom:14px;font-size:14.5px;}
+  .calc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 8px 28px rgba(26,77,143,.10);position:relative;overflow:hidden;}
+  .calc::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue-d),var(--blue-l));}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px 18px;}
+  label{display:block;font-size:12.5px;font-weight:bold;color:var(--blue-d);margin-bottom:4px;}
+  label.chk{display:flex;align-items:center;gap:8px;font-size:13.5px;margin-top:24px;cursor:pointer;}
+  label.chk input{width:18px;height:18px;accent-color:var(--blue);}
+  input[type=number],select{width:100%;border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:16px;background:#eaf3ff;color:#1a202c;}
+  .sl{display:flex;align-items:center;gap:8px;}
+  .sl input[type=range]{flex:1;accent-color:var(--blue);height:26px;}
+  .sl .v{min-width:64px;text-align:right;font-weight:bold;color:var(--blue-d);font-size:14px;font-variant-numeric:tabular-nums;}
+  .seg{display:inline-flex;gap:3px;border:1px solid var(--line);border-radius:999px;padding:3px;background:#fff;flex-wrap:wrap;}
+  .seg input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+  .seg label{margin:0;padding:6px 18px;border-radius:999px;font-size:13px;font-weight:bold;color:var(--muted);cursor:pointer;}
+  .seg input:checked + label{background:var(--blue);color:#fff;}
+  .derived{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px;}
+  .derived div{background:#f7fafc;border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:12.5px;color:var(--muted);}
+  .derived b{display:block;font-size:16px;color:var(--blue-d);font-variant-numeric:tabular-nums;}
+  .hint{font-size:12px;color:var(--muted);margin-top:6px;}
+  details.more{background:#f7fafc;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-top:14px;}
+  details.more summary{font-size:13.5px;}
+  .res-h{font-size:16px;color:var(--blue-d);font-weight:bold;margin:26px 0 4px;}
+  .res-note{font-size:12.5px;color:var(--muted);margin-bottom:8px;}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;}
+  .card{background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .card .t{font-weight:bold;color:var(--blue-d);font-size:15px;margin-bottom:6px;}
+  .card .l{font-size:12px;color:var(--muted);margin-top:8px;}
+  .card .v{font-size:22px;font-weight:bold;color:var(--blue-d);font-variant-numeric:tabular-nums;line-height:1.4;}
+  .card .v.neg{color:var(--neg);}
+  .card .s{font-size:12px;color:var(--muted);line-height:1.7;}
+  .card .w{font-size:12px;color:var(--neg);line-height:1.7;margin-top:8px;}
+  .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px;}
+  th,td{border:1px solid #cbd5e0;padding:5px 8px;text-align:right;white-space:nowrap;}
+  th{background:#f7fafc;color:var(--blue-d);}
+  td:first-child,th:first-child{text-align:center;}
+  td.neg{color:var(--neg);}
+  .assume{font-size:12px;color:var(--muted);background:#f7fafc;border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-top:14px;}
+  .assume li{margin-left:16px;}
+  ul.plain{padding-left:20px;font-size:14.5px;margin-bottom:14px;}
+  ul.plain li{margin-bottom:6px;}
+  details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+  summary{font-weight:bold;color:var(--blue-d);cursor:pointer;font-size:14.5px;}
+  details p{margin:10px 0 0;font-size:14px;}
+  .cta-box{background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:14px;padding:22px;margin:36px 0;text-align:center;}
+  .cta-box .t{font-weight:bold;color:var(--blue-d);font-size:15px;margin-bottom:8px;}
+  .cta-box p{font-size:13.5px;color:var(--muted);}
+  .cta-btn{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:14px;padding:11px 34px;border-radius:999px;box-shadow:0 6px 18px rgba(43,108,176,.3);margin-top:6px;}
+  .soudan{background:#fff;border:2px solid var(--blue-l);border-radius:14px;padding:24px 22px;margin:30px 0;text-align:center;}
+  .soudan .t{font-weight:bold;color:var(--blue-d);font-size:16.5px;margin-bottom:4px;line-height:1.6;}
+  .soudan .lead-s{font-size:13.5px;color:var(--muted);margin-bottom:14px;}
+  .soudan .opts{list-style:none;padding:0;margin:0 0 18px;display:flex;flex-direction:column;gap:8px;text-align:left;}
+  .soudan .opts li{font-size:13.5px;line-height:1.75;background:#f4f9ff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;}
+  .soudan .opts strong{color:var(--blue-d);}
+  .soudan .btn{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:15px;padding:12px 34px;border-radius:999px;box-shadow:0 6px 18px rgba(43,108,176,.28);}
+  .soudan .line{font-size:13px;color:var(--muted);margin:18px 0 0;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+  .soudan .note-s{font-size:11.5px;color:var(--muted);margin:12px 0 0;}
+  .related{font-size:14px;}
+  .related a{color:var(--blue);font-weight:bold;}
+  .note{font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:30px;line-height:1.8;}
+  footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:36px;}
+  footer a{color:#cfe2f8;}
+  [hidden]{display:none !important;}
+</style>
+<link rel="stylesheet" href="../assets/motion.css">
+</head>
+<body>
+<header><div class="wrap bar"><a class="logo" href="../personal.html">Sonaure</a><a class="nav" href="index.html">無料計算ツール一覧</a></div></header>
+
+<div class="wrap">
+  <h1>減価償却の節税シミュレーション</h1>
+  <p class="sub">年収と物件の条件を入れると、<strong>減価償却でいくら税金が戻る（減る）か</strong>を、個人で買う場合と法人で買う場合で並べて無料で試算します（登録不要）。売るときにかかる税金まで含めた、減価償却の本当の得も出します。</p>
+
+  <div class="calc">
+    <h3>お客様の今の税金</h3>
+    <div class="seg" role="radiogroup" aria-label="立場">
+      <input type="radio" name="role" id="r-emp" value="会社員" checked><label for="r-emp">会社員</label>
+      <input type="radio" name="role" id="r-own" value="会社を経営している"><label for="r-own">会社を経営している</label>
+    </div>
+    <div class="grid" style="margin-top:12px;">
+      <div><label for="salary" id="salary_l">年収（額面・万円）</label><input id="salary" type="number" value="1500" step="50" min="0" inputmode="numeric"></div>
+      <div><label for="social">社会保険料（年・万円）</label><input id="social" type="number" step="1" min="0" inputmode="numeric" placeholder="空欄なら概算"></div>
+      <div><label for="deps">扶養している家族（16歳以上・人）</label><input id="deps" type="number" value="0" step="1" min="0" max="10" inputmode="numeric"></div>
+      <div><label for="other">その他の所得控除（年・万円）</label><input id="other" type="number" value="0" step="1" min="0" inputmode="numeric"></div>
+      <div><label class="chk"><input id="spouse" type="checkbox">配偶者控除あり（収入の無い配偶者）</label></div>
+      <div id="profit_box" hidden><label for="profit">会社の利益（税引前・年・万円）</label><input id="profit" type="number" value="1000" step="100" inputmode="numeric"></div>
+    </div>
+    <p class="hint">年収・社会保険料は源泉徴収票の「支払金額」「社会保険料等の金額」です。会社の利益は、役員報酬を払った後の利益です（年商ではなく利益に税金がかかります）。</p>
+    <div class="derived">
+      <div>所得税（今）<b id="d_it">—</b></div>
+      <div>住民税（今）<b id="d_rt">—</b></div>
+      <div id="d_c_box">合計（今）<b id="d_c">—</b></div>
+    </div>
+
+    <h3>物件</h3>
+    <div class="grid">
+      <div><label for="price">物件価格（万円）</label><input id="price" type="number" value="5000" step="100" min="0" inputmode="numeric"></div>
+      <div><label for="yield">表面利回り（%）</label><input id="yield" type="number" value="7" step="0.1" min="0" inputmode="decimal"></div>
+      <div><label for="bpct">建物の割合（%）</label>
+        <div class="sl"><input id="bpct" type="range" min="0" max="100" step="1" value="50"><span class="v" id="bpct_v">50%</span></div></div>
+      <div><label for="structure">構造</label><select id="structure">
+        <option selected>木造</option>
+        <option>軽量鉄骨造（骨格材3mm以下）</option>
+        <option>軽量鉄骨造（骨格材3mm超4mm以下）</option>
+        <option>重量鉄骨造（骨格材4mm超）</option>
+        <option>RC造・SRC造</option>
+        <option>れんが造・石造・ブロック造</option>
+      </select></div>
+      <div><label for="age">築年数（購入時・年。新築は0）</label><input id="age" type="number" value="25" step="1" min="0" max="100" inputmode="numeric"></div>
+      <div><label for="exp">経費（家賃に対する%）</label>
+        <div class="sl"><input id="exp" type="range" min="0" max="60" step="1" value="20"><span class="v" id="exp_v">20%</span></div></div>
+    </div>
+    <p class="hint">建物の割合は、売買契約書の内訳か固定資産税評価額の比で。土地は減価償却しません。経費は空室・管理費・固定資産税・修繕などをまとめた割合です。</p>
+    <details class="more"><summary>経費を細かく入れる</summary>
+      <label class="chk" style="margin-top:10px;"><input id="use_detail" type="checkbox">細かく入れた金額で計算する（上の割合の代わりに使う）</label>
+      <div class="grid" style="margin-top:10px;">
+        <div><label for="occ">入居率（%）</label><div class="sl"><input id="occ" type="range" min="0" max="100" step="1" value="95"><span class="v" id="occ_v">95%</span></div></div>
+        <div><label for="mgmt">管理費（実際の家賃の%）</label><div class="sl"><input id="mgmt" type="range" min="0" max="20" step="0.5" value="5"><span class="v" id="mgmt_v">5%</span></div></div>
+        <div><label for="repair">修繕費（実際の家賃の%）</label><div class="sl"><input id="repair" type="range" min="0" max="20" step="0.5" value="5"><span class="v" id="repair_v">5%</span></div></div>
+        <div><label for="fixtax">固定資産税・都市計画税（年・万円）</label><input id="fixtax" type="number" value="20" step="1" min="0" inputmode="numeric"></div>
+        <div><label for="othercost">その他の経費（年・万円）</label><input id="othercost" type="number" value="0" step="1" min="0" inputmode="numeric"></div>
+      </div>
+    </details>
+    <label class="chk" style="margin-top:14px;"><input id="use_loan" type="checkbox">ローンを使う（使わない場合は現金で買う計算）</label>
+    <div class="grid" id="loan_box" hidden style="margin-top:10px;">
+      <div><label for="own">自己資金（万円）</label><input id="own" type="number" value="1000" step="100" min="0" inputmode="numeric"></div>
+      <div><label for="rate">金利（年%）</label><input id="rate" type="number" value="2.5" step="0.1" min="0" inputmode="decimal"></div>
+      <div><label for="lyears">借入期間（年）</label><input id="lyears" type="number" value="20" step="1" min="1" max="40" inputmode="numeric"></div>
+    </div>
+    <div class="grid" style="margin-top:14px;">
+      <div><label for="sale">何年目に売るか</label>
+        <div class="sl"><input id="sale" type="range" min="1" max="35" step="1" value="6"><span class="v" id="sale_v">6年目</span></div></div>
+    </div>
+    <div class="derived">
+      <div>耐用年数<b id="d_life">—</b></div>
+      <div>減価償却費（年）<b id="d_dep">—</b></div>
+      <div>1年目の諸費用（経費）<b id="d_cost">—</b></div>
+      <div id="d_loan_box" hidden>借入額<b id="d_loan">—</b></div>
+    </div>
+
+    <div id="results">
+      <div class="res-h">戻る・減る税金（買わなかった場合との差）</div>
+      <p class="res-note">個人の所得税は確定申告で戻り（還付）、住民税は翌年度の分が減ります。法人は法人税等が減ります。▲は税金が増えることを表します。</p>
+      <div class="cols" id="cards_a"></div>
+      <div class="res-h" id="b_title">売るまで含めた減価償却の効果</div>
+      <p class="res-note">減価償却が無かった場合と比べた差です。持っている間に減った税金から、売るときに増える税金（減価償却で帳簿の価値が下がった分にかかる）を引いたものが、減価償却の本当の得です。</p>
+      <div class="cols" id="cards_b"></div>
+      <div id="tables"></div>
+    </div>
+    <p class="res-note" id="noinput" hidden>物件価格と表面利回りを入れると、試算結果が出ます。</p>
+    <div class="assume"><ul id="assume"></ul></div>
+  </div>
+
+  <div class="soudan">
+    <div class="t">この試算をもとに、ご相談いただけます</div>
+    <p class="lead-s">試算した条件のまま、そのまま相談に進めます。</p>
+    <ul class="opts">
+      <li><strong>この条件で収益物件を探したい</strong><br>年収とご希望に合う物件を、減価償却の効き方も含めてお探しします。</li>
+      <li><strong>個人と法人のどちらで買うか相談したい</strong><br>売るときの税金まで含めて、一緒に見比べます。</li>
+    </ul>
+    <a class="btn" href="https://forms.gle/PvbwuzqfPuMUgwLn6" target="_blank" rel="noopener">相談フォームへ →</a>
+    <p class="line">LINEでもご相談いただけます<a href="https://lin.ee/yHprA5U" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a></p>
+    <p class="note-s">宅地建物取引士がお答えします。ご相談にあたって会員登録は必要ありません。</p>
+  </div>
+
+  <div class="cta-box">
+    <div class="t">不動産会社にお勤めの方へ</div>
+    <p>この試算をお客様にそのままお渡しできるPDF／Excelで出力できます。不動産事業者向けツール「Sonaure」で。</p>
+    <a class="cta-btn" href="../index.html">不動産会社向けのSonaureを見る</a>
+  </div>
+
+  <h2>この試算の考え方</h2>
+  <p><strong>減価償却は、現金が出ていかないのに経費になります。</strong>建物の値段を耐用年数で分けて毎年の経費にするため、家賃の利益より大きければ不動産所得は赤字になり、個人なら給与の所得と相殺して税金が戻ります（損益通算）。</p>
+  <ul class="plain">
+    <li><strong>中古の耐用年数は短くなります。</strong>木造で築22年を超えると4年（簡便法）。建物の値段を4年で経費にできるので、1年あたりの経費が大きくなります</li>
+    <li><strong>減らした税金の一部は、売るときに戻ります。</strong>減価償却した分だけ帳簿の価値が下がり、売るときの利益（譲渡所得）が増えるためです。個人は所有5年超なら20.315%で、給与にかかる税率（最大約55%）より低いため、その差が得になります</li>
+    <li><strong>法人は「先送り」に近くなります。</strong>減らすときと売るときで税率がほぼ同じためです。新しく作った法人は、ほかに利益が無いので赤字を繰り越します</li>
+  </ul>
+
+  <h2>よくある質問</h2>
+  <details open><summary>「戻る・減る税金」と「減価償却の効果」は何が違いますか？</summary><p>「戻る・減る税金」は、物件を買わなかった場合と比べて、実際に戻る・減る税金です（所得税は確定申告で還付、住民税は翌年度の分が減額）。家賃の利益にかかる税金も含むので、償却が終わった後の年は税金が増えます。「減価償却の効果」は、減価償却が無かったとした場合と比べた差で、売るときに増える税金まで差し引いた、減価償却だけの得です。</p></details>
+  <details><summary>税金はどう計算していますか？</summary><p>令和8年分の税制で計算しています。基礎控除は所得税が合計所得489万円以下104万円・655万円以下67万円・2,350万円以下62万円（2,350万円超は段階的に減少）、住民税は43万円です。給与所得控除は最低74万円・上限195万円、所得税は5〜45%の速算表に復興特別所得税2.1%、住民税は10%で計算しています。法人は中小法人の標準税率による実効税率（所得400万円以下21.37%・800万円以下23.17%・800万円超33.58%）に、防衛特別法人税と均等割（年7万円）を加えています。</p></details>
+  <details><summary>減価償却費はどう計算していますか？</summary><p>建物の取得価額（物件価格×建物の割合に、仲介手数料と固定資産税の清算金の建物分を足した額）に、定額法の償却率を掛けて計算します。中古の耐用年数は簡便法で、法定耐用年数をすべて経過している場合は法定耐用年数×20%、一部を経過している場合は（法定耐用年数−経過年数）＋経過年数×20%です（1年未満切り捨て・最短2年）。土地は減価償却しません。</p></details>
+  <details><summary>ローンを使うと戻る税金は増えますか？</summary><p>利息は経費になりますが、個人の場合、不動産所得の赤字のうち土地を買うための借入の利息に当たる部分は、給与と相殺できません（租税特別措置法41条の4）。借入はまず建物に充てたものとして計算するため、建物の取得価額を超える借入が土地の分になります。</p></details>
+
+  <p class="note">※ 本ツールは入力された前提と令和8年分の税制による簡易シミュレーションです。社会保険料（空欄のとき）は年収からの概算、配偶者は収入の無い配偶者、扶養は16歳以上の一般の扶養親族として計算しています。1年目も1年分として計算し、売るときは買った価格と同じ価格で売るとしています。住宅ローン控除を受けている方は、所得税が減ると控除しきれない分が出ることがあり、ふるさと納税の上限額も下がります。<strong>実際の投資判断・申告にあたっては、税理士等の専門家にご確認ください。</strong><br>
+  参考：国税庁 No.1199「基礎控除」／No.1410「給与所得控除」／No.2260「所得税の税率」／No.1191「配偶者控除」／No.1180「扶養控除」／No.5404「中古資産の耐用年数」／No.2106「定額法と定率法による減価償却」／No.5759「法人税の税率」／No.5762「青色申告書を提出した事業年度の欠損金の繰越控除」／No.3208「長期譲渡所得の税額の計算」／No.3211「短期譲渡所得の税額の計算」／租税特別措置法第41条の4</p>
+</div>
+
+<footer>
+  <a href="../index.html">Sonaure</a> — 不動産営業のための調査レポート自動作成ツール<br>
+  <a href="../terms.html">利用規約</a>｜<a href="../privacy.html">プライバシーポリシー</a>｜© 2026 Sonaure
+</footer>
+
+<script>
+// <calc> ここから計算（Sonaure の setsuzei.py と同じ計算。tests/test_setsuzei_lp.py が同じ数字になるかを確かめる）
+const LEGAL_LIFE = {"木造": 22, "軽量鉄骨造（骨格材3mm以下）": 19, "軽量鉄骨造（骨格材3mm超4mm以下）": 27,
+  "重量鉄骨造（骨格材4mm超）": 34, "RC造・SRC造": 47, "れんが造・石造・ブロック造": 38};
+const ROLE_EMPLOYEE = "会社員", ROLE_OWNER = "会社を経営している";
+const BUY_PERSONAL = "個人で買う", BUY_NEW_CORP = "新しく法人を作って買う", BUY_OWN_CORP = "今の会社で買う";
+const FIRE_YEARS = 5, FUKKO = 0.021, RESIDENT_RATE = 0.10, RESIDENT_PER_CAPITA = 0.5;
+const SPOUSE_RESIDENT_DIFF = [[900, 5], [950, 4], [1000, 2]], DEP_IT = 38, DEP_RT = 33;
+const IT_TABLE = [[195, 0.05, 0], [330, 0.10, 9.75], [695, 0.20, 42.75], [900, 0.23, 63.6], [1800, 0.33, 153.6],
+  [4000, 0.40, 279.6], [Infinity, 0.45, 479.6]];
+const TAX_SHORT = 0.3963, TAX_LONG = 0.20315;
+const PENSION_RATE = 0.0915, PENSION_CAP = 65, HEALTH_RATE = 0.051, HEALTH_CAP = 139, EMPLOY_RATE = 0.005;
+const CORP_LOCAL = 0.103 + 0.07, SPECIAL_BIZ = 0.37;
+function effective(corp, biz) { return (corp * (1 + CORP_LOCAL) + biz * (1 + SPECIAL_BIZ)) / (1 + biz * (1 + SPECIAL_BIZ)); }
+const CORP_BRACKETS = [[400, effective(0.15, 0.035)], [800, effective(0.15, 0.053)], [Infinity, effective(0.232, 0.07)]];
+const CORP_PER_CAPITA = 7, DEFENSE_RATE = 0.04, DEFENSE_BASE = 500;
+
+function usefulLife(structure, age) {
+  const legal = LEGAL_LIFE[structure];
+  if (age <= 0) return legal;
+  const life = age >= legal ? legal * 0.2 : (legal - age) + age * 0.2;
+  return Math.max(2, Math.trunc(life));
+}
+function slRate(life) { return Math.ceil(Number((1000 / life).toFixed(9))) / 1000; }
+function depreciation(cost, life, years) {
+  const rate = slRate(life), out = [];
+  let left = cost;
+  for (let i = 0; i < years; i++) { const d = Math.min(cost * rate, left); out.push(d); left -= d; }
+  return out;
+}
+function salaryDeduction(s) {
+  if (s <= 220) return Math.min(s, 74);
+  if (s <= 360) return s * 0.30 + 8;
+  if (s <= 660) return s * 0.20 + 44;
+  if (s <= 850) return s * 0.10 + 110;
+  return 195;
+}
+function basicDeduction(t) {
+  const it = t <= 489 ? 104 : t <= 655 ? 67 : t <= 2350 ? 62 : t <= 2400 ? 48 : t <= 2450 ? 32 : t <= 2500 ? 16 : 0;
+  const rt = t <= 2400 ? 43 : t <= 2450 ? 29 : t <= 2500 ? 15 : 0;
+  return [it, rt];
+}
+function spouseDeduction(t) {
+  if (t <= 900) return [38, 33];
+  if (t <= 950) return [26, 22];
+  if (t <= 1000) return [13, 11];
+  return [0, 0];
+}
+function incomeTax(x) {
+  if (x <= 0) return 0;
+  for (const [top, rate, sub] of IT_TABLE) if (x <= top) return (x * rate - sub) * (1 + FUKKO);
+  return 0;
+}
+function adjustment(total, taxable, spouse, deps) {
+  if (total > 2500) return 0;
+  let diff = 5 + 5 * deps;
+  if (spouse) { const hit = SPOUSE_RESIDENT_DIFF.find(([top]) => total <= top); diff += hit ? hit[1] : 0; }
+  if (taxable <= 200) return Math.min(diff, taxable) * 0.05;
+  return Math.max((diff - (taxable - 200)) * 0.05, 0.25);
+}
+function estimateSocial(salary, role) {
+  if (salary <= 0) return 0;
+  const m = salary / 12;
+  let a = (PENSION_RATE * Math.min(m, PENSION_CAP) + HEALTH_RATE * Math.min(m, HEALTH_CAP)) * 12;
+  if (role === ROLE_EMPLOYEE) a += salary * EMPLOY_RATE;
+  return a;
+}
+function personalTax(salary, re, kw) {
+  const g = Math.max(0, salary - salaryDeduction(salary));
+  let total = g + re;
+  const shortfall = Math.max(0, -total);
+  total = Math.max(0, total);
+  const [bIt, bRt] = basicDeduction(total);
+  const [sIt, sRt] = kw.spouse ? spouseDeduction(total) : [0, 0];
+  const it = incomeTax(Math.max(0, total - kw.social - kw.other - bIt - sIt - DEP_IT * kw.dependents));
+  const trt = Math.max(0, total - kw.social - kw.other - bRt - sRt - DEP_RT * kw.dependents);
+  const rt = Math.max(0, trt * RESIDENT_RATE - adjustment(total, trt, kw.spouse, kw.dependents)) + RESIDENT_PER_CAPITA;
+  return {"所得税": it, "住民税": rt, "合計": it + rt, "合計所得": total, "引ききれない赤字": shortfall};
+}
+function corpTax(income, perCapita = true) {
+  const p = Math.max(0, income);
+  let tax = 0, lower = 0;
+  for (const [top, rate] of CORP_BRACKETS) { if (p > lower) tax += (Math.min(p, top) - lower) * rate; lower = top; }
+  const corp = 0.15 * Math.min(p, 800) + 0.232 * Math.max(0, p - 800);
+  tax += Math.max(0, corp - DEFENSE_BASE) * DEFENSE_RATE;
+  return tax + (perCapita ? CORP_PER_CAPITA : 0);
+}
+class LossCarry {
+  constructor() { this.items = []; }
+  copy() { const c = new LossCarry(); c.items = this.items.map(x => x.slice()); return c; }
+  apply(year, income) {
+    if (income < 0) { this.items.push([year, -income]); return [0, 0]; }
+    let used = 0;
+    for (const item of this.items) {
+      if (year - item[0] > 10 || item[1] <= 0) continue;
+      const take = Math.min(item[1], income - used);
+      item[1] -= take; used += take;
+      if (used >= income) break;
+    }
+    return [income - used, used];
+  }
+  balance(year) { return this.items.reduce((a, [y, r]) => a + (year - y <= 10 && r > 0 ? r : 0), 0); }
+}
+function brokerage(price) {
+  const fee = price <= 200 ? price * 0.05 : price <= 400 ? price * 0.04 + 2 : price * 0.03 + 6;
+  return fee * 1.10;
+}
+function stamp(price) {
+  return price <= 100 ? 0.05 : price <= 500 ? 0.1 : price <= 1000 ? 0.5 : price <= 5000 ? 1 : price <= 10000 ? 3 : 6;
+}
+function purchaseCosts(price, loan, buildingPct) {
+  // 物件購入の諸費用概算書（投資用）と同じ並び・同じ計算
+  const land = (100 - buildingPct) / 100, assessed = price * 0.7, items = [];
+  items.push(["仲介手数料", brokerage(price)]);
+  items.push(["売買契約書の印紙税", stamp(price)]);
+  items.push(["登録免許税（所有権移転・目安）", assessed * (land * 0.015 + (1 - land) * 0.02)]);
+  items.push(["司法書士報酬（移転登記）", 10]);
+  items.push(["不動産取得税", assessed * (land * 0.5 * 0.03 + (1 - land) * 0.03)]);
+  if (loan > 0) {
+    items.push(["融資事務手数料", loan * 3.3 / 100]);
+    items.push(["抵当権設定費用", loan * 0.004 + 5]);
+    items.push(["金銭消費貸借契約（ローン契約）の印紙税", 1]);
+  }
+  items.push(["火災保険料（5年一括の目安）", 30]);
+  items.push(["固定資産税・都市計画税の清算金", price * 0.002]);
+  const capitalNames = ["仲介手数料", "固定資産税・都市計画税の清算金"], fireName = "火災保険料（5年一括の目安）";
+  let total = 0, capital = 0, fire = 0, first = 0;
+  for (const [n, a] of items) {
+    total += a;
+    if (capitalNames.includes(n)) capital += a; else if (n === fireName) fire += a; else first += a;
+  }
+  return {items, total, capital, fire, first_year: first};
+}
+function loanAmount(price, own, buildingPct) {
+  let loan = Math.max(0, price - own);
+  for (let i = 0; i < 10; i++) {
+    const nxt = Math.max(0, price + purchaseCosts(price, loan, buildingPct).total - own);
+    const done = Math.abs(nxt - loan) < 0.01;
+    loan = nxt;
+    if (done) break;
+  }
+  return [loan, purchaseCosts(price, loan, buildingPct)];
+}
+function loanSchedule(principal, ratePct, years) {
+  // キャッシュフローシミュレーションと同じ元利均等（月ごとに回して年で積む）
+  if (principal <= 0 || years <= 0) return [];
+  const P = principal * 10000, r = ratePct / 100 / 12, n = years * 12;
+  const monthly = r > 0 ? P * r / (1 - Math.pow(1 + r, -n)) : P / n;
+  const rows = [];
+  let bal = P;
+  for (let y = 1; y <= years; y++) {
+    let interest = 0, princ = 0;
+    for (let m = 0; m < 12; m++) { const i = bal * r, p = monthly - i; bal -= p; interest += i; princ += p; }
+    rows.push({year: y, interest: interest / 10000, principal: princ / 10000, balance: Math.max(0, bal) / 10000});
+  }
+  return rows;
+}
+function summary(rows, saleTax, saleTaxNoDep, life) {
+  const period = Math.min(life, rows.length);
+  const sum = a => a.reduce((s, r) => s + r["税金の差"], 0);
+  const during = sum(rows.slice(0, period)), after = rows.slice(period);
+  const saved = rows.reduce((s, r) => s + r["減価償却で減った税金"], 0), recapture = saleTax - saleTaxNoDep;
+  return {"1年目": rows.length ? rows[0]["税金の差"] : 0, "償却中の合計": during, "対象年数": period, "償却年数": life,
+    "償却後の年あたり": after.length ? sum(after) / after.length : null, "売るときの税金": saleTax,
+    "減価償却で減った税金": saved, "売るときに増える税金": recapture, "減価償却の効果": saved - recapture};
+}
+function personalScenario(base, salary, kw, b0, landRatio, gain, gainNoDep, saleYear, life) {
+  const netted = (r, interest) => r < 0 ? Math.min(0, r + interest * landRatio) : r;
+  const rows = [], warnings = [];
+  for (const b of base) {
+    const r = netted(b["不動産の損益"], b["支払利息"]);
+    const t = personalTax(salary, r, kw);
+    const t0 = personalTax(salary, netted(b["不動産の損益"] + b["減価償却費"], b["支払利息"]), kw);
+    rows.push({...b, "損益通算する額": r, "所得税の差": b0["所得税"] - t["所得税"], "住民税の差": b0["住民税"] - t["住民税"],
+      "税金の差": b0["合計"] - t["合計"], "減価償却で減った税金": t0["合計"] - t["合計"], "引ききれない赤字": t["引ききれない赤字"]});
+    if (t["引ききれない赤字"] > 0) warnings.push(`${b["年目"]}年目は、不動産の赤字が給与の所得より約${fmt0(t["引ききれない赤字"])}万円大きく、その分はこの年の税金から引ききれません（青色申告なら翌年以後3年間繰り越せます。この試算には入れていません）。`);
+  }
+  const longTerm = saleYear >= 6, rate = longTerm ? TAX_LONG : TAX_SHORT;
+  const saleTax = Math.max(0, gain) * rate;
+  if (gain < 0) warnings.push("売るときは損（譲渡損失）になる計算です。土地・建物の譲渡損失は給与など他の所得と相殺できません。");
+  return {key: BUY_PERSONAL, title: BUY_PERSONAL, kind: "personal", rows, sale_rate: rate * 100, long_term: longTerm,
+    warnings, ...summary(rows, saleTax, Math.max(0, gainNoDep) * rate, life)};
+}
+function corpRun(base, profit, gain, saleYear, withDep) {
+  const carry = new LossCarry(), out = [];
+  let saleTax = 0;
+  for (const b of base) {
+    const y = b["年目"], income = profit + b["不動産の損益"] + (withDep ? 0 : b["減価償却費"]);
+    const before = carry.copy();
+    const [taxable, used] = carry.apply(y, income);
+    const t = corpTax(taxable);
+    if (y === saleYear) saleTax = corpTax(before.apply(y, income + gain)[0]) - t;
+    out.push({tax: t, income, used, left: carry.balance(y)});
+  }
+  return [out, saleTax];
+}
+function corpScenario(key, base, profit, baseTax, gain, gainNoDep, saleYear, life) {
+  const isNew = profit === null, p = isNew ? 0 : profit;
+  const [run, saleTax] = corpRun(base, p, gain, saleYear, true);
+  const [run0, saleTax0] = corpRun(base, p, gainNoDep, saleYear, false);
+  const rows = base.map((b, i) => ({...b, "法人の所得": run[i].income, "使った繰越欠損金": run[i].used,
+    "繰越欠損金の残り": run[i].left, "税金の差": baseTax - run[i].tax, "減価償却で減った税金": run0[i].tax - run[i].tax}));
+  const warnings = isNew ? ["新しい法人にはほかの利益が無いので、赤字はその年の税金を減らさず、翌年以後10年間繰り越して将来の家賃の利益や売却益と相殺します。法人住民税の均等割（年7万円）は赤字でもかかります。"] : [];
+  return {key, title: key, kind: "corp", "new": isNew, rows, warnings, ...summary(rows, saleTax, saleTax0, life)};
+}
+function simulate(a) {
+  const saleYear = Math.max(1, Math.trunc(a.sale_year || 6)), years = saleYear;
+  const bp = Math.max(0, Math.min(100, a.building_pct)) / 100;
+  let loan = 0, pc;
+  if (a.own_funds === null || a.own_funds === undefined || !(a.loan_years > 0)) pc = purchaseCosts(a.price, 0, a.building_pct);
+  else [loan, pc] = loanAmount(a.price, a.own_funds, a.building_pct);
+  const buildingCost = a.price * bp + pc.capital * bp, landCost = a.price * (1 - bp) + pc.capital * (1 - bp);
+  const life = usefulLife(a.structure, Math.trunc(a.age)), deps = depreciation(buildingCost, life, years);
+  const sched = loan > 0 ? loanSchedule(loan, a.loan_rate_pct || 0, Math.trunc(a.loan_years || 0)) : [];
+  const landRatio = loan > 0 ? Math.max(0, loan - buildingCost) / loan : 0;
+  const rent = a.price * a.yield_pct / 100;
+  let income, expense;
+  if (a.expense_detail) {
+    const d = a.expense_detail;
+    income = rent * d.occupancy / 100;
+    expense = income * (d.mgmt + d.repair) / 100 + d.fixed_tax + d.other;
+  } else { income = rent; expense = rent * (a.expense_pct ?? 20) / 100; }
+  const base = [];
+  for (let y = 1; y <= years; y++) {
+    const interest = y <= sched.length ? sched[y - 1].interest : 0;
+    const extra = (y === 1 ? pc.first_year : 0) + (y <= FIRE_YEARS ? pc.fire / FIRE_YEARS : 0);
+    const dep = deps[y - 1];
+    base.push({"年目": y, "家賃収入": income, "経費": expense, "諸費用": extra, "減価償却費": dep, "支払利息": interest,
+      "不動産の損益": income - expense - extra - dep - interest});
+  }
+  const depTotal = deps.reduce((s, x) => s + x, 0);
+  const saleCost = brokerage(a.price) + stamp(a.price);
+  const book = landCost + buildingCost - depTotal;
+  const gain = a.price - saleCost - book, gainNoDep = a.price - saleCost - (landCost + buildingCost);
+  const role = a.role || ROLE_EMPLOYEE, isOwner = role === ROLE_OWNER;
+  const social = (a.social === null || a.social === undefined) ? estimateSocial(a.salary, role) : a.social;
+  const kw = {social, spouse: !!a.spouse, dependents: Math.trunc(a.dependents || 0), other: a.other_deduction || 0};
+  const b0 = personalTax(a.salary, 0, kw), baseCorp = isOwner ? corpTax(a.company_profit || 0) : 0;
+  const scenarios = [personalScenario(base, a.salary, kw, b0, landRatio, gain, gainNoDep, saleYear, life)];
+  scenarios.push(isOwner ? corpScenario(BUY_OWN_CORP, base, a.company_profit || 0, baseCorp, gain, gainNoDep, saleYear, life)
+                         : corpScenario(BUY_NEW_CORP, base, null, 0, gain, gainNoDep, saleYear, life));
+  return {role, current: {"所得税": b0["所得税"], "住民税": b0["住民税"], "個人の合計": b0["合計"],
+      "法人税等": isOwner ? baseCorp : null, "社会保険料": social},
+    property: {"耐用年数": life, "償却率": slRate(life), "年の減価償却費": buildingCost * slRate(life),
+      "建物の取得価額": buildingCost, "借入額": loan, "諸費用": pc, "売却益": gain},
+    scenarios, sale_year: saleYear};
+}
+function fmt0(v) { return Math.round(v).toLocaleString("ja-JP"); }
+// </calc> ここまで計算
+
+// ---- 画面 ----
+const $ = id => document.getElementById(id);
+function f1(v) { return Math.abs(v).toLocaleString("ja-JP", {minimumFractionDigits: 1, maximumFractionDigits: 1}); }
+function money(v, opt = {}) {
+  if (v === null || v === undefined) return "—";
+  if (v >= 0) return opt.short ? `${f1(v)}万円` : `約 ${f1(v)} 万円`;
+  return opt.short ? `▲${f1(v)}万円` : `▲ ${f1(v)} 万円` + (opt.loss ? "（損）" : "（増える）");
+}
+function cell(v) { return v >= 0 ? f1(v) : `▲${f1(v)}`; }
+function num(id) { const v = parseFloat($(id).value); return isNaN(v) ? 0 : v; }
+function periodLabel(sc) { return sc["対象年数"] < sc["償却年数"] ? `持っている${sc["対象年数"]}年間の合計` : `償却期間（${sc["償却年数"]}年）の合計`; }
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c])); }
+
+function inputs() {
+  const role = document.querySelector('input[name="role"]:checked').value;
+  const detail = $("use_detail").checked ? {occupancy: num("occ"), mgmt: num("mgmt"), repair: num("repair"),
+    fixed_tax: num("fixtax"), other: num("othercost")} : null;
+  const loan = $("use_loan").checked;
+  const socialRaw = $("social").value.trim();
+  return {role, salary: num("salary"), social: socialRaw === "" ? null : num("social"), spouse: $("spouse").checked,
+    dependents: Math.trunc(num("deps")), other_deduction: num("other"), company_profit: num("profit"),
+    price: num("price"), yield_pct: num("yield"), building_pct: num("bpct"), structure: $("structure").value,
+    age: Math.trunc(num("age")), expense_pct: num("exp"), expense_detail: detail,
+    own_funds: loan ? num("own") : null, loan_rate_pct: loan ? num("rate") : 0, loan_years: loan ? Math.trunc(num("lyears")) : 0,
+    sale_year: Math.trunc(num("sale"))};
+}
+
+function render() {
+  const a = inputs(), owner = a.role === ROLE_OWNER;
+  $("profit_box").hidden = !owner;
+  $("loan_box").hidden = !$("use_loan").checked;
+  $("salary_l").textContent = owner ? "役員報酬（額面・年・万円）" : "年収（額面・万円）";
+  for (const [id, unit] of [["bpct", "%"], ["exp", "%"], ["occ", "%"], ["mgmt", "%"], ["repair", "%"]]) $(id + "_v").textContent = $(id).value + unit;
+  $("sale_v").textContent = $("sale").value + "年目";
+  $("social").placeholder = `空欄なら概算 約${fmt0(estimateSocial(a.salary, a.role))}万円`;
+  const kw = {social: a.social === null ? estimateSocial(a.salary, a.role) : a.social, spouse: a.spouse, dependents: a.dependents, other: a.other_deduction};
+  const now = personalTax(a.salary, 0, kw);
+  $("d_it").textContent = `約 ${fmt0(now["所得税"])} 万円`;
+  $("d_rt").textContent = `約 ${fmt0(now["住民税"])} 万円`;
+  $("d_c_box").firstChild.textContent = owner ? "会社の税金（今）" : "合計（今）";
+  $("d_c").textContent = `約 ${fmt0(owner ? corpTax(a.company_profit) : now["合計"])} 万円`;
+  const life = usefulLife(a.structure, a.age);
+  $("d_life").textContent = `${life}年` + (a.age <= 0 ? "（新築）" : "（簡便法）");
+  const ready = a.price > 0 && a.yield_pct > 0;
+  $("results").hidden = !ready;
+  $("noinput").hidden = ready;
+  if (!ready) return;
+  const r = simulate(a), p = r.property;
+  $("d_dep").textContent = `約 ${fmt0(p["年の減価償却費"])} 万円`;
+  $("d_cost").textContent = `約 ${fmt0(p["諸費用"].first_year)} 万円`;
+  $("d_loan_box").hidden = !p["借入額"];
+  $("d_loan").textContent = `約 ${fmt0(p["借入額"])} 万円`;
+  $("b_title").textContent = `売るまで含めた減価償却の効果（${r.sale_year}年目に売る場合）`;
+  const vcls = v => "v" + (v < 0 ? " neg" : "");
+  $("cards_a").innerHTML = r.scenarios.map(sc => {
+    const r1 = sc.rows[0];
+    const split = sc.kind === "personal" ? `<div class="s">うち所得税 ${money(r1["所得税の差"], {short: true})}（確定申告で還付）・住民税 ${money(r1["住民税の差"], {short: true})}（翌年度に減額）</div>` : "";
+    const after = sc["償却後の年あたり"] !== null ? `<div class="s">償却が終わった後は家賃の利益に税金がかかり、1年あたり ${money(sc["償却後の年あたり"], {short: true})} です。</div>` : "";
+    const warns = sc.warnings.map(w => `<div class="w">⚠ ${esc(w)}</div>`).join("");
+    return `<div class="card"><div class="t">${esc(sc.title)}</div>
+      <div class="l">1年目に戻る・減る税金</div><div class="${vcls(sc["1年目"])}">${money(sc["1年目"])}</div>${split}
+      <div class="l">${periodLabel(sc)}</div><div class="${vcls(sc["償却中の合計"])}">${money(sc["償却中の合計"])}</div>${after}${warns}</div>`;
+  }).join("");
+  $("cards_b").innerHTML = r.scenarios.map(sc => {
+    const how = sc.kind === "personal" ? `個人の譲渡税 ${sc.sale_rate.toFixed(3)}%（${sc.long_term ? "長期" : "短期"}）` : "法人の売却益は会社の所得に足して課税";
+    return `<div class="card"><div class="t">${esc(sc.title)}</div>
+      <div class="l">減価償却で減った税金</div><div class="${vcls(sc["減価償却で減った税金"])}">${money(sc["減価償却で減った税金"])}</div>
+      <div class="l">売るときに増える税金</div><div class="v">${money(sc["売るときに増える税金"])}</div><div class="s">${how}</div>
+      <div class="l">差し引き（減価償却の効果）</div><div class="${vcls(sc["減価償却の効果"])}">${money(sc["減価償却の効果"], {loss: true})}</div></div>`;
+  }).join("");
+  $("tables").innerHTML = r.scenarios.map(sc => {
+    const personal = sc.kind === "personal";
+    const head = ["年目", "家賃収入", "経費", "諸費用", "減価償却", "利息", "不動産の損益"]
+      .concat(personal ? ["所得税", "住民税", "戻る・減る税金"] : ["繰越欠損金", "減る法人税等"]);
+    const body = sc.rows.map(x => {
+      const cells = [x["年目"], cell(x["家賃収入"]), cell(x["経費"]), x["諸費用"] ? cell(x["諸費用"]) : "—",
+        x["減価償却費"] ? cell(x["減価償却費"]) : "—", x["支払利息"] ? cell(x["支払利息"]) : "—", cell(x["不動産の損益"])]
+        .concat(personal ? [cell(x["所得税の差"]), cell(x["住民税の差"]), cell(x["税金の差"])]
+                         : [x["繰越欠損金の残り"] ? cell(x["繰越欠損金の残り"]) : "—", cell(x["税金の差"])]);
+      return "<tr>" + cells.map(c => `<td${String(c).startsWith("▲") ? ' class="neg"' : ""}>${c}</td>`).join("") + "</tr>";
+    }).join("");
+    return `<details class="more"><summary>${esc(sc.title)}の年ごとの明細（単位：万円）</summary><div class="tw"><table><tr>${head.map(h => `<th>${h}</th>`).join("")}</tr>${body}</table></div></details>`;
+  }).join("");
+  const notes = [
+    "令和8年分の税制（基礎控除・給与所得控除は令和8年度改正後）が毎年続くとして計算した概算です（所得税は復興特別所得税2.1%を含む）。",
+    `建物の取得価額 約${fmt0(p["建物の取得価額"])}万円（仲介手数料・固定資産税の清算金の建物分を含む）を、耐用年数${p["耐用年数"]}年・償却率${p["償却率"].toFixed(3)}の定額法で償却。登録免許税・司法書士報酬・不動産取得税・ローンの手数料・印紙税は1年目の経費、火災保険料は5年で按分しています。`,
+    `${r.sale_year}年目の終わりに、買った価格と同じ価格で売るとして計算しています（値上がり・値下がりは見込みません）。`,
+    "法人は中小法人の標準税率（実効税率 21.37%・23.17%・33.58%）に、防衛特別法人税と均等割（年7万円）を加え、赤字は10年間繰り越しています。",
+  ];
+  if (p["借入額"]) notes.push("個人の不動産所得の赤字のうち、土地を買うための借入の利息に当たる部分は給与と相殺できません（租税特別措置法41条の4）。");
+  if (a.social === null) notes.push("社会保険料は年収からの概算です（40歳以上の介護保険料は含みません）。");
+  $("assume").innerHTML = notes.map(n => `<li>${esc(n)}</li>`).join("");
+}
+
+document.querySelectorAll("input, select").forEach(el => el.addEventListener("input", render));
+document.querySelectorAll("input[type=radio], input[type=checkbox], select").forEach(el => el.addEventListener("change", render));
+render();
+</script>
+<script src="../assets/motion.js" defer></script>
+</body>
+</html>
