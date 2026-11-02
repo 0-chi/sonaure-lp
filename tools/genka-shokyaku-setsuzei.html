@@ -6,10 +6,10 @@
 <!-- 公開前の確認中：検索に載せず、一覧・サイトマップ・記事からもまだリンクしない。確認が済んだら noindex を外して組み込む -->
 <meta name="robots" content="noindex, nofollow">
 <title>減価償却の節税シミュレーション｜年収と物件から、戻る税金を個人・法人で比べる【無料】</title>
-<meta name="description" content="年収（役員報酬）と収益物件の条件を入れると、減価償却でいくら税金が戻る（減る）かを、個人で買う場合と法人で買う場合で並べて無料で試算。令和8年分の税制（基礎控除・給与所得控除の改正後）、中古の簡便法、売るときの税金まで含めた減価償却の本当の得も出します。">
+<meta name="description" content="年収（役員報酬）と収益物件の条件を入れると、減価償却でいくら税金が戻る（減る）かを、個人で買うか法人で買うかを選んで無料で試算。令和8年分の税制（基礎控除・給与所得控除の改正後）、中古の簡便法、売るときの税金まで含めた減価償却の本当の得も出します。">
 <link rel="canonical" href="https://sonae-are.com/tools/genka-shokyaku-setsuzei.html">
 <meta property="og:title" content="減価償却の節税シミュレーション【無料】">
-<meta property="og:description" content="減価償却でいくら税金が戻るかを、個人で買う場合と法人で買う場合で並べて試算。売るときの税金まで含めて比べます。">
+<meta property="og:description" content="減価償却でいくら税金が戻るかを、個人で買うか法人で買うかを選んで試算。売るときの税金まで含めて出します。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sonae-are.com/tools/genka-shokyaku-setsuzei.html">
 <script type="application/ld+json">
@@ -20,7 +20,7 @@
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
   "url": "https://sonae-are.com/tools/genka-shokyaku-setsuzei.html",
-  "description": "年収（役員報酬）と会社の利益から今の税金を出し、収益物件を買ったときに減価償却でいくら税金が戻る（減る）かを、個人で買う場合と法人で買う場合で並べて年ごとに試算するツール。売るときにかかる税金まで含めた減価償却の効果も出します。",
+  "description": "年収（役員報酬）と会社の利益から今の税金を出し、収益物件を買ったときに減価償却でいくら税金が戻る（減る）かを、個人で買うか法人で買うかを選んで年ごとに試算するツール。売るときにかかる税金まで含めた減価償却の効果も出します。",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}
 }
 </script>
@@ -109,7 +109,7 @@
 
 <div class="wrap">
   <h1>減価償却の節税シミュレーション</h1>
-  <p class="sub">年収と物件の条件を入れると、<strong>減価償却でいくら税金が戻る（減る）か</strong>を、個人で買う場合と法人で買う場合で並べて無料で試算します（登録不要）。売るときにかかる税金まで含めた、減価償却の本当の得も出します。</p>
+  <p class="sub">年収と物件の条件を入れると、<strong>減価償却でいくら税金が戻る（減る）か</strong>を、個人で買うか法人で買うかを選んで無料で試算します（登録不要）。売るときにかかる税金まで含めた、減価償却の本当の得も出します。</p>
 
   <div class="calc">
     <h3>お客様の今の税金</h3>
@@ -133,7 +133,11 @@
     </div>
 
     <h3>物件</h3>
-    <div class="grid">
+    <div class="seg" role="radiogroup" aria-label="買い方">
+      <input type="radio" name="buy" id="b-per" value="personal" checked><label for="b-per">個人で買う</label>
+      <input type="radio" name="buy" id="b-corp" value="corp"><label for="b-corp" id="b_corp_l">新しく法人を作って買う</label>
+    </div>
+    <div class="grid" style="margin-top:12px;">
       <div><label for="price">物件価格（万円）</label><input id="price" type="number" value="5000" step="100" min="0" inputmode="numeric"></div>
       <div><label for="yield">表面利回り（%）</label><input id="yield" type="number" value="7" step="0.1" min="0" inputmode="decimal"></div>
       <div><label for="bpct">建物の割合（%）</label>
@@ -161,8 +165,8 @@
         <div><label for="othercost">その他の経費（年・万円）</label><input id="othercost" type="number" value="0" step="1" min="0" inputmode="numeric"></div>
       </div>
     </details>
-    <label class="chk" style="margin-top:14px;"><input id="use_loan" type="checkbox">ローンを使う（使わない場合は現金で買う計算）</label>
-    <div class="grid" id="loan_box" hidden style="margin-top:10px;">
+    <label class="chk" style="margin-top:14px;"><input id="cash" type="checkbox">現金で買う（チェックを入れると、ローンを使わない計算になります）</label>
+    <div class="grid" id="loan_box" style="margin-top:10px;">
       <div><label for="own">自己資金（万円）</label><input id="own" type="number" value="1000" step="100" min="0" inputmode="numeric"></div>
       <div><label for="rate">金利（年%）</label><input id="rate" type="number" value="2.5" step="0.1" min="0" inputmode="decimal"></div>
       <div><label for="lyears">借入期間（年）</label><input id="lyears" type="number" value="20" step="1" min="1" max="40" inputmode="numeric"></div>
@@ -180,7 +184,7 @@
 
     <div id="results">
       <div class="res-h">戻る・減る税金（買わなかった場合との差）</div>
-      <p class="res-note">個人の所得税は確定申告で戻り（還付）、住民税は翌年度の分が減ります。法人は法人税等が減ります。▲は税金が増えることを表します。</p>
+      <p class="res-note" id="a_note"></p>
       <div class="cols" id="cards_a"></div>
       <div class="res-h" id="b_title">売るまで含めた減価償却の効果</div>
       <p class="res-note">減価償却が無かった場合と比べた差です。持っている間に減った税金から、売るときに増える税金（減価償却で帳簿の価値が下がった分にかかる）を引いたものが、減価償却の本当の得です。</p>
@@ -470,9 +474,10 @@ function simulate(a) {
   const social = (a.social === null || a.social === undefined) ? estimateSocial(a.salary, role) : a.social;
   const kw = {social, spouse: !!a.spouse, dependents: Math.trunc(a.dependents || 0), other: a.other_deduction || 0};
   const b0 = personalTax(a.salary, 0, kw), baseCorp = isOwner ? corpTax(a.company_profit || 0) : 0;
-  const scenarios = [personalScenario(base, a.salary, kw, b0, landRatio, gain, gainNoDep, saleYear, life)];
-  scenarios.push(isOwner ? corpScenario(BUY_OWN_CORP, base, a.company_profit || 0, baseCorp, gain, gainNoDep, saleYear, life)
-                         : corpScenario(BUY_NEW_CORP, base, null, 0, gain, gainNoDep, saleYear, life));
+  const buy = a.buy || null, scenarios = [];   // "personal"／"corp"。無ければ両方
+  if (buy === null || buy === "personal") scenarios.push(personalScenario(base, a.salary, kw, b0, landRatio, gain, gainNoDep, saleYear, life));
+  if (buy === null || buy === "corp") scenarios.push(isOwner ? corpScenario(BUY_OWN_CORP, base, a.company_profit || 0, baseCorp, gain, gainNoDep, saleYear, life)
+                                                            : corpScenario(BUY_NEW_CORP, base, null, 0, gain, gainNoDep, saleYear, life));
   return {role, current: {"所得税": b0["所得税"], "住民税": b0["住民税"], "個人の合計": b0["合計"],
       "法人税等": isOwner ? baseCorp : null, "社会保険料": social},
     property: {"耐用年数": life, "償却率": slRate(life), "年の減価償却費": buildingCost * slRate(life),
@@ -499,9 +504,10 @@ function inputs() {
   const role = document.querySelector('input[name="role"]:checked').value;
   const detail = $("use_detail").checked ? {occupancy: num("occ"), mgmt: num("mgmt"), repair: num("repair"),
     fixed_tax: num("fixtax"), other: num("othercost")} : null;
-  const loan = $("use_loan").checked;
+  const loan = !$("cash").checked;
+  const buy = document.querySelector('input[name="buy"]:checked').value;
   const socialRaw = $("social").value.trim();
-  return {role, salary: num("salary"), social: socialRaw === "" ? null : num("social"), spouse: $("spouse").checked,
+  return {role, buy, salary: num("salary"), social: socialRaw === "" ? null : num("social"), spouse: $("spouse").checked,
     dependents: Math.trunc(num("deps")), other_deduction: num("other"), company_profit: num("profit"),
     price: num("price"), yield_pct: num("yield"), building_pct: num("bpct"), structure: $("structure").value,
     age: Math.trunc(num("age")), expense_pct: num("exp"), expense_detail: detail,
@@ -512,7 +518,8 @@ function inputs() {
 function render() {
   const a = inputs(), owner = a.role === ROLE_OWNER;
   $("profit_box").hidden = !owner;
-  $("loan_box").hidden = !$("use_loan").checked;
+  $("loan_box").hidden = $("cash").checked;
+  $("b_corp_l").textContent = owner ? BUY_OWN_CORP : BUY_NEW_CORP;
   $("salary_l").textContent = owner ? "役員報酬（額面・年・万円）" : "年収（額面・万円）";
   for (const [id, unit] of [["bpct", "%"], ["exp", "%"], ["occ", "%"], ["mgmt", "%"], ["repair", "%"]]) $(id + "_v").textContent = $(id).value + unit;
   $("sale_v").textContent = $("sale").value + "年目";
@@ -535,6 +542,8 @@ function render() {
   $("d_loan_box").hidden = !p["借入額"];
   $("d_loan").textContent = `約 ${fmt0(p["借入額"])} 万円`;
   $("b_title").textContent = `売るまで含めた減価償却の効果（${r.sale_year}年目に売る場合）`;
+  const sc0 = r.scenarios[0], personal = sc0.kind === "personal";
+  $("a_note").textContent = `${sc0.title}場合の試算です。` + (personal ? "所得税は確定申告で戻り（還付）、住民税は翌年度の分が減ります。" : "法人税等が減ります。") + "▲は税金が増えることを表します。";
   const vcls = v => "v" + (v < 0 ? " neg" : "");
   $("cards_a").innerHTML = r.scenarios.map(sc => {
     const r1 = sc.rows[0];
@@ -569,9 +578,10 @@ function render() {
     "令和8年分の税制（基礎控除・給与所得控除は令和8年度改正後）が毎年続くとして計算した概算です（所得税は復興特別所得税2.1%を含む）。",
     `建物の取得価額 約${fmt0(p["建物の取得価額"])}万円（仲介手数料・固定資産税の清算金の建物分を含む）を、耐用年数${p["耐用年数"]}年・償却率${p["償却率"].toFixed(3)}の定額法で償却。登録免許税・司法書士報酬・不動産取得税・ローンの手数料・印紙税は1年目の経費、火災保険料は5年で按分しています。`,
     `${r.sale_year}年目の終わりに、買った価格と同じ価格で売るとして計算しています（値上がり・値下がりは見込みません）。`,
-    "法人は中小法人の標準税率（実効税率 21.37%・23.17%・33.58%）に、防衛特別法人税と均等割（年7万円）を加え、赤字は10年間繰り越しています。",
   ];
-  if (p["借入額"]) notes.push("個人の不動産所得の赤字のうち、土地を買うための借入の利息に当たる部分は給与と相殺できません（租税特別措置法41条の4）。");
+  if (!personal) notes.push("法人は中小法人の標準税率（実効税率 21.37%・23.17%・33.58%）に、防衛特別法人税と均等割（年7万円）を加え、赤字は10年間繰り越しています。"
+    + (owner ? "" : "新しく法人を作る場合の設立費用・税理士報酬は含みません。"));
+  if (personal && p["借入額"]) notes.push("個人の不動産所得の赤字のうち、土地を買うための借入の利息に当たる部分は給与と相殺できません（租税特別措置法41条の4）。");
   if (a.social === null) notes.push("社会保険料は年収からの概算です（40歳以上の介護保険料は含みません）。");
   $("assume").innerHTML = notes.map(n => `<li>${esc(n)}</li>`).join("");
 }
