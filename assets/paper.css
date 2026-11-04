@@ -1,5 +1,5 @@
 /* トップ（index.html）と個人向け（personal.html）の共通の体裁。
-   書体は BIZ UDPゴシック（モリサワのUD書体。金融機関や役所の書類でなじみのある字）。各ページの <head> で Google Fonts から読み込む。
+   書体は Zen Kaku Gothic New（細めで字の間がゆったりした和文のゴシック）。各ページの <head> で Google Fonts から読み込む。
    AIが作るページで定番の Noto Sans JP は使わない。
    紙の色の地に濃紺の文字。青はボタン・リンク・有料のタグだけ、朱は強調1か所（見本の判子・取り消し線・下線）だけ。
    角丸は4px以下。グラデーション・光彩・ぼかした影・絵文字は使わない（作り物っぽさを出さないため）。 */
@@ -18,7 +18,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.9; letter-spacing: .01em;
-  font-family: "BIZ UDPGothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic Medium", "YuGothic", Meiryo, sans-serif; }
+  font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic Medium", "YuGothic", Meiryo, sans-serif; }
 a { color: var(--blue); }
 img { max-width: 100%; }
 .wrap { max-width: 1040px; margin: 0 auto; padding-inline: 24px; }
