@@ -10,322 +10,157 @@
 <meta property="og:description" content="購入諸費用・売却の手取り・賃貸初期費用・家賃→購入を登録なし・無料で計算。周辺環境も住所から（会員登録で月1回）。宅地建物取引士監修。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sonae-are.com/personal.html">
+<link rel="stylesheet" href="assets/paper.css?v=20261104">
 <style>
-  /* 営業向けのトップ（index.html）と同じ見た目：黒寄りのグレー地に、水色と白の文字。端末のテーマに関わらずこの見た目に固定する */
-  :root {
-    --blue-d: #9fd3ff;   /* 見出し・強調（水色） */
-    --blue: #7cc4ff;     /* リンク・ボタン */
-    --blue-l: #5db3ff;
-    --ink: #f2f5f8;      /* 本文（白） */
-    --muted: #ccd7e4;    /* 補足。暗い地では薄い灰色が沈むので、明るめにする */
-    --line: #2c333d;
-    --bg: #0b0e14;                     /* 地：夜空。星と星雲は canvas（#sky）で描く */
-    --bg-soft: rgba(24, 29, 38, .78);  /* 星空が少し透けるように半透明 */
-    --bg-card: rgba(28, 33, 43, .86);
-    --on-accent: #0f1418; /* 水色のボタンに載せる文字 */
-    color-scheme: dark;
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Yu Gothic", "Hiragino Sans", "Meiryo", system-ui, sans-serif; line-height: 1.9; font-size: 16.5px; }
-  /* 星空。画面に固定して、本文はその上に載せる */
-  #sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-  header, .hero, section, footer { position: relative; z-index: 1; }
-  a { color: var(--blue); }
-  .wrap { max-width: 900px; margin: 0 auto; padding-inline: 20px; }
-  section { padding-block: 56px; }
-  h2 { font-size: clamp(21px, 2.8vw, 28px); color: var(--blue-d); margin: 0 0 8px; text-wrap: balance; line-height: 1.4; }
-  .eyebrow { display: block; font-size: 14px; font-weight: bold; letter-spacing: .1em; color: var(--muted); margin-bottom: 8px; }
-  .lead { color: var(--muted); font-size: 15.5px; margin: 0 0 28px; max-width: 40em; }
-  html { scroll-behavior: smooth; }
-
-  /* ヘッダー */
-  header { border-bottom: 1px solid var(--line); background: rgba(11, 14, 20, .82); }
-  .bar { display: flex; align-items: center; gap: 14px; height: 56px; }
-  .logo { font-size: 20px; font-weight: bold; color: var(--blue-d); text-decoration: none; }
-  /* ヘッダーの営業側への入口。行き先に合わせた文言にする（ロゴの一部に見せない） */
-  .bar .who { font-size: 13.5px; color: var(--muted); text-decoration: none; white-space: nowrap; }
-  .bar .who:hover { color: var(--blue); }
-  /* ページ内の目次。PCでは機能・記事へ直接飛べるようにする */
-  .bar .anchors { display: flex; gap: 18px; margin-left: auto; }
-  .bar .anchors a { font-size: 13.5px; color: var(--muted); text-decoration: none; white-space: nowrap; }
-  .bar .anchors a:hover { color: var(--blue); }
-  .bar .go { font-size: 14px; font-weight: bold; color: var(--blue); text-decoration: none; border: 1px solid var(--blue); border-radius: 999px; padding: 5px 16px; white-space: nowrap; }
-  /* 狭い画面では入りきらない。ヒーローの中に同じ入口のボタンがあるので隠す */
-  @media (max-width: 860px) { .bar .who, .bar .anchors { display: none; } .bar .go { margin-left: auto; } }
-
-  /* ヒーロー：1列・中央そろえ。対象 → 合言葉（数字） → 一言とボタン → 出来上がる資料の見本 → こんな方に → Sonaureでできること */
-  .hero { padding-block: 64px 8px; }
-  .hero-one { text-align: center; }
-  .hero-one .eyebrow { display: block; }
-  /* 合言葉。ページの最初に目に入るよう、横幅いっぱいの大きさで置く（スマホでも1行に収まる大きさ） */
-  .hero .hero-catch { max-width: none; font-size: clamp(28px, 6.4vw, 58px); line-height: 1.3; font-weight: bold; color: var(--blue);
-                text-align: center; letter-spacing: .02em; margin: 0 0 24px; text-wrap: balance; }
-  /* 合言葉の前置き「5,000万円の物件なら」は一回り小さく、合言葉の上に */
-  .hero .hero-catch .pre { display: block; font-size: clamp(16px, 2.6vw, 24px); color: var(--ink); letter-spacing: .04em; margin-bottom: 10px; }
-  .hero .hero-sub { max-width: 36em; margin: 0 auto 26px; }
-  .cta { display: inline-block; background: var(--blue); color: var(--on-accent); text-decoration: none; font-weight: bold; font-size: 17px; padding: 14px 40px; border-radius: 999px; }
-  .cta:focus-visible, .go:focus-visible, .sub-link:focus-visible { outline: 3px solid var(--blue-l); outline-offset: 3px; }
-  .cta-note { font-size: 14.5px; color: var(--muted); margin-top: 10px; }
-  /* 出来上がる資料の見本。合言葉の数字と同じ計算の書類を、そのまま見せる */
-  .hero-sample { max-width: 640px; margin: 34px auto 0; }
-  .hero-sample img { display: block; width: 100%; height: auto; background: #fff; border-radius: 10px; box-shadow: 0 16px 48px rgba(0,0,0,.45); }
-  .hero-sample figcaption { font-size: 13.5px; color: var(--muted); margin-top: 12px; line-height: 1.7; }
+  /* このページだけの部品。色・文字・ボタン・ツールのカードは assets/paper.css（営業向けのトップと同じ） */
+  .eyebrow-hero { font-size: 13.5px; color: var(--sub); margin: 0 0 14px; letter-spacing: .04em; }
+  .cta-note { margin-top: 14px; font-size: 13px; color: var(--sub); line-height: 1.8; }
+  /* 出来上がる資料の見本（合言葉の数字と同じ計算の書類）。紙1枚＋見本の判子 */
+  .doc { position: relative; }
+  .doc img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--rule); transform: rotate(1.5deg); }
+  .doc .stamp { right: -6px; top: -18px; }
   /* PDF の QR から来た人への一言（?src=pdf のときだけ JS で入れる）。業者を飛び越えない案内 */
-  .from-pdf { max-width: 760px; margin: 0 auto 36px; padding: 14px 18px; background: var(--bg-card); border: 1px solid var(--line);
-              border-left: 4px solid var(--blue); border-radius: 10px; font-size: 14.5px; line-height: 1.8; text-align: left; }
-  .from-pdf strong { color: var(--blue-d); display: block; }
-  /* こんな方に → Sonaureでできること */
-  .why { max-width: 760px; margin: 44px auto 0; text-align: left; }
-  .why .hero-q { margin: 0 0 14px; font-size: clamp(20px, 3.2vw, 26px); font-weight: bold; color: var(--ink); text-align: center; }
-  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-  .box { background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 20px; }
-  .box h3 { margin: 0 0 8px; font-size: 17px; color: var(--blue-d); line-height: 1.6; }
-  .box p { margin: 0; font-size: 15.5px; color: var(--muted); }
-  .box .use { display: block; margin-top: 12px; font-size: 14px; color: var(--muted); }
-  .box .use a { color: var(--blue); font-weight: bold; text-decoration: none; }
+  .from-pdf { margin: 0 0 24px; padding: 14px 18px; background: var(--card); border: 1px solid var(--rule);
+    border-left: 3px solid var(--blue); font-size: 14.5px; line-height: 1.8; }
+  .from-pdf strong { display: block; }
+  /* こんな方に */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .box { background: var(--card); border: 1px solid var(--rule); padding: 24px 24px 20px; }
+  .box h3 { margin: 0 0 8px; font-size: 18px; line-height: 1.6; }
+  .box p { margin: 0; font-size: 15px; color: var(--sub); }
+  .box .use { display: block; margin-top: 14px; font-size: 14px; color: var(--sub); }
+  .box .use a { font-weight: 700; text-decoration: none; }
   .box .use a:hover { text-decoration: underline; }
-  .why .can { margin: 28px auto 0; max-width: 640px; padding: 20px 22px; border-left: 4px solid var(--blue); background: var(--bg-soft); border-radius: 0 10px 10px 0; }
-  .why .can .eyebrow { margin-bottom: 10px; }
-  .why .can ul { margin: 0; padding-left: 1.2em; font-size: 16.5px; line-height: 1.9; }
-  .why .can li { margin: 4px 0; }
-  .why .can .big { font-weight: bold; color: var(--blue); font-size: 1.15em; }
-  .why .can small { color: var(--muted); font-size: 14px; }
-  @media (max-width: 900px) { .hero { padding-top: 40px; } }
-  @media (max-width: 640px) {
-    .why .can ul { font-size: 15.5px; }
+  .can { margin-top: 28px; max-width: 760px; }
+  .can .l { font-size: 13px; color: var(--sub); letter-spacing: .06em; border-bottom: 1px solid var(--ink); padding-bottom: 6px; }
+  .can ul { list-style: none; margin: 0; padding: 0; }
+  .can li { padding: 10px 0 10px 26px; border-bottom: 1px solid var(--rule); position: relative; font-size: 15px; }
+  .can li::before { content: "✓"; position: absolute; left: 2px; color: var(--blue); font-weight: 700; }
+  .can b { color: var(--blue); }
+  .can small { color: var(--sub); font-size: 13.5px; }
+  /* 記事と公式LINE */
+  .articles .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start; }
+  .articles .lead { margin-bottom: 16px; }
+  .articles .next { margin: 14px 0 0; }
+  .line-cta { background: var(--card); border: 1px solid var(--rule); padding: 22px 22px 20px; }
+  .line-cta p { margin: 0 0 14px; font-size: 15px; line-height: 1.9; }
+  .line-cta img { height: 36px; width: auto; vertical-align: middle; }   /* LINE公式のボタン画像。潰れないよう高さを保つ */
+  .final .lead { margin-bottom: 22px; }
+  @media (max-width: 860px) {
+    .two, .articles .wrap { grid-template-columns: 1fr; }
+    .articles .wrap { gap: 34px; }
+    .doc { max-width: 460px; margin-top: 8px; }
   }
-
-  /* スマホでは表をカードにする。横にスワイプしないと右の列が見えないため */
-  @media (max-width: 640px) {
-    table.cardify thead { display: none; }
-    table.cardify, table.cardify tbody, table.cardify tr, table.cardify td { display: block; width: 100%; }
-    table.cardify tr { background: var(--bg-card); border: 1px solid var(--line); border-radius: 10px;
-                       padding: 10px 12px; margin-bottom: 10px; }
-    table.cardify td { border: 0; padding: 3px 0; text-align: left; white-space: normal;
-                       display: flex; gap: 10px; justify-content: space-between; align-items: baseline; }
-    table.cardify td::before { content: attr(data-label); flex: none; min-width: 5.5em; font-size: 11.5px; color: var(--muted); }
-    table.cardify td:first-child { display: block; font-weight: bold; }
-    table.cardify td:first-child::before { display: none; }
-  }
-
-  /* 機能の一覧 */
-  .grp { font-size: 15px; font-weight: bold; color: var(--blue-d); margin: 22px 0 8px; }
-  .grp:first-of-type { margin-top: 0; }
-  .tblwrap { overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; font-size: 15.5px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
-  th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { background: var(--bg-soft); color: var(--blue-d); font-size: 14px; white-space: nowrap; }
-  tr:last-child td { border-bottom: none; }
-  td.n { color: var(--blue); font-weight: bold; white-space: nowrap; width: 15em; }
-  td.n a { color: inherit; text-decoration: none; }          /* 機能の名前は、その機能の説明ページへ */
-  td.n a:hover { text-decoration: underline; }
-  td.d { color: var(--muted); font-size: 15px; min-width: 18em; }
-  .note { font-size: 13.5px; color: var(--muted); margin-top: 12px; line-height: 1.7; }
-  @media (max-width: 520px) {
-    td.n { width: auto; }
-  }
-  /* 機能の一覧：タップで開く */
-  details.features { margin-top: 6px; }
-  details.features > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
-    gap: 12px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; }
-  details.features > summary::-webkit-details-marker { display: none; }
-  details.features > summary h2 { margin: 0; }
-  details.features > summary .open { flex: none; font-size: 14px; font-weight: bold; color: var(--blue); }
-  details.features > summary .open::after { content: " ▼"; }
-  details.features[open] > summary .open::after { content: " ▲"; }
-  details.features[open] > summary .open .t-open { display: none; }
-  details.features:not([open]) > summary .open .t-close { display: none; }
-  details.features .body { padding-top: 14px; }
-
-  /* 不動産に関する有益情報（記事への導線）。営業向けのトップと同じ枠 */
-  .articles { padding-block: 28px 36px; }
-  .blog-box { max-width: 780px; margin: 0 auto; background: var(--bg-card); border: 2px solid var(--blue); border-radius: 16px; padding: 28px 26px; text-align: center; }
-  .blog-box h2 { margin-bottom: 8px; }
-  .blog-box .lead { margin: 0 auto 18px; font-size: 15px; }
-  .pop { max-width: 620px; margin: 0 auto 22px; text-align: left; }
-  .pop-t { text-align: center; font-size: 13px; font-weight: bold; color: var(--blue-d); letter-spacing: .08em; margin-bottom: 8px; }
-  .pop ul { list-style: none; margin: 0; padding: 0; }
-  .pop li { border-top: 1px solid var(--line); }
-  .pop li:last-child { border-bottom: 1px solid var(--line); }
-  .pop a { display: block; padding: 12px 4px 12px 18px; position: relative; font-size: 15px; line-height: 1.7; color: var(--ink); text-decoration: none; font-weight: bold; }
-  .pop a::before { content: "・"; position: absolute; left: 0; color: var(--blue); }
-  .pop a:hover { color: var(--blue); }
-  .blog-box .cta { font-size: 16px; padding: 12px 36px; }
-  /* 公式LINEへの導線。記事の枠と地続きに見えないよう、別の枠で区切る */
-  .line-cta { max-width: 780px; margin: 18px auto 0; padding: 18px 16px 16px; text-align: center;
-              background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px; }
-  .line-cta p { font-size: 15px; line-height: 1.9; margin: 0 0 12px; }
-  .line-cta strong { color: var(--blue-d); }
-  /* LINE公式のボタン画像。img{max-width:100%} で潰れないよう高さを保つ */
-  .line-cta img { height: 36px; width: auto; vertical-align: middle; }
-
-  /* 使ってみる */
-  .final { text-align: center; background: var(--bg-soft); padding-top: 36px; }
-  /* もう一方の読者（営業）への入口。本文のリンクに紛れないよう枠を付ける */
-  .sub-link { display: inline-block; margin-top: 30px; padding: 16px 34px; border: 2px solid var(--blue);
-              border-radius: 40px; font-size: 18px; font-weight: bold; color: var(--blue);
-              text-decoration: none; line-height: 1.6; }
-  .sub-link:hover { background: rgba(124,196,255,.12); }
-  footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; text-align: center; padding-block: 22px; }
-  footer a { color: var(--muted); }
-  @media (prefers-reduced-motion: no-preference) { .cta { transition: transform .15s; } .cta:hover { transform: translateY(-2px); } }
 </style>
 </head>
 <body>
-<canvas id="sky" aria-hidden="true"></canvas>
-<script>
-(function () {
-  // 夜空。黒地に青い星雲の帯と星を描く。写真を使わず、その場で描くので読み込みが無い（index.html と同じ）
-  var c = document.getElementById("sky"), ctx = c.getContext("2d");
-  function rand(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
-  function draw() {
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var w = window.innerWidth, h = window.innerHeight;
-    c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var g = ctx.createLinearGradient(0, 0, 0, h);
-    g.addColorStop(0, "#07090f"); g.addColorStop(1, "#0d1119");
-    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
-    var r = rand(20260921), i, x, y, s, a;
-    // 星雲：斜めの帯に沿って、青い光を重ねる
-    for (i = 0; i < 14; i++) {
-      var t = i / 13, cx = w * (0.1 + 0.8 * t), cy = h * (0.62 - 0.3 * t) + (r() - 0.5) * h * 0.18;
-      var rad = Math.max(w, h) * (0.14 + r() * 0.14);
-      var n = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
-      n.addColorStop(0, "rgba(90, 140, 210, " + (0.10 + r() * 0.08) + ")");
-      n.addColorStop(0.5, "rgba(60, 100, 170, 0.05)");
-      n.addColorStop(1, "rgba(20, 40, 80, 0)");
-      ctx.fillStyle = n; ctx.fillRect(0, 0, w, h);
-    }
-    // 星：小さいものを多く、明るいものを少し
-    var count = Math.round(w * h / 1400);
-    for (i = 0; i < count; i++) {
-      x = r() * w; y = r() * h; s = r(); a = 0.25 + r() * 0.6;
-      ctx.fillStyle = "rgba(" + (s > 0.85 ? "190,215,255" : "235,240,255") + "," + a + ")";
-      ctx.beginPath(); ctx.arc(x, y, s > 0.97 ? 1.6 : s > 0.8 ? 1.1 : 0.6, 0, Math.PI * 2); ctx.fill();
-    }
-    for (i = 0; i < Math.round(count / 40); i++) {
-      x = r() * w; y = r() * h;
-      var glow = ctx.createRadialGradient(x, y, 0, x, y, 7);
-      glow.addColorStop(0, "rgba(255,255,255,0.9)"); glow.addColorStop(0.3, "rgba(190,220,255,0.35)"); glow.addColorStop(1, "rgba(190,220,255,0)");
-      ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI * 2); ctx.fill();
-    }
-  }
-  var timer;
-  window.addEventListener("resize", function () { clearTimeout(timer); timer = setTimeout(draw, 150); });
-  draw();
-})();
-</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-rentbuy" viewBox="0 0 24 24"><path d="M2.5 14h7 M7 11l3 3-3 3" fill="none" stroke="#24569F" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M13.5 11.5V20.5h7V11.5" fill="#EDF2F9" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M12 13l5-5 5 5" fill="none" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/></symbol><symbol id="i-costs" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2" fill="#EDF2F9" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><rect x="8" y="5.5" width="8" height="3.5" rx="0.75" fill="none" stroke="#24569F" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M8.5 13h1 M11.5 13h1 M14.5 13h1 M8.5 16.5h1 M11.5 16.5h1 M14.5 16.5h1" fill="none" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/></symbol><symbol id="i-sale" viewBox="0 0 24 24"><path d="M4.5 10.5V20.5h9V10.5" fill="#EDF2F9" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M2.5 12 9 6l6.5 6" fill="none" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M8 20.5v-4h2v4" fill="none" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M19.5 20.5V5 M16.5 8l3-3 3 3" fill="none" stroke="#24569F" stroke-width="1.75" vector-effect="non-scaling-stroke"/></symbol><symbol id="i-rental" viewBox="0 0 24 24"><circle cx="8" cy="12" r="5" fill="#EDF2F9" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M13 12h8.5 M18.5 12v3 M21.5 12v2" fill="none" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><circle cx="8" cy="12" r="1.5" fill="none" stroke="#24569F" stroke-width="1.75" vector-effect="non-scaling-stroke"/></symbol><symbol id="i-env" viewBox="0 0 24 24"><path d="M12 21.5s-6.5-6.2-6.5-11.5a6.5 6.5 0 0 1 13 0c0 5.3-6.5 11.5-6.5 11.5z" fill="#EDF2F9" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><circle cx="12" cy="10" r="2.25" fill="none" stroke="#24569F" stroke-width="1.75" vector-effect="non-scaling-stroke"/></symbol><symbol id="i-kaitori" viewBox="0 0 24 24"><path d="M5 10V21h14V10" fill="#EDF2F9" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M2.5 12 12 3.5l9.5 8.5" fill="none" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M9.5 11.5 12 15l2.5-3.5 M12 15v4 M10 16h4 M10 18h4" fill="none" stroke="#24569F" stroke-width="1.75" vector-effect="non-scaling-stroke"/></symbol><symbol id="i-juusetsu" viewBox="0 0 24 24"><rect x="3.5" y="2.5" width="11.5" height="17" rx="1.5" fill="#EDF2F9" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M6.5 7h5.5 M6.5 10.5h3.5" fill="none" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><circle cx="15.5" cy="15" r="3.75" fill="#FFFFFF" stroke="#24569F" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M18.25 17.75l3 3" fill="none" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/></symbol><symbol id="i-maisoku" viewBox="0 0 24 24"><rect x="4" y="2.5" width="16" height="19" rx="1.5" fill="#EDF2F9" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M8 12l4-3.5 4 3.5 M9.25 11v4.5h5.5V11" fill="none" stroke="#24569F" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M7.5 18.5h9" fill="none" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/></symbol></svg>
 
 <header>
   <div class="wrap bar">
     <a class="logo" href="personal.html">Sonaure</a>
-    <a class="who" href="index.html">不動産会社・営業担当の方へ →</a>
-    <nav class="anchors"><a href="#features">機能</a><a href="#articles">記事</a></nav>
+    <a class="side" href="index.html">不動産会社・営業担当の方へ →</a>
+    <nav aria-label="このページの目次"><a href="#features">機能</a><a href="#articles">記事</a></nav>
     <a class="go" href="https://app.sonae-are.com/?from=personal">無料ツールを使う</a>
   </div>
 </header>
 
 <div class="hero" id="top">
-  <div class="wrap hero-one">
-    <span class="eyebrow">ご自身で物件を探す方・売却をお考えの方・不動産投資を検討している方へ</span>
-    <h1 class="hero-catch"><span class="pre">5,000万円の物件なら</span>諸費用は約375万円。</h1>
-    <p class="hero-sub">住所や価格を入れるだけで、購入にかかる費用・売ったときの手取り・家賃と購入の比較を、登録なし・無料で計算できます。</p>
-    <a class="cta" href="https://app.sonae-are.com/?tool=costs&from=personal">無料ツールを使う</a>
-    <p class="cta-note">※ 中古住宅を仲介で購入し、4,500万円を借り入れた場合の概算です。下の見本と同じ計算です。</p>
-    <figure class="hero-sample">
-      <img src="assets/sample-costs.png" alt="物件購入の諸費用概算書の見本。物件価格5,000万円・借入4,500万円で、仲介手数料から火災保険料までの明細と合計約375万円" width="1070" height="800">
-      <figcaption>出来上がる資料の見本：物件購入の諸費用概算書（物件価格5,000万円・借入4,500万円）</figcaption>
-    </figure>
-
-    <div class="why">
-      <p class="hero-q">こんな方に</p>
-      <div class="two">
-        <div class="box">
-          <h3>マイホームの購入・売却・賃貸を<br>お考えの方</h3>
-          <p>初期費用の計算や家賃→購入シミュレーションで、賃貸と購入をかんたんに比べられます。住みたいエリアの周辺環境も、住所を入れるだけで調べられます。</p>
-          <span class="use"><a href="detail-rentbuy.html">家賃→購入シミュレーション</a>／<a href="detail-rental.html">賃貸初期費用計算</a>／<a href="detail-sale.html">売却収支計算</a></span>
-        </div>
-        <div class="box">
-          <h3>不動産投資を<br>検討している方</h3>
-          <p>用途地域・建ぺい率／容積率・災害リスクといった、価格に効く条件を住所から一気に確認できます（重説調査項目は不動産会社さま向けの有料プランの機能です）。</p>
-          <span class="use"><a href="detail-juusetsu.html">重説調査項目</a>／<a href="detail-env.html">周辺環境調査書</a></span>
-        </div>
-      </div>
-      <div class="can">
-        <span class="eyebrow">Sonaureでできること</span>
-        <ul>
-          <li><span class="big">登録なし・無料</span>で、購入にかかる費用・売ったときの手取り・賃貸の初期費用・家賃→購入を、その場で計算できる。</li>
-          <li>周辺環境調査書とマイソク作成は、メールアドレスとパスワードだけの<span class="big">無料の会員登録</span>で月1回お試しできる<small>（不動産会社さま向けの有料プランの機能です）</small>。</li>
-        </ul>
-      </div>
+  <div class="wrap">
+    <div class="hero-text">
+      <p class="eyebrow-hero">ご自身で物件を探す方・売却をお考えの方・不動産投資を検討している方へ</p>
+      <h1 class="ph"><span class="pre">5,000万円の物件なら</span><span>諸費用は約375万円。</span></h1>
+      <p>住所や価格を入れるだけで、購入にかかる費用・売ったときの手取り・家賃と購入の比較を、登録なし・無料で計算できます。</p>
+      <div class="ctas"><a class="btn" href="https://app.sonae-are.com/?tool=costs&amp;from=personal">無料ツールを使う</a></div>
+      <p class="cta-note">※ 中古住宅を仲介で購入し、4,500万円を借り入れた場合の概算です。見本と同じ計算です。</p>
     </div>
+    <figure style="margin:0">
+      <div class="doc">
+        <img src="assets/sample-costs.png" alt="物件購入の諸費用概算書の見本。物件価格5,000万円・借入4,500万円で、仲介手数料から火災保険料までの明細と合計約375万円" width="1070" height="800">
+        <div class="stamp" aria-hidden="true">見本</div>
+      </div>
+      <figcaption class="cap">出来上がる資料の見本：物件購入の諸費用概算書（物件価格5,000万円・借入4,500万円）</figcaption>
+    </figure>
   </div>
 </div>
 
-<section style="background:var(--bg-soft); padding-block:28px 12px" id="features">
+<section id="for">
   <div class="wrap">
-    <details class="features">
-    <summary><h2>8つの機能</h2><span class="open"><span class="t-open">タップで開く</span><span class="t-close">閉じる</span></span></summary>
-    <div class="body">
-    <div class="grp">計算する（登録なしで、画面での計算は無料）</div>
-    <div class="tblwrap">
-    <table class="cardify">
-      <thead><tr><th>機能</th><th>できること</th></tr></thead>
-      <tbody>
-        <tr><td data-label="機能" class="n"><a href="detail-rentbuy.html">家賃→購入シミュレーション</a></td><td data-label="できること" class="d">今の家賃と同じ支払いで、いくらの物件が買えるかを逆算。賃貸と購入を同じ土俵で比べられます</td></tr>
-        <tr><td data-label="機能" class="n"><a href="detail-costs.html">物件購入の諸費用概算書</a></td><td data-label="できること" class="d">物件価格のほかに、仲介手数料・登記・ローン費用・保険・清算金まで、現金がいくら要るかの概算書</td></tr>
-        <tr><td data-label="機能" class="n"><a href="detail-sale.html">売却収支計算</a></td><td data-label="できること" class="d">売却価格から、仲介手数料・抵当権抹消・譲渡所得税まで差し引いて、手元にいくら残るか</td></tr>
-        <tr><td data-label="機能" class="n"><a href="detail-rental.html">賃貸初期費用計算</a></td><td data-label="できること" class="d">家賃から、敷金・礼金・保証料・日割り家賃まで、契約のときに払う初期費用の合計</td></tr>
-      </tbody>
-    </table>
+    <span class="eyebrow">こんな方に</span>
+    <h2 class="ph"><span>買う前も、売る前も、</span><span>借りる前も。</span></h2>
+    <p class="lead">不動産会社に相談する前に、ご自身の数字で確かめられます。</p>
+    <div class="two">
+      <div class="box">
+        <h3>マイホームの購入・売却・賃貸をお考えの方</h3>
+        <p>初期費用の計算や家賃→購入シミュレーションで、賃貸と購入をかんたんに比べられます。住みたいエリアの周辺環境も、住所を入れるだけで調べられます。</p>
+        <span class="use"><a href="detail-rentbuy.html">家賃→購入シミュレーション</a>／<a href="detail-rental.html">賃貸初期費用計算</a>／<a href="detail-sale.html">売却収支計算</a></span>
+      </div>
+      <div class="box">
+        <h3>不動産投資を検討している方</h3>
+        <p>用途地域・建ぺい率／容積率・災害リスクといった、価格に効く条件を住所から一気に確認できます（重説調査項目は不動産会社さま向けの有料プランの機能です）。</p>
+        <span class="use"><a href="detail-juusetsu.html">重説調査項目</a>／<a href="detail-env.html">周辺環境調査書</a></span>
+      </div>
     </div>
+    <div class="can">
+      <div class="l">Sonaureでできること</div>
+      <ul>
+        <li><b>登録なし・無料</b>で、購入にかかる費用・売ったときの手取り・賃貸の初期費用・家賃→購入を、その場で計算できる。</li>
+        <li>周辺環境調査書とマイソク作成は、メールアドレスとパスワードだけの<b>無料の会員登録</b>で月1回お試しできる<small>（不動産会社さま向けの有料プランの機能です）</small>。</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <div class="grp">調べる</div>
-    <div class="tblwrap">
-    <table class="cardify">
-      <thead><tr><th>機能</th><th>できること</th></tr></thead>
-      <tbody>
-        <tr><td data-label="機能" class="n"><a href="detail-env.html">周辺環境調査書</a></td><td data-label="できること" class="d">最寄り駅・学校・保育園・スーパー・病院・公園・商業施設などを徒歩分数つきで1枚に。住んでいる人・駅のにぎわい・学区・標高と坂・地盤・地価の動きなどの「エリアの特徴」も、出典つきの短い文で分かります</td></tr>
-        <tr><td data-label="機能" class="n"><a href="detail-kaitori.html">物件買取査定</a></td><td data-label="できること" class="d">売れる価格から「いくらまでなら買えるか」を目標利益率ごとに逆算</td></tr>
-        <tr><td data-label="機能" class="n"><a href="detail-juusetsu.html">重説調査項目</a></td><td data-label="できること" class="d">区域区分・用途地域・建ぺい率／容積率・防火指定・災害リスク4種を住所から。境界またがりは「要確認」を自動検出</td></tr>
-      </tbody>
-    </table>
+<section id="features">
+  <div class="wrap">
+    <span class="eyebrow">8つの機能</span>
+    <h2>計算する・調べる・作る</h2>
+    <p class="lead">それぞれの使い方と出来上がる資料の見本は「くわしく」から。</p>
+    <div class="trow">
+      <div class="tgrp"><b>計算する</b><small>登録なしで、その場で無料</small></div>
+      <div class="tcards">
+        <a class="tool" href="detail-rentbuy.html"><svg class="ic" aria-hidden="true"><use href="#i-rentbuy"/></svg><span class="tbody"><span class="tname">家賃→購入シミュレーション <span class="tag">無料・登録不要</span></span><span class="tdesc">今の家賃と同じ支払いで、いくらの物件が買えるかを逆算。賃貸と購入を同じ土俵で比べられます。</span><span class="more">くわしく →</span></span></a>
+        <a class="tool" href="detail-costs.html"><svg class="ic" aria-hidden="true"><use href="#i-costs"/></svg><span class="tbody"><span class="tname">物件購入の諸費用概算書 <span class="tag">無料・登録不要</span></span><span class="tdesc">物件価格のほかに、仲介手数料・登記・ローン費用・保険・清算金まで、現金がいくら要るかの概算書。</span><span class="more">くわしく →</span></span></a>
+        <a class="tool" href="detail-sale.html"><svg class="ic" aria-hidden="true"><use href="#i-sale"/></svg><span class="tbody"><span class="tname">売却収支計算 <span class="tag">無料・登録不要</span></span><span class="tdesc">売却価格から、仲介手数料・抵当権抹消・譲渡所得税まで差し引いて、手元にいくら残るか。</span><span class="more">くわしく →</span></span></a>
+        <a class="tool" href="detail-rental.html"><svg class="ic" aria-hidden="true"><use href="#i-rental"/></svg><span class="tbody"><span class="tname">賃貸初期費用計算 <span class="tag">無料・登録不要</span></span><span class="tdesc">家賃から、敷金・礼金・保証料・日割り家賃まで、契約のときに払う初期費用の合計。</span><span class="more">くわしく →</span></span></a>
+      </div>
     </div>
-
-    <div class="grp">作る</div>
-    <div class="tblwrap">
-    <table class="cardify">
-      <thead><tr><th>機能</th><th>できること</th></tr></thead>
-      <tbody>
-        <tr><td data-label="機能" class="n"><a href="detail-maisoku.html">マイソク作成</a></td><td data-label="できること" class="d">他社図面の帯替え・読み取り・新規作成で、レインズ様式の図面を PDF / Excel に</td></tr>
-      </tbody>
-    </table>
+    <div class="trow">
+      <div class="tgrp"><b>調べる</b><small>住所を入れるだけ</small></div>
+      <div class="tcards">
+        <a class="tool" href="detail-env.html"><svg class="ic" aria-hidden="true"><use href="#i-env"/></svg><span class="tbody"><span class="tname">周辺環境調査書 <span class="tag paid">会員登録で月1回</span></span><span class="tdesc">最寄り駅・学校・保育園・スーパー・病院・公園などを徒歩分数つきで1枚に。住んでいる人・駅のにぎわい・学区・標高と坂・地盤・地価の動きなどの「エリアの特徴」も、出典つきの短い文で分かります。</span><span class="more">くわしく →</span></span></a>
+        <a class="tool" href="detail-kaitori.html"><svg class="ic" aria-hidden="true"><use href="#i-kaitori"/></svg><span class="tbody"><span class="tname">物件買取査定 <span class="tag">無料・登録不要</span></span><span class="tdesc">売れる価格から「いくらまでなら買えるか」を目標利益率ごとに逆算。</span><span class="more">くわしく →</span></span></a>
+        <a class="tool" href="detail-juusetsu.html"><svg class="ic" aria-hidden="true"><use href="#i-juusetsu"/></svg><span class="tbody"><span class="tname">重説調査項目 <span class="tag paid">不動産会社さま向け</span></span><span class="tdesc">区域区分・用途地域・建ぺい率／容積率・防火指定・災害リスク4種を住所から。境界をまたぐ場合は「要確認」。</span><span class="more">くわしく →</span></span></a>
+      </div>
     </div>
-    <p class="note">※ 計算する4つと物件買取査定は登録なしで、その場で使えます。周辺環境調査書とマイソク作成は不動産会社さま向けの有料プランの機能で、無料の会員登録で月1回お試しいただけます。重説調査項目も有料プランの機能です。書類（PDF / Excel）の発行も有料プランの機能です。<br>※ レポートは宅地建物取引業法に基づく重要事項説明書ではありません。金額は一般的な前提にもとづく概算です。<br>機能ごとの詳しい説明は <a href="services.html">サービスメニュー</a> へ。</p>
+    <div class="trow">
+      <div class="tgrp"><b>作る</b><small>図面を1枚</small></div>
+      <div class="tcards">
+        <a class="tool" href="detail-maisoku.html"><svg class="ic" aria-hidden="true"><use href="#i-maisoku"/></svg><span class="tbody"><span class="tname">マイソク作成 <span class="tag paid">会員登録で月1回</span></span><span class="tdesc">他社図面の帯替え・読み取り・新規作成で、レインズ様式の図面を PDF / Excel に。</span><span class="more">くわしく →</span></span></a>
+      </div>
     </div>
-    </details>
+    <p class="small tnote">※ 計算する4つと物件買取査定は登録なしで、その場で使えます。周辺環境調査書とマイソク作成は不動産会社さま向けの有料プランの機能で、無料の会員登録で月1回お試しいただけます。重説調査項目も有料プランの機能です。書類（PDF / Excel）の発行も有料プランの機能です。<br>※ レポートは宅地建物取引業法に基づく重要事項説明書ではありません。金額は一般的な前提にもとづく概算です。<br>機能ごとの詳しい説明は <a href="services.html">サービスメニュー</a> へ。</p>
   </div>
 </section>
 
 <section class="articles" id="articles">
   <div class="wrap">
-    <div class="blog-box">
-      <h2>不動産に関する有益情報</h2>
+    <div>
+      <span class="eyebrow">不動産に関する有益情報</span>
+      <h2>費用・税金・調査の解説</h2>
       <p class="lead">費用・税金・手続き・物件調査について、宅地建物取引士が解説した記事を公開しています。ツールが出す数字の根拠も、こちらで確認いただけます。</p>
-      <div class="pop">
-        <div class="pop-t">〜 人気記事 〜</div>
-        <ul>
-          <li><a href="blog/koukousei-fudosan-toushi.html">高校生でもわかる不動産投資｜ゲーム機5台を友達に貸す話</a></li>
-          <li><a href="blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</a></li>
-          <li><a href="blog/bukken-kakaku-shohiyo-zukai.html">物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</a></li>
-          <li><a href="blog/chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</a></li>
-        </ul>
-      </div>
-      <a class="cta" href="blog/index.html">記事一覧を見る →</a>
+      <ul class="list">
+        <li><a href="blog/koukousei-fudosan-toushi.html">高校生でもわかる不動産投資｜ゲーム機5台を友達に貸す話</a></li>
+        <li><a href="blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</a></li>
+        <li><a href="blog/bukken-kakaku-shohiyo-zukai.html">物件価格＋諸費用＝支払総額｜図解でわかる「物件価格以外にかかるお金」</a></li>
+        <li><a href="blog/chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</a></li>
+      </ul>
+      <p class="next"><a class="tlink" href="blog/index.html">記事一覧を見る</a></p>
     </div>
     <div class="line-cta">
-      <p>東京、大阪の割安中古マンション情報や<br>お得な不動産情報を知りたい方は<br><strong>是非公式LINEの無料登録を！</strong></p>
-      <a href="https://lin.ee/yHprA5U" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+      <span class="eyebrow">公式LINE</span>
+      <p>東京、大阪の割安中古マンション情報やお得な不動産情報を知りたい方は、<b>是非公式LINEの無料登録を！</b></p>
+      <a href="https://lin.ee/yHprA5U" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36"></a>
     </div>
   </div>
 </section>
@@ -333,26 +168,20 @@
 <section class="final" id="login">
   <div class="wrap">
     <h2>使ってみる</h2>
-    <p class="lead" style="margin-inline:auto; margin-bottom:18px">登録なしで、その場で使えます。</p>
-    <a class="cta" href="https://app.sonae-are.com/?from=personal">無料ツールを使う</a>
-    <div class="cta-note">ご不明な点は <a href="mailto:sonaure100@gmail.com?subject=【Sonaure】お問い合わせ">sonaure100@gmail.com</a> まで</div>
-    <a class="sub-link" href="index.html" style="margin-top:22px">不動産会社・営業担当の方へ →</a>
+    <p class="lead">登録なしで、その場で使えます。</p>
+    <div class="ctas"><a class="btn" href="https://app.sonae-are.com/?from=personal">無料ツールを使う</a></div>
+    <p class="small" style="margin-top:14px">ご不明な点は <a href="mailto:sonaure100@gmail.com?subject=【Sonaure】お問い合わせ">sonaure100@gmail.com</a> まで</p>
+    <a class="who" href="index.html">不動産会社・営業担当の方へ →</a>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    Sonaure 〜備えあれば憂いなし、＋αの感動を〜<br>
-    <a href="index.html">不動産会社・営業担当の方へ</a> ｜
-    <a href="services.html">サービスメニュー</a> ｜
-    <a href="tools/index.html">無料計算ツール</a> ｜
-    <a href="blog/index.html">不動産に関する有益情報</a> ｜
-    <a href="operator.html">運営者情報</a> ｜
-    <a href="terms.html">利用規約</a> ｜
-    <a href="tokushoho.html">特定商取引法に基づく表記</a> ｜
-    <a href="privacy.html">プライバシーポリシー</a><br>
-    出典：国土交通省「不動産情報ライブラリ」「国土数値情報」／国土地理院／© OpenStreetMap contributors<br>
-    サポート：sonaure100@gmail.com ｜ © 2026 Sonaure
+    <div class="cols">
+      <div><b>Sonaure</b><br>備えあれば憂いなし、＋αの感動を</div>
+      <nav aria-label="サイト内のページ"><a href="index.html">不動産会社・営業担当の方へ</a><a href="services.html">サービスメニュー</a><a href="tools/index.html">無料計算ツール</a><a href="blog/index.html">記事一覧</a><a href="operator.html">運営者情報</a><a href="terms.html">利用規約</a><a href="tokushoho.html">特定商取引法に基づく表記</a><a href="privacy.html">プライバシーポリシー</a></nav>
+    </div>
+    <div class="dis">出典：国土交通省「不動産情報ライブラリ」「国土数値情報」／国土地理院／© OpenStreetMap contributors<br>サポート：sonaure100@gmail.com ｜ © 2026 Sonaure</div>
   </div>
 </footer>
 
@@ -371,7 +200,7 @@
     d.className = "from-pdf";
     d.innerHTML = "<strong>お手元の資料は、お渡しした不動産会社が Sonaure で作成したものです。</strong>" +
       "物件のご相談は、資料をくれた担当者へどうぞ。ここでは同じ計算を、ご自身の数字で無料で試せます。";
-    var hero = document.querySelector(".hero .hero-one");
+    var hero = document.querySelector(".hero .hero-text");
     if (hero) hero.insertBefore(d, hero.firstChild);
   }
 })();

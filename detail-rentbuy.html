@@ -64,6 +64,10 @@
     table.cardify td:first-child{display:block;font-weight:bold;white-space:normal;}
     table.cardify td:first-child::before{display:none;}
   }
+  /* 漫画（営業向けのトップから移した4コマ）。縦に長いので幅を抑える */
+  .manga{max-width:560px;margin:18px auto 0;}
+  .manga img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:8px;}
+  .manga figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
 </style>
 <link rel="stylesheet" href="assets/motion.css">
 </head>
@@ -103,6 +107,10 @@
   <section>
     <h2>不動産会社・営業の方は</h2>
     <div class="pro-box"><strong>賃貸のお客様から「買ったほうがいいですか？」と聞かれたとき</strong>月々の支払額を聞けば、その場で比較の1枚が出せます。賃貸の接客から売買のご相談へ、無理なくつなげる資料に。来店中や内見の帰りなど、お客様の関心が高いうちに渡せます。</div>
+    <figure class="manga">
+      <img src="assets/manga-rentbuy.jpg?v=20261028" alt="買うか賃貸かの漫画：①「買うか、賃貸か」で迷うお客様「購入か、もう一回賃貸か迷ってるんです」②同じ家賃でいくらの家が買えるんだろう…お客様「12万の家賃ならいくらの家を買えますか？売った場合はどうなりますか？」営業「えーっと、金利と返済期間が…」と電卓をたたく③売った後の手残りまでは、すぐ出せない…「資料作るのに何時間かかるんだ…」④「Sonaure」なら金額を入れるだけ、数秒で。毎月の家賃12万円で買える家の価格・売却後の手残り・実質の家賃が出て、お客様が「こんなに違うんですね！」" width="1122" height="1402" loading="lazy">
+      <figcaption>同じ毎月の支払いで買える家の価格、ローンを完済して売ったときの手残り、実質の家賃まで、金額を入れるだけで数秒で出せます。</figcaption>
+    </figure>
   </section>
 
   <section>
