@@ -3,151 +3,219 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>マイソク作成｜Sonaure</title>
-<meta name="description" content="レインズ様式の物件図面（マイソク）を PDF / Excel で。他社の図面は会社欄だけを自社に差し替える「帯替え」、PDF・画像を読み取って入力欄に転記、一から新規作成の3通り。投資家向けの紹介文も作れます。不動産会社さま向けの有料プランの機能です（無料の会員登録で月1回お試しいただけます）。">
+<title>マイソク紹介文自動作成・帯替え｜Sonaure</title>
+<meta name="description" content="マイソクをアップロードするだけで、物件情報と周辺のおすすめ（駅・買い物・学校・病院・公園など）を入れた紹介文を自動で作成。同じ図面で、会社欄を自社に差し替える帯替えもできます。不動産会社さま向けの有料プランの機能です。">
 <link rel="canonical" href="https://sonae-are.com/detail-maisoku.html">
-<meta property="og:title" content="マイソク作成｜Sonaure">
-<meta property="og:description" content="レインズ様式の物件図面（マイソク）を PDF / Excel で。他社図面の帯替え・読み取り・新規作成の3通り。投資家向けの紹介文も作れます。不動産会社さま向けの有料プランの機能です。">
+<meta property="og:title" content="マイソク紹介文自動作成・帯替え｜Sonaure">
+<meta property="og:description" content="マイソクをアップロードするだけで、物件情報と周辺のおすすめを入れた紹介文を自動で。同じ図面で帯替えも。不動産会社さま向けの有料プランの機能です。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sonae-are.com/detail-maisoku.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="assets/paper.css?v=20261106">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap');
-  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:"Noto Sans JP","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);line-height:1.9;background:linear-gradient(180deg,#fff,#f3f8ff);}
-  .wrap{max-width:840px;margin:0 auto;padding:0 20px;}
-  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
-  .bar{display:flex;align-items:center;height:56px;}
-  .back{font-size:14px;color:var(--blue);text-decoration:none;font-weight:bold;}
-  .hero{background:linear-gradient(135deg,#eaf3ff,#d7e9ff 60%,#c8e0ff);border-radius:18px;border:1px solid var(--line);padding:34px 24px;text-align:center;margin:24px 0;}
-  .hero .num{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;font-weight:bold;font-size:18px;margin-bottom:12px;}
-  .hero h1{font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;font-size:28px;color:var(--blue-d);letter-spacing:.04em;}
-  .hero p{color:var(--blue-d);font-size:14px;margin-top:8px;}
-  section{padding:10px 0 24px;}
-  h2{font-size:20px;color:var(--blue-d);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-  h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));}
-  .lead{font-size:15px;margin-bottom:16px;}
-  ul.feat{list-style:none;background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:14px;padding:18px 22px;}
-  ul.feat li{padding:5px 0 5px 26px;position:relative;font-size:14.5px;}
-  ul.feat li::before{content:"✓";position:absolute;left:4px;color:var(--blue);font-weight:bold;}
-  ul.pain{list-style:none;background:linear-gradient(135deg,#fff,#f7fbff);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin:8px 0 16px;}
-  ul.pain li{padding:6px 0 6px 28px;position:relative;font-size:14.5px;}
-  ul.pain li::before{content:"✗";position:absolute;left:4px;color:#c53030;font-weight:bold;}
-  .answer{text-align:center;font-size:22px;font-weight:bold;color:var(--blue-d);margin:26px 0;}
-  .answer .ten{font-size:1.5em;color:var(--blue);}
-  .ways{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:8px;}
-  .way{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;box-shadow:0 6px 20px rgba(26,77,143,.06);}
-  .way .step{display:inline-block;font-size:11px;font-weight:bold;color:#fff;background:linear-gradient(135deg,var(--blue),var(--blue-l));border-radius:999px;padding:1px 10px;margin-bottom:8px;letter-spacing:.08em;}
-  .way h3{font-size:15.5px;color:var(--blue-d);margin-bottom:6px;}
-  .way p{font-size:13.5px;line-height:1.75;}
-  .way .when{font-size:12px;color:var(--muted);margin-top:8px;}
-  .preview{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 28px rgba(26,77,143,.10);padding:14px;}
-  .preview img{display:block;width:100%;height:auto;border:1px solid #e2e8f0;}
-  .cap{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
-  .pitch{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;font-size:13.5px;white-space:pre-line;line-height:1.8;box-shadow:0 8px 28px rgba(26,77,143,.08);}
-  .trust-box{border-left:4px solid var(--blue);background:#f4f9ff;padding:18px 22px;border-radius:0 10px 10px 0;margin-top:20px;font-size:14px;}
-  .trust-box strong{color:var(--blue-d);}
-  .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto;max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
-  footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:20px;}
-  @media (max-width:640px){ .ways{grid-template-columns:1fr;} }
+  /* このページだけの部品。色・文字・ボタンは assets/paper.css（トップと同じ） */
+  .dhero { padding-block: 64px 60px; }
+  .dhero .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .dhero h1 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.45; margin: 0 0 18px; letter-spacing: .02em; }
+  .dhero h1 .pre { display: block; font-size: .4em; font-weight: 400; color: var(--sub); letter-spacing: .08em; margin-bottom: 14px; }
+  .dhero p { margin: 0 0 26px; }
+  .note { margin-top: 16px; font-size: 13px; color: var(--sub); line-height: 1.8; }
+  /* 出来上がる紹介文の見本（紙1枚＋見本の判子） */
+  .letter { position: relative; background: var(--card); border: 1px solid var(--rule); padding: 22px 22px 18px;
+    font-size: 13.5px; line-height: 1.85; white-space: pre-line; }
+  .letter .stamp { right: -8px; top: -22px; }
+  .letter b { color: var(--blue); font-weight: 700; }
+  /* 手間の一覧・安心して使うための一覧（罫線で区切る） */
+  .rules { list-style: none; margin: 0; padding: 0; max-width: 820px; }
+  .rules li { padding: 14px 0 14px 28px; border-bottom: 1px solid var(--rule); position: relative; font-size: 15px; line-height: 1.8; }
+  .rules li:first-child { border-top: 1px solid var(--rule); }
+  .rules li::before { content: ""; position: absolute; left: 4px; top: 25px; width: 10px; height: 2px; background: var(--ink); }
+  .rules.ok li::before { content: "✓"; width: auto; height: auto; background: none; top: 13px; color: var(--blue); font-weight: 700; }
+  .rules small { display: block; color: var(--sub); font-size: 13.5px; }
+  /* 使い方の3ステップ */
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .steps li { background: var(--card); border: 1px solid var(--rule); padding: 18px 18px 16px; }
+  .steps .n { font-size: 13px; color: var(--blue); font-weight: 700; letter-spacing: .1em; }
+  .steps h3 { margin: 4px 0 6px; font-size: 16.5px; line-height: 1.6; }
+  .steps p { margin: 0; font-size: 14px; color: var(--sub); line-height: 1.8; }
+  /* 読み手に合わせて */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .box { background: var(--card); border: 1px solid var(--rule); padding: 22px 22px 18px; }
+  .box h3 { margin: 0 0 6px; font-size: 17.5px; line-height: 1.6; }
+  .box p { margin: 0; font-size: 14.5px; color: var(--sub); line-height: 1.8; }
+  .box .items { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .box .items span { font-size: 13px; border: 1px solid var(--rule); padding: 1px 10px; background: var(--paper); }
+  /* 帯替えの前後・レインズ様式の見本 */
+  .fig { margin: 0; }
+  .fig .lab { display: block; font-size: 13px; color: var(--sub); margin: 18px 0 6px; letter-spacing: .04em; }
+  .fig .lab.after { color: var(--blue); font-weight: 700; }
+  .fig img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--rule); }
+  .sample { max-width: 760px; }
+  .sample img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--rule); }
+  @media (max-width: 860px) {
+    .dhero { padding-block: 40px 44px; }
+    .dhero .wrap, .two, .steps { grid-template-columns: 1fr; gap: 28px; }
+    .steps, .two { gap: 14px; }
+    .dhero h1 { font-size: 28px; }
+  }
 </style>
-<link rel="stylesheet" href="assets/motion.css">
 </head>
 <body>
-<header><div class="wrap bar"><a class="back" href="personal.html">← Sonaure トップへ</a></div></header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-maisoku" viewBox="0 0 24 24"><rect x="4" y="2.5" width="16" height="19" rx="1.5" fill="#EDF2F9" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M8 12l4-3.5 4 3.5 M9.25 11v4.5h5.5V11" fill="none" stroke="#24569F" stroke-width="1.75" vector-effect="non-scaling-stroke"/><path d="M7.5 18.5h9" fill="none" stroke="#1A1A1A" stroke-width="1.75" vector-effect="non-scaling-stroke"/></symbol></svg>
 
-<div class="wrap">
-  <div class="hero">
-    <div class="num">9</div>
-    <h1>マイソク作成</h1>
-    <p>レインズ様式の物件図面（マイソク）を PDF / Excel で。他社の図面は会社欄だけを自社に差し替えられます。</p>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html">Sonaure</a>
+    <nav aria-label="このページの目次"><a href="#how">使い方</a><a href="#reader">読み手</a><a href="#obi">帯替え</a><a href="#safe">安心して使うために</a></nav>
+    <a class="side" href="index.html#tools">ツール一覧へ</a>
+    <a class="go" href="https://app.sonae-are.com/?tool=maisoku&amp;from=business">ログイン・新規登録</a>
   </div>
+</header>
 
-  <section>
-    <h2>図面づくりで、こんな手間ありませんか？</h2>
-    <ul class="pain">
-      <li>元付の図面を自社の帯で出したいだけなのに、画像ソフトで白く塗って会社情報を打ち直している</li>
-      <li>他社の図面を見ながら、同じ内容を自社の様式に1項目ずつ転記している</li>
-      <li>投資家に送るメールの文面を、物件ごとに一から考えている</li>
-    </ul>
-    <div class="answer">作り方は<span class="ten">3通り</span>。よく使う順に並んでいます。</div>
-  </section>
-
-  <section>
-    <h2>作り方は3通り</h2>
-    <div class="ways">
-      <div class="way">
-        <span class="step">1</span>
-        <h3>簡単作成（帯替え）</h3>
-        <p>他社の図面（PDF・画像）を入れ、消す範囲と自社情報を置く範囲を指定するだけ。レインズ様式の枠で、会社名・免許番号・住所・電話・担当者が入ります。</p>
-        <div class="when">元付の図面をそのまま自社名で出したいときに</div>
-      </div>
-      <div class="way">
-        <span class="step">2</span>
-        <h3>他社のチラシから読み取る</h3>
-        <p>PDF・画像の図面を読み取って、価格・所在地・面積・築年月などを入力欄に転記。直してから自社様式で出せます。</p>
-        <div class="when">自社の様式にそろえたいときに</div>
-      </div>
-      <div class="way">
-        <span class="step">3</span>
-        <h3>新規作成</h3>
-        <p>一から入力して作ります。土地・戸建・マンション・収益一棟の4種別。写真は最大4枚で、枚数に合わせて自動で並びます。</p>
-        <div class="when">自社物件・新規の媒介物件に</div>
-      </div>
+<div class="dhero">
+  <div class="wrap">
+    <div>
+      <h1 class="ph"><span class="pre">作る｜有料プランの機能</span><span>マイソク紹介文</span><span>自動作成・</span><span>帯替え</span></h1>
+      <p>マイソクをアップロードするだけで、図面の物件情報と、物件のまわりの施設（駅・買い物・学校・病院・公園など）を入れた紹介文を作ります。メール・LINE にそのまま貼れる形です。同じ図面で、会社欄を自社に差し替える「帯替え」もできます。</p>
+      <div class="ctas"><a class="btn" href="https://app.sonae-are.com/?tool=maisoku&amp;from=business">アプリで使う</a><a class="tlink" href="#how">使い方を見る</a></div>
+      <div class="note">有料プランの機能です（ライトでも追加料金はかかりません）。売買（土地・戸建・マンション・収益一棟）と賃貸の図面に対応しています。</div>
     </div>
-  </section>
-
-  <section>
-    <h2>できること</h2>
-    <ul class="feat">
-      <li>レインズ様式のまま、A4横1枚の PDF と Excel で出力。Excel は細かく手直しできます</li>
-      <li>取引態様・免許番号・取扱会社など、広告に必要な記載欄は枠として固定。抜け漏れが出ません</li>
-      <li>自社情報は保存しておけば、次回から入力不要</li>
-      <li>未入力の必須項目は赤枠で表示。広告として出す前に確認できます</li>
-      <li>出来上がった図面から、投資家向けの<strong>紹介文</strong>を定型文で組み立て。ワンクリックでコピーできます</li>
-      <li>紹介文は不動産の表示規約（第18条）で使えない語を自動で確認。見つかれば指摘します</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>出力イメージ</h2>
-    <div class="preview">
-      <img src="assets/sample-maisoku.png" alt="マイソク作成の出力見本。レインズ様式の中古マンションの図面で、価格・所在地・面積・築年月などの概要表と、自社情報の欄が入っている" width="1070" height="749">
-    </div>
-    <p class="cap">※ 見本の物件・会社名はすべて架空です。PDF / Excel でダウンロードできます（有料プラン）。</p>
-  </section>
-
-  <section>
-    <h2>投資家向けの紹介文も、その場で</h2>
-    <p class="lead">図面の数字から、メールにそのまま貼れる紹介文を組み立てます。AI は使わない定型文なので、数字が勝手に変わることもありません。</p>
-    <div class="pitch">■ 紹介文
+    <div>
+      <div class="letter"><div class="stamp" aria-hidden="true">見本</div>■ 紹介文
 
 お世話になっております。
 中古マンションをご紹介します。
 
-【物件情報】
+<b>【物件情報】</b>
+・価格：4,280万円
 ・マンション名：グランドメゾン本町
 ・築年数：2015年3月築（築11年）
+・間取り：3LDK
 ・専有面積：70.25㎡
-・住所：大阪市中央区本町1-2-3
 ・最寄駅：Osaka Metro御堂筋線「本町」駅 徒歩5分
 
+<b>【周辺のおすすめ】</b>
+・Osaka Metro御堂筋線「本町」駅まで徒歩5分です。雨の日の通勤・通学も楽な距離です。ほかに堺筋本町駅（徒歩約9分）も利用できます。
+・スーパー（〇〇ストア）まで徒歩約4分、コンビニ（〇〇マート）は徒歩約2分。お仕事帰りや休日の買い物に困りません。
+・小学校（〇〇小学校）まで徒歩約7分。保育園・幼稚園は徒歩10分以内に2件あります。
+・病院（〇〇総合病院）まで徒歩約11分。クリニックは徒歩10分以内に2件あります。
+・公園（〇〇公園）まで徒歩約3分。お散歩やお子さまの遊び場にも困りません。
+
 物件資料をお送りしますので、ご興味があれば内見の日程をご相談ください。
-ご検討のほどよろしくお願いいたします。
 
 サンプル不動産株式会社　山田
 TEL 06-0000-0000
-大阪府知事(2)第012345号
 取引態様：専任</div>
-    <p class="cap">※ 上の見本の図面（架空の物件）から実際に組み立てた文面です。読み取れた項目だけを使い、読み取れなかった項目は「確認したい点」として別に示します。</p>
-    <div class="trust-box"><strong>図面は宅建業法上の広告です。</strong>取引態様・免許番号・取扱会社の欄は画面外に出せない作りにしてあり、紹介文は表示規約で使えない語（「格安」「完璧」など）を自動で確認します。出す前の最終確認は、必ず担当者の目でお願いします。</div>
-  </section>
-
-  <a class="cta" href="https://app.sonae-are.com/?tool=maisoku&from=personal">アプリで試してみる</a>
-  <p class="cap" style="margin-top:-14px;">※ マイソク作成は有料プランの機能です。メールアドレスとパスワードだけの無料の会員登録で、月1回、図面の発行までお試しいただけます。</p>
+      <p class="cap">見本の物件・施設・会社はすべて架空です。住所と施設の名前・徒歩分数は、実際には物件の住所から調べた結果が入ります。</p>
+    </div>
+  </div>
 </div>
 
-<footer>Sonaure 〜備えあれば憂いなし、＋αの感動を〜<br>© 2026 Sonaure</footer>
-<script src="assets/motion.js" defer></script>
+<section>
+  <div class="wrap">
+    <span class="eyebrow">こんな手間はありませんか</span>
+    <h2 class="ph"><span>紹介するたびに、</span><span>同じことを</span><span>打ち直していませんか。</span></h2>
+    <p class="lead">物件の紹介文づくりは、図面の数字の書き写しと、まわりの施設の下調べがほとんどです。</p>
+    <ul class="rules">
+      <li>物件を紹介するたびに、図面を見ながら価格・面積・駅徒歩をメールに打ち直している</li>
+      <li>「近くにスーパーはありますか」「小学校まで何分ですか」と聞かれて、地図で1件ずつ調べている</li>
+      <li>元付の図面を自社の帯で出したいだけなのに、画像ソフトで白く塗って会社情報を打ち直している</li>
+    </ul>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <span class="eyebrow">使い方</span>
+    <h2 class="ph"><span>アップロードして、</span><span>住所を確かめるだけ。</span></h2>
+    <p class="lead">文章は AI を使わない定型文で組み立てます。図面と調べた施設に無いことは書きません。</p>
+    <ol class="steps">
+      <li><span class="n">1</span><h3>マイソクを選ぶ</h3><p>PDF か画像（スマホで撮った写真も可）。物件の種別・価格・面積・最寄駅・住所を読み取ります。</p></li>
+      <li><span class="n">2</span><h3>住所を確かめて作る</h3><p>読み取った住所を確かめて「この住所で紹介文を作る」を押すと、まわりの施設を調べて紹介文にします。</p></li>
+      <li><span class="n">3</span><h3>選んでコピー</h3><p>要らない文はチェックで外せます。文面はその場で直して、コピーしてメール・LINE へ。</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="reader">
+  <div class="wrap">
+    <span class="eyebrow">読み手に合わせて</span>
+    <h2 class="ph"><span>住む方にも、</span><span>投資家にも。</span></h2>
+    <p class="lead">送る相手を選ぶと、周辺のおすすめに書く観点が変わります。賃貸の図面は、入居を検討している方向けに作ります。</p>
+    <div class="two">
+      <div class="box">
+        <h3>住む人向け（実需）</h3>
+        <p>毎日の暮らしの便利さを、施設の名前と徒歩分数で伝えます。</p>
+        <div class="items"><span>交通</span><span>買い物</span><span>子育て・教育</span><span>医療</span><span>くらし</span></div>
+      </div>
+      <div class="box">
+        <h3>投資家向け</h3>
+        <p>駅と路線、入居者の暮らしやすさ、まわりの世帯の様子（国勢調査など）を伝えます。</p>
+        <div class="items"><span>駅・路線</span><span>入居者の暮らし</span><span>まわりの世帯</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="obi">
+  <div class="wrap">
+    <span class="eyebrow">帯替え</span>
+    <h2 class="ph"><span>同じ図面で、</span><span>会社欄を自社に。</span></h2>
+    <p class="lead">会社欄は自動で見つけて赤で囲みます。ずれていれば、画像の上をなぞって直せます（スマホは指で）。自社情報は、レインズ様式の帯と同じ組み方で描き直します。出来上がりは PDF・画像でダウンロードできます。</p>
+    <figure class="fig">
+      <span class="lab">元付の図面の会社欄</span>
+      <img src="assets/sample-obi-before.png" alt="帯替えの前：元付の会社名・宅建免許・TEL・FAX・所在地が入った会社欄" width="1400" height="162" loading="lazy">
+      <span class="lab after">帯替えのあと（自社の会社欄）</span>
+      <img src="assets/sample-obi-after.png" alt="帯替えのあと：自社の会社名・宅建免許・保証協会・所属協会・所在地・TEL・FAX・取引態様・担当者が入った会社欄" width="1400" height="162" loading="lazy">
+    </figure>
+    <p class="cap" style="text-align:left">見本の会社はすべて架空です。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">その他の作り方</span>
+    <h2 class="ph"><span>レインズ様式の図面も</span><span>作れます。</span></h2>
+    <p class="lead">他社のチラシを読み取って入力欄に入れ、直してから作る方法と、一から入力して作る方法があります。A4横1枚の PDF と、手直しできる Excel で出せます。出来上がりの下で、同じように紹介文も作れます。</p>
+    <div class="sample"><img src="assets/sample-maisoku.png" alt="レインズ様式の中古マンションの図面の見本。価格・所在地・面積・築年月などの概要表と、自社情報の欄" width="1070" height="749" loading="lazy"></div>
+    <p class="cap" style="text-align:left">見本の物件・会社名はすべて架空です。</p>
+  </div>
+</section>
+
+<section id="safe">
+  <div class="wrap">
+    <span class="eyebrow">安心して使うために</span>
+    <h2 class="ph"><span>広告のきまりに沿って、</span><span>送る前に確かめられる形に。</span></h2>
+    <ul class="rules ok">
+      <li>駅までの徒歩は、図面の表記を使います<small>こちらで測った分数と2分以上違うときは「送る前に確かめたい点」に出します。</small></li>
+      <li>施設は、物件からの徒歩分数（道のり80m＝1分）で示します<small>地図データの情報なので、今も営業しているかを確かめる点としてお知らせします。</small></li>
+      <li>住所に番地が無いときはお知らせします<small>町の中心から測ることになるため、番地まで入れて作り直せます。</small></li>
+      <li>不動産の表示に関する公正競争規約で根拠なしに使えない語（「格安」「完璧」など）を自動で確認します</li>
+      <li>墓地・送電線などについて「近くに無い」とは書きません<small>地図データに無いだけのこともあるためです。必要なら周辺環境調査書でお示しください。</small></li>
+      <li>帯の取引態様・免許番号・取扱会社は、宅建業法上の広告の記載として必ず入ります</li>
+    </ul>
+    <p class="small" style="margin-top:18px">お客様に送る前の最終確認は、必ず担当者の目でお願いします。</p>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 class="ph"><span>図面1枚から、</span><span>紹介文と帯替えまで。</span></h2>
+    <p class="lead" style="margin-bottom:22px">マイソク紹介文自動作成・帯替えは、不動産会社さま向けの有料プランの機能です。計算のツールは、ご契約がなくても無料でお使いいただけます。</p>
+    <div class="ctas"><a class="btn" href="https://app.sonae-are.com/?tool=maisoku&amp;from=business">アプリで使う</a><a class="tlink" href="index.html#price">料金のしくみを見る</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><b>Sonaure</b><br>備えあれば憂いなし、＋αの感動を</div>
+      <nav aria-label="サイト内のページ"><a href="index.html">トップ</a><a href="personal.html">個人の方へ</a><a href="services.html">サービスメニュー</a><a href="operator.html">運営者情報</a><a href="terms.html">利用規約</a><a href="tokushoho.html">特定商取引法に基づく表記</a><a href="privacy.html">プライバシーポリシー</a></nav>
+    </div>
+    <div class="dis">※ 紹介文は図面の読み取りと地図データ・公的データにもとづく下書きです。内容の正確さを保証するものではありません。<br>導入のご相談・サポート：sonaure100@gmail.com</div>
+  </div>
+</footer>
 </body>
 </html>
