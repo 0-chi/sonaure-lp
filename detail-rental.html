@@ -10,137 +10,127 @@
 <meta property="og:description" content="家賃を入れるだけで、敷金・礼金・仲介手数料・保証料・火災保険・日割り家賃・前家賃まで、契約のときに払う初期費用の合計を概算。登録なし・無料。不動産会社の方は申込前の概算提示にも。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sonae-are.com/detail-rental.html">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap');
-  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:"Noto Sans JP","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);line-height:1.9;background:linear-gradient(180deg,#fff,#f3f8ff);}
-  .wrap{max-width:840px;margin:0 auto;padding:0 20px;}
-  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
-  .bar{display:flex;align-items:center;height:56px;}
-  .back{font-size:14px;color:var(--blue);text-decoration:none;font-weight:bold;}
-  .hero{background:linear-gradient(135deg,#eaf3ff,#d7e9ff 60%,#c8e0ff);border-radius:18px;border:1px solid var(--line);padding:34px 24px;text-align:center;margin:24px 0;}
-  .hero .num{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;font-weight:bold;font-size:18px;margin-bottom:12px;}
-  .hero h1{font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;font-size:28px;color:var(--blue-d);letter-spacing:.04em;}
-  .hero p{color:var(--blue-d);font-size:14px;margin-top:8px;}
-  section{padding:10px 0 24px;}
-  h2{font-size:20px;color:var(--blue-d);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-  h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));}
-  .lead{font-size:15px;margin-bottom:16px;}
-  ul.feat{list-style:none;background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:14px;padding:18px 22px;}
-  ul.feat li{padding:5px 0 5px 26px;position:relative;font-size:14.5px;}
-  ul.feat li::before{content:"✓";position:absolute;left:4px;color:var(--blue);font-weight:bold;}
-  .preview{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 28px rgba(26,77,143,.10);padding:22px 22px 16px;overflow-x:auto;}
-  .pv-title{font-size:18px;font-weight:bold;border-bottom:3px solid var(--blue);padding-bottom:6px;}
-  .pv-title span{color:var(--blue);font-size:12px;margin-left:8px;}
-  .pv-note{color:var(--muted);font-size:10px;margin-left:8px;}
-  .pv-meta{font-size:11px;color:var(--muted);margin:6px 0 14px;}
-  .preview h3{font-size:14px;background:#ebf4ff;padding:6px 10px;border-left:4px solid var(--blue);color:var(--blue-d);margin:14px 0 8px;}
-  .preview h3:first-of-type{margin-top:0;}
-  table{width:100%;border-collapse:collapse;font-size:12px;}
-  th,td{border:1px solid #cbd5e0;padding:5px 8px;text-align:left;}
-  th{background:#f7fafc;color:var(--blue-d);}
-  .item{font-weight:bold;white-space:nowrap;}
-  .num-c{text-align:right;white-space:nowrap;}
-  .kpis{display:flex;gap:8px;flex-wrap:wrap;}
-  .kpi{flex:1;min-width:130px;border:1px solid #cbd5e0;border-radius:6px;padding:10px;text-align:center;}
-  .kpi .l{font-size:11px;color:var(--muted);}
-  .kpi .v{font-size:16px;font-weight:bold;color:var(--blue-d);margin-top:4px;}
-  .pv-brand{text-align:right;color:var(--blue);font-weight:bold;font-size:14px;margin-top:14px;}
-  .cap{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
-  .pro-box{border-left:4px solid var(--blue);background:#f4f9ff;padding:16px 20px;border-radius:0 10px 10px 0;font-size:14px;}
-  .pro-box strong{color:var(--blue-d);display:block;margin-bottom:4px;}
-  .links{font-size:12.5px;color:var(--muted);line-height:1.9;margin-top:6px;}
-  .links a{color:var(--blue);font-weight:bold;}
-  .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto;max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
-  footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:20px;}
-  /* スマホでは表をカードにする。「計算根拠・備考」の列が1行2〜3文字に折り返されて読めないため */
-  @media (max-width:640px){
-    table.cardify thead{display:none;}
-    table.cardify,table.cardify tbody,table.cardify tr,table.cardify td{display:block;width:100%;}
-    table.cardify tr{background:#fff;border:1px solid #cbd5e0;border-radius:10px;padding:8px 12px;margin-bottom:8px;}
-    table.cardify td{border:0;padding:3px 0;text-align:left;white-space:normal;display:flex;gap:10px;justify-content:space-between;align-items:baseline;}
-    table.cardify td::before{content:attr(data-label);flex:none;min-width:5.5em;font-size:11px;color:#64748b;}
-    table.cardify td:first-child{display:block;font-weight:bold;white-space:normal;}
-    table.cardify td:first-child::before{display:none;}
-  }
-</style>
-<link rel="stylesheet" href="assets/motion.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="assets/paper.css?v=20261106">
+<link rel="stylesheet" href="assets/detail.css?v=20261108">
 </head>
 <body>
-<header><div class="wrap bar"><a class="back" href="personal.html">← Sonaure トップへ</a></div></header>
 
-<div class="wrap">
-  <div class="hero">
-    <div class="num">4</div>
-    <h1>賃貸初期費用計算</h1>
-    <p>家賃を入れるだけ。敷金・礼金から日割り家賃まで、契約のときに払う合計が分かります。</p>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html">Sonaure</a>
+    <nav aria-label="このページの目次"><a href="#use">こんなときに</a><a href="#sample">出力イメージ</a><a href="#inside">計算の中身</a><a href="#pro">営業の方へ</a></nav>
+    <a class="side" href="index.html#tools">ツール一覧へ</a>
+    <a class="go" href="https://app.sonae-are.com/?tool=rental&amp;from=personal">アプリを開く</a>
   </div>
+</header>
 
-  <section>
-    <h2>こんなときに使えます</h2>
-    <p class="lead">「初期費用って、結局いくら用意すればいいの？」——賃貸の初期費用は物件や条件によって家賃の3〜8ヶ月分と幅があり、家賃だけを見ていると足りなくなります。気になる部屋の家賃と条件を入れると、契約のときに払う合計が出ます。</p>
-    <ul class="feat">
+<div class="dhero">
+  <div class="wrap">
+    <div>
+      <h1 class="ph"><span class="pre">計算する｜無料・登録不要</span><span>賃貸初期費用計算</span></h1>
+      <p>家賃を入れるだけ。敷金・礼金から日割り家賃まで、契約のときに払う合計が分かります。</p>
+      <div class="ctas"><a class="btn" href="https://app.sonae-are.com/?tool=rental&amp;from=personal">無料で計算する</a><a class="tlink" href="#sample">PDF の出力イメージを見る</a></div>
+      <div class="note">画面での計算は、登録なしで無料です。お客様に渡す書類（PDF / Excel）の発行は、有料プランの機能です。</div>
+    </div>
+    <figure class="peek">
+      <div class="stamp" aria-hidden="true">見本</div>
+      <a href="#sample"><img src="assets/samples/rental-1.webp" alt="賃貸初期費用の概算の見本。初期費用合計 約893,333円・家賃の約6.0ヶ月分。敷金・礼金・仲介手数料・保証料・火災保険・鍵交換・日割り家賃・前家賃の明細と、毎月の支払いの目安" width="910" height="1287"></a>
+      <figcaption class="cap">PDF の出力イメージ（実際に出力した書類です。物件名・会社名・担当者は伏せています）</figcaption>
+    </figure>
+  </div>
+</div>
+
+<section id="use">
+  <div class="wrap">
+    <span class="eyebrow">こんなときに使えます</span>
+    <h2 class="ph"><span>初期費用は、</span><span>結局いくら要る？</span></h2>
+    <p class="lead">賃貸の初期費用は物件や条件によって家賃の3〜8ヶ月分と幅があり、家賃だけを見ていると足りなくなります。気になる部屋の家賃と条件を入れると、契約のときに払う合計が出ます。</p>
+    <ul class="rules">
       <li>引っ越しを考え始めて、貯金がいくらあれば動けるか知りたい</li>
-      <li>気になる部屋が2〜3件あり、初期費用で比べたい（礼金なし・仲介手数料半月分など、条件の違いを反映できます）</li>
+      <li>気になる部屋が2〜3件あり、初期費用で比べたい<small>礼金なし・仲介手数料半月分など、条件の違いを反映できます。</small></li>
       <li>入居日を決める前に、日割り家賃と前家賃でいくら変わるか見ておきたい</li>
       <li>不動産会社からもらった見積りの内訳が妥当か、自分でも確かめたい</li>
     </ul>
-  </section>
-
-  <section>
-    <h2>計算に入っているもの</h2>
-    <p class="lead">入れるのは家賃・管理費と契約条件（敷金・礼金の月数など）。住所は要りません。</p>
-    <ul class="feat">
-      <li>敷金・礼金（月数は物件に合わせて調整可能）</li>
+  </div>
+</section>
+<section id="sample">
+  <div class="wrap">
+    <span class="eyebrow">PDF の出力イメージ</span>
+    <h2 class="ph"><span>お客様に渡す1枚は、</span><span>この形です。</span></h2>
+    <p class="lead">Sonaure で実際に出力した PDF です（家賃 15万円・管理費 1万円の例）。右下には貴社の社名と担当者のお名前が入り、Sonaure の名前は出ません。</p>
+    <div class="doc">
+      <figure class="pg">
+        <div class="stamp" aria-hidden="true">見本</div>
+        <a href="assets/samples/rental.pdf" target="_blank" rel="noopener"><img src="assets/samples/rental-1.webp" alt="賃貸初期費用の概算の見本。初期費用合計 約893,333円・家賃の約6.0ヶ月分。敷金・礼金・仲介手数料・保証料・火災保険・鍵交換・日割り家賃・前家賃の明細と、毎月の支払いの目安" width="910" height="1287" loading="lazy"></a>
+        <figcaption>初期費用の合計・明細・毎月の支払い・注記</figcaption>
+      </figure>
+      <div class="inbox">
+        <h3>この書類に入るもの</h3>
+        <ul class="rules ok">
+        <li>初期費用の合計と「家賃の何ヶ月分か」</li>
+        <li>初期費用の明細と計算根拠（敷金・礼金・仲介手数料・保証料・火災保険・鍵交換・日割り家賃・前家賃）</li>
+        <li>毎月の支払い（家賃・管理費の目安）</li>
+        <li>概算の前提（注記）と、貴社の社名・担当者</li>
+        </ul>
+        <a class="open" href="assets/samples/rental.pdf" target="_blank" rel="noopener">PDF で開く（1ページ）</a>
+        <p class="cap">見本の物件・会社・担当者は伏せています。金額は入力した条件での概算です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="inside">
+  <div class="wrap">
+    <span class="eyebrow">計算に入っているもの</span>
+    <h2 class="ph"><span>入れるのは、</span><span>家賃と契約条件だけ。</span></h2>
+    <p class="lead">家賃・管理費と、敷金・礼金の月数などの契約条件を入れます。住所は要りません。</p>
+    <ul class="rules ok">
+      <li>敷金・礼金（月数は物件に合わせて調整できます）</li>
       <li>仲介手数料（1ヶ月＋税／0.5ヶ月＋税／なし から選択）</li>
       <li>保証会社の初回保証料（総賃料の30〜100%で設定）</li>
       <li>火災保険料（2年）・鍵交換費用</li>
-      <li>入居日を入れると日割り家賃・管理費を自動計算</li>
+      <li>入居日を入れると、日割り家賃・管理費を自動計算</li>
       <li>翌月分の前家賃までまとめて、合計と「家賃の何ヶ月分か」を自動表示</li>
     </ul>
-  </section>
+  </div>
+</section>
+<section id="pro">
+  <div class="wrap">
+    <span class="eyebrow">不動産会社・営業の方は</span>
+    <h2 class="ph"><span>「初期費用はいくら？」と</span><span>聞かれたとき。</span></h2>
+    <div class="box"><p>来店・内見中に、家賃と募集条件を入れれば、その場で1枚出せます。申込前の概算提示、入居日を動かしたときの日割りの説明、複数物件の比較に。募集条件にしかない費用は「その他費用」として足せます。</p></div>
+  </div>
+</section>
+<section id="read">
+  <div class="wrap">
+    <span class="eyebrow">くわしい解説</span>
+    <h2 class="ph"><span>あわせて読みたい記事</span></h2>
+    <ul class="list">
+      <li><a href="blog/chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</a></li>
+      <li><a href="blog/shikikin-reikin-souba.html">敷金・礼金・仲介手数料の相場｜条件次第で12万円変わる</a></li>
+    </ul>
+    <p class="small" style="margin-top:18px">アプリを開かずに試す：<a href="tools/chintai-shokihiyo.html">ブラウザ版の賃貸初期費用シミュレーション</a></p>
+  </div>
+</section>
 
-  <section>
-    <h2>不動産会社・営業の方は</h2>
-    <div class="pro-box"><strong>来店・内見中に「初期費用はいくら？」と聞かれたとき</strong>家賃と募集条件を入れれば、その場で1枚出せます。申込前の概算提示、入居日を動かしたときの日割りの説明、複数物件の比較に。募集条件にしかない費用は「その他費用」として足せます。</div>
-  </section>
+<section class="final">
+  <div class="wrap">
+    <h2 class="ph"><span>家賃を入れるだけで、</span><span>初期費用の1枚に。</span></h2>
+    <p class="lead" style="margin-bottom:22px">画面での計算は、登録なしで無料です。書類（PDF / Excel）の発行は、不動産会社さま向けの有料プランの機能です。</p>
+    <div class="ctas"><a class="btn" href="https://app.sonae-are.com/?tool=rental&amp;from=personal">無料で計算する</a><a class="tlink" href="index.html#tools">ほかのツールを見る</a></div>
+  </div>
+</section>
 
-  <section>
-    <h2>出力イメージ</h2>
-    <div class="preview">
-      <div class="pv-title">賃貸初期費用の概算<span>Sonaure</span><span class="pv-note">※あくまで概算になるため変動いたします</span></div>
-      <div class="pv-meta">対象：家賃 8 万円／管理費 0.5 万円</div>
-      <h3>初期費用の概算明細</h3>
-      <table class="cardify">
-        <thead><tr><th>項目</th><th class="num-c">金額</th><th>計算根拠・備考</th></tr></thead>
-        <tbody>
-          <tr><td data-label="項目" class="item">敷金</td><td data-label="金額" class="num-c">80,000円</td><td data-label="計算根拠・備考">家賃1ヶ月分（退去時精算の預け金）</td></tr>
-          <tr><td data-label="項目" class="item">礼金</td><td data-label="金額" class="num-c">80,000円</td><td data-label="計算根拠・備考">家賃1ヶ月分</td></tr>
-          <tr><td data-label="項目" class="item">仲介手数料</td><td data-label="金額" class="num-c">88,000円</td><td data-label="計算根拠・備考">家賃1ヶ月分＋消費税10%</td></tr>
-          <tr><td data-label="項目" class="item">保証会社 初回保証料</td><td data-label="金額" class="num-c">42,500円</td><td data-label="計算根拠・備考">総賃料（家賃＋管理費）の50%</td></tr>
-          <tr><td data-label="項目" class="item">火災保険料（2年）</td><td data-label="金額" class="num-c">20,000円</td><td data-label="計算根拠・備考">借家人賠償責任保険付き・目安</td></tr>
-          <tr><td data-label="項目" class="item">鍵交換費用</td><td data-label="金額" class="num-c">33,000円</td><td data-label="計算根拠・備考">シリンダー交換・目安（税込）</td></tr>
-          <tr><td data-label="項目" class="item">日割り家賃・管理費</td><td data-label="金額" class="num-c">32,903円</td><td data-label="計算根拠・備考">7月20日入居：12日分（31日の月）</td></tr>
-          <tr><td data-label="項目" class="item">前家賃（翌月分）</td><td data-label="金額" class="num-c">85,000円</td><td data-label="計算根拠・備考">家賃＋管理費の1ヶ月分</td></tr>
-        </tbody>
-      </table>
-      <h3>合計</h3>
-      <div class="kpis">
-        <div class="kpi"><div class="l">初期費用合計（概算）</div><div class="v">約 461,403 円</div></div>
-        <div class="kpi"><div class="l">家賃の何ヶ月分か</div><div class="v">約 5.8 ヶ月分</div></div>
-      </div>
-      <div class="pv-brand">Sonaure</div>
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><b>Sonaure</b><br>備えあれば憂いなし、＋αの感動を</div>
+      <nav aria-label="サイト内のページ"><a href="index.html">トップ</a><a href="personal.html">個人の方へ</a><a href="services.html">サービスメニュー</a><a href="operator.html">運営者情報</a><a href="terms.html">利用規約</a><a href="tokushoho.html">特定商取引法に基づく表記</a><a href="privacy.html">プライバシーポリシー</a></nav>
     </div>
-    <p class="cap">※ 実際のレポートはPDF / Excelでダウンロードできます（書類の発行は有料プラン。上記は表示イメージ）。</p>
-  </section>
-
-  <p class="links">くわしい解説：<a href="blog/chintai-shokihiyo-nankagetsu.html">賃貸の初期費用は家賃の何ヶ月分？実測すると3〜8ヶ月分の幅</a>｜<a href="blog/shikikin-reikin-souba.html">敷金・礼金・仲介手数料の相場｜条件次第で12万円変わる</a><br>アプリを開かずに試す：<a href="tools/chintai-shokihiyo.html">ブラウザ版の賃貸初期費用シミュレーション</a></p>
-
-  <a class="cta" href="https://app.sonae-are.com/?tool=rental&from=personal">無料ツールを使う</a>
-</div>
-
-<footer>Sonaure 〜備えあれば憂いなし、＋αの感動を〜<br>© 2026 Sonaure</footer>
-<script src="assets/motion.js" defer></script>
+    <div class="dis">※ 金額は一般的な前提にもとづく概算です。実額は物件・契約条件・管理会社・保証会社・保険商品により変わります。<br>導入のご相談・サポート：sonaure100@gmail.com</div>
+  </div>
+</footer>
 </body>
 </html>

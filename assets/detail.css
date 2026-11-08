@@ -1,0 +1,73 @@
+/* ツールの説明ページ（detail-*.html）の共通の部品。色・文字・ボタン・ヘッダー・フッターは assets/paper.css（トップと同じ）。
+   角丸は4px以下。グラデーション・光彩・ぼかした影・絵文字は使わない。 */
+
+/* ヒーロー：左に言葉、右に出来上がる PDF の1枚目（上の部分） */
+.dhero { padding-block: 64px 60px; }
+.dhero .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.dhero h1 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.45; margin: 0 0 18px; letter-spacing: .02em; }
+.dhero h1 .pre { display: block; font-size: .4em; font-weight: 400; color: var(--sub); letter-spacing: .08em; margin-bottom: 14px; }
+.dhero p { margin: 0 0 26px; }
+.note { margin-top: 16px; font-size: 13px; color: var(--sub); line-height: 1.8; }
+.peek { position: relative; margin: 0; }
+.peek a { display: block; aspect-ratio: 1 / .94; overflow: hidden; background: #fff; border: 1px solid var(--rule); }
+.peek a:hover { border-color: var(--blue); }
+.peek img { display: block; width: 100%; height: auto; }
+.peek .stamp { right: -10px; top: -22px; }
+
+/* 罫線で区切った一覧（手間・使える場面・中身） */
+.rules { list-style: none; margin: 0; padding: 0; max-width: 820px; }
+.rules li { padding: 14px 0 14px 28px; border-bottom: 1px solid var(--rule); position: relative; font-size: 15px; line-height: 1.8; }
+.rules li:first-child { border-top: 1px solid var(--rule); }
+.rules li::before { content: ""; position: absolute; left: 4px; top: 25px; width: 10px; height: 2px; background: var(--ink); }
+.rules.ok li::before { content: "✓"; width: auto; height: auto; background: none; top: 13px; color: var(--blue); font-weight: 700; }
+.rules small { display: block; color: var(--sub); font-size: 13.5px; }
+.rules b { font-weight: 700; }
+
+/* 項目の分類（周辺環境調査の25項目など）：左に分類、右に中身 */
+.cats { margin: 0; max-width: 820px; }
+.cats div { display: grid; grid-template-columns: 9em 1fr; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--rule); font-size: 15px; line-height: 1.8; }
+.cats div:first-child { border-top: 1px solid var(--rule); }
+.cats dt { font-weight: 700; }
+.cats dd { margin: 0; color: var(--sub); }
+
+/* 白い箱（営業の方へ・答え） */
+.box { background: var(--card); border: 1px solid var(--rule); padding: 22px 24px 20px; max-width: 820px; }
+.box h3 { margin: 0 0 6px; font-size: 17.5px; line-height: 1.6; }
+.box p { margin: 0; font-size: 15px; color: var(--sub); line-height: 1.9; }
+.box + .box { margin-top: 14px; }
+.answer { font-size: clamp(20px, 2.4vw, 24px); font-weight: 700; line-height: 1.6; margin: 36px 0 18px; }
+.answer em { font-style: normal; font-size: 1.25em; }
+.after-list { margin: 22px 0 0; max-width: 820px; font-size: 15px; line-height: 1.9; }
+
+/* PDF の出力イメージ：左に1枚目、右に書類に入るもの。2枚目からは下に小さく並べる */
+.doc { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 44px; align-items: start; }
+.pg { position: relative; margin: 0; }
+.pg a { display: block; background: #fff; border: 1px solid var(--rule); }
+.pg a:hover { border-color: var(--blue); }
+.pg img { display: block; width: 100%; height: auto; }
+.pg figcaption { font-size: 12.5px; color: var(--sub); margin-top: 8px; line-height: 1.6; }
+.pg figcaption b { color: var(--ink); margin-right: 8px; }
+.pg .stamp { right: -10px; top: -22px; }
+.inbox h3 { font-size: 17.5px; margin: 0 0 12px; line-height: 1.6; }
+.inbox .rules li { font-size: 14.5px; padding-block: 11px; }
+.inbox .rules li::before { top: 9px; }
+.open { display: inline-block; margin-top: 24px; border: 1px solid var(--ink); border-radius: 4px; padding: 10px 20px;
+  color: var(--ink); text-decoration: none; font-weight: 700; font-size: 14.5px; line-height: 1.6; }
+.open:hover { border-color: var(--blue); color: var(--blue); }
+.open:focus-visible, .pg a:focus-visible, .peek a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.rest { margin-top: 40px; }
+.rest .lab { display: block; font-size: 13px; letter-spacing: .1em; color: var(--sub); margin-bottom: 12px; }
+.pages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+
+/* 漫画（縦に長いので幅を抑える） */
+.manga { max-width: 520px; margin: 0; }
+.manga img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--rule); }
+.manga figcaption { font-size: 13px; color: var(--sub); margin-top: 10px; line-height: 1.8; }
+
+@media (max-width: 860px) {
+  .dhero { padding-block: 40px 44px; }
+  .dhero .wrap, .doc { grid-template-columns: 1fr; gap: 34px; }
+  .dhero h1 { font-size: 28px; }
+  .pages { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .cats div { grid-template-columns: 1fr; gap: 2px; }
+}

@@ -10,165 +10,161 @@
 <meta property="og:description" content="住所を入れるだけで、スーパー・学校・病院などの周辺施設を自動調査し、住んでいる人・駅のにぎわい・学区・地盤などの「エリアの特徴」を出典つきの短い文で添えられます。調べる施設は25項目から選べます。約1分で、そのまま渡せる1枚に。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sonae-are.com/detail-env.html">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap');
-  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:"Noto Sans JP","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);line-height:1.9;background:linear-gradient(180deg,#fff,#f3f8ff);}
-  .wrap{max-width:840px;margin:0 auto;padding:0 20px;}
-  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
-  .bar{display:flex;align-items:center;height:56px;}
-  .back{font-size:14px;color:var(--blue);text-decoration:none;font-weight:bold;}
-  .hero{background:linear-gradient(135deg,#eaf3ff,#d7e9ff 60%,#c8e0ff);border-radius:18px;border:1px solid var(--line);padding:34px 24px;text-align:center;margin:24px 0;}
-  .hero .num{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;font-weight:bold;font-size:18px;margin-bottom:12px;}
-  .hero h1{font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;font-size:28px;color:var(--blue-d);letter-spacing:.04em;}
-  .hero p{color:var(--blue-d);font-size:14px;margin-top:8px;}
-  section{padding:10px 0 24px;}
-  h2{font-size:20px;color:var(--blue-d);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-  h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));}
-  .lead{font-size:15px;margin-bottom:16px;}
-  ul.feat{list-style:none;background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:14px;padding:18px 22px;}
-  ul.feat li{padding:5px 0 5px 26px;position:relative;font-size:14.5px;}
-  ul.feat li::before{content:"✓";position:absolute;left:4px;color:var(--blue);font-weight:bold;}
-  .new-badge{display:inline-block;background:linear-gradient(135deg,#e53e3e,#f56565);color:#fff;font-size:10.5px;font-weight:bold;border-radius:999px;padding:1px 10px;margin-left:6px;vertical-align:middle;letter-spacing:.08em;}
-  .preview{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 28px rgba(26,77,143,.10);padding:22px 22px 16px;overflow-x:auto;}
-  .pv-title{font-size:18px;font-weight:bold;border-bottom:3px solid var(--blue);padding-bottom:6px;}
-  .pv-title span{color:var(--blue);font-size:12px;margin-left:8px;}
-  .pv-meta{font-size:11px;color:var(--muted);margin:6px 0 14px;}
-  .preview h3{font-size:14px;background:#ebf4ff;padding:6px 10px;border-left:4px solid var(--blue);color:var(--blue-d);margin:0 0 8px;}
-  table{width:100%;border-collapse:collapse;font-size:12px;}
-  th,td{border:1px solid #cbd5e0;padding:5px 8px;text-align:left;}
-  th{background:#f7fafc;color:var(--blue-d);}
-  .item{background:#f7fafc;font-weight:bold;white-space:nowrap;}
-  .pv-brand{text-align:right;color:var(--blue);font-weight:bold;font-size:14px;margin-top:14px;}
-  .cap{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
-  .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto;max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
-  footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:20px;}
-  ul.pain{list-style:none;background:linear-gradient(135deg,#fff,#f7fbff);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin:8px 0 16px;}
-  ul.pain li{padding:6px 0 6px 28px;position:relative;font-size:14.5px;}
-  ul.pain li::before{content:"✗";position:absolute;left:4px;color:#c53030;font-weight:bold;}
-  .answer{text-align:center;font-size:22px;font-weight:bold;color:var(--blue-d);margin:26px 0;}
-  .answer .ten{font-size:1.5em;color:var(--blue);}
-  .trust-box{border-left:4px solid var(--blue);background:#f4f9ff;padding:18px 22px;border-radius:0 10px 10px 0;margin-top:20px;font-size:14px;}
-  .trust-box strong{color:var(--blue-d);}
-  /* スマホでは表をカードにする。「計算根拠・備考」の列が1行2〜3文字に折り返されて読めないため */
-  @media (max-width:640px){
-    table.cardify thead{display:none;}
-    table.cardify,table.cardify tbody,table.cardify tr,table.cardify td{display:block;width:100%;}
-    table.cardify tr{background:#fff;border:1px solid #cbd5e0;border-radius:10px;padding:8px 12px;margin-bottom:8px;}
-    table.cardify td{border:0;padding:3px 0;text-align:left;white-space:normal;display:flex;gap:10px;justify-content:space-between;align-items:baseline;}
-    table.cardify td::before{content:attr(data-label);flex:none;min-width:5.5em;font-size:11px;color:#64748b;}
-    table.cardify td:first-child{display:block;font-weight:bold;white-space:normal;}
-    table.cardify td:first-child::before{display:none;}
-  }
-</style>
-<link rel="stylesheet" href="assets/motion.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="assets/paper.css?v=20261106">
+<link rel="stylesheet" href="assets/detail.css?v=20261108">
 </head>
 <body>
-<header><div class="wrap bar"><a class="back" href="personal.html">← Sonaure トップへ</a></div></header>
 
-<div class="wrap">
-  <div class="hero">
-    <div class="num">6</div>
-    <h1>周辺環境調査書</h1>
-    <p>住所を入れるだけで、物件まわりの生活施設を徒歩分数つきで1枚に。住んでいる人・駅のにぎわい・学区・地盤などの「エリアの特徴」も、出典つきの短い文で添えられます。</p>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html">Sonaure</a>
+    <nav aria-label="このページの目次"><a href="#use">こんな経験</a><a href="#sample">出力イメージ</a><a href="#items">調べる施設</a><a href="#area">エリアの特徴</a></nav>
+    <a class="side" href="index.html#tools">ツール一覧へ</a>
+    <a class="go" href="https://app.sonae-are.com/?tool=env&amp;from=personal">ログイン・新規登録</a>
   </div>
+</header>
 
-  <section>
-    <h2>物件案内の前に、こんな経験ありませんか？</h2>
-    <ul class="pain">
+<div class="dhero">
+  <div class="wrap">
+    <div>
+      <h1 class="ph"><span class="pre">調べる｜有料プランの機能</span><span>周辺環境調査書</span></h1>
+      <p>住所を入れるだけで、物件まわりの生活施設を徒歩分数つきで1つの書類に。住んでいる人・駅のにぎわい・学区・地盤などの「エリアの特徴」も、出典つきの短い文で添えられます。</p>
+      <div class="ctas"><a class="btn" href="https://app.sonae-are.com/?tool=env&amp;from=personal">アプリで使う</a><a class="tlink" href="#sample">PDF の出力イメージを見る</a></div>
+      <div class="note">不動産会社さま向けの有料プランの機能です（無料のお試しはありません）。書類（PDF / Excel）の発行まで含みます。</div>
+    </div>
+    <figure class="peek">
+      <div class="stamp" aria-hidden="true">見本</div>
+      <a href="#sample"><img src="assets/samples/env-1.webp" alt="周辺環境調査書の見本の1ページ目。調べた施設のピンが入った周辺の地図、最寄り駅・スーパー・コンビニ・クリニックまでの徒歩分数、駅の表" width="910" height="1287"></a>
+      <figcaption class="cap">PDF の出力イメージ（実際に出力した書類です。物件名・住所・会社名は伏せ、地図はぼかしています）</figcaption>
+    </figure>
+  </div>
+</div>
+
+<section id="use">
+  <div class="wrap">
+    <span class="eyebrow">物件案内の前に</span>
+    <h2 class="ph"><span>こんな経験、</span><span>ありませんか。</span></h2>
+    <ul class="rules">
       <li>調べ始めると5分〜10分、レポートにまとめると15分前後かかるし面倒だからやらない</li>
       <li>大体把握してるから調べなくていいや、と省略する</li>
       <li>来店のお客様がいるときは、すぐ案内に出ないといけない。時間的な余裕がない</li>
       <li>メモのような文章にまとめただけでは、お客様に渡せない</li>
     </ul>
-    <p class="lead">頭に入ってると思って、意外と抜けているもの。ランドマークになる建物は知っていても、<strong>学校・病院・銀行・スーパー</strong>……周辺環境の全部を把握しきるのは難しいものです。事前準備を丁寧にやっているとしたら、内見のたびに営業の貴重な15分前後が失われています。</p>
-    <div class="answer">そんなとき、Sonaureなら<span class="ten">約1分</span>で、そのまま渡せる1枚に。</div>
-    <div class="trust-box"><strong>この調査結果をプリントアウトすれば、そのままお客様に渡せる仕様です。</strong>注釈もついており、メモのような文章ではなく、そのまま渡せる体裁です。最後にお客様にお渡しすれば「丁寧な営業さんだな」という＋αの信頼につながります。</div>
-  </section>
-
-  <section>
-    <h2>こんな調査を自動でまとめます</h2>
-    <p class="lead">物件案内の前に「周りに何があるか」を毎回調べるのは手間。Sonaureなら住所を入れるだけで、案内に必要な周辺情報がそろいます。</p>
-    <ul class="feat">
-      <li>最寄り駅（複数路線・徒歩分数つき）</li>
-      <li>小学校・中学校・高校・大学・保育園・幼稚園</li>
-      <li>病院・診療所・スーパー・コンビニ・銀行・郵便局</li>
-      <li>公園・大型商業施設・コインパーキング</li>
-      <li>各施設までの徒歩分数（道路距離からの概算・80m＝1分）を自動計算</li>
-      <li>調べた施設を地図に表示。位置関係がひと目でわかる（地図はPDF・Excelにも入ります）</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>調べる施設は、項目ごとに選べます<span class="new-badge">NEW</span></h2>
-    <p class="lead">同じ物件でも、お客様によって知りたいことは違うもの。25の調査項目から選べます。よく使う6項目に最初からチェックが入っており（ログインすれば自分の選択をデフォルトとして保存できます）、外した項目は調査しません。</p>
-    <ul class="feat">
-      <li><strong>交通</strong> — 最寄り駅・バス停</li>
-      <li><strong>買い物</strong> — コンビニ・スーパー・ドラッグストア／薬局・大型商業施設・商店街</li>
-      <li><strong>生活</strong> — 郵便局・銀行・役所・公園・図書館・交番・コインランドリー・ジム／フィットネス・コインパーキング</li>
-      <li><strong>医療</strong> — 診療所／クリニック・病院・小児科</li>
-      <li><strong>教育・保育</strong> — 保育園／幼稚園・小学校・中学校・高校・大学</li>
-      <li><strong>その他</strong> — 忌避施設（墓地・火葬場・葬儀場・処理場・パチンコ店・高圧線・変電所・ガソリンスタンド・工場など）</li>
+    <p class="after-list">頭に入ってると思って、意外と抜けているもの。ランドマークになる建物は知っていても、学校・病院・銀行・スーパー……周辺環境の全部を把握しきるのは難しいものです。事前準備を丁寧にやっているとしたら、内見のたびに営業の貴重な15分前後が失われています。</p>
+    <p class="answer">そんなとき、Sonaure なら<em>約1分</em>で、そのまま渡せる書類に。</p>
+    <div class="box"><p>この調査結果をプリントアウトすれば、そのままお客様に渡せる仕様です。注釈もついており、メモのような文章ではなく、そのまま渡せる体裁です。最後にお客様にお渡しすれば「丁寧な営業さんだな」という＋αの信頼につながります。</p></div>
+  </div>
+</section>
+<section id="sample">
+  <div class="wrap">
+    <span class="eyebrow">PDF の出力イメージ</span>
+    <h2 class="ph"><span>お客様に渡す書類は、</span><span>この形です。</span></h2>
+    <p class="lead">Sonaure で実際に出力した PDF です（全3ページ）。右下には貴社の社名と担当者のお名前が入り、Sonaure の名前は出ません。</p>
+    <div class="doc">
+      <figure class="pg">
+        <div class="stamp" aria-hidden="true">見本</div>
+        <a href="assets/sample-env-report.pdf" target="_blank" rel="noopener"><img src="assets/samples/env-1.webp" alt="周辺環境調査書の見本の1ページ目。調べた施設のピンが入った周辺の地図、最寄り駅・スーパー・コンビニ・クリニックまでの徒歩分数、駅の表" width="910" height="1287" loading="lazy"></a>
+        <figcaption><b>1 / 3</b>周辺の地図・主な施設までの徒歩・交通</figcaption>
+      </figure>
+      <div class="inbox">
+        <h3>この書類に入るもの</h3>
+        <ul class="rules ok">
+        <li>周辺の地図（調べた施設のピン入り）</li>
+        <li>主な施設までの徒歩（最寄り駅・スーパー・コンビニ・クリニックなど）</li>
+        <li>施設の表（記号・徒歩分数・名称・方角・住所）</li>
+        <li>エリアの特徴（街の性格・学区・年齢分布・地盤・騒音・地価・成約価格・家賃など。出典つき）</li>
+        <li>周辺の魅力（載せる行は営業が選べます）</li>
+        <li>注記と出典、貴社の社名・担当者</li>
+        </ul>
+        <a class="open" href="assets/sample-env-report.pdf" target="_blank" rel="noopener">PDF で開く（全3ページ）</a>
+        <p class="cap">見本の物件名・住所・会社名は伏せ、地図はぼかしています。実際の書類には物件の住所と、はっきりした地図が入ります。エリアの特徴は公的データ・地図データからの目安です。</p>
+      </div>
+    </div>
+    <div class="rest">
+      <span class="lab">2ページ目から</span>
+      <div class="pages">
+      <figure class="pg">
+        <a href="assets/sample-env-report.pdf#page=2" target="_blank" rel="noopener"><img src="assets/samples/env-2.webp" alt="周辺環境調査書の見本の2ページ目。買い物・生活・医療の施設の表と、街の性格・学区・年齢分布・持ち家と賃貸の割合・標高と坂・地盤・騒音・地価の動き・成約価格などのエリアの特徴" width="910" height="1287" loading="lazy"></a>
+        <figcaption><b>2 / 3</b>買い物・生活・医療の施設と、エリアの特徴</figcaption>
+      </figure>
+      <figure class="pg">
+        <a href="assets/sample-env-report.pdf#page=3" target="_blank" rel="noopener"><img src="assets/samples/env-3.webp" alt="周辺環境調査書の見本の3ページ目。取引価格と賃貸の家賃、周辺の魅力の箇条書き、注記と出典、会社名と担当者" width="910" height="1287" loading="lazy"></a>
+        <figcaption><b>3 / 3</b>取引価格・家賃・周辺の魅力・注記</figcaption>
+      </figure>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="items">
+  <div class="wrap">
+    <span class="eyebrow">こんな調査を自動でまとめます</span>
+    <h2 class="ph"><span>調べる施設は、</span><span>25項目から選べます。</span></h2>
+    <p class="lead">同じ物件でも、お客様によって知りたいことは違うもの。よく使う6項目に最初からチェックが入っており（ログインすれば自分の選択を保存できます）、外した項目は調査しません。</p>
+    <dl class="cats">
+      <div><dt>交通</dt><dd>最寄り駅（複数路線・徒歩分数つき）・バス停</dd></div>
+      <div><dt>買い物</dt><dd>コンビニ・スーパー・ドラッグストア／薬局・大型商業施設・商店街</dd></div>
+      <div><dt>生活</dt><dd>郵便局・銀行・役所・公園・図書館・交番・コインランドリー・ジム／フィットネス・コインパーキング</dd></div>
+      <div><dt>医療</dt><dd>診療所／クリニック・病院・小児科</dd></div>
+      <div><dt>教育・保育</dt><dd>保育園／幼稚園・小学校・中学校・高校・大学</dd></div>
+      <div><dt>その他</dt><dd>忌避施設（墓地・火葬場・葬儀場・処理場・パチンコ店・高圧線・変電所・ガソリンスタンド・工場など）</dd></div>
+    </dl>
+    <ul class="rules ok" style="margin-top:28px">
+      <li>各施設までの徒歩分数は、道路距離からの概算（80m＝1分）で自動計算</li>
+      <li>調べた施設を地図に表示。位置関係がひと目で分かります（地図は PDF・Excel にも入ります）</li>
       <li>単身のお客様には学校を外す、ファミリーには小児科を残す——といった調整が、その場でできます</li>
       <li>外した項目はレポート末尾に「調査対象外」として明記。調べ漏れと区別がつきます</li>
     </ul>
-  </section>
-
-  <section>
-    <h2>街のことも、文で添えられます<span class="new-badge">NEW</span></h2>
+  </div>
+</section>
+<section id="area">
+  <div class="wrap">
+    <span class="eyebrow">エリアの特徴</span>
+    <h2 class="ph"><span>街のことも、</span><span>文で添えられます。</span></h2>
     <p class="lead">施設の表のあとに「エリアの特徴」として、公的データからの短い文を載せられます。「落ち着いた」「利用者の多い」といった言い方は、数字が全国平均などの基準を超えたときだけ。出典も書類に載るので、「その数字、どこから？」と聞かれても示せます。</p>
-    <ul class="feat">
-      <li><strong>街の性格</strong> — 用途地域の割合から（例：住宅が中心の街です。半径500mの約8割が住居系の用途地域です）</li>
-      <li><strong>エリアの年齢分布・持ち家・賃貸の割合</strong> — 年齢構成・人数・世帯の顔ぶれ・持ち家率（国勢調査・将来推計人口）</li>
-      <li><strong>駅のにぎわい</strong> — 最寄り駅の1日の乗降客数</li>
-      <li><strong>商店街・学区</strong> — 学区は区域データが公開されている地域のみ（未公開の地域は近くの公立校を記載）</li>
-      <li><strong>標高と坂・地盤</strong> — 駅との高低差、地形からみた揺れやすさの目安</li>
-      <li><strong>騒音・におい</strong> — 幹線道路・線路・空港・工場・処理場など、音やにおいの元になりうるものまでの距離（地図データから。測定値ではありません）</li>
-      <li><strong>地価の動き</strong> — 近くの公示地価の前年比（上がっているときだけ記載）</li>
-      <li>画面に出た行から、お客様に渡す行を営業が選んで書類に載せます</li>
+    <ul class="rules ok">
+      <li><b>街の性格</b><small>用途地域の割合から（例：住宅が中心の街です。半径500mの約8割が住居系の用途地域です）</small></li>
+      <li><b>エリアの年齢分布・持ち家・賃貸の割合</b><small>年齢構成・人数・世帯の顔ぶれ・持ち家率（国勢調査・将来推計人口）</small></li>
+      <li><b>駅のにぎわい</b><small>最寄り駅の1日の乗降客数</small></li>
+      <li><b>商店街・学区</b><small>学区は区域データが公開されている地域のみ（未公開の地域は近くの公立校を記載）</small></li>
+      <li><b>標高と坂・地盤</b><small>駅との高低差、地形からみた揺れやすさの目安</small></li>
+      <li><b>騒音・におい</b><small>幹線道路・線路・空港・工場・処理場など、音やにおいの元になりうるものまでの距離（地図データから。測定値ではありません）</small></li>
+      <li><b>地価の動き</b><small>近くの公示地価の前年比（上がっているときだけ記載）</small></li>
     </ul>
-  </section>
+    <p class="small" style="margin-top:18px">画面に出た行から、お客様に渡す行を営業が選んで書類に載せます。</p>
+  </div>
+</section>
+<section id="read">
+  <div class="wrap">
+    <span class="eyebrow">くわしい解説</span>
+    <h2 class="ph"><span>あわせて読みたい記事</span></h2>
+    <ul class="list">
+      <li><a href="blog/shuhen-kankyo-shirabekata.html">不動産の周辺環境の調べ方｜調査項目・情報源と、徒歩分数のルール</a></li>
+      <li><a href="blog/shuhen-kankyo-chousasho-template.html">周辺環境調査書のテンプレート｜項目構成・記載例・免責文のひな形</a></li>
+      <li><a href="blog/naiken-junbi-eigyo.html">内見の準備｜前日までにそろえるものと、現地での段取り</a></li>
+      <li><a href="blog/shuueki-bukken-genchi-chousa.html">収益物件の現地調査｜書面に出てこない「これから出ていくお金」</a></li>
+    </ul>
+  </div>
+</section>
 
-  <section>
-    <h2>出力イメージ</h2>
-    <div class="preview">
-      <div class="pv-title">物件の周辺について<span>Sonaure</span></div>
-      <div class="pv-meta">対象：東京都千代田区霞が関2-1-3（東京都千代田区霞が関二丁目）</div>
-      <h3>周辺環境</h3>
-      <table class="cardify">
-        <thead><tr><th>項目</th><th>名称</th><th>徒歩（概算）</th><th>住所・備考</th></tr></thead>
-        <tbody>
-          <tr><td data-label="項目" class="item">最寄り駅</td><td data-label="名称">霞ケ関駅</td><td data-label="徒歩（概算）">徒歩約3分（210m）</td><td data-label="住所・備考">東京メトロ・丸ノ内線</td></tr>
-          <tr><td data-label="項目" class="item"></td><td data-label="名称">桜田門駅</td><td data-label="徒歩（概算）">徒歩約6分（450m）</td><td data-label="住所・備考">東京メトロ・有楽町線</td></tr>
-          <tr><td data-label="項目" class="item">小学校</td><td data-label="名称">千代田区立麹町小学校</td><td data-label="徒歩（概算）">徒歩約12分（930m）</td><td data-label="住所・備考">千代田区麹町2-8</td></tr>
-          <tr><td data-label="項目" class="item">スーパー</td><td data-label="名称">成城石井 虎ノ門店</td><td data-label="徒歩（概算）">徒歩約8分（610m）</td><td data-label="住所・備考">—</td></tr>
-          <tr><td data-label="項目" class="item">コンビニ</td><td data-label="名称">セブン-イレブン</td><td data-label="徒歩（概算）">徒歩約2分（150m）</td><td data-label="住所・備考">—</td></tr>
-          <tr><td data-label="項目" class="item">郵便局</td><td data-label="名称">霞が関郵便局</td><td data-label="徒歩（概算）">徒歩約4分（300m）</td><td data-label="住所・備考">—</td></tr>
-          <tr><td data-label="項目" class="item">病院</td><td data-label="名称">虎の門病院</td><td data-label="徒歩（概算）">徒歩約9分（700m）</td><td data-label="住所・備考">内科・外科ほか</td></tr>
-          <tr><td data-label="項目" class="item">コインパーキング</td><td data-label="名称">タイムズ霞が関</td><td data-label="徒歩（概算）">徒歩約2分（130m）</td><td data-label="住所・備考">—</td></tr>
-                  </tbody>
-      </table>
-      <h3 style="margin-top:14px;">エリアの特徴</h3>
-      <table class="cardify">
-        <tbody>
-          <tr><td data-label="項目" class="item">街の性格</td><td data-label="内容">お店や事務所が多い街です。半径500mの約9割が商業系の用途地域です。</td></tr>
-          <tr><td data-label="項目" class="item">駅のにぎわい</td><td data-label="内容">最寄りの霞ケ関駅は1日あたり約7.8万人が乗り降りします。利用者の多い駅です。</td></tr>
-          <tr><td data-label="項目" class="item">標高と坂</td><td data-label="内容">標高は約8.0mです。最寄りの霞ケ関駅とほぼ同じ高さで、駅までは平坦です。</td></tr>
-        </tbody>
-      </table>
-      <div class="pv-brand">Sonaure</div>
+<section class="final">
+  <div class="wrap">
+    <h2 class="ph"><span>住所を入れるだけで、</span><span>そのまま渡せる書類に。</span></h2>
+    <p class="lead" style="margin-bottom:22px">周辺環境調査書は、不動産会社さま向けの有料プランの機能です（無料のお試しはありません）。書類（PDF / Excel）の発行まで含みます。計算のツールは、ご契約がなくても無料でお使いいただけます。</p>
+    <div class="ctas"><a class="btn" href="https://app.sonae-are.com/?tool=env&amp;from=personal">アプリで使う</a><a class="tlink" href="index.html#tools">ほかのツールを見る</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><b>Sonaure</b><br>備えあれば憂いなし、＋αの感動を</div>
+      <nav aria-label="サイト内のページ"><a href="index.html">トップ</a><a href="personal.html">個人の方へ</a><a href="services.html">サービスメニュー</a><a href="operator.html">運営者情報</a><a href="terms.html">利用規約</a><a href="tokushoho.html">特定商取引法に基づく表記</a><a href="privacy.html">プライバシーポリシー</a></nav>
     </div>
-    <p class="cap">※ PDF / Excelでダウンロードできます（有料プラン。上記は表示イメージで、数値は架空です）。地図はPDF・Excelにも入ります。エリアの特徴は公的データ・地図データからの目安です。</p>
-  </section>
-
-  <p class="cap" style="text-align:left;">くわしい解説：<a href="blog/shuhen-kankyo-shirabekata.html" style="color:#2b6cb0;font-weight:bold;">不動産の周辺環境の調べ方｜調査項目・情報源と、徒歩分数のルール</a>｜<a href="blog/shuhen-kankyo-chousasho-template.html" style="color:#2b6cb0;font-weight:bold;">周辺環境調査書のテンプレート｜項目構成・記載例・免責文のひな形</a>｜<a href="blog/naiken-junbi-eigyo.html" style="color:#2b6cb0;font-weight:bold;">内見の準備｜前日までにそろえるものと、現地での段取り</a>｜<a href="blog/shuueki-bukken-genchi-chousa.html" style="color:#2b6cb0;font-weight:bold;">収益物件の現地調査｜書面に出てこない「これから出ていくお金」</a></p>
-
-  <a class="cta" href="https://app.sonae-are.com/?tool=env&from=personal">無料で試してみる</a>
-  <p class="cap" style="margin-top:-14px;">※ 無料の会員登録で、月1回お試しいただけます（画面表示のみ）。続けてのご利用と書類（PDF / Excel）の発行は有料プランです。</p>
-</div>
-
-<footer>Sonaure 〜備えあれば憂いなし、＋αの感動を〜<br>© 2026 Sonaure</footer>
-<script src="assets/motion.js" defer></script>
+    <div class="dis">※ 調査結果は公的データ・地図データにもとづく目安です。施設の営業状況や最新の情報は、現地でご確認ください。<br>導入のご相談・サポート：sonaure100@gmail.com</div>
+  </div>
+</footer>
 </body>
 </html>

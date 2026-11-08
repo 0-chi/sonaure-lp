@@ -10,139 +10,141 @@
 <meta property="og:description" content="今の家賃と同じ月々の支払いで、いくらの物件が買えるかを逆算。家賃を払い続けた場合の累計との比較も1枚に。登録なし・無料。不動産会社の方は、賃貸のお客様への購入のご提案にも。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sonae-are.com/detail-rentbuy.html">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap');
-  :root{--blue-d:#1a4d8f;--blue:#2b6cb0;--blue-l:#4299e1;--line:#dbe7f5;--ink:#2d3748;--muted:#64748b;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:"Noto Sans JP","Hiragino Sans","Meiryo",sans-serif;color:var(--ink);line-height:1.9;background:linear-gradient(180deg,#fff,#f3f8ff);}
-  .wrap{max-width:840px;margin:0 auto;padding:0 20px;}
-  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
-  .bar{display:flex;align-items:center;height:56px;}
-  .back{font-size:14px;color:var(--blue);text-decoration:none;font-weight:bold;}
-  .hero{background:linear-gradient(135deg,#eaf3ff,#d7e9ff 60%,#c8e0ff);border-radius:18px;border:1px solid var(--line);padding:34px 24px;text-align:center;margin:24px 0;}
-  .hero .num{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;font-weight:bold;font-size:18px;margin-bottom:12px;}
-  .hero h1{font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;font-size:28px;color:var(--blue-d);letter-spacing:.04em;}
-  .hero p{color:var(--blue-d);font-size:14px;margin-top:8px;}
-  section{padding:10px 0 24px;}
-  h2{font-size:20px;color:var(--blue-d);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-  h2::before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-l));}
-  .lead{font-size:15px;margin-bottom:16px;}
-  ul.feat{list-style:none;background:linear-gradient(135deg,#f4f9ff,#eaf3ff);border:1px solid var(--line);border-radius:14px;padding:18px 22px;}
-  ul.feat li{padding:5px 0 5px 26px;position:relative;font-size:14.5px;}
-  ul.feat li::before{content:"✓";position:absolute;left:4px;color:var(--blue);font-weight:bold;}
-  .preview{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 28px rgba(26,77,143,.10);padding:22px 22px 16px;overflow-x:auto;}
-  .pv-title{font-size:18px;font-weight:bold;border-bottom:3px solid var(--blue);padding-bottom:6px;}
-  .pv-title span{color:var(--blue);font-size:12px;margin-left:8px;}
-  .pv-note{color:var(--muted);font-size:10px;margin-left:8px;}
-  .pv-meta{font-size:11px;color:var(--muted);margin:6px 0 14px;}
-  .preview h3{font-size:14px;background:#ebf4ff;padding:6px 10px;border-left:4px solid var(--blue);color:var(--blue-d);margin:14px 0 8px;}
-  .preview h3:first-of-type{margin-top:0;}
-  table{width:100%;border-collapse:collapse;font-size:12px;}
-  th,td{border:1px solid #cbd5e0;padding:5px 8px;text-align:left;}
-  th{background:#f7fafc;color:var(--blue-d);}
-  .item{font-weight:bold;white-space:nowrap;}
-  .num-c{text-align:right;white-space:nowrap;}
-  .kpis{display:flex;gap:8px;flex-wrap:wrap;}
-  .kpi{flex:1;min-width:130px;border:1px solid #cbd5e0;border-radius:6px;padding:10px;text-align:center;}
-  .kpi .l{font-size:11px;color:var(--muted);}
-  .kpi .v{font-size:16px;font-weight:bold;color:var(--blue-d);margin-top:4px;}
-  .pv-brand{text-align:right;color:var(--blue);font-weight:bold;font-size:14px;margin-top:14px;}
-  .cap{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
-  .pro-box{border-left:4px solid var(--blue);background:#f4f9ff;padding:16px 20px;border-radius:0 10px 10px 0;font-size:14px;}
-  .pro-box strong{color:var(--blue-d);display:block;margin-bottom:4px;}
-  .links{font-size:12.5px;color:var(--muted);line-height:1.9;margin-top:6px;}
-  .links a{color:var(--blue);font-weight:bold;}
-  .cta{display:block;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px;border-radius:999px;margin:26px auto;max-width:380px;box-shadow:0 8px 24px rgba(43,108,176,.3);}
-  footer{background:var(--blue-d);color:#cfe2f8;font-size:12px;text-align:center;padding:22px 16px;margin-top:20px;}
-  /* スマホでは表をカードにする。「計算根拠・備考」の列が1行2〜3文字に折り返されて読めないため */
-  @media (max-width:640px){
-    table.cardify thead{display:none;}
-    table.cardify,table.cardify tbody,table.cardify tr,table.cardify td{display:block;width:100%;}
-    table.cardify tr{background:#fff;border:1px solid #cbd5e0;border-radius:10px;padding:8px 12px;margin-bottom:8px;}
-    table.cardify td{border:0;padding:3px 0;text-align:left;white-space:normal;display:flex;gap:10px;justify-content:space-between;align-items:baseline;}
-    table.cardify td::before{content:attr(data-label);flex:none;min-width:5.5em;font-size:11px;color:#64748b;}
-    table.cardify td:first-child{display:block;font-weight:bold;white-space:normal;}
-    table.cardify td:first-child::before{display:none;}
-  }
-  /* 漫画（営業向けのトップから移した4コマ）。縦に長いので幅を抑える */
-  .manga{max-width:560px;margin:18px auto 0;}
-  .manga img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:8px;}
-  .manga figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
-</style>
-<link rel="stylesheet" href="assets/motion.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="assets/paper.css?v=20261106">
+<link rel="stylesheet" href="assets/detail.css?v=20261108">
 </head>
 <body>
-<header><div class="wrap bar"><a class="back" href="personal.html">← Sonaure トップへ</a></div></header>
 
-<div class="wrap">
-  <div class="hero">
-    <div class="num">1</div>
-    <h1>家賃→購入シミュレーション</h1>
-    <p>今の家賃と同じ支払いで、いくらの物件が買えるか。家賃を払い続けた場合との比較も1枚に。</p>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html">Sonaure</a>
+    <nav aria-label="このページの目次"><a href="#use">こんなときに</a><a href="#sample">出力イメージ</a><a href="#inside">入れるもの</a><a href="#pro">営業の方へ</a></nav>
+    <a class="side" href="index.html#tools">ツール一覧へ</a>
+    <a class="go" href="https://app.sonae-are.com/?tool=rentbuy&amp;from=personal">アプリを開く</a>
   </div>
+</header>
 
-  <section>
-    <h2>こんなときに使えます</h2>
-    <p class="lead">「このまま家賃を払い続けるのと、買うのと、どっちがいいんだろう？」——そう思ったら、今の家賃を入れてみてください。同じ月々の支払いで買える物件価格の目安と、家賃を払い続けた場合に出ていく総額が、1枚で並びます。</p>
-    <ul class="feat">
+<div class="dhero">
+  <div class="wrap">
+    <div>
+      <h1 class="ph"><span class="pre">計算する｜無料・登録不要</span><span>家賃→購入</span><span>シミュレーション</span></h1>
+      <p>今の家賃と同じ支払いで、いくらの物件が買えるか。家賃を払い続けた場合との比較と、完済して売ったときの実質の負担まで1つの書類に。</p>
+      <div class="ctas"><a class="btn" href="https://app.sonae-are.com/?tool=rentbuy&amp;from=personal">無料で計算する</a><a class="tlink" href="#sample">PDF の出力イメージを見る</a></div>
+      <div class="note">画面での計算は、登録なしで無料です。お客様に渡す書類（PDF / Excel）の発行は、有料プランの機能です。</div>
+    </div>
+    <figure class="peek">
+      <div class="stamp" aria-hidden="true">見本</div>
+      <a href="#sample"><img src="assets/samples/rentbuy-1.webp" alt="家賃から考える住宅購入の目安の見本。月々15万円・金利1%・35年で物件価格の目安 約5,314万円。家賃を払い続けた場合との比較と、35年で完済して売却した場合の実質の月額 約116,026円" width="910" height="1287"></a>
+      <figcaption class="cap">PDF の出力イメージ（実際に出力した書類です。物件名・会社名・担当者は伏せています）</figcaption>
+    </figure>
+  </div>
+</div>
+
+<section id="use">
+  <div class="wrap">
+    <span class="eyebrow">こんなときに使えます</span>
+    <h2 class="ph"><span>借り続けるのと、買うのと、</span><span>どっちがいい？</span></h2>
+    <p class="lead">今の家賃を入れてみてください。同じ月々の支払いで買える物件価格の目安と、家賃を払い続けた場合に出ていく総額が並びます。</p>
+    <ul class="rules">
       <li>更新のたびに「このまま借り続けていいのかな」と迷っている</li>
       <li>物件を見に行く前に、自分の予算感（いくらまでの物件を見ればいいか）を知っておきたい</li>
       <li>家族やパートナーと「買うか、借り続けるか」を数字で話し合いたい</li>
       <li>金利が上がったら、返済期間を短くしたら、買える価格がどう変わるか試したい</li>
     </ul>
-  </section>
-
-  <section>
-    <h2>入れるもの・出てくるもの</h2>
+  </div>
+</section>
+<section id="sample">
+  <div class="wrap">
+    <span class="eyebrow">PDF の出力イメージ</span>
+    <h2 class="ph"><span>お客様に渡す書類は、</span><span>この形です。</span></h2>
+    <p class="lead">Sonaure で実際に出力した PDF です（月々 15万円・金利 1%・35年の例）。右下には貴社の社名と担当者のお名前が入り、Sonaure の名前は出ません。</p>
+    <div class="doc">
+      <figure class="pg">
+        <div class="stamp" aria-hidden="true">見本</div>
+        <a href="assets/samples/rentbuy.pdf" target="_blank" rel="noopener"><img src="assets/samples/rentbuy-1.webp" alt="家賃から考える住宅購入の目安の見本。月々15万円・金利1%・35年で物件価格の目安 約5,314万円。家賃を払い続けた場合との比較と、35年で完済して売却した場合の実質の月額 約116,026円" width="910" height="1287" loading="lazy"></a>
+        <figcaption><b>1 / 2</b>結果・家賃との比較・35年で完済して売却した場合の実質負担</figcaption>
+      </figure>
+      <div class="inbox">
+        <h3>この書類に入るもの</h3>
+        <ul class="rules ok">
+        <li>物件価格の目安（借入可能額）</li>
+        <li>総返済額・利息と、購入後に毎月出ていく額</li>
+        <li>家賃を払い続けた場合の累計との比較（10年・20年・35年）</li>
+        <li>35年で完済し、売却した場合の実質の負担（実質の月額・売却後の手残り）</li>
+        <li>計算の前提と注記、貴社の社名・担当者</li>
+        </ul>
+        <a class="open" href="assets/samples/rentbuy.pdf" target="_blank" rel="noopener">PDF で開く（全2ページ）</a>
+        <p class="cap">見本の物件・会社・担当者は伏せています。金額は入力した条件での概算です。</p>
+      </div>
+    </div>
+    <div class="rest">
+      <span class="lab">2ページ目から</span>
+      <div class="pages">
+      <figure class="pg">
+        <a href="assets/samples/rentbuy.pdf#page=2" target="_blank" rel="noopener"><img src="assets/samples/rentbuy-2.webp" alt="家賃から考える住宅購入の目安の2ページ目。月々の支払額・金利・返済期間・頭金・売却時の想定価格などの計算の前提と注記" width="910" height="1287" loading="lazy"></a>
+        <figcaption><b>2 / 2</b>計算の前提・注記</figcaption>
+      </figure>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="inside">
+  <div class="wrap">
+    <span class="eyebrow">入れるもの・出てくるもの</span>
+    <h2 class="ph"><span>入れるのは、</span><span>月々の支払額と金利と期間。</span></h2>
     <p class="lead">入れるのは、月々の支払額（今の家賃）・金利・返済期間・頭金だけ。住所や物件の情報は要りません。</p>
-    <ul class="feat">
+    <ul class="rules ok">
       <li>今の家賃と同じ月々の支払いで「いくら借りられるか」を逆算</li>
       <li>頭金を足した「物件価格の目安」を自動表示</li>
       <li>金利・返済期間は自由に調整（元利均等・ボーナス払いなし）</li>
       <li>総返済額と利息の内訳も明示</li>
       <li>「家賃を払い続けた場合の累計」との比較表つき</li>
+      <li>完済して売却した場合の手残りと、実質の月額まで</li>
     </ul>
-  </section>
-
-  <section>
-    <h2>不動産会社・営業の方は</h2>
-    <div class="pro-box"><strong>賃貸のお客様から「買ったほうがいいですか？」と聞かれたとき</strong>月々の支払額を聞けば、その場で比較の1枚が出せます。賃貸の接客から売買のご相談へ、無理なくつなげる資料に。来店中や内見の帰りなど、お客様の関心が高いうちに渡せます。</div>
-    <figure class="manga">
+  </div>
+</section>
+<section id="pro">
+  <div class="wrap">
+    <span class="eyebrow">不動産会社・営業の方は</span>
+    <h2 class="ph"><span>「買ったほうがいいですか？」と</span><span>聞かれたとき。</span></h2>
+    <div class="box"><p>賃貸のお客様から聞かれたら、月々の支払額を聞くだけで、その場で比較の書類が出せます。賃貸の接客から売買のご相談へ、無理なくつなげる資料に。来店中や内見の帰りなど、お客様の関心が高いうちに渡せます。</p></div>
+    <figure class="manga" style="margin-top:34px">
       <img src="assets/manga-rentbuy.jpg?v=20261028" alt="買うか賃貸かの漫画：①「買うか、賃貸か」で迷うお客様「購入か、もう一回賃貸か迷ってるんです」②同じ家賃でいくらの家が買えるんだろう…お客様「12万の家賃ならいくらの家を買えますか？売った場合はどうなりますか？」営業「えーっと、金利と返済期間が…」と電卓をたたく③売った後の手残りまでは、すぐ出せない…「資料作るのに何時間かかるんだ…」④「Sonaure」なら金額を入れるだけ、数秒で。毎月の家賃12万円で買える家の価格・売却後の手残り・実質の家賃が出て、お客様が「こんなに違うんですね！」" width="1122" height="1402" loading="lazy">
       <figcaption>同じ毎月の支払いで買える家の価格、ローンを完済して売ったときの手残り、実質の家賃まで、金額を入れるだけで数秒で出せます。</figcaption>
     </figure>
-  </section>
+  </div>
+</section>
+<section id="read">
+  <div class="wrap">
+    <span class="eyebrow">くわしい解説</span>
+    <h2 class="ph"><span>あわせて読みたい記事</span></h2>
+    <ul class="list">
+      <li><a href="blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</a></li>
+      <li><a href="blog/ie-kounyu-kikan.html">家を買うまでの期間｜入居日から逆算する</a></li>
+      <li><a href="blog/jutaku-loan-hitsuyou-shorui.html">住宅ローンの必要書類｜事前審査と本審査で何が違うか</a></li>
+    </ul>
+  </div>
+</section>
 
-  <section>
-    <h2>出力イメージ</h2>
-    <div class="preview">
-      <div class="pv-title">家賃から考える住宅購入の目安<span>Sonaure</span><span class="pv-note">※あくまで概算になるため変動いたします</span></div>
-      <div class="pv-meta">対象：月々 8 万円／金利 1.5%／35年</div>
-      <h3>結果</h3>
-      <div class="kpis">
-        <div class="kpi"><div class="l">借入可能額（概算）</div><div class="v">約 2,613 万円</div></div>
-        <div class="kpi"><div class="l">物件価格の目安</div><div class="v">約 2,613 万円</div></div>
-      </div>
-      <h3>家賃を払い続けた場合との比較</h3>
-      <table class="cardify">
-        <thead><tr><th>期間</th><th class="num-c">家賃を払い続けた場合の累計</th><th>備考</th></tr></thead>
-        <tbody>
-          <tr><td data-label="期間" class="item">10年</td><td data-label="家賃を払い続けた場合の累計" class="num-c">約 960 万円</td><td data-label="備考">資産は残りません</td></tr>
-          <tr><td data-label="期間" class="item">20年</td><td data-label="家賃を払い続けた場合の累計" class="num-c">約 1,920 万円</td><td data-label="備考">資産は残りません</td></tr>
-          <tr><td data-label="期間" class="item">35年</td><td data-label="家賃を払い続けた場合の累計" class="num-c">約 3,360 万円</td><td data-label="備考">購入なら完済し、物件が資産として残ります</td></tr>
-        </tbody>
-      </table>
-      <div class="pv-brand">Sonaure</div>
+<section class="final">
+  <div class="wrap">
+    <h2 class="ph"><span>今の家賃を入れるだけで、</span><span>買える価格の目安に。</span></h2>
+    <p class="lead" style="margin-bottom:22px">画面での計算は、登録なしで無料です。書類（PDF / Excel）の発行は、不動産会社さま向けの有料プランの機能です。</p>
+    <div class="ctas"><a class="btn" href="https://app.sonae-are.com/?tool=rentbuy&amp;from=personal">無料で計算する</a><a class="tlink" href="index.html#tools">ほかのツールを見る</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><b>Sonaure</b><br>備えあれば憂いなし、＋αの感動を</div>
+      <nav aria-label="サイト内のページ"><a href="index.html">トップ</a><a href="personal.html">個人の方へ</a><a href="services.html">サービスメニュー</a><a href="operator.html">運営者情報</a><a href="terms.html">利用規約</a><a href="tokushoho.html">特定商取引法に基づく表記</a><a href="privacy.html">プライバシーポリシー</a></nav>
     </div>
-    <p class="cap">※ 実際のレポートには前提条件・総返済額・注意事項も記載。PDF / Excelでダウンロードできます（書類の発行は有料プラン。上記は表示イメージ）。</p>
-  </section>
-
-  <p class="links">くわしい解説：<a href="blog/chintai-vs-kounyu.html">賃貸と購入どっちが得？家賃と同額で買った場合の実質負担を計算した</a>｜<a href="blog/ie-kounyu-kikan.html">家を買うまでの期間｜入居日から逆算する</a>｜<a href="blog/jutaku-loan-hitsuyou-shorui.html">住宅ローンの必要書類｜事前審査と本審査で何が違うか</a></p>
-
-  <a class="cta" href="https://app.sonae-are.com/?tool=rentbuy&from=personal">無料ツールを使う</a>
-</div>
-
-<footer>Sonaure 〜備えあれば憂いなし、＋αの感動を〜<br>© 2026 Sonaure</footer>
-<script src="assets/motion.js" defer></script>
+    <div class="dis">※ 金額は一般的な前提にもとづく概算です。借入可能額は金融機関の審査により変わります。売却価格は将来の価格を保証するものではありません。<br>導入のご相談・サポート：sonaure100@gmail.com</div>
+  </div>
+</footer>
 </body>
 </html>
