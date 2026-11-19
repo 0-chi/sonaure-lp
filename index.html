@@ -93,6 +93,23 @@
     .use { gap: 28px; }
     .price th { width: 7em; padding: 11px 12px; } .price td { padding: 11px 12px; }
   }
+  /* 契約Sonaureくんのお知らせ（いちばん上に大きく。帯ぜんたいが keiyaku.html へのリンク）。2026-11-19 運営者の指示
+     文は運営者の言葉のまま。プレリリースが終わったら、帯ごと外すか文を変える */
+  .kband { display: block; background: var(--blue); color: #fff; text-decoration: none; }
+  .kband:hover { background: var(--blue-d); }
+  .kband:focus-visible { outline: 3px solid var(--ink); outline-offset: -3px; }
+  .kband-in { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 44px; align-items: center; padding-block: 40px; }
+  .kband-tag { display: inline-block; font-size: 13px; letter-spacing: .1em; border: 1px solid rgba(255, 255, 255, .85); padding: 0 10px; line-height: 1.9; margin-bottom: 14px; }
+  .kband-h { margin: 0 0 22px; font-size: clamp(26px, 3vw, 36px); font-weight: 700; line-height: 1.5; letter-spacing: .02em; text-wrap: balance; }
+  .kband-h > span { display: inline-block; }
+  .kband-more { display: inline-block; background: #fff; color: var(--blue); font-weight: 700; font-size: 15.5px; line-height: 1.6; padding: 12px 30px; border-radius: 4px; }
+  .kband:hover .kband-more { color: var(--blue-d); }
+  .kband-img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid rgba(255, 255, 255, .7); }
+  @media (max-width: 860px) {
+    .kband-in { grid-template-columns: minmax(0, 1fr); gap: 22px; padding-block: 28px 30px; }
+    .kband-h { font-size: clamp(22px, 6.6vw, 30px); margin-bottom: 18px; }
+    .kband-more { display: block; text-align: center; }
+  }
 </style>
 </head>
 <body>
@@ -105,6 +122,17 @@
     <a class="go" href="https://app.sonae-are.com/?from=business">ログイン・新規登録</a>
   </div>
 </header>
+
+<a class="kband" href="keiyaku.html">
+  <div class="wrap kband-in">
+    <div>
+      <span class="kband-tag">新しいサービス・プレリリース中</span>
+      <p class="kband-h"><span>重説作成を半自動化！</span><span>契約～決済までを</span><span>サポートする</span><span>「契約Sonaureくん」</span><span>プレリリース！</span></p>
+      <span class="kband-more">くわしく見る →</span>
+    </div>
+    <img class="kband-img" src="assets/keiyaku/hero.jpg" alt="契約Sonaureくんの重説の画面（見本）。資料から読み取った値が、重説の書式の欄に入っている" width="1280" height="720">
+  </div>
+</a>
 
 <div class="hero">
   <div class="wrap">

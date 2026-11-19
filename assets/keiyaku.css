@@ -1,0 +1,195 @@
+/* 契約Sonaureくんの LP（keiyaku.html）だけの部品。
+   色・文字・ボタン・ヘッダー・フッターは assets/paper.css、罫線の一覧（.rules・.cats）・白い箱（.box）・
+   書類の見本（.doc・.pg・.inbox）は assets/detail.css。ここの部品の名前は k で始める（paper.css の .more・.trust などとぶつけない）。
+   並べ方は、見る人が知りたい順：何か → 何が楽になるか → 本物の画面 → 間違えないか → うちで使えるか → 始め方。
+   画面の絵は、スマホでも字が読めるよう、実物の画面の「寄り」を使う。
+   欄の4色は、アプリの重説の書式（keiyaku_ai/form_view.py の s-a・s-p・s-q・s-m）と同じ色。
+   角丸は4px以下。グラデーション・光彩・ぼかした影・絵文字は使わない。 */
+:root {
+  --st-a: #DBEAFE; --st-a-line: #9CC0F5;   /* 自動で入った */
+  --st-p: #FFF7ED; --st-p-line: #F08C00;   /* 確認待ち（オレンジの点線） */
+  --st-q: #FFF3BF; --st-q-line: #E6C84F;   /* 確かめてほしい */
+  --st-m: #DCFCE7; --st-m-line: #8FD6A6;   /* 手で入れた */
+  --film: #1F2A3A;                          /* 動画を読み込む前の地 */
+}
+
+/* ---- いちばん上：左に言葉、右に実物の画面の短い動画（スマホは 見出し → 動画 → 説明とボタン の順） ---- */
+.khero { padding-block: 52px 60px; }
+.khero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); column-gap: 48px; row-gap: 20px;
+  grid-template-areas: "head mov" "body mov"; align-items: center; }
+.khead { grid-area: head; align-self: end; }
+.kbody { grid-area: body; align-self: start; }
+.kheromov { grid-area: mov; }
+.kpre { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0 0 14px; font-size: 14px; color: var(--sub); letter-spacing: .05em; }
+.kpr { font-size: 12px; color: var(--blue); border: 1px solid var(--blue); padding: 0 8px; letter-spacing: .04em; line-height: 1.8; white-space: nowrap; }
+.khero h1 { margin: 0; letter-spacing: .02em; }
+.kname { display: block; font-size: clamp(18px, 1.8vw, 21px); color: var(--blue); letter-spacing: .05em; margin-bottom: 8px; }
+.kcatch { display: block; font-size: clamp(26px, 2.75vw, 34px); line-height: 1.5; }
+.kcatch > span { display: inline-block; }
+.klead { margin: 0 0 24px; max-width: 33em; }
+.kchecks { list-style: none; margin: 20px 0 0; padding: 0; font-size: 13.5px; color: var(--sub); line-height: 1.75; }
+.kchecks li { position: relative; padding-left: 22px; }
+.kchecks li + li { margin-top: 3px; }
+.knw { white-space: nowrap; } /* 語の途中で折り返さない */
+.kchecks li::before { content: "✓"; position: absolute; left: 2px; top: 0; color: var(--blue); font-weight: 700; }
+
+/* 動画：枠は罫線1本。読み込む前は、最初の絵（poster）を出す */
+.kmov { margin: 0; min-width: 0; }
+.kmov video { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--film); border: 1px solid var(--rule); }
+.kmov .cap { margin-top: 10px; }
+.kheromov video { object-fit: cover; background: var(--paper); }
+
+/* ---- 画面の絵（実物の画面の寄り）：白い地に罫線1本 ---- */
+.kshot { margin: 0; min-width: 0; }
+.kshot img { display: block; width: 100%; height: auto; background: var(--card); border: 1px solid var(--rule); }
+.kshot .cap { margin-top: 8px; }
+
+/* ---- いま → これから（左右に並べる。スマホは上下） ---- */
+.kpairs { margin: 0; max-width: 920px; }
+.kpairs-h, .kpair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); column-gap: 36px; }
+.kpairs-h { font-size: 13px; letter-spacing: .1em; color: var(--sub); padding-bottom: 8px; }
+.kpairs-h b { color: var(--blue); font-weight: 700; }
+.kpair { border-top: 1px solid var(--rule); padding: 16px 0; }
+.kpair:last-child { border-bottom: 1px solid var(--rule); }
+.kpair p { margin: 0; font-size: 15px; line-height: 1.8; }
+.kpair .kb { color: var(--sub); }
+.kpair .ka { font-weight: 500; padding-left: 26px; position: relative; }
+.kpair .ka::before { content: "→"; position: absolute; left: 0; top: 0; color: var(--blue); font-weight: 700; }
+.kpair .kl { display: none; }
+.kfoot { margin: 14px 0 0; max-width: 920px; }
+
+/* ---- 手順（1・2・3）：左に言葉、右に画面の絵 ---- */
+.kstep { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 28px 48px; align-items: start; padding-top: 40px; margin-top: 40px; border-top: 1px solid var(--rule); }
+.kstep:first-of-type { margin-top: 8px; }
+.kstep > * { min-width: 0; }
+.kno { display: block; font-size: 15px; font-weight: 700; color: var(--blue); letter-spacing: .12em; margin-bottom: 2px; font-variant-numeric: tabular-nums; }
+.kstep h3 { font-size: clamp(20px, 2.2vw, 24px); line-height: 1.5; margin: 0 0 10px; letter-spacing: .02em; }
+.kstep-t > p { margin: 0 0 14px; font-size: 15px; line-height: 1.9; }
+.kstep-t > p:last-child { margin-bottom: 0; }
+.kchips { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.kchips li { font-size: 13px; color: var(--ink); background: var(--card); border: 1px solid var(--rule); padding: 1px 9px; line-height: 1.8; }
+/* 手順2の中の場面（番号なし・区切りの線なし・見出しは小さめ） */
+.kstep.ksub { border-top: 0; padding-top: 0; margin-top: 36px; }
+.kstep.ksub h3 { font-size: 18px; margin-bottom: 6px; }
+.kstep.ksub .kstep-t > p { color: var(--sub); }
+.kshot-s img { max-width: 440px; }
+
+/* 欄の4色の説明（1行に並べる） */
+.klegend { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; }
+.klegend li { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.ksw { flex: none; display: inline-block; width: 22px; height: 16px; border-radius: 2px; box-sizing: border-box; }
+.ksw.s-a { background: var(--st-a); border: 1px solid var(--st-a-line); }
+.ksw.s-p { background: var(--st-p); border: 2px dashed var(--st-p-line); }
+.ksw.s-q { background: var(--st-q); border: 1px solid var(--st-q-line); }
+.ksw.s-m { background: var(--st-m); border: 1px solid var(--st-m-line); }
+
+.kafter { margin: 22px 0 0; font-size: 14.5px; color: var(--sub); line-height: 1.9; max-width: 820px; }
+.kpaper { position: relative; }
+.kpaper .stamp { right: -8px; top: auto; bottom: 30px; }
+
+/* ---- 間違いが怖い方へ：左に決まり、右に情報の扱い ---- */
+.ksafe { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); gap: 44px; align-items: start; }
+.ksafe > * { min-width: 0; }
+.ksafe .rules li { font-size: 14.5px; }
+.kdata { max-width: none; }
+.kdata ul { margin: 10px 0 14px; padding: 0 0 0 1.15em; font-size: 14px; color: var(--sub); line-height: 1.85; }
+.kdata li + li { margin-top: 5px; }
+.kdata .tlink { font-size: 14px; }
+
+/* ---- 進捗・書類：スマホの画面を4つ並べる（スマホは縦に1つずつ） ---- */
+.ksp { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: 26px; row-gap: 0; align-items: start; }
+.kspc { min-width: 0; display: grid; grid-row: span 3; grid-template-rows: subgrid; }
+.kspc h3 { margin: 0 0 6px; font-size: 16.5px; line-height: 1.55; }
+.kspc p { margin: 0 0 14px; font-size: 13.5px; color: var(--sub); line-height: 1.8; }
+.kspc img { display: block; width: 100%; height: auto; aspect-ratio: 390 / 580; object-fit: contain; object-position: top;
+  background: var(--card); border: 1px solid var(--rule); border-radius: 4px; }
+.ksp + .cap { margin-top: 16px; }
+.kout { margin-top: 56px; padding-top: 48px; border-top: 1px solid var(--rule); }
+.kout .inbox p { margin: 0 0 12px; font-size: 14.5px; color: var(--sub); line-height: 1.9; }
+
+/* ---- まだできないこと ---- */
+.knot { margin: 30px 0 0; max-width: 820px; }
+.knot h3 { margin: 0 0 8px; font-size: 16.5px; }
+.knot ul { margin: 0; padding: 0 0 0 1.15em; font-size: 14.5px; color: var(--sub); line-height: 1.9; }
+
+/* ---- 動画：全体の1本を大きく、4本を2列で ---- */
+.kmovmain { max-width: 820px; }
+.kmovs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 36px; margin-top: 36px; }
+.kmovs h3 { margin: 12px 0 2px; font-size: 16px; line-height: 1.6; }
+.kmovs p { margin: 0; font-size: 13.5px; color: var(--sub); line-height: 1.8; }
+
+/* ---- 始め方（1・2・3） ---- */
+.kstart { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; counter-reset: ks; }
+.kstart li { counter-increment: ks; border-top: 2px solid var(--ink); padding-top: 14px; min-width: 0; }
+.kstart li::before { content: counter(ks); display: block; font-size: 15px; font-weight: 700; color: var(--blue); letter-spacing: .12em; font-variant-numeric: tabular-nums; }
+.kstart h3 { margin: 2px 0 6px; font-size: 17.5px; line-height: 1.6; }
+.kstart p { margin: 0; font-size: 14.5px; color: var(--sub); line-height: 1.9; }
+
+/* ---- よくある質問：開いたり閉じたり（details） ---- */
+.kfaq { max-width: 820px; }
+.kfaq details { border-bottom: 1px solid var(--rule); }
+.kfaq details:first-of-type { border-top: 1px solid var(--rule); }
+.kfaq summary { cursor: pointer; list-style: none; position: relative; padding: 16px 40px 16px 0; font-weight: 700; font-size: 16px; line-height: 1.7; }
+.kfaq summary::-webkit-details-marker { display: none; }
+.kfaq summary::after { content: "+"; position: absolute; right: 8px; top: 12px; font-size: 22px; font-weight: 400; color: var(--blue); }
+.kfaq details[open] summary::after { content: "−"; }
+.kfaq summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.kfaq .a { padding: 0 0 18px; font-size: 15px; color: var(--sub); line-height: 1.9; }
+.kfaq .a p { margin: 0 0 8px; }
+.kfaq .a p:last-child { margin-bottom: 0; }
+
+/* ---- 先行利用のご相談：メールのアドレスは文字で見せる（選んでコピーできる） ---- */
+.kclose { display: block; font-size: 15px; color: var(--sub); letter-spacing: .04em; margin: 0 0 10px; }
+.final .klead2 { margin: 0 0 24px; max-width: 40em; }
+.kmail { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.kaddr { font-size: 18px; font-weight: 700; letter-spacing: .03em; background: var(--card); border: 1px solid var(--rule); padding: 10px 16px; user-select: all; overflow-wrap: anywhere; }
+.kcopy { font: inherit; font-size: 14px; font-weight: 700; color: var(--ink); background: none; border: 1px solid var(--ink); border-radius: 4px; padding: 10px 16px; line-height: 1.6; cursor: pointer; }
+.kcopy:hover { border-color: var(--blue); color: var(--blue); }
+.kcopy:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.final .small { margin-top: 16px; max-width: 44em; }
+
+/* ---- スマホだけ：下に出る「先行利用を相談する」（いちばん上のボタンが見えなくなってから出す） ---- */
+.kbar { display: none; }
+
+@media (max-width: 1000px) {
+  .ksp { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; }
+  .kspc { margin-bottom: 36px; }
+  .kspc img { max-width: 360px; }
+}
+@media (max-width: 860px) {
+  .khero { padding-block: 30px 44px; }
+  .khero .wrap { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "mov" "body"; row-gap: 18px; }
+  .kcatch { font-size: clamp(22px, 7.3vw, 28px); }
+  .kheromov video { aspect-ratio: 4 / 3; }
+  .kpairs-h { display: none; }
+  .kpair { grid-template-columns: minmax(0, 1fr); row-gap: 8px; }
+  .kpair .kl { display: inline-block; font-size: 11.5px; letter-spacing: .08em; border: 1px solid var(--rule); padding: 0 6px; margin-right: 8px; line-height: 1.7; vertical-align: 1px; white-space: nowrap; }
+  .kpair .ka .kl { color: var(--blue); border-color: var(--blue); }
+  .kpair .ka { padding-left: 0; }
+  .kpair .ka::before { content: none; }
+  .kstep, .ksafe { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .kstep { padding-top: 32px; margin-top: 32px; }
+  .kshot img { max-width: min(100%, 600px); }
+  .kheromov { max-width: 600px; }
+  .kmovs { gap: 28px 24px; }
+  .kstart { gap: 24px; }
+  .kout { margin-top: 44px; padding-top: 40px; }
+  .kmail .btn { width: 100%; text-align: center; }
+  .kbar { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--paper); border-top: 1px solid var(--rule);
+    padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+    transform: translateY(110%); visibility: hidden; transition: transform .22s ease, visibility 0s linear .22s; }
+  .kbar.is-on { transform: none; visibility: visible; transition: transform .22s ease; }
+  .kbar .btn { display: block; width: 100%; text-align: center; padding-block: 11px; }
+  body.khasbar { padding-bottom: 72px; }
+}
+@media (max-width: 640px) {
+  .kmovs { grid-template-columns: minmax(0, 1fr); }
+  .kstart { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .ksp { grid-template-columns: minmax(0, 1fr); }
+  .kspc { margin-bottom: 34px; }
+  .kspc:last-child { margin-bottom: 0; }
+  .kspc img { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) { .kbar { transition: none; } }
