@@ -138,15 +138,33 @@
 .kfaq .a p { margin: 0 0 8px; }
 .kfaq .a p:last-child { margin-bottom: 0; }
 
-/* ---- 先行利用のご相談：メールのアドレスは文字で見せる（選んでコピーできる） ---- */
+/* ---- 先行利用のご相談：フォーム（2026-11-19 運営者の希望でメールの案内から変えた）。
+   送り先は アプリのサーバーの入口（app.sonae-are.com/_sonaure/contact＝lp_contact.py）。そこから運営あてにメールが届く。
+   字は 16px より小さくしない（iPhone が画面を勝手に拡大する）。必須の印は青（青はタグにも使う）、朱は送れなかったときの文だけ。 ---- */
 .kclose { display: block; font-size: 15px; color: var(--sub); letter-spacing: .04em; margin: 0 0 10px; }
-.final .klead2 { margin: 0 0 24px; max-width: 40em; }
-.kmail { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
-.kaddr { font-size: 18px; font-weight: 700; letter-spacing: .03em; background: var(--card); border: 1px solid var(--rule); padding: 10px 16px; user-select: all; overflow-wrap: anywhere; }
-.kcopy { font: inherit; font-size: 14px; font-weight: 700; color: var(--ink); background: none; border: 1px solid var(--ink); border-radius: 4px; padding: 10px 16px; line-height: 1.6; cursor: pointer; }
-.kcopy:hover { border-color: var(--blue); color: var(--blue); }
-.kcopy:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
-.final .small { margin-top: 16px; max-width: 44em; }
+.final .klead2 { margin: 0 0 28px; max-width: 40em; }
+.kform { max-width: 640px; background: var(--card); border: 1px solid var(--rule); padding: 26px 28px 24px; }
+.kf-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.kf-row label { font-size: 15px; font-weight: 700; line-height: 1.6; }
+.kf-req, .kf-opt { display: inline-block; font-size: 11.5px; line-height: 1.7; padding: 0 7px; margin-left: 8px; vertical-align: 1px; border: 1px solid; white-space: nowrap; }
+.kf-req { color: var(--blue); border-color: var(--blue); font-weight: 700; }
+.kf-opt { color: var(--sub); border-color: var(--rule); font-weight: 400; }
+.kf-row input, .kf-row select, .kf-row textarea { font: inherit; font-size: 16px; color: var(--ink); background: #fff; border: 1px solid #BFB8AA;
+  border-radius: 4px; padding: 10px 12px; line-height: 1.6; width: 100%; box-sizing: border-box; }
+.kf-row textarea { resize: vertical; min-height: 128px; }
+.kf-row input:focus, .kf-row select:focus, .kf-row textarea:focus { outline: 3px solid rgba(36, 86, 159, .3); outline-offset: 0; border-color: var(--blue); }
+.kf-row small { font-size: 12.5px; color: var(--sub); line-height: 1.6; }
+.kf-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.kf-note { font-size: 13px; color: var(--sub); line-height: 1.8; margin: 4px 0 18px; }
+.kf-send { font-family: inherit; cursor: pointer; }
+.kf-send:disabled { opacity: .6; cursor: wait; }
+.kf-msg { margin: 12px 0 0; font-size: 14px; font-weight: 700; color: var(--red); line-height: 1.7; }
+.kf-msg:empty { display: none; }
+.kf-done { max-width: 640px; background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--blue); padding: 22px 24px; }
+.kf-done:focus { outline: none; }
+.kf-done h3 { margin: 0 0 6px; font-size: 18px; line-height: 1.6; }
+.kf-done p { margin: 0; font-size: 15px; color: var(--sub); }
+.final .small { margin-top: 18px; max-width: 44em; }
 
 /* ---- スマホだけ：下に出る「先行利用を相談する」（いちばん上のボタンが見えなくなってから出す） ---- */
 .kbar { display: none; }
@@ -174,7 +192,7 @@
   .kmovs { gap: 28px 24px; }
   .kstart { gap: 24px; }
   .kout { margin-top: 44px; padding-top: 40px; }
-  .kmail .btn { width: 100%; text-align: center; }
+  .kform { padding: 20px 18px 18px; }
   .kbar { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--paper); border-top: 1px solid var(--rule);
     padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
     transform: translateY(110%); visibility: hidden; transition: transform .22s ease, visibility 0s linear .22s; }
