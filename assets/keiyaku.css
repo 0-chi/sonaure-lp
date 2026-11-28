@@ -10,6 +10,7 @@
   --st-p: #FFF7ED; --st-p-line: #F08C00;   /* 確認待ち（オレンジの点線） */
   --st-q: #FFF3BF; --st-q-line: #E6C84F;   /* 確かめてほしい */
   --st-m: #DCFCE7; --st-m-line: #8FD6A6;   /* 手で入れた */
+  --st-v: #EDE9FE; --st-v-line: #A78BFA;   /* 住所から入れた（役所で確認） */
   --film: #1F2A3A;                          /* 動画を読み込む前の地 */
 }
 
@@ -82,6 +83,8 @@
 .ksw.s-p { background: var(--st-p); border: 2px dashed var(--st-p-line); }
 .ksw.s-q { background: var(--st-q); border: 1px solid var(--st-q-line); }
 .ksw.s-m { background: var(--st-m); border: 1px solid var(--st-m-line); }
+.ksw.s-v { background: var(--st-v); border: 1px solid var(--st-v-line); }
+.kfillshot { max-width: 880px; margin: 36px 0 0; }
 
 .kafter { margin: 22px 0 0; font-size: 14.5px; color: var(--sub); line-height: 1.9; max-width: 820px; }
 .kpaper { position: relative; }
@@ -211,3 +214,11 @@
   .kspc img { max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) { .kbar { transition: none; } }
+
+/* いちばん上の PR動画（2026-11-28 運営者）：ヘッダーのすぐ下に、画面いっぱい。パソコンは横長（16:9）、スマホは縦長（9:16）の動画。
+   画面より大きくならないように、高さはヘッダー（61px）を引いた画面の高さまで。はみ出す分は切らずに黒の余白にする（字幕を切らない） */
+.kprtop { background: #000; padding: 0; }
+.kprtop video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: calc(100vh - 61px); max-height: calc(100svh - 61px); margin: 0 auto; object-fit: contain; background: #000; }
+.kprcap { margin: 0; padding: 8px 16px 10px; font-size: 12px; line-height: 1.6; color: #b9c2d0; text-align: center; background: #000; }
+/* スマホは縦長の動画。画面が低いときは上下を少しだけ切って横いっぱいに（上下の端には字幕・吹き出しを置いていない） */
+@media (max-width: 700px) { .kprtop video { aspect-ratio: 9 / 16; object-fit: cover; } }
